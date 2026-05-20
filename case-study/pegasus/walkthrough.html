@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spock v4 — How Chronos's AI Investment Analyst Evaluated Pegasus</title>
+<style>
+  :root {
+    --cream: #FAF6EE;
+    --cream-light: #FFFCF5;
+    --ink: #1F2937;
+    --ink-soft: #3A4658;
+    --muted: #6B7280;
+    --bronze: #8B6F47;
+    --bronze-dark: #6B5535;
+    --gold: #C49A4D;
+    --good: #2D6A4F;
+    --watch: #B45309;
+    --line: #E2DCCB;
+    --shadow: 0 1px 2px rgba(31,41,55,0.04), 0 8px 30px rgba(31,41,55,0.05);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Source Serif 4", "Source Serif Pro", "Iowan Old Style", "Apple Garamond", Georgia, serif;
+    font-size: 18px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  .deck {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: 4vh 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    overflow-y: auto;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .slide-inner {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Typography */
+  .eyebrow {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 1.4rem;
+    font-weight: 600;
+  }
+
+  h1.title {
+    font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+    font-size: clamp(3.2rem, 7vw, 5.8rem);
+    line-height: 1.05;
+    margin: 0 0 1.4rem 0;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  h1.slide-h {
+    font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+    font-size: clamp(2.0rem, 4.2vw, 3.2rem);
+    line-height: 1.15;
+    margin: 0 0 1.6rem 0;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 1.6rem 0 0.8rem 0;
+  }
+
+  p, li {
+    font-size: clamp(1.05rem, 1.4vw, 1.32rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 1rem 0;
+  }
+
+  p.lead {
+    font-size: clamp(1.3rem, 1.85vw, 1.7rem);
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .big-number {
+    font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+    font-size: clamp(4.5rem, 11vw, 9rem);
+    color: var(--bronze);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin: 0.4em 0 0.4em 0;
+  }
+
+  .big-text {
+    font-family: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    color: var(--bronze);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0.3em 0 0.3em 0;
+  }
+
+  .quiet {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .accent {
+    color: var(--bronze);
+  }
+
+  strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Cards & grids */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem;
+    margin: 1.2rem 0;
+  }
+
+  .card-grid.tight { gap: 0.9rem; }
+  .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: var(--cream-light);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.3rem 1.4rem;
+    box-shadow: var(--shadow);
+    text-align: left;
+  }
+
+  .card h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bronze);
+    margin: 0 0 0.6rem 0;
+    font-weight: 600;
+  }
+
+  .card p {
+    font-size: 1.02rem;
+    margin: 0;
+    color: var(--ink-soft);
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-family: "Inter", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+  .pill.good { background: #E0F0E7; color: var(--good); }
+  .pill.watch { background: #FCE9C9; color: var(--watch); }
+  .pill.neutral { background: var(--cream-light); color: var(--bronze); border: 1px solid var(--line); }
+
+  /* Quote box */
+  .callout {
+    border-left: 4px solid var(--bronze);
+    background: var(--cream-light);
+    padding: 1.2rem 1.6rem;
+    margin: 1.2rem 0;
+    font-size: clamp(1.05rem, 1.45vw, 1.32rem);
+    color: var(--ink-soft);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* Lists */
+  ul.nice {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul.nice li {
+    padding-left: 1.6rem;
+    position: relative;
+    margin-bottom: 0.7rem;
+  }
+
+  ul.nice li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--bronze);
+    font-weight: 700;
+  }
+
+  ul.nice li.good:before { content: "✓"; color: var(--good); }
+  ul.nice li.watch:before { content: "△"; color: var(--watch); }
+
+  /* Diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.4rem 0;
+    flex-wrap: wrap;
+  }
+  .flow-node {
+    background: var(--cream-light);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.6rem 1rem;
+    font-family: "Inter", sans-serif;
+    font-size: 0.92rem;
+    color: var(--ink);
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .flow-arrow {
+    color: var(--bronze);
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  /* Navigation */
+  .nav {
+    position: fixed;
+    bottom: 1.4rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .nav-btn {
+    background: var(--cream-light);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    box-shadow: var(--shadow);
+    transition: background 0.2s;
+  }
+
+  .nav-btn:hover {
+    background: var(--cream);
+    color: var(--bronze);
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .nav-counter {
+    font-family: "Inter", sans-serif;
+    font-size: 0.86rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    background: var(--cream-light);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    pointer-events: auto;
+  }
+
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--bronze);
+    transition: width 0.4s ease;
+    z-index: 200;
+  }
+
+  /* Cover slide specifics */
+  .cover {
+    text-align: center;
+  }
+  .cover .footer {
+    margin-top: 2.8rem;
+    font-family: "Inter", sans-serif;
+    font-size: 0.92rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Closing slide */
+  .closing {
+    text-align: center;
+  }
+
+  /* Print */
+  @media print {
+    .slide { position: relative; opacity: 1; transform: none; height: 100vh; page-break-after: always; }
+    .nav, .progress { display: none; }
+  }
+
+  /* Small screen tweaks */
+  @media (max-width: 720px) {
+    .slide { padding: 3vh 5vw; }
+    .card-grid.cols-3, .card-grid.cols-2 { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; }
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--cream-light);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-family: "Inter", sans-serif;
+    font-size: 0.78rem;
+    color: var(--bronze);
+    margin-right: 0.4rem;
+  }
+
+  /* 2-column layout */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem;
+    margin: 1.2rem 0;
+  }
+
+  /* Footer note on slide */
+  .footnote {
+    font-family: "Inter", sans-serif;
+    font-size: 0.86rem;
+    color: var(--muted);
+    margin-top: 1.4rem;
+  }
+
+  /* Underline highlight */
+  .hl {
+    background: linear-gradient(180deg, transparent 60%, rgba(196,154,77,0.28) 60%);
+    padding: 0 2px;
+  }
+
+  /* Print / paginated mode (activated by body.print or @media print) */
+  body.print, body.print html { height: auto !important; overflow: visible !important; }
+  body.print .deck { position: static !important; height: auto !important; overflow: visible !important; }
+  body.print .nav, body.print .progress { display: none !important; }
+  body.print .slide {
+    position: relative !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    min-height: 100vh;
+    page-break-after: always;
+    break-after: page;
+    padding: 6vh 6vw !important;
+    overflow: visible !important;
+  }
+  body.print .slide:last-child { page-break-after: auto; }
+
+  @media print {
+    body { background: var(--cream) !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .nav, .progress { display: none !important; }
+    .slide { position: relative !important; inset: auto !important; opacity: 1 !important; transform: none !important; min-height: 100vh; page-break-after: always; padding: 6vh 6vw !important; overflow: visible !important; }
+    .slide:last-child { page-break-after: auto; }
+    .deck { position: static !important; height: auto !important; overflow: visible !important; }
+    html, body { height: auto !important; overflow: visible !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ─────────────────────────────────────────────────────────── 1: COVER -->
+  <section class="slide active cover" data-slide="1">
+    <div class="slide-inner">
+      <div class="eyebrow">Chronos Capital · Investment Analyst Pipeline</div>
+      <h1 class="title">Spock <span class="accent">v4</span></h1>
+      <p class="lead" style="font-size: clamp(1.3rem, 1.85vw, 1.7rem); margin-top: 0.6rem; color: var(--ink-soft);">How Chronos's AI investment analyst evaluated Pegasus</p>
+      <div class="footer">Pegasus deal walkthrough · 19 May 2026</div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 2: THE PROBLEM -->
+  <section class="slide" data-slide="2">
+    <div class="slide-inner">
+      <div class="eyebrow">The Problem</div>
+      <h1 class="slide-h">Investment diligence breaks at scale.</h1>
+      <p class="lead">Even the best diligence misses things. A 500-page substrate has thousands of claims. A 90-minute partner meeting cannot catch every fabricated number, every silently-superseded projection, every confabulation between sources.</p>
+      <p class="lead" style="margin-top: 2rem;"><span class="hl">Spock fixes this.</span></p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 3: WHAT IS SPOCK? -->
+  <section class="slide" data-slide="3">
+    <div class="slide-inner">
+      <div class="eyebrow">What is Spock?</div>
+      <h1 class="slide-h">A team of AI agents that read your deal substrate, check each other's work, and produce a partner-ready IC paper.</h1>
+      <p class="lead quiet" style="margin-top: 1.8rem;">Six specialist analysts. One fact-checker. One discipline. Zero copy-paste.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 4: WHY SPOCK -->
+  <section class="slide" data-slide="4">
+    <div class="slide-inner">
+      <div class="eyebrow">Why "Spock"?</div>
+      <h1 class="slide-h">Logic. Discipline. Asks the questions humans skip.</h1>
+      <p class="lead" style="margin-top: 1.8rem;">Named for the same reason a partner asks <em>"what would have to be true?"</em> before signing off on a thesis. Spock does the boring rigorous part well so the partner can focus on judgement.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 5: HOW IT WORKS -->
+  <section class="slide" data-slide="5">
+    <div class="slide-inner">
+      <div class="eyebrow">How It Works · High Level</div>
+      <h1 class="slide-h">Read. Verify. Consolidate. Verify again.</h1>
+
+      <div class="flow" style="margin-top: 2rem;">
+        <div class="flow-node">Deal<br>substrate</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">6 specialist<br>agents</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Fact-checker<br>(per agent)</div>
+      </div>
+      <div class="flow">
+        <div class="flow-node">Consolidation</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Fact-checker<br>(on consolidation)</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node"><strong>20-section<br>IC paper</strong></div>
+      </div>
+
+      <p class="quiet" style="margin-top: 1.8rem; text-align: center;">Plus: deep-research workstreams, doctrine library, standing rules.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 6: THE 6 SPECIALIST AGENTS -->
+  <section class="slide" data-slide="6">
+    <div class="slide-inner">
+      <div class="eyebrow">The Six Specialist Agents</div>
+      <h1 class="slide-h">Each one is an analyst with a single discipline.</h1>
+
+      <div class="card-grid cols-3" style="margin-top: 1.4rem;">
+        <div class="card">
+          <h3>People &amp; Culture</h3>
+          <p>Does management have the bench to execute? Who's leaving and why? Who's in the deal documents but not the management deck?</p>
+        </div>
+        <div class="card">
+          <h3>Voice of Customer</h3>
+          <p>What do customers actually say? Where does management's commissioned DD diverge from the public record?</p>
+        </div>
+        <div class="card">
+          <h3>Company History</h3>
+          <p>The audited paper trail. Court rulings. Board appointments. Secondary sales. Regulatory actions.</p>
+        </div>
+        <div class="card">
+          <h3>Competitor Analysis</h3>
+          <p>How wide is the moat? Who else is doing this? Where does the management narrative break against the commissioned DD?</p>
+        </div>
+        <div class="card">
+          <h3>AI Unit Economics</h3>
+          <p>Is this company a real AI tool-user, or marketing it? Does the AI claim show up in the audited financials?</p>
+        </div>
+        <div class="card">
+          <h3>Red Flags</h3>
+          <p>Forensic ratios. Governance risks. Audit-firm quality. Legal proceedings. The things that kill deals 18 months after close.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 7: KILLER FEATURE -->
+  <section class="slide" data-slide="7">
+    <div class="slide-inner">
+      <div class="eyebrow">The Killer Feature</div>
+      <h1 class="slide-h">Every agent's work is paired with a fact-checker.</h1>
+      <p class="lead">The fact-checker reads the same source documents directly. Independently. And tries to break the agent's claims.</p>
+      <div class="callout" style="margin-top: 1.6rem;">
+        If the agent says <strong>X</strong>, the fact-checker asks: <em>show me X on the page</em>.
+      </div>
+      <p class="lead" style="margin-top: 1.4rem;">No claim ships to the IC paper without a paired verifier verdict.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 8: THE PEGASUS RUN -->
+  <section class="slide" data-slide="8">
+    <div class="slide-inner">
+      <div class="eyebrow">The Pegasus Run</div>
+      <h1 class="slide-h">We ran Spock v4 on the <span class="accent">Pegasus</span> deal.</h1>
+      <p class="lead" style="margin-top: 1.4rem;">Standard Bank invited Chronos into a $33.9m syndicate at Round F (October 2025). Chronos slot: $13.9m / c. 1.99% of Pegasus.</p>
+      <p class="lead">The substrate: four PDFs — Management Presentation (Sep 2024), FTI Commercial Due Diligence (Sep 2024), EY Financial Due Diligence (July 2025), Long Range Plan (May 2026).</p>
+      <p class="lead">Plus four months of regulatory and legal events — Kenya Tax Tribunal rulings, High Court filings, a Capital Markets Authority complaint.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 9: CATCH #1 -->
+  <section class="slide" data-slide="9">
+    <div class="slide-inner">
+      <div class="eyebrow">Catch #1 · The $165m Revenue Error</div>
+      <div class="big-text">$253m <span class="quiet" style="color: var(--muted);">→</span> $418m</div>
+      <p class="lead">The Company History agent said Pegasus's FY24 revenue was $253m.</p>
+      <p class="lead">The fact-checker opened the audited Companies House accounts directly. Actual figure: <strong>$418m total</strong>. The agent had read only the goods-sale sub-line and missed the $164.5m interest income line.</p>
+      <div class="callout">$165m material error caught — before it propagated into the IC paper.</div>
+      <p class="footnote">Source: Companies House page 4 directors' Strategic Report KPI table. Cross-checked at EY FDD page 31 ($419.5m total revenue, $1.5m apart from Companies House).</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 10: CATCH #2 -->
+  <section class="slide" data-slide="10">
+    <div class="slide-inner">
+      <div class="eyebrow">Catch #2 · Confabulation</div>
+      <div class="big-text">Verified <span class="quiet" style="color: var(--muted);">vs</span> Inferred</div>
+      <p class="lead">The Hardware Moat agent reported: <em>"Samsung Knox Guard — Pegasus's lockout technology — is also used by Watu Credit. The moat is eroding."</em></p>
+      <p class="lead">The fact-checker flagged: <strong>the word "Knox" appears nowhere in Pegasus's substrate</strong>. Whether Pegasus actually uses Knox Guard is <span class="accent">analyst inference</span>, not verified fact.</p>
+      <div class="callout">Confabulation caught. The Knox question is now an IC-blocking question for the Nairobi management session.</div>
+      <p class="footnote">FTI Commercial DD page 40 says Pegasus's tech stack was "developed in collaboration with Pegasus" — inconsistent with off-the-shelf Knox Guard.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 11: CATCH #3 -->
+  <section class="slide" data-slide="11">
+    <div class="slide-inner">
+      <div class="eyebrow">Catch #3 · Chart Read Backwards</div>
+      <div class="big-text">Former <span class="accent">4.3%</span> · New AI <span class="accent">2.2%</span></div>
+      <p class="lead">The AI Unit Economics agent reported the New AI Model was at 4.3% prediction-error and the Former Model was at 2.2% — i.e. AI was worse than the rules-based predecessor.</p>
+      <p class="lead">The fact-checker opened management's slide deck and re-read the chart directly. <strong>The values were flipped.</strong> Former Model is 4.3%. New AI Model is 2.2%. The AI is roughly half the error rate.</p>
+      <div class="callout">Chart-read error caught. The AI thesis pillar is now confirmed at "grade B" — real, with a defined path to "grade A" via cohort decomposition evidence.</div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 12: CATCH #4 -->
+  <section class="slide" data-slide="12">
+    <div class="slide-inner">
+      <div class="eyebrow">Catch #4 · The Stale Forecast Input</div>
+      <div class="big-text">$546m <span class="quiet" style="color: var(--muted);">→</span> $775m</div>
+      <p class="lead">The DCF financial model was built using $546m as Pegasus's FY26 starting revenue.</p>
+      <p class="lead">The fact-checker traced this back. $546m was an older Sep 2024 projection — now superseded. Pegasus's own Long Range Plan FY26 figure is <strong>$775m</strong>.</p>
+      <p class="lead">Re-running the DCF with the corrected starting point gives Chronos equity value of <strong>$1.05 billion</strong> versus the Round F sponsor anchor of $699m.</p>
+      <div class="callout"><strong>+49% intrinsic-value premium to entry</strong>, not the +23% the uncorrected model showed. Material for the Standard Bank conversation.</div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 13: INFORMATION SANCTITY -->
+  <section class="slide" data-slide="13">
+    <div class="slide-inner">
+      <div class="eyebrow">Information Sanctity · Every Claim Travels With a Tier</div>
+      <h1 class="slide-h">Not every source is equal. Spock keeps track.</h1>
+
+      <div class="card-grid cols-2" style="margin-top: 1.2rem;">
+        <div class="card">
+          <h3>T1 · Primary</h3>
+          <p>Audited statements. Court records. Patent registries. Companies House filings. Independently-commissioned diligence reports.</p>
+        </div>
+        <div class="card">
+          <h3>T2 · Named-byline Secondary</h3>
+          <p>Financial Times. Reuters. Business Daily Africa. Named-byline reporting.</p>
+        </div>
+        <div class="card">
+          <h3>T3 · Aggregators</h3>
+          <p>Industry blogs and aggregator sites. TechCabal. TechCrunch. Useful for triangulation, not for headline claims.</p>
+        </div>
+        <div class="card">
+          <h3>T4 · Unverified</h3>
+          <p>Glassdoor. Reddit. Anonymous reviews. Flagged but never load-bearing.</p>
+        </div>
+      </div>
+
+      <p class="lead" style="margin-top: 1.4rem;">Tiers stay attached as claims move through the pipeline. <span class="hl">No T4 claim ever ships as load-bearing.</span></p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 14: STANDING RULES -->
+  <section class="slide" data-slide="14">
+    <div class="slide-inner">
+      <div class="eyebrow">Standing Rules · Chronos Discipline Built In</div>
+      <h1 class="slide-h">Four rules apply to every IC paper Spock produces.</h1>
+
+      <div class="card" style="margin: 1rem 0;">
+        <h3>Rule 1 · No Cumulative Vanity Metrics</h3>
+        <p>Commercial sections use active figures. No "X million customers since inception." Forces analysts to talk about what's working now, not what's accumulated.</p>
+      </div>
+      <div class="card" style="margin: 1rem 0;">
+        <h3>Rule 2 · Indexing Convention</h3>
+        <p>100 = peer median, always. All comparative scoring lives in the 50–150 range. No 1–5 scales. No 0–100 ladders. The convention forces every score to be referenced against something real.</p>
+      </div>
+      <div class="card" style="margin: 1rem 0;">
+        <h3>Rule 3 · Chronos Scar Tissue Stays Internal</h3>
+        <p>If Chronos has historical experience with a sector or jurisdiction that informs risk weighting — that experience shapes the analysis but is never named in the paper body. <span class="quiet">We don't burn portfolio relationships.</span></p>
+      </div>
+      <div class="card" style="margin: 1rem 0;">
+        <h3>Rule 4 · Directional Inputs Are Never Evidence</h3>
+        <p>Meeting notes. Verbal-only diligence inputs. Recorder transcripts. These shape questions; they never cite as evidence. If a meeting note disagrees with audited data — the meeting becomes a management question, not a paper claim.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 15: THE RESULT -->
+  <section class="slide" data-slide="15">
+    <div class="slide-inner">
+      <div class="eyebrow">The Result · 19 May 2026</div>
+      <h1 class="slide-h">A complete IC paper draft.</h1>
+
+      <div class="card-grid cols-2" style="margin-top: 1.4rem;">
+        <div class="card">
+          <h3>The Paper</h3>
+          <p><strong>20 IC paper sections</strong> drafted. Each grounded in verified source documents. Each cross-checked against the upstream agent verifiers.</p>
+        </div>
+        <div class="card">
+          <h3>The DD Pack</h3>
+          <p><strong>43 management-session questions</strong> organised into 7 executive interview blocks for the Nairobi visit, plus 5 on-site observation tasks and 40+ document requests.</p>
+        </div>
+        <div class="card">
+          <h3>The Financial Model</h3>
+          <p><strong>7-tab Excel DCF</strong> with three toggleable scenarios (bear / base / bull), sensitivity table, and dashboard.</p>
+        </div>
+        <div class="card">
+          <h3>The Audit Trail</h3>
+          <p><strong>Every fact verified.</strong> Every confabulation caught. Every cross-doctrine inference tagged. Every standing rule respected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 16: WHAT SPOCK FOUND — GOOD -->
+  <section class="slide" data-slide="16">
+    <div class="slide-inner">
+      <div class="eyebrow">What Spock Found · The Good</div>
+      <h1 class="slide-h">Pegasus is a real Tool-User-grade-B compounder.</h1>
+
+      <ul class="nice">
+        <li class="good"><strong>Audited 4.3× year-on-year operating-income improvement.</strong> First-year positive group EBITDA on FY24 statements. The financial signature of the AI underwriting improvement is real, not narrative.</li>
+        <li class="good"><strong>12% positive directional beat.</strong> Management projected $374m FY24 revenue at Sep 2024. Audited actuals came in at $418m total. Management is conservative-by-12%, not aggressive-by-X.</li>
+        <li class="good"><strong>AI underwriting model independently confirmed at grade B.</strong> Fact-checker re-read the management chart. New AI Model is approximately half the prior rules-based model's error at every loan-duration decile.</li>
+        <li class="good"><strong>49% intrinsic-value premium to entry.</strong> Chronos triangulated equity value $1.05bn against Round F sponsor anchor of $699m.</li>
+        <li class="good"><strong>Proprietary partner-track access</strong> via Standard Bank as principal underwriter. Not won in competitive auction.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 17: WHAT SPOCK FOUND — WATCH -->
+  <section class="slide" data-slide="17">
+    <div class="slide-inner">
+      <div class="eyebrow">What Spock Found · The Watchlist</div>
+      <h1 class="slide-h">Six binary closure items before partner committee.</h1>
+
+      <ul class="nice">
+        <li class="watch"><strong>Patent expires November 2031.</strong> 5.5 years. <strong>No Nigeria coverage.</strong> Pegasus's own forecast has Nigeria scaling to 41% of bookings by 2031.</li>
+        <li class="watch"><strong>Samsung Knox dependency unclear.</strong> Watu Credit uses Knox Guard for 1.46m Kenyan smartphones. Whether Pegasus uses the same is unverified. IC-blocking question.</li>
+        <li class="watch"><strong>Operating cash flow stays negative through FY31.</strong> Even on Pegasus's own forecast, the receivables build consumes all the operating earnings. Pegasus needs continued external financing.</li>
+        <li class="watch"><strong>Auditor is small UK firm</strong>, not Big Four. KLSA LLP signs $418m-revenue group accounts. Governance probe at Nairobi.</li>
+        <li class="watch"><strong>Three high-severity binary risks.</strong> Kenya Tax Tribunal $6.8m liability from September 2024. Co-founder $6m secondary — counterparty not yet disclosed. Customer-experience red metrics on management's own commissioned scorecard.</li>
+        <li class="watch"><strong>Forensic ratios fire.</strong> Beneish + Dechow + Sloan all fire on independent re-computation. Pattern read is canonical growth-stage emerging-market receivables-financier — but partners deserve to see the table.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 18: THE 12 IC-BLOCKING QUESTIONS -->
+  <section class="slide" data-slide="18">
+    <div class="slide-inner">
+      <div class="eyebrow">The Nairobi Agenda · 12 IC-Blocking Questions</div>
+      <h1 class="slide-h">These must be answered before partner approval.</h1>
+
+      <div class="card-grid cols-2" style="margin-top: 1rem;">
+        <div class="card"><p><strong>1.</strong> Which co-founder is the $6m secondary?</p></div>
+        <div class="card"><p><strong>2.</strong> Operative forum for the Njoki petition?</p></div>
+        <div class="card"><p><strong>3.</strong> Substance of the April 2026 share-buyback filings?</p></div>
+        <div class="card"><p><strong>4.</strong> Net 2017–2019 Kenyan tax position?</p></div>
+        <div class="card"><p><strong>5.</strong> CMA Kenya engagement post-jurisdictional decline?</p></div>
+        <div class="card"><p><strong>6.</strong> Sumitomo conflict-of-interest framework on Series F buyback?</p></div>
+        <div class="card"><p><strong>7.</strong> AI model cohort comparator design (gates grade A)?</p></div>
+        <div class="card"><p><strong>8.</strong> Bad-debt-vs-loss-rate metric reconciliation?</p></div>
+        <div class="card"><p><strong>9.</strong> Chief Product Officer line — Hughes or Sanderson?</p></div>
+        <div class="card"><p><strong>10.</strong> Does Pegasus use Samsung Knox Guard or bespoke firmware?</p></div>
+        <div class="card"><p><strong>11.</strong> Nigeria patent strategy?</p></div>
+        <div class="card"><p><strong>12.</strong> EADAK joint-venture equity split and IP ownership?</p></div>
+      </div>
+
+      <p class="footnote">Answers expected at the Nairobi management session, late May / early June 2026.</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 19: WHAT SPOCK V4 MEANS -->
+  <section class="slide" data-slide="19">
+    <div class="slide-inner">
+      <div class="eyebrow">What Spock v4 Means Going Forward</div>
+      <h1 class="slide-h">Investment analysis built for the AI era.</h1>
+
+      <div class="card-grid cols-2" style="margin-top: 1.4rem;">
+        <div class="card">
+          <h3>Faster</h3>
+          <p>From source PDFs to a 20-section IC paper draft in days, not weeks.</p>
+        </div>
+        <div class="card">
+          <h3>More Rigorous</h3>
+          <p>Every claim source-traced. Every quantitative result independently re-computed. Every confabulation caught.</p>
+        </div>
+        <div class="card">
+          <h3>Better Disciplined</h3>
+          <p>The same standing rules apply across every deal Chronos screens. Information sanctity. Scar-tissue protection. Indexing convention.</p>
+        </div>
+        <div class="card">
+          <h3>Partner Time Reclaimed</h3>
+          <p>Roger's job is pattern recognition, judgement, and negotiation. Spock handles the substrate work — the part that doesn't need a partner brain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────────────────────── 20: WHAT WE'D LIKE FROM YOU -->
+  <section class="slide closing" data-slide="20">
+    <div class="slide-inner">
+      <div class="eyebrow">What we'd like from you</div>
+      <h1 class="title" style="font-size: clamp(2.4rem, 5vw, 4.2rem); margin-bottom: 1.6rem;">Three asks before the next IC.</h1>
+
+      <div class="card-grid cols-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>1 · Framework feedback</h3>
+          <p>Where does the discipline ring true? Where does it feel over-engineered? Tell us before we ship Spock against the next deal.</p>
+        </div>
+        <div class="card">
+          <h3>2 · A second deal candidate</h3>
+          <p>Listed or private. Sector you want pressure-tested. Spock's value is in the second, third, and tenth deal — not the first.</p>
+        </div>
+        <div class="card">
+          <h3>3 · Read the IC paper</h3>
+          <p>The 20-section Pegasus IC paper draft is ready for partner review. Send time on calendar for the Nairobi prep session post-23 May.</p>
+        </div>
+      </div>
+
+      <p class="lead quiet" style="margin-top: 2.2rem; text-align: center;">Chronos Capital · Pegasus deal walkthrough · 19 May 2026</p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ─────────────────────────────────────────────────────────── NAVIGATION -->
+<div class="nav">
+  <button class="nav-btn" id="prev" aria-label="Previous slide">←</button>
+  <span class="nav-counter" id="counter">1 / 20</span>
+  <button class="nav-btn" id="next" aria-label="Next slide">→</button>
+</div>
+
+<script>
+(function() {
+  // Print mode: ?print=1 or ?print=true → stack all slides for PDF export.
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('print') === '1' || urlParams.get('print') === 'true') {
+    document.body.classList.add('print');
+    return; // skip the interactive deck logic
+  }
+
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  let current = 0;
+
+  function show(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= total) idx = total - 1;
+    slides[current].classList.remove('active');
+    slides[idx].classList.add('active');
+    current = idx;
+    counter.textContent = (current + 1) + ' / ' + total;
+    progress.style.width = ((current + 1) / total * 100) + '%';
+    prevBtn.disabled = (current === 0);
+    nextBtn.disabled = (current === total - 1);
+    // scroll the active slide to top
+    slides[idx].scrollTop = 0;
+    // Update URL hash for shareability
+    history.replaceState(null, '', '#' + (current + 1));
+  }
+
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      next();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+      e.preventDefault();
+      prev();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      show(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      show(total - 1);
+    } else if (/^[0-9]$/.test(e.key)) {
+      const n = parseInt(e.key, 10);
+      if (n === 0) show(9);
+      else show(n - 1);
+    }
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  document.addEventListener('touchend', function(e) {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) next();
+      else prev();
+    }
+  }, { passive: true });
+
+  // Click to advance — only when not on a button
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('button') || e.target.closest('a')) return;
+    // Only advance on click on the right half of the screen
+    if (e.clientX > window.innerWidth / 2) next();
+    else if (e.clientX < window.innerWidth * 0.15) prev();
+  });
+
+  // Initial state — check URL hash
+  const hash = window.location.hash.slice(1);
+  if (hash && !isNaN(parseInt(hash, 10))) {
+    show(parseInt(hash, 10) - 1);
+  } else {
+    show(0);
+  }
+})();
+</script>
+
+</body>
+</html>
