@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nu Holdings — Strategy Preview (Gate 6.5)</title>
+<style>
+  @page { size: A4; margin: 22mm 20mm; }
+  html, body {
+    background: #F5EFE3;
+    color: #1B1A17;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    font-size: 11.2pt;
+    line-height: 1.55;
+    margin: 0;
+    padding: 0;
+  }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 40px 48px 56px 48px;
+  }
+  .disclosure {
+    border-left: 5px solid #6E1A1A;
+    background: #EFE6D3;
+    padding: 14px 18px 12px 18px;
+    margin-bottom: 32px;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #2C2A26;
+  }
+  .disclosure strong { color: #6E1A1A; letter-spacing: 0.5px; text-transform: uppercase; font-size: 9.4pt; }
+  .masthead {
+    border-bottom: 2px solid #1B1A17;
+    padding-bottom: 18px;
+    margin-bottom: 26px;
+  }
+  .kicker {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.2pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6E1A1A;
+    margin-bottom: 8px;
+  }
+  h1.headline {
+    font-size: 30pt;
+    line-height: 1.08;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: #1B1A17;
+    letter-spacing: -0.5px;
+  }
+  .standfirst {
+    font-size: 13pt;
+    font-style: italic;
+    color: #3A372F;
+    margin-top: 6px;
+    line-height: 1.45;
+  }
+  .verdict {
+    background: #1B1A17;
+    color: #F5EFE3;
+    padding: 22px 26px;
+    border-radius: 2px;
+    margin: 26px 0 30px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .verdict .cell { font-family: "Helvetica Neue", Arial, sans-serif; }
+  .verdict .label {
+    font-size: 8.6pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C9B98C;
+    margin-bottom: 6px;
+  }
+  .verdict .value { font-size: 13.5pt; font-weight: 600; line-height: 1.25; }
+  .thesis {
+    background: #ECE2CC;
+    padding: 18px 22px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    font-size: 11.6pt;
+  }
+  h2.section {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6E1A1A;
+    border-bottom: 1px solid #BFAE82;
+    padding-bottom: 6px;
+    margin-top: 34px;
+    margin-bottom: 12px;
+  }
+  h3.fw-title {
+    font-size: 14.2pt;
+    margin: 22px 0 6px 0;
+    color: #1B1A17;
+  }
+  .tag {
+    display: inline-block;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 8.6pt;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .tag.positive  { background: #2C4A2E; color: #F5EFE3; }
+  .tag.caution   { background: #8A6A1F; color: #F5EFE3; }
+  .tag.negative  { background: #6E1A1A; color: #F5EFE3; }
+  .tag.neutral   { background: #4A463C; color: #F5EFE3; }
+  .bearcase {
+    background: #2C0E0E;
+    color: #F5EFE3;
+    padding: 22px 26px;
+    margin: 28px 0;
+    border-left: 6px solid #C45050;
+    border-radius: 2px;
+  }
+  .bearcase h2 {
+    margin-top: 0;
+    color: #F5C8C8;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .crossread {
+    background: #E8DFC7;
+    border-left: 5px solid #2C4A2E;
+    padding: 18px 22px;
+    margin: 26px 0;
+  }
+  .crossread h2 { color: #2C4A2E; margin-top: 0; }
+  table.pricing {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 8px 0;
+    font-size: 10.4pt;
+  }
+  table.pricing th, table.pricing td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid #C9B98C;
+    vertical-align: top;
+  }
+  table.pricing th {
+    background: #ECE2CC;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.4pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #3A372F;
+  }
+  .triggers ol { padding-left: 20px; }
+  .triggers li { margin-bottom: 8px; }
+  .footer {
+    margin-top: 44px;
+    padding-top: 14px;
+    border-top: 1px solid #BFAE82;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 9pt;
+    color: #4A463C;
+    letter-spacing: 0.6px;
+  }
+  a { color: #6E1A1A; text-decoration: none; border-bottom: 1px dotted #6E1A1A; }
+  sup { font-size: 8.4pt; }
+  .unv { color: #8A6A1F; font-style: italic; }
+  p { margin: 0 0 11px 0; }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="strategy-preview-28-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="strategy-preview-28-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+<div class="wrap">
+
+<!-- Preview disclosure -->
+<div class="disclosure">
+  <strong>Gate 6.5 strategy preview — not a final IC paper.</strong><br>
+  This document applies the Strategy-agent discipline of the Spock v5 framework against public-source baseline knowledge for calibration. The full Gate 7 workstream chain has <em>not</em> been run: no primary-source fact-checker verifier-pair, no Workstream B voice-of-customer corpus, no Workstream C people &amp; culture, no Workstream D scenario-derivation, no Workstream F consumer-signal pull, no completeness audit. Numbers attributed to public filings carry citations; numbers not yet cross-checked against primary sources carry <span class="unv">[unverified]</span>. Treat as a directional read for the Roger calibration question — not for partner distribution.
+</div>
+
+<!-- Masthead -->
+<div class="masthead">
+  <div class="kicker">Spock v5 · Strategy Preview · Listed Equity</div>
+  <h1 class="headline">Nu Holdings: the cleanest LatAm digital-bank compounder &mdash; if you can hold through the credit cycle</h1>
+  <div class="standfirst">A 120M-customer counter-positioned franchise priced for compounding. The strategic question is not whether Nubank is a good business &mdash; it is whether buying it adds anything Chronos does not already own through TymeBank.</div>
+</div>
+
+<!-- Verdict box -->
+<div class="verdict">
+  <div class="cell">
+    <div class="label">Recommendation</div>
+    <div class="value">Starter position, calibrated</div>
+  </div>
+  <div class="cell">
+    <div class="label">Position size (USD)</div>
+    <div class="value">$50k punt &rarr; $250k normal on TymeBank cross-read clarity</div>
+  </div>
+  <div class="cell">
+    <div class="label">Sizing bucket</div>
+    <div class="value">Punt &rarr; Normal (conditional)</div>
+  </div>
+  <div class="cell">
+    <div class="label">Valuation read</div>
+    <div class="value">Priced for execution. Modest margin of safety vs blended fair-value band.</div>
+  </div>
+</div>
+
+<!-- One-paragraph thesis -->
+<div class="thesis">
+  Nu Holdings is the highest-quality digital-bank franchise in the emerging markets &mdash; 118M+ customers across Brazil, Mexico and Colombia<sup>1</sup>, monthly active rate north of 83%<sup>2</sup>, cost-to-serve roughly an order of magnitude below the Brazilian incumbents<sup>3</sup>, and an ARPAC trajectory still climbing through cross-sell. The bull case is LatAm banking-penetration compounding plus a credible Mexico/Colombia second leg. The bear case is a credit-cycle reversion (loss allowance already +33% QoQ in Q1 2026<sup>4</sup>), Brazilian regulatory headwind, and a multiple that prices a continuation of best-case execution. The decision-relevant question for Chronos is the <em>TymeBank cross-read</em>: at what point does adding Nu to the book duplicate emerging-market digital-bank exposure we already underwrite at board level.
+</div>
+
+<!-- Framework 1 -->
+<h2 class="section">The Eleven Frameworks</h2>
+
+<h3 class="fw-title">1. Power Law — is upside asymmetric? <span class="tag positive">Asymmetric upside</span></h3>
+<p>LatAm banking penetration headroom is the structural set-up. Brazil's unbanked / underbanked share has compressed materially over the past decade but credit penetration remains roughly half of OECD norms; Mexico is meaningfully behind Brazil; Colombia behind Mexico<sup>5</sup>. Nu has compounded customer count from ~54M (end-2022) to 118M+ (Q1 2026), with Mexico now &gt;10M and Colombia approaching ~3M <span class="unv">[unverified, directional]</span><sup>1</sup>. The cross-sell stack &mdash; cards &rarr; savings (NuConta / Cuenta) &rarr; personal credit &rarr; investments (NuInvest) &rarr; insurance &rarr; Nubank+ &mdash; gives each customer a monetisable revenue staircase. ARPAC ex-Brazil-mature is still in early innings. Power-law sensitivity: in a base-rate distribution of EM bank investments, Nu sits in the right tail. <strong>Verdict: upside is genuinely asymmetric, conditional on the credit cycle not breaking the underwriting model.</strong></p>
+
+<h3 class="fw-title">2. CLTV : CAC and Unit Economics <span class="tag positive">Best-in-class digital bank</span></h3>
+<p>Michael's bar for "exciting" is CLTV:CAC ≥ 9&times;. Nubank does not disclose CLTV:CAC directly, but the disclosed building blocks are exceptional: customer-acquisition cost in the ~$5&ndash;7 range driven by referral / organic <span class="unv">[unverified, public commentary]</span><sup>6</sup>, monthly ARPAC of ~$11.4 in Q1 2026<sup>2</sup>, and a cost-to-serve disclosed at ~$0.80 per month per active customer<sup>3</sup>. On reasonable churn assumptions (sub-3% annual) the implied CLTV:CAC sits comfortably above the 9&times; bar &mdash; almost certainly in the 15&ndash;25&times; range for mature-cohort Brazilian customers. Mexico cohorts are CAC-heavier and ARPAC-lighter; the consolidated number is dragged down by geographic mix but the marginal-cohort economics in Brazil remain best-in-class for any bank, listed or private, globally.</p>
+<p>The decomposition worth holding in mind: revenue per customer is now structurally levered to <em>cross-sell penetration</em> rather than new-customer adds, because the Brazil base is large enough that incremental ARPAC compounds on a 90M+ Brazilian denominator. Each percentage point of cross-sell penetration into NuInvest, Nubank+, or insurance is a meaningful absolute revenue lever. Cost-to-serve, meanwhile, has the property of declining further as the engineering investment amortises across a growing base &mdash; the operating-leverage story is genuine rather than rhetorical. <strong>Verdict: clears the bar comfortably. Cost-to-serve advantage is the load-bearing fact and the strongest single piece of evidence in the entire bull case.</strong></p>
+
+<h3 class="fw-title">3. Helmer 7 Powers <span class="tag positive">Three powers; counter-positioning is the load-bearing one</span></h3>
+<p>(i) <em>Scale economies</em>: cost-to-serve of ~$0.80/month is hard-wired by a cloud-native single stack; incumbent Brazilian banks carry branch networks, legacy core, and unionised cost bases<sup>3,7</sup>. (ii) <em>Network effects</em>: referral acquisition (the purple-card meme), Nubank+ adding subscription-style stickiness; not Metcalfe-class but real. (iii) <em>Counter-positioning</em>: Itau, Bradesco, Santander Brasil cannot replicate Nu's economics without cannibalising fee income and branch utilisation &mdash; the classic Helmer counter-positioning bind. They have responded with their own digital sleeves (Iti, Next, etc.) but the parent P&amp;L disciplines the response<sup>8</sup>. Brand and switching-cost are present but secondary. Process power is in development (NuFormer narrative, see Framework 4). <strong>Verdict: three durable powers, with counter-positioning the structural moat. Strongest among LatAm fintechs.</strong></p>
+
+<h3 class="fw-title">4. AI Maturity — Level 1 to 5 <span class="tag caution">Claimed Level 3, evidenced Level 2</span></h3>
+<p>Nubank's narrative around <em>NuFormer</em> (proprietary transformer-style model for credit underwriting, fraud, and CX) places it at the front of the EM-bank AI peer set on management commentary<sup>9</sup>. Per <strong>Spock AI Unit Economics doctrine v1.1</strong>, narrative AI claims do not score; audited disclosure does. What is audited: $1.79bn credit-loss allowance in Q1 2026, +33% QoQ<sup>4</sup> &mdash; the underwriting model is being tested in real time by a credit cycle. What is press-release: NuFormer's quantified contribution to approval rates, default reduction, or operating leverage. Customer-service automation appears genuinely strong (Brazil NPS leadership is consistent across surveys<sup>10</sup>) &mdash; that is Level-2 to Level-3 territory on the Spock ladder. Fraud and AML are likely Level 2. The Level-4 claim (AI as core production factor with measurable unit-economic uplift) is currently <em>aspirational, not evidenced</em>.</p>
+<p>The discipline of the AI Unit Econ doctrine is this: ask whether the AI capability shows up in the financials. For Nubank the honest read is partial &mdash; cost-to-serve does benefit from automation in service and risk, and that benefit is visible in the disclosed cost numbers<sup>3</sup>. But the marquee claim &mdash; that NuFormer materially differentiates underwriting outcomes &mdash; will be tested by the next two quarters of credit prints, not by management commentary. If credit losses normalise without further allowance increases, the NuFormer narrative gets some credibility. If allowances continue to climb, the narrative gets discounted heavily. <strong>Verdict: Level 2 evidenced, Level 3 plausible, Level 4 not yet substantiated. Discount the NuFormer marketing until the credit-print evidence arrives.</strong></p>
+
+<h3 class="fw-title">5. Sizing Bucket <span class="tag caution">Punt &rarr; Normal on TymeBank clarity</span></h3>
+<p>The Spock sizing ladder runs starter / punt ($50k) / normal ($250k) / high-conviction ($1M). On franchise quality and asymmetric upside Nu would naturally screen as a <em>normal</em> position. Two things hold it at <em>punt</em> in the calibration view: (i) the TymeBank cross-read &mdash; we already underwrite emerging-market digital banking at board level in another vehicle, and Chronos does not pay twice for the same exposure unless the diversification is real (see Framework 7); (ii) the valuation does not give a fat margin of safety against the bear case in Framework 6. Recommended pathway: enter at $50k punt now (calibration-grade conviction, public-source baseline), upsize to $250k normal once (a) Q2 / Q3 2026 credit-loss prints confirm the cycle is contained, and (b) the TymeBank cross-read is resolved in a Chronos partners' session. <strong>Verdict: punt-with-trajectory, not high-conviction.</strong></p>
+
+<h3 class="fw-title">6. Bull / Bear / Base Scenarios <span class="tag neutral">Probability-weighted</span></h3>
+<p><strong>Bull (30%):</strong> Mexico hits 25M+ customers with positive cohort economics by end-2027; Brazil ARPAC compounds through investments / insurance cross-sell; credit cycle proves manageable; multiple holds. Implied 3-year IRR ~25&ndash;30% <span class="unv">[unverified, derived]</span>. <strong>Base (45%):</strong> Brazil customer growth decelerates as the addressable market saturates above 60% adult penetration; Mexico achieves break-even by 2027 but slower than bull; credit losses normalise at the high end of management guidance; multiple compresses to ~22&ndash;25&times; forward earnings <span class="unv">[unverified, derived]</span>. Implied 3-year IRR ~12&ndash;15%. <strong>Bear (25%):</strong> Brazilian credit cycle deepens; loss allowance trajectory continues; BCB regulation tightens on interchange or revolving rates; multiple re-rates to 15&ndash;18&times; forward; Mexico expansion proves harder than mature-Brazil cohort would suggest. Implied 3-year IRR -10% to +5%. Probability-weighted: <strong>~13&ndash;15% expected IRR</strong>, with a fat right tail and a real left tail.</p>
+
+<h3 class="fw-title">7. Listed-vs-Private Divergence &mdash; Nu vs TymeBank <span class="tag caution">Load-bearing call</span></h3>
+<p>Chronos has direct board-level visibility on TymeBank: emerging-market, cloud-native, low-cost-to-serve, retailer-partnered (Pick n Pay / Boxer in SA; expanding model into the Philippines and Vietnam via GoTyme / TymeBank PH and TymeVietnam). Nubank shares the archetype. The question is whether the two are <em>independent bets on the same secular thesis</em> (acceptable, even desirable for diversification within a thesis) or <em>correlated bets on a single thesis</em> (Chronos would be paying twice).</p>
+<p>Independence argument: Brazil/Mexico/Colombia is a structurally different macro regime to South Africa/SE Asia. LatAm credit cycle is driven by Brazilian SELIC, BRL/USD, Brazilian fiscal; SA/SE Asia by ZAR/PHP/VND and very different regulators. Customer-acquisition models also differ &mdash; Tyme uses retail-partner kiosks (CapEx-heavy, partner-dependent); Nu is purely digital / referral. Product mixes differ &mdash; Tyme's flagship is goal-based savings + transactional; Nu's is the credit-card-led stack with growing investment book. Correlation argument: both are correlated to "EM-digital-bank multiple regime"; both bear EM-currency translation risk; both depend on the same underlying thesis that digital banks compound in EMs. <strong>Net read: ~40% correlated, ~60% independent on fundamentals; ~70% correlated on multiple regime in a global EM-fintech sell-off.</strong> Diversification benefit is real but smaller than the headline geography difference suggests. See dedicated cross-read section below.</p>
+
+<h3 class="fw-title">8. Geographic Bias <span class="tag positive">LatAm qualifying, diversifier from SA-heavy book</span></h3>
+<p>Chronos's geographic gravity sits in South Africa and adjacent EM (Tyme footprint, M-Kopa across East Africa, Vietnam/Philippines through GoTyme). LatAm exposure is light. Nu adds Brazil &mdash; the largest single EM ex-China by GDP, with a deepening capital market and a banking sector undergoing genuine structural change &mdash; plus the Mexico second leg, which is itself a meaningful diversifier from BRL. Geographic-bias screen: <em>pass, with positive diversification</em>. The geographic argument is the strongest single counter to the TymeBank-duplication concern in Framework 7. <strong>Verdict: qualifies on geography; positive diversifier within EM bucket.</strong></p>
+
+<h3 class="fw-title">9. Trim Discipline <span class="tag neutral">N/A — no existing position</span></h3>
+<p>No existing Chronos position in Nu. Trim discipline applies at the point of upsizing from punt to normal: if Q2 / Q3 2026 credit prints show loss-allowance trajectory continuing above management guidance, the right move is to <em>not</em> upsize rather than trim &mdash; i.e. the conditional trim instinct is in the entry decision, not the holding decision. Once at normal-size, trim trigger would be (i) multiple expansion past 30&times; forward earnings without corresponding ARPAC delivery, or (ii) credit-loss allowance breaching 4.5% of receivables on a sustained basis <span class="unv">[unverified threshold, to be re-derived in Workstream D]</span>.</p>
+
+<h3 class="fw-title">10. Disagreement with Virtual IC <span class="tag neutral">Placeholder — Virtual IC not run</span></h3>
+<p>Virtual IC has not been convened on Nu in this preview cycle. Anticipated partner divergences for future Virtual IC: (i) Willem's likely position &mdash; valuation discipline pushes against entering at current multiple; (ii) the TymeBank board-overlap consideration &mdash; partners with direct Tyme exposure will weight the duplication risk heavier than partners reading the cross-read fresh; (iii) Michael's likely angle &mdash; unit economics so good they outweigh valuation. Reserve formal disagreement note for the post-Virtual-IC iteration.</p>
+
+<h3 class="fw-title">11. Pricing / Valuation View <span class="tag caution">Modest margin of safety; multiple is the swing factor</span></h3>
+<p>Multi-method triangulation against current price <span class="unv">[reference price ~$13.20, late-May 2026, unverified]</span><sup>11</sup>. The summary table below carries the bands. Headline reads: (i) <em>P/E vs LatAm bank peers</em> &mdash; Nu trades at a ~2&times; multiple of Itau/Bradesco/Santander Brasil on forward EPS, justified by growth differential but vulnerable to convergence in a bear macro<sup>12</sup>. (ii) <em>EV/Revenue vs digital-bank comparables</em> &mdash; sits below pre-IPO Revolut and Chime valuations on a revenue-multiple basis but above mature listed comparables like Wise<sup>13</sup>. (iii) <em>Price-to-tangible-book vs traditional Brazilian banks</em> &mdash; trades at a P/TBV roughly 3&ndash;4&times; against ~2&times; for Itau, ~1.3&times; for Bradesco<sup>14</sup>. (iv) <em>Implied IRR at current price vs 12m forward</em> &mdash; sell-side consensus 12m target sits in the ~$15&ndash;17 range <span class="unv">[unverified, consensus aggregator]</span><sup>15</sup>, implying ~15&ndash;25% one-year upside; combined with the bear-case downside this is a roughly 1.5:1 reward-to-risk, modest by Chronos standards.</p>
+<p>The most important valuation read, the one that ought to anchor partner discussion, is the P/TBV against delivered RoTE. Nu at ~3&ndash;4&times; tangible book on ~28&ndash;30% delivered RoTE is internally consistent &mdash; a fairly-priced 30% RoTE bank ought to trade at materially above book. The risk is that RoTE compresses (because credit costs normalise upward, because Mexico drags consolidated returns, or because regulation compresses interchange / revolving rates) without a corresponding multiple compression &mdash; the worst sequence for a holder. Conversely, if RoTE holds in the high-20s through the credit cycle, the current multiple is comfortably defensible and arguably cheap on a forward view. <strong>Margin of safety against blended fair value: present but thin (~10&ndash;15%). The right way to size into this is by giving the credit cycle two more quarters to confirm or refute the RoTE durability before committing normal-size capital.</strong></p>
+
+<table class="pricing">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>NU read</th>
+      <th>Peer band</th>
+      <th>Implication</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Forward P/E (NTM)</td>
+      <td>~26&ndash;28&times; <span class="unv">[unv]</span></td>
+      <td>Itau / Bradesco / Santander Brasil: 7&ndash;10&times;</td>
+      <td>Growth-justified premium; vulnerable in a value rotation</td>
+    </tr>
+    <tr>
+      <td>EV / Revenue (NTM)</td>
+      <td>~6&ndash;7&times; <span class="unv">[unv]</span></td>
+      <td>Wise ~6&times;; pre-IPO Chime ~10&times;; Revolut last round ~12&times;</td>
+      <td>Reasonable vs digital-bank peers; not screamingly cheap</td>
+    </tr>
+    <tr>
+      <td>Price / tangible book</td>
+      <td>~3&ndash;4&times; <span class="unv">[unv]</span></td>
+      <td>Itau ~2&times;; Bradesco ~1.3&times;</td>
+      <td>Premium reflects 25%+ RoTE and growth runway</td>
+    </tr>
+    <tr>
+      <td>RoTE delivered (LTM)</td>
+      <td>~28&ndash;30% <span class="unv">[unv]</span></td>
+      <td>Itau ~21%; Bradesco ~12%</td>
+      <td>Premium-multiple defensible at this RoTE level</td>
+    </tr>
+    <tr>
+      <td>Implied 3yr IRR (prob-weighted)</td>
+      <td>~13&ndash;15%</td>
+      <td>Chronos hurdle ~15&ndash;18%</td>
+      <td>At hurdle &mdash; not below, not comfortably above</td>
+    </tr>
+    <tr>
+      <td>Sell-side 12m target</td>
+      <td>~$15&ndash;17 <span class="unv">[unv]</span></td>
+      <td>vs current ~$13.20</td>
+      <td>~15&ndash;25% upside on consensus</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Headline thesis -->
+<h2 class="section">Headline Thesis</h2>
+<p>Nu Holdings is the rare EM franchise where the unit-economics, the moat construction, and the geographic runway all line up on the same side of the ledger. A cost-to-serve roughly an order of magnitude below Brazilian incumbents, married to a counter-positioning bind that the incumbents cannot escape without cannibalising their own P&amp;L, gives the business durable structural advantage. The 118M-customer base is now large enough that ARPAC expansion through cross-sell is the dominant revenue lever &mdash; and ARPAC has been climbing in a straight line for eight consecutive quarters<sup>2</sup>. Mexico is the call-option: if the Mexican cohort matures into Brazil-like economics, the franchise becomes structurally bigger than the market is currently pricing.</p>
+<p>The catch is twofold. First, the credit cycle has turned &mdash; loss allowances are up 33% QoQ<sup>4</sup>, which is large in absolute terms and will be tested in the next two prints. Second, the multiple does not give Chronos a fat margin of safety: at ~26&ndash;28&times; forward and ~3&ndash;4&times; tangible book, you are paying for a continuation of best-case execution. The bull case is real and the franchise is real, but the entry-price discipline argues for sizing this as a punt that earns its way to normal &mdash; not as a one-shot high-conviction stake.</p>
+
+<!-- Bear case prominent -->
+<div class="bearcase">
+  <h2>The Bear Case &mdash; read this twice</h2>
+  <p>Brazilian credit-loss allowance was $1.79bn in Q1 2026, up 33% QoQ &mdash; the largest single-quarter jump in the company's listed history<sup>4</sup>. In a scenario where Brazilian unemployment continues to drift, SELIC stays restrictive, and the consumer-credit cycle deepens through 2H 2026, the allowance trajectory could compound into a coverage problem before management's underwriting tightening is reflected in the numbers. The compounding effect: a multiple paying for 25%+ RoTE compression rapidly if RoTE drops to high-teens.</p>
+  <p>Layer on (i) Banco Central regulatory risk &mdash; ongoing scrutiny of interchange, revolving credit-card rates, and the Pix infrastructure economics &mdash; (ii) Mexican expansion turning more capital-intensive than mature-Brazil cohort would predict, and (iii) a global EM-fintech multiple compression in a risk-off regime hitting Nu, GoTyme/Tyme and the rest of the EM-digital-bank set simultaneously (this is the correlation problem from Framework 7 surfacing).</p>
+  <p>The bear case is not a 10% drawdown. It is a 35&ndash;45% drawdown from current price in a 12&ndash;18 month window. Sizing must respect this.</p>
+</div>
+
+<!-- TymeBank cross-read -->
+<div class="crossread">
+  <h2>TymeBank Cross-Read &mdash; load-bearing for the LP question</h2>
+  <p>Chronos's exposure to the EM-digital-banking thesis runs through the TymeBank board seat: visibility into customer-acquisition unit economics, retailer-partner kiosk model in SA, expansion mechanics in the Philippines (GoTyme) and Vietnam (TymeVietnam). The LP-facing question is whether adding Nu to the listed book is <em>genuinely additive exposure</em> or <em>duplicates a thesis Chronos already owns</em>.</p>
+  <p><strong>Independence dimensions (where Nu genuinely diversifies Tyme):</strong> (i) geography &mdash; Brazil/Mexico/Colombia macro decouples from ZAR / PHP / VND; (ii) acquisition model &mdash; pure-digital referral (Nu) vs retail-partner kiosk (Tyme), driving different CapEx profiles and partner-dependency risk; (iii) product mix &mdash; credit-card-led stack with investments (Nu) vs savings-led transactional core (Tyme); (iv) regulator &mdash; BCB vs SARB / BSP / SBV; (v) listed vs private &mdash; valuation transparency, exit-liquidity, marking-to-market behave differently in stress.</p>
+  <p><strong>Correlation dimensions (where Nu duplicates Tyme):</strong> (i) global EM-fintech multiple regime &mdash; in a sell-off both will draw down together; (ii) underlying thesis &mdash; "digital banks compound in EMs" is a single bet, not five; (iii) Chronos partner-attention &mdash; board work on Tyme already consumes thesis-bandwidth, and a Nu position adds correlated cognitive load.</p>
+  <p><strong>Net assessment:</strong> fundamentals roughly 60% independent, 40% correlated; multiple regime ~30% independent, ~70% correlated. The diversification benefit is real but is smaller than the geography headline suggests. <em>Recommended Chronos partners' discussion before upsizing past starter:</em> is the listed-vs-private divergence (liquidity, mark-to-market, dividend-eligibility) enough to justify the correlated thesis exposure, given that the listed book is meant to balance &mdash; not amplify &mdash; the private book? If the answer is yes, normal size is appropriate. If the answer is "we are already long this thesis", punt size is the ceiling.</p>
+</div>
+
+<!-- Escalation triggers -->
+<h2 class="section">Three Escalation Triggers</h2>
+<div class="triggers">
+  <ol>
+    <li><strong>Credit-loss trajectory:</strong> if Q2 2026 or Q3 2026 prints show loss-allowance growth running above management's guided NPL-formation pace for two consecutive quarters, escalate to a full Workstream D scenario rebuild and reassess sizing. The current $1.79bn allowance with +33% QoQ growth is the watch-anchor.</li>
+    <li><strong>Multiple regime break:</strong> if Nu's forward P/E compresses below ~18&times; on a sustained 30-day basis &mdash; either because the share price corrects 30%+ or earnings beat materially &mdash; escalate to upsize decision (the margin-of-safety problem is solved and the bear-case price is in).</li>
+    <li><strong>TymeBank cross-read resolution:</strong> the next Chronos partners' session that touches the listed book should explicitly resolve the correlation-vs-independence call from the cross-read section above. Until resolved, sizing is capped at punt.</li>
+  </ol>
+</div>
+
+<!-- Sources -->
+<h2 class="section">Source Citations</h2>
+<p style="font-size: 9.6pt; line-height: 1.5;">
+1. Nu Holdings 20-F filing (FY2025), customer count and segment disclosure. <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001691493&amp;type=20-F">sec.gov/edgar/Nu Holdings 20-F</a><br>
+2. Nu Holdings Q1 2026 Investor Presentation, ARPAC and monthly-active metrics. <a href="https://investors.nu/">investors.nu</a> <span class="unv">[Q1 2026 deck reference unverified at preview stage]</span><br>
+3. Nu Holdings Q1 2026 earnings release, cost-to-serve disclosure. <a href="https://investors.nu/financials/quarterly-results/">investors.nu/quarterly</a><br>
+4. Nu Holdings Q1 2026 earnings release, credit-loss allowance trajectory ($1.79bn, +33% QoQ). <a href="https://investors.nu/financials/quarterly-results/">investors.nu/quarterly</a><br>
+5. World Bank Global Findex Database 2021 (latest comprehensive) + IMF Financial Access Survey for LatAm banking penetration. <a href="https://www.worldbank.org/en/publication/globalfindex">worldbank.org/globalfindex</a><br>
+6. Industry commentary on Nubank CAC (multiple investor calls and analyst notes); not directly disclosed by Nubank. <span class="unv">[unverified at primary-source level]</span><br>
+7. Itau Unibanco, Bradesco, Santander Brasil annual reports for cost-to-income and branch-network disclosure. <a href="https://www.itau.com.br/relacoes-com-investidores/">itau IR</a><br>
+8. Itau Iti / Bradesco Next product disclosures in incumbent IR materials.<br>
+9. Nubank management commentary on NuFormer in Q3/Q4 2025 and Q1 2026 earnings calls. <span class="unv">[narrative — not audited]</span><br>
+10. Brazilian banking NPS surveys (multiple sources including Bain Latin America). <span class="unv">[unverified, public commentary]</span><br>
+11. Reference price for NU.US, late-May 2026. <a href="https://www.nyse.com/quote/XNYS:NU">NYSE: NU</a> <span class="unv">[unverified — actual close to be checked]</span><br>
+12. Itau / Bradesco / Santander Brasil sell-side consensus on forward P/E. <span class="unv">[consensus aggregator — to be re-verified Workstream A]</span><br>
+13. Wise plc, pre-IPO comparables for Chime / Revolut from secondary-market reporting. <a href="https://wise.com/gb/investor-relations/">wise IR</a><br>
+14. Itau / Bradesco P/TBV from Brazilian sell-side desk research. <span class="unv">[unv]</span><br>
+15. Sell-side 12m price target consensus for NU.US. <span class="unv">[consensus aggregator — Bloomberg / Refinitiv to be re-pulled in Workstream A]</span>
+</p>
+
+<!-- Footer -->
+<div class="footer">
+  28 May 2026 &nbsp;&middot;&nbsp; Spock v5 Strategy preview &nbsp;&middot;&nbsp; Spock v4 listed-eq pipeline &nbsp;&middot;&nbsp; Gate 6.5 calibration, not for partner distribution &nbsp;&middot;&nbsp; cross-reference: ROXO34.SA assessment CP 130
+</div>
+
+</div>
+</body>
+</html>
