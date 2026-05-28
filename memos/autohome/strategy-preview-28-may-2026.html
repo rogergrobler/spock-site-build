@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Autohome (2518.HK) — Strategy Preview</title>
+<style>
+  :root {
+    --cream: #f5efe2;
+    --ink: #1f1b16;
+    --muted: #5a5147;
+    --rule: #cdbfa6;
+    --accent: #7a2f1c;
+    --bear: #6e1414;
+    --box: #ebe2cb;
+    --box-strong: #e0d3b3;
+  }
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.55;
+    font-size: 18px;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 48px 96px 48px;
+  }
+  .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 38px;
+    line-height: 1.15;
+    margin: 0 0 18px 0;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  h2 {
+    font-size: 22px;
+    margin: 48px 0 14px 0;
+    font-weight: 600;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+  }
+  h3 {
+    font-size: 17px;
+    margin: 24px 0 6px 0;
+    font-weight: 600;
+    color: var(--accent);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.02em;
+  }
+  p { margin: 0 0 14px 0; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  a:hover { border-bottom-style: solid; }
+  .lede {
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 18px;
+    margin: 18px 0 28px 0;
+    font-style: italic;
+  }
+  .disclosure {
+    background: var(--box);
+    border: 1px solid var(--rule);
+    padding: 18px 22px;
+    margin: 24px 0 32px 0;
+    font-size: 15px;
+    color: var(--muted);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .disclosure strong { color: var(--ink); }
+  .verdict {
+    background: var(--box-strong);
+    border: 1px solid var(--rule);
+    padding: 22px 26px;
+    margin: 28px 0 36px 0;
+  }
+  .verdict h3 {
+    margin-top: 0;
+    color: var(--ink);
+    font-size: 15px;
+  }
+  .verdict .line {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+  }
+  .verdict .line:last-child { border-bottom: none; }
+  .verdict .label { color: var(--muted); }
+  .verdict .val { font-weight: 600; }
+  .framework {
+    margin: 22px 0;
+    padding: 16px 0 6px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .framework .num {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--cream);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .framework .title {
+    font-size: 18px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .framework .verdict-tag {
+    float: right;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .bear {
+    background: #2a0e0a;
+    color: #f3e4d6;
+    padding: 28px 30px;
+    margin: 40px 0;
+    border-left: 5px solid var(--bear);
+  }
+  .bear h2 {
+    color: #f3e4d6;
+    border-bottom: 1px solid #5a2a22;
+    margin-top: 0;
+  }
+  .bear a { color: #f3e4d6; border-bottom-color: #c97a6a; }
+  footer {
+    margin-top: 56px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 13px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.02em;
+  }
+  .meta {
+    color: var(--muted);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  cite {
+    font-style: normal;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .unverified {
+    background: #f0d9d2;
+    color: #6e1414;
+    padding: 0 4px;
+    font-size: 13px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="strategy-preview-28-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="strategy-preview-28-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+<div class="page">
+
+  <div class="kicker">Strategy Preview &mdash; Listed equity desk</div>
+  <h1>Autohome: a cash-rich classifieds incumbent priced for the auto-cycle valley, with a Tencent overhang.</h1>
+  <p class="meta">2518.HK (Hong Kong, primary) &middot; ATHM (NYSE, secondary) &middot; 28 May 2026</p>
+
+  <div class="disclosure">
+    <strong>Why this is a preview, not a final IC pack.</strong>
+    This document is a Strategy-framework synthesis built from public-source baseline knowledge, not a Gate 7 deep-research output. The full listed-eq workstreams (A&ndash;H) &mdash; primary-source IPO/cap-table grounding, voice-of-customer corpus, dealer-channel checks, scenario-derivation tables, and the Virtual IC simulation &mdash; have not been run. Treat numbers here as directional. Mechanical invariants (shares &times; price = market cap; rating buckets sum to count) have <em>not</em> been independently checked by a verifier pair. Any framework verdict that hangs on a single number is flagged. Anything not citable to a primary source is marked <span class="unverified">[unverified]</span>.
+  </div>
+
+  <p class="lede">Autohome is a debt-free, cash-piled Chinese auto-classifieds franchise being repriced as a value name because its dealer-subscription engine is sputtering through a generational shift from ICE to NEV. The franchise still earns money; the question is whether the next decade looks like Carsales.com.au with Chinese-policy beta, or like a Yellow-Pages-with-Tencent-on-the-cap-table.</p>
+
+  <div class="verdict">
+    <h3>STRATEGY VERDICT</h3>
+    <div class="line"><span class="label">Recommendation</span><span class="val">Starter position, pending Gate 7 trigger</span></div>
+    <div class="line"><span class="label">Sizing bucket</span><span class="val">Starter (below "normal" $250k)</span></div>
+    <div class="line"><span class="label">Indicative USD</span><span class="val">$75,000 &ndash; $100,000</span></div>
+    <div class="line"><span class="label">Trigger to upsize to "normal"</span><span class="val">Two consecutive quarters of stabilising new-energy dealer subscription ARPU, plus Ping An / Tencent stake clarification</span></div>
+    <div class="line"><span class="label">Conviction index</span><span class="val">~85 (below 100 median)</span></div>
+    <div class="line"><span class="label">Primary listing for trade</span><span class="val">2518.HK</span></div>
+  </div>
+
+  <h2>The 10-framework grid</h2>
+
+  <div class="framework">
+    <span class="num">1</span><span class="title">Power law &mdash; is the upside asymmetric?</span>
+    <span class="verdict-tag">Verdict: bounded, not power-law</span>
+    <p>Autohome is not a power-law payoff. The Chinese passenger-vehicle market is a mature, policy-managed system; Autohome already owns a top-two position in auto verticals (alongside Bitauto / Yiche) and the platform is monetising via dealer subscriptions, leads and new-energy auto media. The total addressable transaction pool is constrained by China&rsquo;s annual new-car volume, which CAAM-reported figures peg at roughly 26&ndash;27 million units in recent years <cite>(<a href="http://en.caam.org.cn/">CAAM, en.caam.org.cn</a>)</cite>. Even with successful NEV transition, the asymmetric upside scenario looks like a 2&ndash;3&times; re-rate over five years if dealer ARPU stabilises and used-car gains traction &mdash; that is a respectable equity return, but not a venture-style asymmetry. The thesis here is "mean reversion of a franchise" not "discovery of a new market."</p>
+  </div>
+
+  <div class="framework">
+    <span class="num">2</span><span class="title">CLTV:CAC and unit economics &mdash; Michael&rsquo;s &ge;9&times; bar.</span>
+    <span class="verdict-tag">Verdict: cannot confirm &ge;9&times;</span>
+    <p>Autohome does not disclose CLTV:CAC at a unit level. What it does disclose, in its 20-F filings on SEC EDGAR <cite>(<a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001527636">SEC EDGAR CIK 0001527636</a>)</cite>, is paying dealer count, media services revenue, lead-generation services revenue, and online marketplace revenue. Paying dealers were historically &gt;25,000 with annual ARPU in the high-five-figure RMB range <span class="unverified">[unverified at FY2025 level]</span>. Gross margin has stayed above 80% in recent disclosures, consistent with classifieds-platform economics. The honest verdict: contribution-margin economics look healthy, but a clean CLTV:CAC number defensible at IC level requires the Gate 7 channel-check workstream. <strong>Provisional read: probably 5&ndash;8&times; on a steady-state dealer cohort, below Michael&rsquo;s &ge;9&times; "exciting" bar.</strong> This is one reason for starter sizing.</p>
+  </div>
+
+  <div class="framework">
+    <span class="num">3</span><span class="title">Helmer 7 Powers &mdash; what does Autohome actually have?</span>
+    <span class="verdict-tag">Verdict: 2 powers (Branding + Cornered Resource), weakening</span>
+    <p>Reading Autohome through the Helmer lens: (i) <em>Network economies</em> &mdash; weak; auto classifieds is a hub-and-spoke model, dealers list, consumers browse, but there is no compounding cross-side density once you cross the threshold the incumbents already crossed. (ii) <em>Counter-positioning</em> &mdash; none against new-energy brand DTC channels (NIO, Li Auto, BYD), which can in principle bypass classifieds altogether. (iii) <em>Scale economies</em> &mdash; modest, mostly in editorial and content production. (iv) <em>Switching costs</em> &mdash; low for consumers, moderate for dealers via CRM integration. (v) <em>Branding</em> &mdash; real; Autohome is a top-of-mind destination in Chinese auto research <span class="unverified">[Chinese consumer panel data not re-verified at preview stage]</span>. (vi) <em>Cornered resource</em> &mdash; partial; Ping An-anchored dataset on Chinese auto consumer behaviour. (vii) <em>Process power</em> &mdash; not evidenced. <strong>Two real powers, both eroding under NEV disruption. Not a fortress.</strong></p>
+  </div>
+
+  <div class="framework">
+    <span class="num">4</span><span class="title">AI Maturity Level (1&ndash;5) &mdash; where on the curve?</span>
+    <span class="verdict-tag">Verdict: Level 2, with stated Level-3 ambition</span>
+    <p>Autohome has publicly discussed AI-assisted content generation, AI-powered dealer matching, and a "智能" (intelligent) showroom product across its investor communications <span class="unverified">[specific filing citation deferred to Gate 7]</span>. None of this rises above Level 2 on the Spock AI-maturity ladder &mdash; AI used to improve existing workflows (lead routing, content recommendation) rather than to create a new product surface or to materially shift unit economics. The company is not a tool-maker; it is a tool-user, and a relatively cautious one given Chinese regulatory constraints on generative content. <strong>For comparison, Carsales.com.au and CarGurus are arguably at Level 2&ndash;3 on the same ladder. Autohome is not behind global peers, but it is not ahead.</strong> AI is not the bull case here; durable dealer monetisation is.</p>
+  </div>
+
+  <div class="framework">
+    <span class="num">5</span><span class="title">Sizing bucket &mdash; high-conviction / normal / punt / starter.</span>
+    <span class="verdict-tag">Verdict: starter</span>
+    <p>Starter, not normal. The starter classification reflects three deductions, not one: (i) China-policy beta with no domestic hedge in Chronos&rsquo;s listed book makes any single Chinese name a concentrated tail-risk position; (ii) the dealer-subscription engine is in observable decline, not yet stabilised &mdash; we want to see the trough rather than guess at it; (iii) the Ping An / Tencent shareholder dynamic <span class="unverified">[Tencent stake size and intent not re-verified at preview stage]</span> creates an overhang that is hard to underwrite without primary-source HKEX disclosure work. Indicative position: USD 75,000&ndash;100,000. Upsize trigger: two consecutive quarterly disclosures showing stabilising NEV dealer ARPU plus clarity on strategic-shareholder posture. This is not a "punt"; the franchise is real. It is a position that earns its way to "normal."</p>
+  </div>
+
+  <div class="framework">
+    <span class="num">6</span><span class="title">Bull / Base / Bear scenarios &mdash; with explicit probabilities.</span>
+    <span class="verdict-tag">Verdict: base-weighted</span>
+    <p><strong>Bull (20%):</strong> NEV dealer subscriptions stabilise by FY27; used-car business compounds at 15&ndash;20% as China&rsquo;s used-car penetration catches up to OECD averages <span class="unverified">[OECD used-vs-new ratio for China context, directional]</span>; Ping An / Tencent resolve into a clean strategic posture; capital return accelerates given net-cash balance sheet. Two- to three-bagger over five years. <strong>Base (55%):</strong> Dealer revenues drift lower for 4&ndash;6 quarters, then stabilise at a lower plateau; the cash hoard supports buybacks and dividends; the stock is dead money for a year and then re-rates modestly. 20&ndash;40% total return over three years. <strong>Bear (25%):</strong> Chinese-policy escalation, US delisting pressure on the ADR, or a Tencent stake action triggers a discount-widening event. Capital impaired by 30&ndash;50% before franchise value reasserts. Probability-weighted expected return is positive but with a fat left tail &mdash; consistent with starter sizing.</p>
+  </div>
+
+  <div class="framework">
+    <span class="num">7</span><span class="title">Listed-vs-private divergence &mdash; does this add diversity?</span>
+    <span class="verdict-tag">Verdict: yes, materially</span>
+    <p>Chronos&rsquo;s private book is concentrated in African and emerging-Asia growth equity. Autohome adds three distinct exposures the private book does not carry: (i) Chinese consumer cyclicality &mdash; directly observable, tradeable, and reversible; (ii) a debt-free balance sheet with material net cash, which behaves entirely differently from the levered growth-equity profile of the private positions; (iii) a mature-platform earnings stream rather than a TAM-capture growth story. This is genuine diversification &mdash; not just a different ticker but a different return-generating mechanism. The listed-vs-private test is therefore satisfied. <strong>This is one of the strongest arguments for taking even a starter position</strong>: it expands the Chronos book&rsquo;s opportunity set into a regime (mature platforms, capital return, valley-of-the-cycle re-rating) that the private book structurally cannot access.</p>
+  </div>
+
+  <div class="framework">
+    <span class="num">8</span><span class="title">Geographic bias &mdash; China-only. Defend or downgrade.</span>
+    <span class="verdict-tag">Verdict: defended &mdash; but caps position size</span>
+    <p>China-only exposure is the right question to put under pressure. The defence: (i) Hong Kong listing (2518.HK) materially reduces US-delisting tail risk compared to the ADR <cite>(<a href="https://www.hkexnews.hk/">HKEX news, hkexnews.hk</a>)</cite>; (ii) Autohome&rsquo;s revenue is 100% domestic-RMB, so currency-translation risk is matched by RMB-denominated cash holdings; (iii) the franchise is policy-aligned &mdash; auto consumption is a stated Chinese policy priority, not a target. The downgrade pressure: a single Chinese name in a book with no other Chinese exposure is a concentrated geopolitical bet, and the partner discipline is to size for the worst regime, not the median one. Net: defended at <em>starter</em>, would require a portfolio-construction conversation about overall China exposure before scaling to "normal." Standing instruction on Chinese names: no upsizing without partner agreement on book-level geographic mix.</p>
+  </div>
+
+  <div class="framework">
+    <span class="num">9</span><span class="title">Trim discipline &mdash; any trim instinct?</span>
+    <span class="verdict-tag">Verdict: none yet &mdash; pre-entry</span>
+    <p>Trim discipline does not bite at this stage because there is no position to trim. The relevant adjacent question is: at what level would we trim if we sized up? Working answer: if Autohome trades at &gt;15&times; trailing earnings ex-cash on a stabilised dealer base, that would be a "normal" peer multiple for global auto classifieds (Carsales, Auto Trader UK) and would mark the cyclical re-rate as substantially complete. Trim back to half-weight at that level; trim to zero at &gt;20&times; trailing ex-cash. The current EV/EBITDA multiple, depending on how one treats the cash and the dealer-subscription decline, sits well below that <span class="unverified">[multiple ranges not re-extracted from primary filings at preview stage]</span>. Trim discipline is a future problem. The current question is entry, not exit.</p>
+  </div>
+
+  <div class="framework">
+    <span class="num">10</span><span class="title">Disagreement with Virtual IC &mdash; placeholder.</span>
+    <span class="verdict-tag">Verdict: not applicable at preview stage</span>
+    <p>The Virtual IC simulation (Gate 9) has not been run for this name. In the full pipeline, this is where the four partner personas &mdash; allocator, operator, fundamentalist, technologist &mdash; surface the disagreement vectors that the Strategy synthesis tends to under-weight. Without that pass, the Strategy verdict here is single-perspective and should be treated accordingly. <strong>The disagreement to anticipate, based on past Virtual IC patterns:</strong> the technologist persona will challenge the AI Maturity verdict harder than the framework allows, arguing that classifieds platforms without a real AI surface are walking dead. The allocator persona will challenge the geographic bias more harshly, arguing that "diversification into China" is an oxymoron in 2026. Both challenges are credible. Both reinforce the starter-sizing recommendation rather than overturn it.</p>
+  </div>
+
+  <h2>Headline thesis</h2>
+  <p>Autohome is a franchise being valued as if it were terminally impaired by China&rsquo;s ICE-to-NEV transition. The market is treating the dealer-subscription decline as structural and irreversible. The Strategy read is that this is too neat. Dealer subscriptions are declining because the dealer base itself is restructuring &mdash; legacy ICE dealers consolidating, new-energy dealers building out &mdash; not because the channel has lost its function. Auto consumers still research before they buy, and in China that research disproportionately happens on Autohome and Bitauto. The franchise is debt-free, cash-rich, and dominant in its niche. The risk is not that Autohome stops mattering; it is that Autohome matters at lower ARPU and lower take-rate than the legacy model implied. A position sized as a starter, with explicit upsize triggers tied to dealer-ARPU stabilisation and Tencent / Ping An clarity, captures the asymmetry of "valley of the cycle in a still-relevant franchise" without paying for clarity we do not yet have. The Gate 7 deep workstreams &mdash; primary-source IPO/cap-table grounding, dealer voice-of-customer, scenario derivation &mdash; should run before the position scales beyond starter.</p>
+
+  <div class="bear">
+    <h2>Bear case &mdash; read this before sizing up</h2>
+    <p><strong>The bear case is not a single risk. It is three correlated risks that share a single trigger: an escalation in US-China policy posture.</strong></p>
+    <p><em>One. China geopolitical risk.</em> A US administration that returns to maximum-pressure China posture &mdash; ADR delisting threats, audit-disclosure escalation, sanctions on Chinese tech companies &mdash; would compress the Autohome ADR independently of its operating performance. The 2518.HK listing on HKEX mitigates this but does not eliminate it; Hong Kong-listed Chinese names traded at material discounts to fundamentals through the 2021&ndash;2023 stress window <cite>(<a href="https://www.hkexnews.hk/">HKEX news, hkexnews.hk</a>)</cite>.</p>
+    <p><em>Two. EV transition impact on dealer subscriptions.</em> The structural concern is not that EVs reduce car-buying but that EVs reduce the number of distinct dealer entities &mdash; NEV brands like NIO, Li Auto, and BYD increasingly use direct-to-consumer flagship showrooms rather than franchised dealer networks. Each dealer that converts to a brand-owned NEV showroom is potentially a paying dealer Autohome loses. This dynamic is observable today and the deceleration in dealer count <span class="unverified">[dealer-count trajectory not re-extracted from primary filings at preview stage]</span> is consistent with it.</p>
+    <p><em>Three. Tencent / Ping An stake dynamics.</em> Autohome&rsquo;s controlling-shareholder history runs through Telstra, Autohome management, Ping An, and (per public reporting) Tencent involvement <span class="unverified">[exact current cap-table not re-verified at preview stage]</span>. A strategic-stake action &mdash; a sale, a buyback, a Tencent escalation &mdash; could rerate the equity sharply in either direction without warning. This is the kind of overhang that mature-platform value names carry, and it is the single most under-priced risk in a starter-position-sized entry.</p>
+    <p><strong>The honest bear-case scenario:</strong> dealer subs decline another 20&ndash;30% over two years; the multiple compresses despite the cash cushion; a Tencent action coincides with a geopolitical event; the stock is down 40&ndash;50% from current levels before franchise value reasserts. This is the 25% bear outcome. It is survivable at starter size. It is not survivable at "normal."</p>
+  </div>
+
+  <h2>What would change the verdict</h2>
+  <p>Three things, in order of weight. First: <strong>two consecutive quarterly disclosures showing NEV-dealer ARPU stabilisation</strong>, drawn from primary-source 20-F or HKEX annual filings, not press summaries. Second: <strong>cap-table clarity</strong> &mdash; a clean read on Ping An&rsquo;s and (if confirmed) Tencent&rsquo;s stake size, voting rights, and any standstill or escrow constraints, sourced from primary HKEX disclosures. Third: <strong>a portfolio-construction conversation</strong> at the partner level about Chronos&rsquo;s aggregate China exposure across the listed and private books before any upsize above starter. If all three resolve favourably, Autohome moves to "normal" sizing (USD ~250,000) and a full Gate 7 deep-research pack should be triggered. If any one resolves unfavourably &mdash; particularly the cap-table dynamic &mdash; the starter position should be re-evaluated for exit rather than for size.</p>
+
+  <h2>What the Gate 7 deep-research pack must actually verify</h2>
+  <p>The preview rests on three load-bearing factual claims that have not been verified to primary-source standard. (i) <strong>Dealer count and dealer ARPU trajectory</strong> &mdash; current trajectory inferred from press coverage and prior-period 20-F disclosures, not re-extracted at preview stage. (ii) <strong>Tencent stake</strong> &mdash; presence and size <span class="unverified">[unverified]</span>; this needs a clean HKEX SDI / 13G chain. (iii) <strong>NEV-dealer mix</strong> &mdash; how much of the dealer-subscription decline is ICE-dealer consolidation versus NEV brands skipping classifieds entirely. The third question is the single most important one to answer before sizing up; it determines whether the bear-case decline is cyclical (dealers consolidate, then stabilise) or structural (the channel is being disintermediated by brand-DTC). Without that distinction, the Strategy verdict is provisional regardless of how clean the cash balance looks.</p>
+
+  <h2>The bottom line</h2>
+  <p>This is a starter position in a real franchise that is being repriced for a cycle valley. The cash balance protects the downside; the dealer-channel question caps the upside; the geopolitical overhang sizes the position. The right move is to take the starter, run the Gate 7 workstreams, and let the position earn its way to "normal" rather than guess. The right thing not to do is dismiss it as "a Chinese classifieds name" and miss the listed-vs-private diversification benefit, which is the strongest single argument in the file. Indicative ticket: USD 75,000&ndash;100,000 in 2518.HK. Re-review on the next quarterly disclosure, with the explicit upsize criteria above.</p>
+
+  <footer>
+    Generated 28 May 2026 &middot; v5 Strategy preview &middot; Spock v4 listed-eq pipeline.
+    Preview only &mdash; Gate 7 deep workstreams not run; primary-source verifier pair not applied; mechanical invariants not checked. Treat as directional. <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001527636">SEC EDGAR CIK 0001527636</a> &middot; <a href="https://www.hkexnews.hk/">HKEX news</a> &middot; <a href="http://en.caam.org.cn/">CAAM</a>.
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Auto Trader Group plc — Strategy preview</title>
+<style>
+:root {
+  --cream: #F5EFE3;
+  --cream-soft: #FBF6EB;
+  --ink: #1F1A12;
+  --ink-soft: #3A3328;
+  --mute: #6B6253;
+  --rule: #DCD3BF;
+  --accent: #6B2D17;
+  --accent-soft: #A04A2C;
+  --bear: #5A1F12;
+  --bear-bg: #F0E0D6;
+  --verdict-bg: #ECE3CC;
+  --disclosure-bg: #EFE7D2;
+  --link: #5A3414;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Georgia", "Times New Roman", serif;
+  font-size: 17.5px;
+  line-height: 1.62;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.masthead {
+  padding: 64px 24px 28px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--cream-soft);
+  text-align: center;
+}
+.masthead .brand {
+  font-family: "Iowan Old Style", Palatino, Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 13px;
+  color: var(--mute);
+  margin: 0 0 22px;
+}
+.masthead .kicker {
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+.masthead h1.headline {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.18;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin: 0 auto 14px;
+  max-width: 640px;
+}
+.masthead .standfirst {
+  font-size: 18px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 600px;
+  margin: 0 auto 22px;
+  font-style: italic;
+}
+.masthead .meta {
+  font-size: 12px;
+  color: var(--mute);
+  letter-spacing: 0.06em;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 36px 22px 60px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.28;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  margin: 44px 0 12px;
+}
+h2 .num {
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 26px 0 8px;
+}
+
+p { margin: 0 0 14px; }
+strong { color: var(--ink); font-weight: 600; }
+em { font-style: italic; color: var(--ink-soft); }
+
+a, a:visited { color: var(--link); text-decoration: none; border-bottom: 1px solid var(--rule); }
+a:hover { border-bottom-color: var(--accent); }
+
+ul { padding-left: 20px; margin: 0 0 16px; }
+li { margin-bottom: 6px; }
+
+.disclosure {
+  background: var(--disclosure-bg);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 18px 22px;
+  margin: 28px 0 8px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.disclosure .label {
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.verdict {
+  background: var(--verdict-bg);
+  border: 1px solid var(--rule);
+  padding: 26px 28px;
+  margin: 30px 0;
+  border-radius: 2px;
+}
+.verdict .label {
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.verdict .call {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 8px;
+  line-height: 1.22;
+}
+.verdict .size {
+  font-size: 17px;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+.verdict .reason {
+  font-size: 15px;
+  color: var(--ink-soft);
+  font-style: italic;
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+  margin: 0;
+}
+
+.bear {
+  background: var(--bear-bg);
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--bear);
+  padding: 22px 26px;
+  margin: 30px 0;
+}
+.bear .label {
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--bear);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+.bear h3 {
+  color: var(--bear);
+  margin-top: 0;
+  font-size: 18px;
+  font-variant: normal;
+  letter-spacing: -0.005em;
+}
+.bear p { color: var(--ink-soft); margin-bottom: 10px; }
+.bear p:last-child { margin-bottom: 0; }
+
+.scenarios {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin: 24px 0;
+  padding: 18px 0;
+}
+.scenarios .row {
+  display: grid;
+  grid-template-columns: 90px 1fr 70px;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--rule);
+  font-size: 15px;
+  align-items: baseline;
+}
+.scenarios .row:last-child { border-bottom: none; }
+.scenarios .case {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.scenarios .desc { color: var(--ink-soft); }
+.scenarios .prob {
+  text-align: right;
+  font-weight: 600;
+  color: var(--ink);
+  font-feature-settings: "tnum" 1;
+}
+
+.framework {
+  border-top: 1px solid var(--rule);
+  padding-top: 22px;
+  margin-top: 32px;
+}
+.framework:first-of-type { border-top: none; padding-top: 0; }
+.framework .verdict-line {
+  font-size: 15px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: -4px 0 12px;
+}
+
+.thesis {
+  background: var(--cream-soft);
+  border: 1px solid var(--rule);
+  padding: 24px 28px;
+  margin: 28px 0;
+  font-size: 17.5px;
+  line-height: 1.65;
+}
+.thesis .label {
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.sources {
+  font-size: 14px;
+  color: var(--mute);
+  font-style: italic;
+  margin: 8px 0 0;
+}
+.sources a { color: var(--mute); }
+
+footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 56px;
+  padding: 22px 0 0;
+  font-size: 12px;
+  color: var(--mute);
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .masthead h1.headline { font-size: 26px; }
+  .masthead .standfirst { font-size: 16px; }
+  body { font-size: 17px; }
+  .scenarios .row { grid-template-columns: 80px 1fr 60px; }
+}
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="strategy-preview-28-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="strategy-preview-28-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+
+<header class="masthead">
+  <p class="brand">Chronos Capital &nbsp;&middot;&nbsp; Listed Equity</p>
+  <p class="kicker">Strategy Preview &nbsp;&middot;&nbsp; AUTO.LSE</p>
+  <h1 class="headline">A monopoly classifieds toll booth on Britain's used-car economy — fairly priced, not exciting</h1>
+  <p class="standfirst">Auto Trader controls roughly three-quarters of UK consumer time on car classifieds and earns it. The question for a listed book is whether 80 % market share at 70 % EBIT margins still produces a power-law payoff at today's multiple.</p>
+  <p class="meta">28 May 2026 &nbsp;&middot;&nbsp; Partner-facing &nbsp;&middot;&nbsp; Research preview, not an IC paper</p>
+</header>
+
+<main>
+
+<div class="disclosure">
+  <span class="label">Why this is a preview, not a final IC pack</span>
+  This document applies the Strategy framework discipline to publicly available knowledge of Auto Trader Group plc. It is <strong>not</strong> a Gate 7 deep-research output. The full pipeline workstreams — primary-source FY26 annual report extraction, EODHD pricing reconciliation, Perplexity-grounded competitive scan, voice-of-customer corpus (Trustpilot / BBB / forums), management deep-dive, and Virtual IC challenge — have not been run. Figures cited are baseline public-source numbers as understood at the date of writing and must be re-verified against primary filings before any position is opened. Treat the verdict as a directional partner read, not a recommendation.
+</div>
+
+<div class="verdict">
+  <div class="label">Strategy verdict</div>
+  <p class="call">WATCH — entry trigger pending</p>
+  <p class="size">Sizing bucket: <strong>Starter (USD 50k) on a 10 % drawdown from current level</strong> — otherwise no position.</p>
+  <p class="reason">Genuine monopoly with switching-cost moat and disciplined capital return. But trades at a quality-compounder multiple while the underlying market (UK new and used car volumes, dealer count) is flat-to-shrinking. No clear catalyst into the next 12 months. Diversifies the private book on geography (UK) and asset type (listed cash-compounder), which earns it a watch slot rather than a kill.</p>
+</div>
+
+<h2><span class="num">01</span>Power law — is the upside asymmetric?</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>No.</strong> Symmetric-to-modestly-asymmetric. Score 80 (below median for a power-law book).</p>
+  <p>Auto Trader is the textbook opposite of a power-law bet. It is a mature monopoly in a mature, declining-volume market. The UK new-car market is structurally below its 2016 peak (2.7m new cars sold in 2016 vs roughly 1.95m in 2024 per <a href="https://www.smmt.co.uk/vehicle-data/car-registrations/">SMMT registrations data</a>), and the used-car market — Auto Trader's actual battleground — is broadly flat at around 7m transactions per year. Listings ARPU growth is the engine, not volume.</p>
+  <p>Realistic upside from here is a doubling of equity value over five years if every product lever (Deal Builder, Auto Trader Connect, finance attach, manufacturer ad recovery) compounds — call it a 15 % IRR. Downside is a re-rating from a ~24× P/E to a market-multiple ~14× if growth stalls, which is a 35–40 % drawdown without earnings even falling. The shape is "compounder, not multibagger." That is precisely <em>not</em> what a power-law tilted listed book is supposed to hold in its top 20.</p>
+</div>
+
+<h2><span class="num">02</span>Unit economics — does CLTV:CAC clear Michael's 9× bar?</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>Almost certainly yes, but unobservable from outside.</strong> Score 130 (well above median, with low confidence).</p>
+  <p>Auto Trader does not disclose CLTV:CAC. What we can observe from FY25 results (per <a href="https://www.autotraderplc.com/investors/results-reports-and-presentations/">autotraderplc.com investor pages</a>) is the proxy: roughly 14,000 retailer forecourts on the platform, near-zero net churn at the retailer level, ARPR (average revenue per retailer) compounding around 9–10 % annually, and operating margin sustained above 70 %. A monopoly classifieds platform with 70 % EBIT margins, an effectively captive customer base (a UK independent dealer cannot credibly sell volume without Auto Trader), and a sales cost that is largely amortised over the existing book has, by construction, an absurd CLTV:CAC — probably north of 20× for the steady-state retailer cohort.</p>
+  <p>This clears Michael's "exciting" bar comfortably. The caveat is that "exciting unit economics" do not translate into "exciting return" when the multiple already reflects them.</p>
+</div>
+
+<h2><span class="num">03</span>Helmer 7 Powers — which power applies?</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>Network economies + counter-positioning + switching costs.</strong> Score 140 (well above median).</p>
+  <p>At least three of Helmer's seven powers apply, which is rare:</p>
+  <ul>
+    <li><strong>Network economies.</strong> Consumers go where the listings are; dealers list where the consumers are. <a href="https://plc.autotrader.co.uk/news-views/press-releases/">Auto Trader's own disclosures</a> have historically cited ~75 % of all minutes spent on UK auto classifieds happening on its platform — the flywheel is intact.</li>
+    <li><strong>Counter-positioning.</strong> A challenger that wanted to take dealers off Auto Trader would need to subsidise listings heavily, which would destroy its own P&amp;L. eBay Motors Group exists but is structurally a number-two; Cazoo's pivot and collapse (<a href="https://www.bbc.co.uk/news/business-69054123">BBC, May 2024</a>) is the most recent demonstration that the obvious counter-position — vertically integrating into used-car retail — burns cash.</li>
+    <li><strong>Switching costs.</strong> Retailers integrate Auto Trader Connect / DMS feeds into inventory and pricing workflows; ripping that out is operationally painful even before considering lead loss.</li>
+  </ul>
+  <p>This is one of the cleanest moats on the LSE. The risk is not that the moat erodes — it is that the moat already pays for itself in the multiple.</p>
+</div>
+
+<h2><span class="num">04</span>AI Maturity Level (1–5) — where is Auto Trader on the curve?</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>Level 3 — embedded across product, not yet a primary monetisation engine.</strong> Score 110 (slightly above median).</p>
+  <p>Auto Trader has been a quiet ML shop for years. Its retailer-facing valuation engine, market-relative pricing tools and Deal Builder finance flow are all model-driven, and the company has publicly discussed generative-AI vehicle description tooling. <a href="https://plc.autotrader.co.uk/news-views/blogs/">The 2024 / 2025 strategy commentary</a> positions AI as a productivity and product-quality lever rather than a new revenue line.</p>
+  <p>This puts Auto Trader at Level 3 on Chronos's 1–5 scale: AI is in the substrate (pricing, search ranking, copy generation, fraud detection), but the business is not yet earning a separate "AI premium" the way a Level 4 player would. The honest upside path is Level 3 → Level 4 via an AI-mediated consumer journey (conversational search, AI-buyer-agent integration, embedded finance match) that takes share of the transaction, not just the lead. That is a 2027+ story; nothing in the FY25 disclosures suggests it is being underwritten by Auto Trader management.</p>
+</div>
+
+<h2><span class="num">05</span>Sizing bucket — what would Chronos write the cheque for?</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>Starter (USD 50k) only on a 10 %+ drawdown trigger. No position at today's price.</strong></p>
+  <p>The Chronos sizing ladder for the listed book runs high-conviction USD 1m / normal USD 250k / punt USD 50k / starter (below normal, pending a trigger). Auto Trader does not earn a high-conviction or normal slot today: the moat is real but priced in, and there is no near-term catalyst that re-rates the equity. It is too high-quality and too well-positioned to dismiss as a punt. The honest call is <strong>starter, contingent on a re-rating</strong> — a 10–15 % drawdown without a thesis break, which has historically happened roughly every 18 months in this name (e.g. the 2022 mini-budget de-rate, the 2023 cost-of-living concerns) and would bring the P/E into the high teens.</p>
+  <p>If the price prints below ~700p with no thesis break, open USD 50k as a starter; otherwise hold the slot.</p>
+</div>
+
+<h2><span class="num">06</span>Bull / Base / Bear — explicit probabilities</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>Base case is materially the most likely outcome. The bull case requires AI-mediated transaction take-rate; the bear case is mean reversion of the multiple.</strong></p>
+  <div class="scenarios">
+    <div class="row"><span class="case">Bull</span><span class="desc">AI-mediated buyer journey + Deal Builder finance attach lifts revenue per transaction. ARPR compounds 12 %+. Multiple holds at 22–24× P/E. <strong>~2.0× over 5 years (15 % IRR).</strong></span><span class="prob">25 %</span></div>
+    <div class="row"><span class="case">Base</span><span class="desc">ARPR compounds 8–9 %. EPS grows ~10 %. Multiple drifts to 18–20×. Buyback continues. <strong>~1.5× over 5 years (8 % IRR + ~2 % yield).</strong></span><span class="prob">55 %</span></div>
+    <div class="row"><span class="case">Bear</span><span class="desc">UK used-car volumes structurally weaken; dealer consolidation reduces the retailer base; multiple compresses to 14×. <strong>~0.7× over 5 years (–7 % IRR before dividend).</strong></span><span class="prob">20 %</span></div>
+  </div>
+  <p>Probability-weighted: roughly 7–8 % IRR including dividend. That is below Chronos's listed-book hurdle. The bull case does not contain enough asymmetry to override the base.</p>
+</div>
+
+<h2><span class="num">07</span>Listed-vs-private divergence — does this diversify the Chronos book?</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>Yes, meaningfully. Score 120.</strong></p>
+  <p>The Chronos private book is concentrated in African and emerging-market growth equity — high-burn / high-growth assets with binary outcome distributions, idiosyncratic regulatory exposure, and (importantly) no near-term liquidity. Auto Trader is the opposite of every one of those attributes: developed-market, cash-generative, regulated-but-stable (CMA scrutiny notwithstanding), and continuously liquid on the LSE.</p>
+  <p>On portfolio-construction grounds it does work as a counterweight: it is the kind of asset that would compound quietly while the private book absorbs its inevitable IRR pulse from one or two breakout names. The diversification benefit is real but does not, by itself, override a thin expected-return profile. Diversification is a tiebreaker, not a thesis. It pushes Auto Trader from "kill" to "watch" — not into the active book.</p>
+</div>
+
+<h2><span class="num">08</span>Geographic bias — UK qualifies as international</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>Yes. Sterling-denominated UK earnings are well outside the SA-heavy private book.</strong> Score 115.</p>
+  <p>Chronos's standing preference for the listed book is international over South African — partly for ZAR-hedging reasons, partly because the SA-listed universe is over-represented in the partners' private network and inevitably gets re-priced through that lens. Auto Trader is unambiguously international: incorporated in the UK, ~100 % of revenue from UK dealers and UK consumers, GBP-denominated. It diversifies away from rand exposure without taking on emerging-market FX risk.</p>
+  <p>The geographic test is passed cleanly. It does <em>not</em>, however, give Chronos any informational edge — the UK auto-classifieds franchise is one of the most-covered names on the FTSE 100 mid-cap. Any thesis here has to win on framework discipline (is the moat priced correctly?), not proprietary insight.</p>
+</div>
+
+<h2><span class="num">09</span>Trim discipline — any instinct to cut?</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>N/A — no position to trim. If a position existed at &gt;1 % of NAV it would be a trim candidate at current levels.</strong></p>
+  <p>Chronos's trim rule is mechanical: any listed position that re-rates beyond its base-case multiple while the thesis is unchanged should be partially harvested. Auto Trader at a ~24× forward P/E is at the upper end of its post-IPO range. If Chronos owned it at, say, the 2022 mini-budget low (~500p) and it now trades north of 850p, the discipline says trim half and let the rest run on the buyback.</p>
+  <p>Because there is no live position, the trim instinct collapses into the entry trigger: the same multiple that would prompt trimming an existing holding is the multiple that prevents opening a new one. Symmetric discipline.</p>
+</div>
+
+<h2><span class="num">10</span>Virtual IC disagreement — placeholder</h2>
+<div class="framework">
+  <p class="verdict-line">Verdict: <strong>Not run for this preview. Virtual IC challenge deferred to Gate 9 if and when this name is escalated to a full IC paper.</strong></p>
+  <p>The Virtual IC simulation (four partner personas plus the doctrine-grounded objections corpus) has not been executed against Auto Trader. The most likely partner pushback, anticipated from doctrine memory, is twofold. First, that the moat is genuine but the equity is fairly priced and Chronos is not adding any insight that the broader market doesn't already hold — the "informational edge" test would likely fail. Second, that a 7–8 % probability-weighted IRR is below the listed book's hurdle and the slot is better used on a name where Chronos has a differentiated view. The starter-only verdict above pre-empts both objections, but if and when the full Virtual IC is run, the burden of proof shifts to identifying the catalyst that re-rates this from a fair compounder to a mispriced one.</p>
+</div>
+
+<div class="thesis">
+  <div class="label">Headline thesis</div>
+  <p>Auto Trader Group plc is the cleanest monopoly on the FTSE 100 mid-cap roster: ~75 % of UK consumer time on automotive classifieds, ~14,000 retailer customers paying ARPR that compounds high single digits, operating margins above 70 %, and a moat that triangulates network economies, switching costs and counter-positioning. The capital model is exemplary — high free-cash conversion, consistent buybacks, modest dividend, no acquisition adventures since the Webzone / Autorola era. None of this is in dispute.</p>
+  <p>The question Chronos has to answer is whether a fairly priced monopoly belongs in a listed book whose job is to find asymmetric, internationally-diversified, AI-leveraged compounders. On today's multiple the answer is no — the expected IRR is below hurdle. On a 10 %+ drawdown without a thesis break, the answer flips: a starter position becomes defensible because the long-duration cash compounding will eventually overwhelm the entry multiple. The recommendation is therefore <strong>WATCH with a price-trigger</strong> — no capital deployed today, USD 50k starter on a re-rating.</p>
+</div>
+
+<div class="bear">
+  <span class="label">The bear case — what would make Chronos wrong</span>
+  <h3>The toll booth is on a shrinking road, and AI buyer agents disintermediate the toll</h3>
+  <p>The structural bear case is not that Auto Trader's moat breaks — it is that the moat protects a slowly shrinking market. UK new-car volumes have not recovered to 2016 levels and may not under an EV-transition cost shock; the independent dealer count has been declining for a decade through consolidation; and the millennial / Gen Z buyer cohort transacts cars less than its predecessors did at the same age. A monopoly on a shrinking pond compounds more slowly than the multiple assumes.</p>
+  <p>The acute bear case is AI buyer agents. If consumer purchase journeys move to LLM-mediated agents that query inventory across multiple sources (Auto Trader, dealer DMS feeds, OEM direct), the value of <em>being the consumer destination</em> collapses. Auto Trader's moat shifts from "where consumers go" to "where the cleanest dealer inventory feed lives" — still valuable, but a commodity infrastructure layer rather than a brand monopoly. Multiple compresses to 14× and the equity halves over 24 months.</p>
+  <p>Neither bear scenario is imminent. But both are why this is a starter, not a normal-sized position.</p>
+</div>
+
+<h2>What would need to be true for this to graduate to a full IC paper</h2>
+<p>Three triggers, any one of which would move Auto Trader from preview to active diligence:</p>
+<ul>
+  <li><strong>Price.</strong> A 10 %+ drawdown without a thesis break — most plausibly a UK macro print or a mini-budget-style sterling event — would bring the entry multiple into a range where the expected IRR clears hurdle.</li>
+  <li><strong>AI strategy disclosure.</strong> A capital markets day or annual-report disclosure articulating a specific AI-mediated transaction take-rate strategy (not productivity, not search ranking — transaction monetisation) would push the AI Maturity Level from 3 toward 4 and re-open the bull case.</li>
+  <li><strong>Competitive shock.</strong> A credible Cazoo-style challenger backed by a deep-pocketed strategic (Amazon UK, an OEM consortium, an AI-native player) would force Auto Trader to deploy its balance sheet defensively. Counter-intuitively, that is when monopoly classifieds platforms have historically been the best buys — the market over-discounts the threat and the moat absorbs it.</li>
+</ul>
+<p>Absent any of those, the slot is better used elsewhere. The full Gate 7 workstreams — primary FY26 annual report extraction, Trustpilot / forum voice-of-customer corpus, management deep-dive on Nathan Coe and the executive committee, and Virtual IC challenge — should be deferred until one of the three triggers fires.</p>
+
+<p class="sources"><strong>Source basis.</strong> SMMT registrations data (smmt.co.uk/vehicle-data), Auto Trader Group plc FY25 annual report and investor presentations (autotraderplc.com/investors), Auto Trader plc press releases and strategy blogs (plc.autotrader.co.uk), BBC News coverage of Cazoo (bbc.co.uk/news, May 2024). All multiples and growth rates are baseline public-source figures as understood at the date of writing; <strong>not</strong> reconciled to primary filings under Gate 7 workstream discipline. Several claims about ARPR trajectory, retailer count, and time-share statistics are directionally consistent with prior Auto Trader disclosures but are <strong>[unverified to current FY26 filing]</strong> and must be re-grounded before any capital decision.</p>
+
+<footer>
+  Generated 28 May 2026 &nbsp;&middot;&nbsp; Strategy preview &nbsp;&middot;&nbsp; Spock v4 listed-eq pipeline
+</footer>
+
+</main>
+
+</body>
+</html>

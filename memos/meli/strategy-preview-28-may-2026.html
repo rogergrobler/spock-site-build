@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MercadoLibre (MELI.US) — Spock Strategy Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #f7f5f0;
+    color: #1a1a1a;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 32px 80px; }
+
+  .header {
+    border-top: 4px solid #1a1a1a;
+    padding-top: 24px;
+    margin-bottom: 32px;
+  }
+  .header-kicker {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .header-subhead {
+    font-size: 19px;
+    color: #444;
+    font-style: italic;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .header-meta {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: #555;
+    margin-top: 12px;
+  }
+
+  .preview-disclosure {
+    background: #fff8e6;
+    border: 1px solid #e6c870;
+    border-left: 4px solid #b8860b;
+    padding: 16px 20px;
+    margin-bottom: 36px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .preview-disclosure strong {
+    display: block;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #7a5c00;
+    margin-bottom: 6px;
+  }
+
+  .verdict-box {
+    background: #1a1a1a;
+    color: #f7f5f0;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+  .verdict-box .label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #b9b3a1;
+    margin-bottom: 8px;
+  }
+  .verdict-box .verdict {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  .verdict-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    border-top: 1px solid #444;
+    padding-top: 16px;
+    margin-top: 12px;
+  }
+  .verdict-row .col-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #b9b3a1;
+    margin-bottom: 4px;
+  }
+  .verdict-row .col-value {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #888;
+    border-top: 1px solid #d8d5ce;
+    padding-top: 20px;
+    margin-top: 44px;
+    margin-bottom: 18px;
+  }
+  h3 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+
+  .framework {
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 3px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+  }
+  .framework-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #eae6dc;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+  .framework-num {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .framework-title {
+    font-size: 19px;
+    font-weight: normal;
+    flex: 1;
+    margin-left: 18px;
+  }
+  .framework-verdict {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .v-pass { background: #e8f4e8; color: #2d6a2d; border: 1px solid #5cb85c; }
+  .v-strong { background: #d8eed8; color: #1f5520; border: 1px solid #3d8b3d; }
+  .v-watch { background: #fff3cd; color: #7a5c00; border: 1px solid #f0c040; }
+  .v-fail { background: #fde6e6; color: #8b2a2a; border: 1px solid #d9534f; }
+  .v-na { background: #ececec; color: #666; border: 1px solid #bbb; }
+
+  .bear-case {
+    background: #fdf3f0;
+    border-left: 4px solid #c0392b;
+    padding: 22px 28px;
+    margin: 28px 0;
+    border-radius: 2px;
+  }
+  .bear-case h3 {
+    color: #8b2a2a;
+    margin-bottom: 14px;
+  }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 18px 0 8px;
+  }
+  .scenario {
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    padding: 16px 18px;
+    border-radius: 3px;
+  }
+  .scenario-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  .scenario-prob {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .scenario p { font-size: 14px; line-height: 1.55; margin-bottom: 0; }
+
+  ul { margin: 8px 0 18px 22px; }
+  li { margin-bottom: 8px; }
+
+  a { color: #2a5a8e; text-decoration: none; border-bottom: 1px dotted #2a5a8e; }
+  a:hover { border-bottom-style: solid; }
+
+  .source-list {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    line-height: 1.55;
+    color: #555;
+    margin-top: 8px;
+  }
+  .source-list strong {
+    color: #1a1a1a;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .footer {
+    border-top: 1px solid #d8d5ce;
+    margin-top: 48px;
+    padding-top: 20px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #888;
+    text-align: center;
+  }
+
+  blockquote {
+    border-left: 3px solid #c8c2b0;
+    padding: 4px 0 4px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    color: #444;
+  }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="strategy-preview-28-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="strategy-preview-28-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+<div class="container">
+
+  <div class="header">
+    <div class="header-kicker">Spock v5 · Strategy Preview · Listed Equities</div>
+    <h1>MercadoLibre, Inc. (MELI.US)</h1>
+    <div class="header-subhead">The LatAm super-app that built the rails, then the bank — and is now teaching the marketplace to underwrite.</div>
+    <div class="header-meta">Generated 28 May 2026 · NASDAQ:MELI · Headquarters Buenos Aires/Montevideo · Primary markets Brazil, Mexico, Argentina, Chile, Colombia</div>
+  </div>
+
+  <div class="preview-disclosure">
+    <strong>Why this is a preview, not a final IC pack</strong>
+    This document is a Strategy-framework synthesis built from public-source baseline knowledge — SEC filings, MELI investor relations disclosures, and reputable press coverage. It has not been through the Spock v4 deep-research workstreams (no primary-source IPO-class verification, no voice-of-customer corpus, no proprietary-data audit, no Virtual IC). Treat the position-size recommendation as directional only. Any commitment of capital requires a full Gate 7/8/9 pass — paired-verifier discipline, mechanical-invariants check, completeness audit, and partner deliberation. The numbers cited below are anchored to public filings; the framework verdicts are the Strategy agent's best read on the disclosed evidence, not a substituted IC vote.
+  </div>
+
+  <div class="verdict-box">
+    <div class="label">Strategy verdict</div>
+    <div class="verdict">Initiate a normal-conviction starter position in MELI; revisit for high-conviction sizing after Gate 9 confirms the fintech monetisation trajectory and the Argentina FX exposure is bounded.</div>
+    <div class="verdict-row">
+      <div>
+        <div class="col-label">Recommendation</div>
+        <div class="col-value">INITIATE — STARTER</div>
+      </div>
+      <div>
+        <div class="col-label">Position size (USD)</div>
+        <div class="col-value">$250,000</div>
+      </div>
+      <div>
+        <div class="col-label">Sizing bucket</div>
+        <div class="col-value">Normal conviction</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>One-paragraph thesis</h2>
+  <p>MercadoLibre is a category-defining LatAm internet franchise that compounded gross merchandise volume and total payment volume at ~30%+ annually through a five-year window in which Brazil's macro was hostile, Argentina was in hyperinflation, and Amazon spent meaningfully in Mexico. It has the marketplace network economy (~100m+ unique active buyers), a payments rail (Mercado Pago) that now processes off-platform TPV greater than on-platform GMV, a credit book underwritten on first-party transaction data, a logistics network (Mercado Envíos) that has flipped from cost centre toward process-power moat, and an advertising business growing >40%. The CLTV economics on a Mercado Pago user who also borrows from Mercado Crédito comfortably clear Michael's 9× bar. The bear case is real — Argentina FX optics, Brazil regulatory tightening on PIX-adjacent credit, and Amazon's slow grind — but the bull dominates by power-law arithmetic. The preview verdict is to start a position now, sized normal, and let Gate 9 work earn the high-conviction upgrade.</p>
+
+  <h2>Ten-framework grid</h2>
+
+  <!-- Framework 1 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">01 / Power law</span>
+      <span class="framework-title">Upside is asymmetric — LatAm digital penetration is still mid-curve, and fintech cross-sell stacks on top</span>
+      <span class="framework-verdict v-strong">Pass — strong</span>
+    </div>
+    <p>LatAm e-commerce penetration of total retail was ~12% in 2024 versus ~25% in the US and ~30% in China; the runway to developed-market levels is at least a decade of mid-teens compounding (eMarketer; Euromonitor). On top of that, the fintech layer is genuinely additive — Mercado Pago's off-platform TPV exceeded on-platform GMV from 2022 onward, meaning the payments business is not capped by the marketplace's ceiling. MELI's own 10-K language describes a "platform of platforms" thesis with credit, advertising, and logistics each capable of meaningful standalone scaling. Index of asymmetry: ~135 vs 100 median — upside scenarios reasonably compound to 3–5× over five years; downside is bounded by the absolute scale of the marketplace franchise rather than by terminal-value destruction.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> MELI 2024 Form 10-K, sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001099590 · MELI investor relations, investor.mercadolibre.com · eMarketer LatAm e-commerce penetration estimates 2024 · MELI Q4 2024 shareholder letter
+    </div>
+  </div>
+
+  <!-- Framework 2 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">02 / CLTV : CAC</span>
+      <span class="framework-title">Marketplace + payments + credit stacking clears Michael's 9× bar with margin to spare</span>
+      <span class="framework-verdict v-strong">Pass — strong</span>
+    </div>
+    <p>MELI does not disclose CLTV directly, but the building blocks are inferable from segment economics. Marketplace take rate on Brazil 1P+3P GMV runs 17–19% (10-K segment disclosure); Mercado Pago net take rate is ~3.5–4% on TPV; Mercado Crédito's net interest margin runs ~30%+ at the unit level with annualised NPL 90+ around 8–11% (Q4 2024 shareholder letter). A single active user who buys, pays, and borrows generates well north of $100 of annual contribution against a blended CAC that the 10-K's marketing spend disclosure implies is comfortably under $20. The CLTV : CAC math comes out 12–18× on the stacked user — above Michael's bar. The marketplace-only user is closer to 6–7×, which is below bar; the bull case requires the credit attach rate to keep rising. Index of unit economics: ~130 vs 100 median.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> MELI 2024 Form 10-K segment disclosures, sec.gov · MELI Q4 2024 shareholder letter, investor.mercadolibre.com · MELI Q1 2025 results press release · Itaú BBA LatAm internet sector primer (Bloomberg consensus reads)
+    </div>
+  </div>
+
+  <!-- Framework 3 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">03 / Helmer 7 Powers</span>
+      <span class="framework-title">Four of seven powers visibly present — network economies and counter-positioning are the load-bearing pair</span>
+      <span class="framework-verdict v-strong">Pass — strong</span>
+    </div>
+    <p><strong>Network economies</strong> — the marketplace is the textbook two-sided network in LatAm, with cross-side effects between buyers (~100m+ unique active) and sellers. <strong>Scale economies</strong> — Mercado Envíos fulfilment, advertising tech, and the credit balance sheet all show classic fixed-cost-leverage curves; gross margin expanded ~600bps over 2020–2024 (10-K). <strong>Counter-positioning</strong> vs Amazon — MELI is structurally willing to operate at lower marketplace take rates in exchange for Mercado Pago monetisation, a model Amazon cannot replicate without cannibalising AWS-priority capital allocation. <strong>Process power</strong> — Mercado Envíos's reverse-logistics handling and Mercado Crédito's underwriting on first-party data are difficult-to-replicate operational accumulations. Brand, cornered resource, and switching costs are weaker. Index of moat depth: ~130 vs 100 median.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> MELI 2024 Form 10-K, sec.gov · Hamilton Helmer, <em>7 Powers</em> (Deep Strategy 2016) for framework definitions · MELI Q3 2024 shareholder letter on logistics network density · Reuters coverage of Amazon Mexico investments, reuters.com
+    </div>
+  </div>
+
+  <!-- Framework 4 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">04 / AI maturity (Level 1–5)</span>
+      <span class="framework-title">Solid Level 3 — production ML across underwriting, recommendation, and fraud; not yet Level 4 frontier</span>
+      <span class="framework-verdict v-pass">Pass</span>
+    </div>
+    <p>MELI's AI footprint is visible in three production loops. <strong>Mercado Crédito underwriting</strong> uses first-party marketplace and payments behaviour as features in models that the 10-K describes as "proprietary credit scoring," with NPL 90+ trending stable at 8–11% through Brazil and Mexico macro cycles (Q4 2024 shareholder letter). <strong>Recommendation and search</strong> on the marketplace and <strong>fraud screening</strong> on Mercado Pago are ML-driven. The company has begun publicly discussing generative AI for seller tooling and customer service (Q1 2025 earnings call). It is, however, not yet at Level 4 — there is no evidence of an AI-native product that could not exist without large models, and no disclosed proprietary foundation-model effort. This is a Level 3 firm executing ML well, with credible Level 4 optionality on the credit-underwriting axis. Index of AI maturity: ~110 vs 100 median.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> MELI 2024 Form 10-K (Item 1, Technology), sec.gov · MELI Q1 2025 earnings call transcript, investor.mercadolibre.com · MELI Q4 2024 shareholder letter on credit underwriting · Spock AI Maturity scale (internal, 100 = production ML, 150 = AI-native moat)
+    </div>
+  </div>
+
+  <!-- Framework 5 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">05 / Sizing bucket</span>
+      <span class="framework-title">Normal conviction at $250,000 — starter sized for an unfinished evidence chain, not for low conviction in the franchise</span>
+      <span class="framework-verdict v-watch">Starter</span>
+    </div>
+    <p>The franchise quality argues for the $1M high-conviction bucket. What argues it down is the preview status of this work: no primary-source verifier pair on the IPO-class facts (share count, current cap, FX-adjusted earnings), no completeness audit, no Virtual IC. The standing instruction is that high-conviction sizing requires the full evidence chain. At preview level, normal conviction ($250,000) is the right resting place. If Gate 9 confirms (i) Mercado Crédito NPL stays inside 8–12% through a Brazil rate cycle, (ii) Argentina exposure can be ring-fenced or hedged at <15% of consolidated EBIT, and (iii) Mercado Envíos density continues to widen the moat versus regional 3PL, the position upgrades to high-conviction $1M. If the audit surfaces accounting opacity in the credit book or the FX translation, it downgrades to punt ($50,000) or out. Index of conviction-given-evidence: ~105 vs 100 median.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> Spock sizing-bucket convention (internal) · Standing instruction on evidence chains before high-conviction sizing (memory: data extractions need a verifier; pipeline primary-source grounding) · MELI 2024 Form 10-K
+    </div>
+  </div>
+
+  <!-- Framework 6 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">06 / Bull / Base / Bear scenarios with probabilities</span>
+      <span class="framework-title">Probability-weighted expected return is positive even with a hostile bear-case</span>
+      <span class="framework-verdict v-pass">Pass</span>
+    </div>
+    <div class="scenario-grid">
+      <div class="scenario">
+        <div class="scenario-label">Bull · ~35%</div>
+        <div class="scenario-prob">+150%</div>
+        <p>Revenue compounds ~30% CAGR through 2028; Mercado Crédito reaches ~25% of consolidated EBIT with NPL inside 10%; advertising approaches a $3B run-rate; Mexico GMV growth stays >40% as Amazon disengages. Multiple expansion as fintech-quality compounds the marketplace base.</p>
+      </div>
+      <div class="scenario">
+        <div class="scenario-label">Base · ~45%</div>
+        <div class="scenario-prob">+45%</div>
+        <p>Revenue ~22% CAGR; Mercado Crédito grows but NPL drifts to 11–13% in a Brazil tightening cycle; Argentina contributes optical EBIT volatility without structural impairment. Multiple holds. The franchise compounds intrinsic value but the market re-rates only modestly.</p>
+      </div>
+      <div class="scenario">
+        <div class="scenario-label">Bear · ~20%</div>
+        <div class="scenario-prob">−40%</div>
+        <p>Argentina FX trauma re-emerges and forces large translation losses; Brazil regulator imposes credit-product restrictions on PIX-adjacent lending; Amazon escalates Mexico spend and clips MELI's 3P take rate. Multiple compresses from premium-fintech to discounted-marketplace.</p>
+      </div>
+    </div>
+    <p>Probability-weighted return: 0.35 × 150% + 0.45 × 45% + 0.20 × (−40%) = +65%. Positive even on conservative probabilities; the bear is real but is structurally bounded. Index of probability-weighted return: ~125 vs 100 median.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> MELI 2024 Form 10-K, sec.gov · MELI Q1 2025 earnings, investor.mercadolibre.com · Bloomberg consensus revenue model reads · Reuters coverage of Brazil Central Bank PIX-adjacent credit posture, reuters.com
+    </div>
+  </div>
+
+  <!-- Framework 7 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">07 / Listed-vs-private divergence (TymeBank cross-read)</span>
+      <span class="framework-title">Real overlap with the TymeBank thesis — but the read is reinforcing, not duplicative</span>
+      <span class="framework-verdict v-watch">Watch</span>
+    </div>
+    <p>This is the framework that needs the most partner attention. Chronos has a meaningful private-book TymeBank position; MELI is a public-market expression of substantially the same thesis — emerging-market consumer fintech where transaction data underwrites credit and the bank-equivalent rides on a non-bank distribution rail. The reading is <em>reinforcing</em>: if you believe the TymeBank story, MELI is the listed-market validation that the model scales to nine-figure profit pools. It is not <em>duplicative</em>: the geographies are entirely non-overlapping (LatAm vs Southern Africa + SE Asia), the regulatory regimes are uncorrelated, and the customer cohorts are different. The honest concern is correlation in a global EM-fintech sell-off — if Brazil's Central Bank tightens and Indonesia's OJK follows, both books mark down together. Net read: MELI complements rather than crowds the TymeBank exposure, but the combined emerging-market fintech weight in the partnership book needs explicit attention from Willem and Roger before high-conviction sizing on MELI. Index of cross-read value: ~115 vs 100 median.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> MELI 2024 Form 10-K segment disclosures · TymeBank public coverage (Reuters, Bloomberg) for the cross-read structure · Internal Spock partner-book correlation analysis (referenced, not loaded for this preview)
+    </div>
+  </div>
+
+  <!-- Framework 8 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">08 / Geographic bias</span>
+      <span class="framework-title">Strong international diversifier from a South Africa / developed-markets base book</span>
+      <span class="framework-verdict v-strong">Pass — strong</span>
+    </div>
+    <p>The Chronos listed-equity book has historically been weighted toward South African issuers and US/EU developed-market names. MELI's primary revenue geographies — Brazil (~55% of revenue), Mexico (~25%), Argentina (~15%), Chile and Colombia (balance) — are essentially uncorrelated with the existing book on a fundamental basis (10-K geographic segment). On a market-beta basis, MELI is a NASDAQ-listed name and trades with global tech sentiment, so the diversification is more fundamental than market-quote. But the underlying earnings stream is genuinely LatAm-dependent, which means in a multi-year hold horizon the diversification works. The "international qualifying" criterion is comfortably met. Geographic concentration risk inside the position itself: Brazil is dominant, so MELI is in practice a Brazil-tilted LatAm bet. That's an acceptable concentration. Index of geographic diversifier value: ~125 vs 100 median.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> MELI 2024 Form 10-K geographic segment disclosure, sec.gov · MELI Q4 2024 shareholder letter, investor.mercadolibre.com
+    </div>
+  </div>
+
+  <!-- Framework 9 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">09 / Trim discipline</span>
+      <span class="framework-title">No trim instinct yet because no position exists — but flag the trim triggers up front</span>
+      <span class="framework-verdict v-na">Not applicable yet</span>
+    </div>
+    <p>There is no existing position to trim. The forward-looking flag is what would <em>trigger</em> a trim once the starter is on. Three lines: (a) Mercado Crédito NPL 90+ exceeds 13% on a sustained two-quarter basis — signal that the underwriting is breaking under macro pressure; (b) consolidated EBIT translation losses from Argentina exceed 20% of group EBIT in any single quarter — signal that the Argentina ring-fence is failing; (c) Amazon Mexico GMV growth exceeds MELI Mexico GMV growth for three consecutive quarters — signal that the counter-positioning power is eroding. Any one of those triggers a trim review; any two trigger a forced trim to starter or out. Locking these in pre-purchase removes the temptation to rationalise post-purchase. Index of trim-discipline articulation: standard.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> Standing Chronos trim-discipline practice · MELI Q4 2024 shareholder letter NPL disclosures · Reuters Amazon Mexico coverage, reuters.com
+    </div>
+  </div>
+
+  <!-- Framework 10 -->
+  <div class="framework">
+    <div class="framework-head">
+      <span class="framework-num">10 / Disagreement with Virtual IC</span>
+      <span class="framework-title">Virtual IC has not been run — this slot is intentionally empty</span>
+      <span class="framework-verdict v-na">Placeholder</span>
+    </div>
+    <p>The Spock v4 pipeline reserves this framework slot for the Strategy agent to flag any specific point of disagreement with the Virtual IC's deliberated verdict. Because this is a preview pack, no Virtual IC has been convened against MELI; the Strategy verdict here is uncontested by definition. The expected disagreement vector, when Virtual IC does run, is around sizing — the Strategy agent's instinct (after the evidence chain closes) would be to push to the $1M high-conviction bucket; the Virtual IC may temper that by pointing to the TymeBank correlation concern. That disagreement is healthy and should be deliberated, not pre-empted. Index: not scorable until Virtual IC runs.</p>
+    <div class="source-list">
+      <strong>Sources:</strong> Spock v4 pipeline architecture (Gate 9 Virtual IC orchestrator, internal)
+    </div>
+  </div>
+
+  <h2>Headline thesis</h2>
+  <p>MercadoLibre is the rare emerging-market platform that earned its fintech adjacency rather than declaring it. The marketplace's 25 years of compounding gave Mercado Pago a first-party transaction signal that no LatAm bank possesses, and gave Mercado Crédito an underwriting feature set that no LatAm neobank can replicate without building the marketplace first. That sequencing — marketplace → payments → credit → advertising → logistics — is the source of the company's durable advantage, and it is visible in the numbers: take rate has expanded while volume has compounded, gross margin has widened while penetration has deepened, and the credit book's NPL has held inside 8–11% through a hostile Brazilian rate cycle (MELI 2024 10-K; Q4 2024 shareholder letter).</p>
+  <p>The thesis for the Chronos partnership is that this is the public-market validation of the same emerging-market fintech model that animates the TymeBank private-book position — at a scale and disclosure quality that the private book cannot offer. The valuation is full but not stretched relative to the compounding evidence; the geographic diversification is real; the AI maturity is solid Level 3 with credible Level 4 optionality on underwriting. The preview verdict is to initiate a normal-conviction starter at $250,000 now, and route the deal into the full Gate 7/8/9 sequence for a possible high-conviction upgrade to $1M once the evidence chain is closed and the TymeBank correlation concern is resolved at the partner-book level.</p>
+
+  <div class="bear-case">
+    <h3>Bear case — read this twice</h3>
+    <p><strong>Argentina FX is the headline risk and the most visible.</strong> MELI's Argentine peso exposure has produced large translation losses in prior cycles and the country remains in a fragile stabilisation; a renewed devaluation episode could deliver a single-quarter optical EBIT shock large enough to break a 12-month forward earnings model. Management has hedged operationally but cannot eliminate the FX optic. The mitigant — Argentina is ~15% of revenue and shrinking as a share — is real but cold comfort if it produces a 30% drawdown in the quote.</p>
+    <p><strong>Brazil regulatory tightening is the second risk and the most under-appreciated.</strong> The Brazilian Central Bank has been steadily tightening the regulatory perimeter around PIX-adjacent credit products. Mercado Crédito is not directly in the crosshairs, but it operates in a regime where regulator posture can change unit economics overnight. A 200–300bps reduction in net interest margin on the credit book from regulatory action would clip 8–12% from consolidated EBIT and would force a multiple re-rating from premium fintech to discounted-marketplace.</p>
+    <p><strong>Amazon's slow grind in Mexico is the third risk.</strong> Amazon has spent in Mexico for half a decade and has not dislodged MELI. But it has not retreated either; the counter-positioning advantage is real but is not unconditional. If Amazon ever decided to operate Mexico at sustained operating loss to capture share, MELI's 3P take rate would compress. The probability of this is low but not zero, and the loss would not be recoverable.</p>
+    <p><strong>Valuation discipline matters here.</strong> MELI trades at premium fintech multiples on consensus 2026 numbers, and the consensus has been chasing the upside revisions. Buying into a consensus-revised name at premium multiples is exactly the regime in which a single quarterly miss compresses the multiple by 25–35%. The starter-size position is calibrated to this risk; high-conviction sizing in the absence of a margin-of-safety price entry is the wrong move on a 20% bear-case probability.</p>
+  </div>
+
+  <h2>What changes the verdict</h2>
+  <p>Three things would upgrade this from normal-conviction starter to high-conviction $1M: (1) Gate 9 completeness audit closes the IPO-class facts with primary-source citations and the credit-book NPL trajectory is confirmed inside 8–12% through a stress quarter; (2) the partnership decides explicitly that the TymeBank correlation is acceptable and that emerging-market fintech can run at a higher combined book weight; (3) the price offers some margin of safety relative to the consensus-revised 2026 number. Conversely, three things would downgrade to punt or out: regulatory action on Brazil credit, an Argentina FX shock that breaks the ring-fence, or a Mercado Crédito NPL print above 13%. The verdict is held actively, not statically.</p>
+
+  <h2>How this fits the listed-equity book</h2>
+  <p>The Chronos listed book is light on emerging-market exposure outside South Africa and light on consumer-fintech outside the WISE/CHYM developed-market names. MELI fills both gaps simultaneously. The honest concern flagged in framework 7 — correlation with the TymeBank private-book position — needs to be addressed at the partner-book level before the high-conviction upgrade, but does not block the starter. The starter position serves the additional function of forcing the partnership to look at LatAm fintech as a live investable category rather than as a thesis-in-waiting. Once the position is on, the conversation about whether to scale becomes concrete rather than abstract.</p>
+
+  <h2>Open questions for Gate 7/8/9</h2>
+  <ul>
+    <li>What is the exact current share count, market capitalisation, and FX-adjusted EBIT? (IPO-class verification, paired verifier.)</li>
+    <li>What is the trajectory of Mercado Crédito NPL 90+ through the most recent two Brazil rate-cycle quarters? (Primary-source workstream.)</li>
+    <li>What is the consolidated exposure to Argentine peso translation, gross and net of operational hedges? (10-K item 7A; verifier pair.)</li>
+    <li>What is the take-rate trajectory on Mercado Pago off-platform TPV vs on-platform GMV? (Segment disclosure dive.)</li>
+    <li>What is the Brazilian Central Bank's stated posture on PIX-adjacent credit products through 2026? (Workstream G regulatory scan.)</li>
+    <li>What is the voice-of-customer signal on Mercado Pago's app reliability and support quality? (Workstream F consumer corpus.)</li>
+    <li>What is the people-and-culture read on the post-Galperin succession depth at MELI? (Workstream C.)</li>
+    <li>What is the AI-maturity proprietary-data audit on the Mercado Crédito feature set? (Workstream — currently scoped under deep-research.)</li>
+    <li>How does the combined Chronos book weight in emerging-market fintech look if MELI scales to $1M? (Partner-book correlation analysis.)</li>
+  </ul>
+
+  <h2>Indexing summary</h2>
+  <p>Spock indexing convention applied throughout: 100 = median listed-equity company in our universe; ~50 = poor; ~150 = exceptional. MELI on the five scored dimensions:</p>
+  <ul>
+    <li><strong>Asymmetry of upside (power law):</strong> ~135</li>
+    <li><strong>Unit economics (CLTV : CAC):</strong> ~130</li>
+    <li><strong>Moat depth (Helmer):</strong> ~130</li>
+    <li><strong>AI maturity:</strong> ~110</li>
+    <li><strong>Probability-weighted return:</strong> ~125</li>
+  </ul>
+  <p>Composite Strategy index: ~126 vs 100 median. That is high-conviction territory on the index, which is why the preview verdict deliberately puts a hold on the sizing until the evidence chain closes. The discipline is: index says go big, evidence chain says go normal until the gates are passed. Honour the evidence chain.</p>
+
+  <div class="footer">
+    Generated 28 May 2026 · v5 Strategy preview · Spock v4 listed-eq pipeline · MercadoLibre, Inc. (NASDAQ:MELI)
+  </div>
+
+</div>
+</body>
+</html>

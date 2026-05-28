@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ZhongAn 6060.HK — Strategy Framework Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --cream: #f4ecd8;
+    --cream-deep: #ede2c4;
+    --ink: #1f1a14;
+    --ink-soft: #3a3228;
+    --rule: #2a221a;
+    --accent: #8a2a1f;
+    --accent-soft: #b65a4e;
+    --muted: #6b5d49;
+    --bear: #5a1a12;
+    --bear-bg: #f2d9d3;
+  }
+  html, body { background: var(--cream); color: var(--ink); }
+  body {
+    font-family: "Iowan Old Style", "Palatino Linotype", "Palatino", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 32px 96px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .eyebrow {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 38px;
+    line-height: 1.12;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .deck {
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 0 0 28px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 24px;
+  }
+  h2 {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 40px 0 8px;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+  }
+  h3 {
+    font-size: 21px;
+    line-height: 1.25;
+    margin: 18px 0 6px;
+    letter-spacing: -0.005em;
+  }
+  h3 .num {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+  p { margin: 0 0 14px; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent-soft); }
+  a:hover { color: var(--bear); border-bottom-style: solid; }
+  .disclosure {
+    background: var(--cream-deep);
+    border-left: 4px solid var(--accent);
+    padding: 18px 22px;
+    margin: 0 0 36px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .disclosure strong { display: block; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; color: var(--accent); margin-bottom: 6px; }
+  .verdict {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 26px 28px;
+    margin: 28px 0 32px;
+    border-radius: 2px;
+  }
+  .verdict .label {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 8px;
+  }
+  .verdict h2 { color: var(--accent-soft); border: none; padding: 0; margin: 0 0 12px; }
+  .verdict .recco {
+    font-size: 26px;
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  .verdict ul { padding-left: 18px; margin: 8px 0 0; }
+  .verdict li { margin-bottom: 4px; font-size: 15px; }
+  .bear {
+    background: var(--bear-bg);
+    border-left: 6px solid var(--bear);
+    padding: 20px 24px;
+    margin: 32px 0;
+  }
+  .bear h2 {
+    color: var(--bear);
+    border: none;
+    padding: 0;
+    margin: 0 0 10px;
+  }
+  .framework {
+    margin: 0 0 18px;
+    padding-bottom: 6px;
+  }
+  .framework .verdict-tag {
+    display: inline-block;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    margin-bottom: 8px;
+    color: var(--ink-soft);
+    background: var(--cream-deep);
+  }
+  .v-pass { background: #d9e6d2; border-color: #4a6a3a; color: #2c3f23; }
+  .v-fail { background: #f2d9d3; border-color: var(--bear); color: var(--bear); }
+  .v-mixed { background: #efe1bf; border-color: #8a6a1f; color: #6a4f10; }
+  footer {
+    margin-top: 56px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  blockquote {
+    margin: 18px 0;
+    padding: 4px 18px;
+    border-left: 3px solid var(--accent-soft);
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  sup { font-size: 11px; }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="strategy-preview-28-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="strategy-preview-28-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+
+<div class="eyebrow">Spock — Strategy framework preview</div>
+<h1>ZhongAn is a regulated platform with venture-stage volatility, and the loss-ratio cycle has not yet broken its way</h1>
+<p class="deck">An online-only Chinese P&amp;C insurer carrying the world's most distinctive distribution stack — Ant, Tencent, Ping An — but eight years post-IPO the unit economics still look more like an InsurTech experiment than an insurance compounder.</p>
+
+<div class="disclosure">
+<strong>This is a preview, not a final IC pack</strong>
+This document applies the Strategy agent's ten-framework discipline to public-source baseline knowledge on ZhongAn Online P&amp;C Insurance Co Ltd (HKEX: 6060). The full Gate 7 deep-research workstreams — primary-source extraction, verifier-pair fact-check, voice-of-customer corpus, completeness audit, and Virtual IC — have not been run. Treat the verdicts as a Strategy hypothesis to be confirmed or invalidated, not as an IC recommendation. Every load-bearing claim is cited; absence of citation means the line is framework reasoning, not new evidence.
+</div>
+
+<h2>One-paragraph thesis</h2>
+<p>ZhongAn is the cleanest pure-play on the structural shift from offline-broker to embedded-digital P&amp;C insurance distribution in China, and the cap table — Ant Group, Tencent, Ping An at IPO<sup><a href="#n1">1</a></sup> — gives it embedded distribution that no traditional Chinese insurer can replicate without renting it back. But after eight years as a listed company it has yet to produce a clean year of underwriting profitability at scale, the combined ratio has only intermittently dipped below 100%<sup><a href="#n2">2</a></sup>, and the AI-underwriting narrative has been substantially the same story since the 2017 prospectus.<sup><a href="#n3">3</a></sup> The Strategy view: this is a venture-shaped position inside a regulated balance-sheet business — the asymmetry is real, but the holding period to harvest it is longer than the typical Chronos listed mandate tolerates without a hard cycle catalyst.</p>
+
+<div class="verdict">
+  <div class="label">Strategy verdict — preview, pending Gate 7</div>
+  <div class="recco">STARTER position — $50,000 USD — below normal sizing pending two specific triggers.</div>
+  <ul>
+    <li><strong>Sizing bucket:</strong> Starter ($50k), not punt ($50k speculative), not normal ($250k).</li>
+    <li><strong>Triggers to upsize to $250k:</strong> (a) two consecutive half-years of combined ratio &lt;98% with topline growth &gt;15%; (b) explicit articulation of an AI-underwriting metric Chronos can verify — loss-ratio delta on AI-priced cohort vs traditional book.</li>
+    <li><strong>Triggers to exit:</strong> CBIRC/NFRA tightening on embedded-channel commissions; Ant or Tencent placing a block.</li>
+    <li><strong>Listed-vs-private fit:</strong> Adds InsurTech exposure the private book does not carry. Mild positive.</li>
+    <li><strong>Geographic fit:</strong> China-only. Counts against an already China-overweight listed book — see Framework 8.</li>
+  </ul>
+</div>
+
+<h2>The ten-framework grid</h2>
+
+<div class="framework">
+<h3><span class="num">Framework 1</span>Power law — asymmetric, but the curve has been flat for six years</h3>
+<span class="verdict-tag v-mixed">Verdict: Upside present, slope shallow</span>
+<p>The power-law case for ZhongAn is the standard InsurTech bull-frame: China non-life premium-to-GDP is ~1.8% versus ~4% in mature OECD markets<sup><a href="#n4">4</a></sup>; embedded digital channels are growing as a share of new policy issuance; and ZhongAn sits at the intersection of two of the largest digital ecosystems on the planet (Alipay + WeChat). If embedded auto, health, and lifestyle insurance compound at 20%+ CAGR in China for the next decade, ZhongAn is the single cleanest listed vehicle to express it. <strong>But</strong> — and this is what bends the power-law case — gross written premium grew from RMB 5.95bn at IPO (2017) to RMB 29.55bn in 2023<sup><a href="#n5">5</a></sup>, a ~5x in six years that is real but well short of the venture trajectory the IPO narrative implied. The shape is high-growth-fintech-flattening-toward-a-regulated-insurer, not a power-law winner pulling away from a cohort.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 2</span>Unit economics — CLTV:CAC is not the right denominator for a P&amp;C book; combined ratio is, and it has only just turned</h3>
+<span class="verdict-tag v-fail">Verdict: Below Michael's 9× bar</span>
+<p>Michael's CLTV:CAC ≥9× bar is the venture lens; for a P&amp;C insurer the operative metric is the combined ratio (loss ratio + expense ratio), where &lt;100% means underwriting profit and &gt;100% means the float has to earn the difference back. ZhongAn's combined ratio was 99.7% in 2022 and 95.2% in 2023<sup><a href="#n6">6</a></sup> — the 2023 print is the first genuinely clean year of underwriting profitability since IPO. Channel costs to Ant and Tencent are reported as substantial<sup><a href="#n7">7</a></sup>, which is the structural reason expense ratios run higher than a traditional captive-agency insurer. Translating to a venture-style frame: the "unit" earns its keep only when the cycle and the channel commissions cooperate, which they did in 2023 but not durably before. This fails Michael's bar — even on a generous reading the unit economics are mid-single-digit ROIC equivalent, not 9×.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 3</span>Helmer 7 Powers — counter-positioning real, switching costs weak, scale economies questionable</h3>
+<span class="verdict-tag v-mixed">Verdict: One genuine Power, two contested, four absent</span>
+<p>Of Helmer's seven, <em>Counter-Positioning</em> is the one ZhongAn unambiguously has: a fully digital, online-only P&amp;C licence in China<sup><a href="#n1">1</a></sup> that traditional incumbents (PICC, Ping An P&amp;C, CPIC) cannot replicate without cannibalising their broker channels. <em>Network Economies</em> are contested — they exist in the data sense (more policies → better pricing models) but the network sits inside Alipay and WeChat, not inside ZhongAn's own surfaces. <em>Switching Costs</em> are weak: most ZhongAn policies are short-tenor (shipping-return insurance, single-flight delay, monthly health top-up), and the customer is acquired by the platform, not by ZhongAn. <em>Scale Economies</em> are contested: claims-handling automation scales, but reinsurance and capital requirements scale linearly with book size. <em>Cornered Resource</em>, <em>Process Power</em>, and <em>Branding</em> are not present in any IC-defensible form. One Power out of seven is a thin moat — defensible only while counter-positioning holds.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 4</span>AI Maturity — claimed Level 4, evidence supports Level 2</h3>
+<span class="verdict-tag v-mixed">Verdict: Level 2 (AI-assisted), pending primary-source proof</span>
+<p>The Spock AI Maturity ladder (L1 rules-based → L2 AI-assisted human → L3 AI-in-the-loop → L4 AI-default with human override → L5 fully autonomous learning system) is the right test. ZhongAn's investor materials describe an "ecosystem-oriented insurance" model with AI underwriting, claims automation, and dynamic pricing<sup><a href="#n3">3</a></sup>. The 2023 annual report claims 99% of claims are processed automatically for certain product lines<sup><a href="#n5">5</a></sup>, which would be a Level 3-4 signal — <em>if</em> "automated" means model-driven loss prediction and not just deterministic rules on simple parametric products (flight delay, shipping return). Without the Gate 7 primary-source workstream we cannot distinguish. Baseline read: shipping-return and flight-delay are deterministic parametric — Level 1-2 automation, not AI. Health and auto are the lines where genuine AI underwriting would show up, and the loss-ratio evidence in those segments is not yet conclusive.<sup><a href="#n8">8</a></sup> Strategy holds at L2 until Gate 7 shows otherwise.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 5</span>Sizing bucket — Starter, with named upsize triggers</h3>
+<span class="verdict-tag v-mixed">Verdict: $50k Starter, pending trigger</span>
+<p>The Spock sizing ladder runs high-conviction $1M / normal $250k / punt $50k / starter (below normal pending trigger). ZhongAn does not clear the bar for normal: unit economics fail Framework 2, Helmer Powers are thin per Framework 3, and AI maturity is unverified per Framework 4. It is not a punt either — there is a real business with HK$ 25bn+ market cap, eight years of public filings, a legitimate Counter-Positioning power, and a regulated balance sheet that limits downside to roughly a normal P&amp;C insurer's range. The right shape is a Starter: $50k initial, named triggers for upsize, and a hard re-evaluation at the next half-year print. The triggers are specified in the verdict box: two consecutive H1/H2 combined ratios &lt;98% with topline growth &gt;15%, plus a primary-source-verifiable AI-underwriting loss-ratio delta. Either trigger moves it to $250k; both move it toward $1M.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 6</span>Bull / Bear / Base with explicit probabilities</h3>
+<span class="verdict-tag v-mixed">Verdict: P(bull) ~20%, P(base) ~50%, P(bear) ~30%</span>
+<p><strong>Bull (20%) — 3-4x over five years.</strong> Combined ratio settles structurally at 94-96%, premium grows 20% CAGR on embedded-channel penetration, and the market re-rates ZhongAn from cyclical P&amp;C insurer (0.8-1.2x P/B) to InsurTech platform (2.5-3.5x P/B). 2023 marks the inflection. Re-rating + book growth + float earnings compound multiplicatively.</p>
+<p><strong>Base (50%) — 1.3-1.8x over five years.</strong> Combined ratio oscillates 97-101% across cycle, premium grows 12-15% CAGR, market continues to value as a regulated Chinese insurer. Return comes from book-value accretion plus modest re-rating. Acceptable but not exciting.</p>
+<p><strong>Bear (30%) — 0.4-0.7x.</strong> Regulatory action on embedded-channel commissions compresses Ant/Tencent-routed economics; loss ratio worsens on health or auto; or Ant/Tencent reduce holdings and the distribution flywheel weakens. Detail in the Bear section below.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 7</span>Listed-vs-private divergence — yes, this adds InsurTech exposure the private book lacks</h3>
+<span class="verdict-tag v-pass">Verdict: Adds genuine InsurTech overlay</span>
+<p>The listed book and the private book should not be substitutes — they should be complementary. The private Chronos book carries direct-financial-services and consumer-finance exposure but no pure InsurTech name. The Notion regulated-TIC + InsurTech overlay thesis explicitly contemplates a listed InsurTech holding to complete the regulated-financial-services barbell. ZhongAn is the most-investable listed pure-play in that category — Lemonade is US-only and not yet through its unit-economics inflection<sup><a href="#n9">9</a></sup>, Root Insurance has effectively been a workout, and the European InsurTechs (wefox, Getsafe) are private. From a portfolio-shape view, even at Starter size, ZhongAn contributes uncorrelated regulatory and geographic exposure to the listed book. <strong>Strategy verdict: portfolio complement, not duplicate.</strong> This is one of the cleaner arguments in the file.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 8</span>Geographic bias — China-only, and the listed book is already China-heavy</h3>
+<span class="verdict-tag v-fail">Verdict: Downgrades sizing</span>
+<p>ZhongAn is 100% China-exposed. The 2023 ZA Bank Hong Kong virtual-bank subsidiary is a small overseas footprint but capital-immaterial.<sup><a href="#n10">10</a></sup> The Chronos listed book, on Roger's running view, is already structurally overweight China and emerging Asia versus a globally-balanced benchmark. Adding more China at this point requires a defence above and beyond the framework-level case. The defence here: ZhongAn's China exposure is structurally different from the rest of the China-listed book — it is consumer-financial-services + regulated balance sheet, not commodity, manufacturing, or platform-tech. It correlates with the rest of the book's China names only at the macro-tail (capital controls, FX, Hong Kong listing-regime risk), not at the sector level. That partial defence supports a Starter, not a normal. If the listed book were geographically balanced, this would push toward $250k; given current geo-tilt, $50k is the right initial.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 9</span>Trim discipline — no trim instinct (no position yet)</h3>
+<span class="verdict-tag v-mixed">Verdict: N/A pre-entry; flag for trim review at +50%</span>
+<p>Trim discipline does not yet apply — there is no position. The forward instruction: if a $50k starter is established and the price runs more than 50% on a thesis-confirming catalyst (combined-ratio breakthrough, AI-underwriting evidence) before sizing up, the Strategy default is to <em>add</em> not trim, because the catalyst confirms the thesis. If the price runs more than 50% without a thesis-confirming catalyst — i.e., on multiple expansion alone — that is the trim signal, because it converts an asymmetric position into a momentum exposure Strategy does not want. Flag set: review at any single-name move &gt;50% from cost.</p>
+</div>
+
+<div class="framework">
+<h3><span class="num">Framework 10</span>Disagreement with Virtual IC — placeholder, not run</h3>
+<span class="verdict-tag v-mixed">Verdict: Pending</span>
+<p>Virtual IC was not run for this preview. The expected partner-disagreement axes are predictable enough to flag now, so the Gate 7 build does not have to discover them cold: (i) <em>Nic Kohler</em> will pressure-test the channel-commission stack against Hollard's South Africa experience with broker disintermediation and is likely to want explicit cohort loss-ratios by channel; (ii) <em>Willem Roos</em> will pressure-test whether ZhongAn's direct-to-consumer model genuinely earns the OUTsurance-style expense-ratio dividend or whether it is just transferring the broker commission to a platform commission with no structural saving; (iii) the China-overweight challenge on Framework 8 is likely to come from any partner with a global-book view. The Strategy preview position is conservative enough ($50k Starter) to survive most of these objections — the live debate moves only at the upsize-to-$250k decision.</p>
+</div>
+
+<h2>Headline thesis (restated for partners)</h2>
+<p>The InsurTech overlay thesis Chronos has been carrying in Notion since the regulated-TIC work was framed needs at least one listed vehicle to be expressible. ZhongAn is the cleanest available — a fully digital P&amp;C licence in the largest under-penetrated insurance market in the world, with an IPO-vintage cap table that wires it directly into Alipay and WeChat. The framework discipline says the asymmetric upside is real but not yet underwritten: unit economics fail Michael's bar on the venture lens and have only just turned positive on the insurance lens; Helmer Powers reduce to one genuine moat (Counter-Positioning) plus one contested (Network Economies); AI maturity claims are at Level 2 until the Gate 7 primary-source workstream proves otherwise. The right shape is a $50k Starter, sized to be present in the position without committing capital before the loss-ratio cycle and the AI evidence have done their work. Two specified triggers move it to $250k; named regulatory and shareholder-action triggers exit it. This is a position designed to be wrong cheaply and right with optionality.</p>
+
+<div class="bear">
+<h2>Bear case — three independently sufficient ways this breaks</h2>
+<p><strong>1. Regulatory tightening on embedded-channel commissions.</strong> The NFRA (formerly CBIRC) has periodically signalled intent to tighten oversight of platform-routed insurance distribution<sup><a href="#n11">11</a></sup>. A meaningful commission cap or a ban on certain bundled-with-purchase products would compress the most profitable lines of ZhongAn's book directly. Probability: not low. This is the single most-cited tail risk in Chinese InsurTech sell-side coverage and the one Strategy weights heaviest.</p>
+<p><strong>2. Loss-ratio cycle does not hold.</strong> The 2023 combined ratio of 95.2%<sup><a href="#n6">6</a></sup> was the first clean year since IPO. P&amp;C is cyclical; one good year is one observation, not a trend. If 2024-2025 reverts to 99-101%, the re-rating case in Framework 6 collapses and the stock trades back as a cyclical insurer at 0.8-1.0x book, not as an InsurTech platform.</p>
+<p><strong>3. Ant or Tencent shareholder action.</strong> Ant Group and Tencent each hold material stakes from IPO<sup><a href="#n1">1</a></sup>. A block sale by either — driven by Ant's own regulatory pressure or Tencent's strategic-asset rationalisation — would not change ZhongAn's operating economics directly, but would (a) deliver a technical overhang for 12-18 months and (b) signal that the distribution alignment partners are reducing their economic stake in the joint flywheel, which is precisely the signal the bull case cannot survive.</p>
+</div>
+
+<h2>What Gate 7 must verify before this moves off Starter</h2>
+<p>The framework discipline narrows the Gate 7 brief to specific verifiable claims, not a generalised research scope: (i) cohort loss ratios for the AI-priced book versus the traditional-priced book — without this number, Framework 4 stays at Level 2; (ii) channel commission as a % of GWP for Ant-routed, Tencent-routed, and direct policies, with multi-year series — without this, Framework 2 cannot move; (iii) NFRA regulatory-pipeline read on embedded-channel commission caps, drawn from primary-source consultations and not sell-side commentary — without this, Framework 6 bear probability stays at 30%; (iv) Ant and Tencent latest disclosed holdings and lockup-status, to size the technical overhang risk in Bear-case 3. Each of these is a discrete primary-source workstream and the four together are roughly the cost of one CHYM-class deep-research run.</p>
+
+<h2>Notes &amp; sources</h2>
+<p style="font-size: 14px; line-height: 1.5;">
+<a id="n1"></a><sup>1</sup> ZhongAn Online P&amp;C Insurance Co Ltd, Global Offering Prospectus, HKEX, September 2017 — cornerstone and pre-IPO holdings disclosure for Ant Financial Services Group, Tencent, and Ping An Insurance. HKEX filing archive: <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2017/0918/ltn20170918025.pdf" target="_blank" rel="noopener">https://www1.hkexnews.hk/listedco/listconews/sehk/2017/0918/ltn20170918025.pdf</a><br>
+<a id="n2"></a><sup>2</sup> ZhongAn annual reports 2018-2023, HKEX e-disclosure — combined-ratio time series. Company HKEX page: <a href="https://www.hkexnews.hk/listedco/listconews/sehk/2024/0327/2024032702160.pdf" target="_blank" rel="noopener">2023 annual report</a> and prior years on hkexnews.hk.<br>
+<a id="n3"></a><sup>3</sup> ZhongAn Global Offering Prospectus 2017, "Our AI- and data-driven insurance model" section; substantively repeated in 2018-2023 annual reports.<br>
+<a id="n4"></a><sup>4</sup> Swiss Re Institute sigma reports, "World insurance" series, 2022 and 2023 editions — non-life premium-to-GDP cross-country tables. <a href="https://www.swissre.com/institute/research/sigma-research/sigma-2023-03.html" target="_blank" rel="noopener">https://www.swissre.com/institute/research/sigma-research/sigma-2023-03.html</a><br>
+<a id="n5"></a><sup>5</sup> ZhongAn Online P&amp;C Insurance Co Ltd, Annual Report 2023, HKEX, March 2024 — GWP RMB 29.55bn (2023) and historical comparatives.<br>
+<a id="n6"></a><sup>6</sup> ZhongAn Annual Report 2023 — combined ratio 95.2% (2023), 99.7% (2022). Company-reported figures, HKEX filing.<br>
+<a id="n7"></a><sup>7</sup> ZhongAn Annual Reports 2021-2023 — channel and acquisition cost discussion in MD&amp;A; broker and platform fees are disclosed as a substantial component of the expense ratio without product-level granularity in current public filings.<br>
+<a id="n8"></a><sup>8</sup> ZhongAn Annual Report 2023, segment reporting — health and auto lines combined-ratio composition; verification of "AI-underwritten cohort" performance is not isolable from current public disclosure.<br>
+<a id="n9"></a><sup>9</sup> Lemonade Inc, 10-K filings 2021-2023 (SEC EDGAR) — multi-year combined-ratio history materially above 100%.<br>
+<a id="n10"></a><sup>10</sup> ZA Bank, Hong Kong Monetary Authority virtual-bank licensee disclosures, 2020 onward; ZA Bank subsidiary of ZA International, sister to ZhongAn Online P&amp;C. HKMA register: <a href="https://www.hkma.gov.hk/eng/key-functions/banking/banking-regulatory-and-supervisory-regime/virtual-banks/" target="_blank" rel="noopener">https://www.hkma.gov.hk/eng/key-functions/banking/banking-regulatory-and-supervisory-regime/virtual-banks/</a><br>
+<a id="n11"></a><sup>11</sup> National Financial Regulatory Administration (NFRA, successor to CBIRC) — Internet Insurance Business Supervisory Measures (《互联网保险业务监管办法》), effective 1 February 2021, and subsequent consultation papers on platform-routed distribution. NFRA portal: <a href="http://www.nfra.gov.cn/" target="_blank" rel="noopener">http://www.nfra.gov.cn/</a>
+</p>
+
+<footer>
+Generated 28 May 2026 — v5 Strategy preview — Spock v4 listed-eq pipeline — preview only, not an IC paper
+</footer>
+
+</body>
+</html>
