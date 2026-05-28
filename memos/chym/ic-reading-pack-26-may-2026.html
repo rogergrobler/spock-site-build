@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chime Financial (CHYM.US) — Spock IC Reading Pack</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #f7f5f0;
+    color: #1a1a1a;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 32px 80px; }
+
+  /* Header */
+  .header {
+    border-top: 4px solid #1a1a1a;
+    padding-top: 24px;
+    margin-bottom: 40px;
+  }
+  .header-kicker {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 34px;
+    font-weight: normal;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+  .header-meta {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: #555;
+    margin-top: 12px;
+  }
+  .verdict-badge {
+    display: inline-block;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-top: 16px;
+  }
+  .badge-monitor { background: #fff3cd; color: #7a5c00; border: 1px solid #f0c040; }
+  .badge-fair { background: #e8f4e8; color: #2d6a2d; border: 1px solid #5cb85c; }
+  .badge-eroding { background: #fef0e6; color: #8b4513; border: 1px solid #e8994d; }
+
+  /* Scorecard */
+  .scorecard {
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .score-item { text-align: center; }
+  .score-value {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: block;
+  }
+  .score-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888;
+    margin-top: 2px;
+    display: block;
+  }
+  .score-sub {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 1px;
+    display: block;
+  }
+
+  /* Sections */
+  h2 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #888;
+    border-top: 1px solid #d8d5ce;
+    padding-top: 20px;
+    margin-top: 44px;
+    margin-bottom: 18px;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* Callout boxes */
+  .callout {
+    border-left: 3px solid;
+    padding: 14px 18px;
+    margin: 24px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout-amber { border-color: #e8994d; background: #fef7ee; }
+  .callout-red { border-color: #c0392b; background: #fdf0ee; }
+  .callout-green { border-color: #27ae60; background: #f0faf4; }
+  .callout-blue { border-color: #2980b9; background: #eef6fc; }
+  .callout-grey { border-color: #999; background: #f5f5f5; }
+  /* Only the callout title (direct child first-child) gets the uppercase block header treatment.
+     Inline strongs inside paragraphs stay inline so dollar figures and other emphasis don't break onto their own lines. */
+  .callout > strong:first-child,
+  .callout strong.sub-head {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .callout strong.sub-head { margin-top: 8px; }
+
+  /* Data table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    margin: 20px 0;
+  }
+  th {
+    background: #f0ede6;
+    text-align: left;
+    padding: 9px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #555;
+    border-bottom: 1px solid #d8d5ce;
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #eceae4;
+    color: #1a1a1a;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .highlight-row td { background: #fffbe8; font-weight: 600; }
+  .dim { color: #999; }
+
+  /* Risk grid */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .risk-item {
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 4px;
+    padding: 16px;
+  }
+  .risk-item h4 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .risk-item p { font-size: 14px; margin-bottom: 0; }
+  .risk-high h4 { color: #c0392b; }
+  .risk-medium h4 { color: #e67e22; }
+  .risk-low h4 { color: #27ae60; }
+
+  /* Quote */
+  blockquote {
+    margin: 24px 0;
+    padding: 16px 24px;
+    border-left: 3px solid #d8d5ce;
+    font-style: italic;
+    color: #444;
+    font-size: 15px;
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  /* Footnote / aside box */
+  .aside-box {
+    background: #f0ede6;
+    border: 1px solid #d8d5ce;
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .aside-box .aside-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* AI maturity level table */
+  .ai-level-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    margin: 16px 0;
+  }
+  .ai-level-table th {
+    background: #f0ede6;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #555;
+    border-bottom: 1px solid #d8d5ce;
+    text-align: left;
+  }
+  .ai-level-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eceae4;
+    vertical-align: top;
+  }
+  .ai-level-table tr.ai-active td {
+    background: #fff8e8;
+    font-weight: 600;
+  }
+  .ai-level-table tr:last-child td { border-bottom: none; }
+
+  /* Footer */
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #d8d5ce;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: #aaa;
+  }
+  .workstream-badge {
+    display: inline-block;
+    background: #f0ede6;
+    border: 1px solid #d8d5ce;
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    color: #666;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 600px) {
+    .scorecard { grid-template-columns: repeat(2, 1fr); }
+    .risk-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="ic-reading-pack-26-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="ic-reading-pack-26-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-kicker">Chronos Capital Advisory — Gate 7 Investment Committee (IC) Reading Pack · Partner Only</div>
+    <h1>Chime Financial, Inc.<br>CHYM.US — NASDAQ</h1>
+    <div class="header-meta">
+      Reference price: <strong>$17.80</strong> (22 May 2026) &nbsp;·&nbsp;
+      Market cap: <strong>~$6.8B</strong> &nbsp;·&nbsp;
+      Sector: Fintech / Digital Banking
+    </div>
+    <div>
+      <span class="verdict-badge badge-monitor">Spock verdict: WATCH — NOT BUY · Virtual Chronos Vote 3Y / 4N / 0A</span>
+      &nbsp;
+      <span class="verdict-badge badge-fair">Spock valuation: FAIR — 14.4% prob-weighted internal rate of return (IRR)</span>
+      &nbsp;
+      <span class="verdict-badge badge-eroding">Spock moat: ERODING-AT-THE-EDGES — moat_index 102</span>
+    </div>
+  </div>
+
+  <!-- SCORECARD -->
+  <div class="scorecard">
+    <div class="score-item">
+      <span class="score-value">$647M</span>
+      <span class="score-label">Q1 2026 Revenue</span>
+      <span class="score-sub">+25% year-over-year (YoY) · beat guidance</span>
+    </div>
+    <div class="score-item">
+      <span class="score-value">~90%</span>
+      <span class="score-label">Q1 Gross Margin</span>
+      <span class="score-sub">ChimeCore target hit</span>
+    </div>
+    <div class="score-item">
+      <span class="score-value">10.2M</span>
+      <span class="score-label">Active Members</span>
+      <span class="score-sub">Q1 2026 (vs 9.5M Q4 2025)</span>
+    </div>
+    <div class="score-item">
+      <span class="score-value">14.4%</span>
+      <span class="score-label">Prob-Weighted IRR</span>
+      <span class="score-sub">Spock · sub-hurdle</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1: THE QUESTION -->
+  <h2>The Investment Question</h2>
+  <h3>Is Chime a primary-bank franchise that owns lower-to-middle income America, or a fee-dependent neobank riding its last infrastructure advantage?</h3>
+
+  <p>Chime is America's largest digital bank by active members and among the five largest neobanks globally. Per J.D. Power, more new checking accounts opened with Chime in Q3 2025 than with any listed bank. In Q1 2026 it posted its first GAAP profit as a public company — $53M net income on $647M revenue at ~90% gross margin. The bull case writes itself: 200 million Americans in the core demographic, Chime in the lead, ChimeCore as a technology moat incumbents cannot easily replicate. Street consensus is Buy-skewed at $30.61 — ~72% upside.</p>
+
+  <p>Spock reads it differently, and the difference is structural. Chime holds no banking licence. Substantially all core banking, card and liquidity flows depend on The Bancorp Bank, N.A. (subsidiary of The Bancorp, Inc., NASDAQ: TBBK) and Stride Bank, N.A. — both sitting below the $10B total-assets threshold that exempts them from Durbin interchange caps [Source: Chime FY2025 10-K Exhibit 10.20]. For covered debit transactions not otherwise exempt, economics would move from exempt-issuer realised rates (~$0.55–0.61) to the Regulation II cap (~$0.24 per transaction; $0.21 + 5bp + $0.01) — a direct hit to Chime's primary revenue stream [Source: 12 CFR §235; Nilson Report]. Q1 2026 makes the arithmetic urgent. The Bancorp Bank reported total assets of <strong>$9.90B</strong> (Q1 2025: $8.599B; <strong>+15.1% YoY</strong>) — a buffer of <strong>~$0.1B</strong>. Bancorp manages to the cap explicitly; 2025 actual buybacks were $375M but the 2026 authorisation is only $200M, against deposits that grew 3% in Q1 alone. The buffer is materially tighter than a passive-growth model implies. [Source: TBBK Q1 2026 earnings release; TBBK FY2025 10-K; TBBK Q1 2026 10-Q]</p>
+
+  <p>The thesis hinges on <strong>three clocks</strong>. <strong>Clock 1 — asset/Durbin threshold.</strong> Regulation II §235.5 measures small-issuer status at the <em>end of the preceding calendar year</em>. Q2/Q3 2026 TBBK 10-Qs are leading indicators; the binding measurement is <strong>31 December 2026</strong>. If Bancorp ends 2026 above $10B, compliance is required <strong>no later than 1 July 2027</strong>. <strong>Clock 2 — MSA expiry 30 June 2028</strong>; either party can force the decision with 365 days' notice. <strong>Clock 3 — Cash App co-issuance</strong>, the most consequential because it sits outside Chime's control. Bancorp now co-issues the Cash App Visa Debit Flex Card alongside Sutton Bank (cash.app/card). The Flex Card's penetration, balances, and routing economics are not separately disclosed, so total Cash App monthly actives are not a direct proxy for Bancorp's exposure — but Bancorp's Q1 2026 call confirmed the operational launch (Kozlowski: "successful operational launch of the Cash App program, with clear expectations for increased financial contribution beginning late in the year"). <strong>The diagnostic window is the next two TBBK 10-Qs plus the 31 December 2026 measurement; the repricing event itself is 1 July 2027 at earliest.</strong></p>
+
+  <p>That is the thesis. Everything below is evidence.</p>
+
+  <!-- SECTION 2: THE BUSINESS -->
+  <h2>The Business — How Chime Makes Money</h2>
+  <h3>A fintech that cracked the code for low-to-moderate income (LMI) Americans — built on borrowed infrastructure</h3>
+
+  <p>Chris Britt founded Chime in 2012 out of Green Dot. The insight: incumbent banks charge low-income customers fees precisely when they can least afford them — overdraft, minimum balance, monthly maintenance. Chime would invert it. No fees, no minimums, no overdraft. Revenue from interchange — the 1.5–2% merchants pay on every Visa swipe — and Chime would keep most of it because Bancorp and Stride sit below the $10B Durbin threshold and earn exempt-issuer rates.</p>
+
+  <div class="aside-box">
+    <span class="aside-label">Background note — Green Dot Corporation</span>
+    Green Dot (NYSE: GDOT), founded 1999, was the original "banking for everyone" platform — prepaid debit cards sold at Walmart and CVS checkout lanes. Britt's pre-Chime sequence: ComScore, then Visa, then Green Dot as <strong>Chief Product Officer (2007–2010)</strong> and <strong>SVP Corporate Development (2010–2012)</strong> before co-founding Chime in 2012 [Source: Chime IR Board of Directors page]. Green Dot is what Chime replaced: cash reloads at retail counters versus smartphone onboarding and early direct deposit.
+  </div>
+
+  <p>The model worked. Chime markets ~37 million sign-ups since launch (37M is marketing, not SEC-filed) and reports 10.2 million Active Members in Q1 2026. Listed on NASDAQ <strong>12 June 2025 at $27</strong>; first-day surged to ~$18B before retracing. In Q4 2025 it completed migration to <strong>ChimeCore</strong>, its proprietary payments processor and ledger — eliminating third-party processing dependence, cutting processing costs by an estimated 60%, removing the vendor integration cycle from the roadmap.</p>
+
+  <h3>How we got here</h3>
+
+  <p><strong>Founding (2012–2014).</strong> Britt and Ryan King incorporated Chime in San Francisco in 2012. Britt brought product (ComScore, Visa, Green Dot CPO 2007–2010 and SVP Corp Dev 2010–2012); King brought engineering — ChimeCore's spine is his. Product launched 2014.</p>
+
+  <p><strong>Early traction (2014–2018).</strong> Slow burn. Members grew from low hundreds of thousands through 2017 to ~5M by mid-2019. The LMI $25–75k household had a different funnel than the early product assumed. The pivot to direct-deposit-as-onboarding unlocked CAC; direct-deposit retention turned out extraordinarily sticky.</p>
+
+  <p><strong>The Bancorp relationship — structural, not commercial.</strong> Bancorp's BaaS franchise was built on Chime and other Durbin-sensitive fintechs collectively staying under the threshold. Spock's bear-case modelling uses a <strong>70/30 Bancorp/Stride volume split</strong>; the relationship was always regulatory arbitrage, not best-rate procurement.</p>
+
+  <p><strong>Inflections (2019–2024).</strong> SpotMe (2019) extended fee-free overdraft up to $20 — the breakthrough that reframed Chime from "the cheap bank" to "the bank that takes care of me." August 2021 Series G at a $25B valuation (Sequoia Capital Global Equities led); a Q1 2022 listing was prepared at a $35–45B target. The 2022 reset cut implied valuation ~70% over 18 months (Affirm −80%+; Robinhood −75%; Coinbase −70%). Chime stayed private and burned a chunk of the Series G. The 60% cost-to-serve reduction, Amazon Bedrock deployments, and the operational maturity behind Q1 2026 GAAP profitability date from this forced-discipline window.</p>
+
+  <p><strong>IPO (2024–2025).</strong> Confidential S-1 late 2024; listed <strong>12 June 2025 at $27.00</strong>, raising ~$700M primary plus pre-IPO secondary. First-day peaked above $44. Now 60% below the post-IPO peak and 34.1% below IPO — inside the typical 18-month neobank digestion range (SoFi −75%; Affirm −90%+; Robinhood comparable).</p>
+
+  <p><strong>Q1 2026 inflection.</strong> First GAAP-profitable quarter: $53.5M net income on $647.4M revenue (+24.8% YoY); adj EBITDA $118.6M (~18% margin); ARPAM $251 → $263; actives +19% YoY. SBC normalised to ~$60.7M (annualised $243M, ~10% of revenue, ~78% below the FY25 distortion). Q1 is seasonally the strongest interchange quarter — Q2/Q3 will tell whether the inflection is real. Management's tone was deliberately understated, reading as discipline from a team burned by overpromising.</p>
+
+  <h3>Revenue breakdown</h3>
+
+  <table>
+    <tr>
+      <th>Revenue stream</th>
+      <th>Q1 2026</th>
+      <th>YoY</th>
+      <th>How it works</th>
+    </tr>
+    <tr>
+      <td><strong>Payments revenue</strong> (interchange)</td>
+      <td class="num">$433M</td>
+      <td class="num">+15%</td>
+      <td>Interchange on Chime debit card spend; gated on Bancorp/Stride small-bank exemption</td>
+    </tr>
+    <tr>
+      <td><strong>Platform revenue</strong> (MyPay, Instant Loans)</td>
+      <td class="num">$215M</td>
+      <td class="num">+50%</td>
+      <td>EWA fees, loan fees; ~76% transaction margin Q1; MyPay <strong>annualised above $400M in Q4 2025 and Q1 2026</strong>; FY2025 platform-related revenue from MyPay receivables <strong>$333.5M per 10-K</strong></td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Total revenue</strong></td>
+      <td class="num">$647M</td>
+      <td class="num">+25%</td>
+      <td>Beat guidance ($627–637M); ~90% gross margin</td>
+    </tr>
+    <tr>
+      <td><strong>Full year 2025</strong></td>
+      <td class="num">$2.187B</td>
+      <td class="num">~+31%</td>
+      <td>Adj EBITDA $127M (~6% margin); net loss ~($1.0B) driven by <strong>$1.09B IPO-vesting SBC and related payroll taxes (of which $928M was the SBC charge, balance payroll tax)</strong>; underlying EBITDA solid</td>
+    </tr>
+  </table>
+
+  <p>Management raised 2026 guidance at Q1: revenue <strong>$2.66–2.69B</strong> (+22–23% YoY), adj EBITDA <strong>$416–431M</strong> (~16% margin), incremental EBITDA margin ~60%. First year management expects full-year GAAP profit.</p>
+
+  <h3>Products — what Chime actually offers</h3>
+
+  <p><strong>Chime Spending Account.</strong> No-fee checking with early direct deposit (up to 2 days), no minimum, no overdraft. The backbone. A qualifying direct deposit (≥$200/month) unlocks the full product suite.</p>
+
+  <p><strong>SpotMe.</strong> Fee-free overdraft up to $200 for direct-deposit members; tips voluntary. Limit drops to <em>$0</em> if the member misses a qualifying $200+ deposit in any 34-day window. Pro-cyclical — limits scale with income, reverse of responsible credit behaviour for the LMI demographic.</p>
+
+  <p><strong>MyPay.</strong> Earned-wage access — borrow against accrued paycheck before payday. Free within 24 hours, small fee for instant. <strong>Scaled above $400M annualised in Q4 2025 and Q1 2026</strong>; FY2025 platform-related revenue from MyPay receivables <strong>$333.5M per the 10-K</strong>. The "1% loss rate" is on <em>origination volume</em>, not revenue. Britt framed the 1% rate as <strong>"ahead of plan"</strong> for the second consecutive quarter (paraphrase: "achieved our target of 1% steady-state loss rate, significantly faster than planned"). Transaction margin ~76%. The growth engine the Street is most excited about.</p>
+
+  <p><strong>Chime Card (secured credit).</strong> Launched Q3 2025; no locked deposit, no fees. Share of total purchase volume rose <strong>16% September 2025 → nearly 25% March 2026</strong>. Credit earns materially higher interchange than debit. Britt at JPMorgan TMC, verbatim: <strong>"Close to 60% of new Chime users are signing up for the Chime Card, and among those users, about 70% of spend is on the Chime Card rather than debit."</strong> The clean quantitative mix-shift story in the deck.</p>
+
+  <p><strong>Instant Loans.</strong> Short-term instalment loans; $180M originated in Q1 2026. Repeat-borrower loss rates 50% below first-time. The 9- and 12-month tenors are growing fastest.</p>
+
+  <p><strong>Credit Builder.</strong> Secured card; no locked deposit, no interest, no annual fee. Members use Spending Account balance as security. Community feedback consistently positive — in contrast to SpotMe.</p>
+
+  <p><strong>Chime Prime.</strong> Launched 2 April 2026. Premium tier for members with $3,000+/month qualifying direct deposit: 5% cashback on Chime Card in a chosen category, 3.75% APY on high-yield savings, higher MyPay and Instant Loans limits. Targets "affluent adjacents" and deepens engagement with high-depositors.</p>
+
+  <div class="callout callout-amber">
+    <strong>The Chime Prime sweep paradox</strong>
+    <p style="margin-top:8px">Funding 3.75% APY requires deploying those high-quality balances in high-yielding assets — which keeps them on Bancorp's balance sheet and accelerates the Durbin clock. Sweeping them off to a non-exempt bank means that bank cannot fund 3.75% without a sweep fee Chime would absorb. <strong>Chime's deposit-attraction strategy and Bancorp's Durbin-management strategy are now in direct conflict</strong> — and the full deposit impact won't show in Bancorp's books until Q2/Q3 2026, precisely when the asset buffer is closing.</p>
+  </div>
+
+  <p><strong>Chime Enterprise.</strong> B2B channel — employers offer Chime as a financial wellness benefit. A materially under-priced lever in the bull case. <strong>First Student</strong> (largest US school-bus operator, <strong>more than 65,000 employees</strong> per Q1 2026 release) is the marquee win, confirmed by Britt at JPMorgan TMC. He also named the <strong>November 2025 UKG marketplace partnership</strong> and the <strong>Workday payroll integration</strong>, together enabling an "enterprise version" of MyPay with higher limits and no employee fee. Britt's claim: every enterprise account is a direct depositor and primary relationship from day one; monetisation runs higher <strong>"right out of the gate"</strong> because the consumer-channel attach motion of months collapses into the onboarding handshake. Q1 2026 added four employer partners on top of First Student. Reframes the CAC bear case: acquisition cost is zero-or-negative (employer pays integration; employee is a benefit), and the cohort lands at primary-relationship quality from the first deposit. The cleanest answer to "can Chime grow without ad burn?" — adjacent to, not inside, the Chime Prime upmarket motion.</p>
+
+  <!-- SECTION 3: THE THESIS -->
+  <h2>The Bull Case (Street Consensus)</h2>
+  <h3>200 million Americans, primary account, structural cost advantage — 70% upside on the Street's model</h3>
+
+  <p>Sell-side coverage is broad and Buy-skewed. StockAnalysis consensus Buy / Moderate Buy at $30.61 — 72% upside. The July 2025 post-IPO initiation cohort (9 Buy / 4 Neutral / 1 Sell per Yahoo Finance) included Piper Sandler, JPMorgan, Morgan Stanley, Goldman Sachs, Barclays, Wolfe Research, Canaccord, William Blair, Evercore, UBS. Bull initiation targets clustered at $38–40 and have compressed toward $27–35 on softer macro.</p>
+
+  <table>
+    <tr>
+      <th>Firm / Analyst</th>
+      <th>Rating</th>
+      <th>PT</th>
+      <th>Date</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Canaccord / Joseph Vafi</td>
+      <td>Strong Buy</td>
+      <td class="num">$40</td>
+      <td>May 2026</td>
+      <td>Highest target; held since post-IPO initiation</td>
+    </tr>
+    <tr>
+      <td>Morgan Stanley / James Faucette</td>
+      <td>Overweight</td>
+      <td class="num">$39</td>
+      <td>Oct 2025</td>
+      <td>Reiterated; original lead initiator</td>
+    </tr>
+    <tr>
+      <td>Evercore ISI / Mark Mahaney</td>
+      <td>Buy</td>
+      <td class="num">$35</td>
+      <td>Feb 2026</td>
+      <td>TAM expansion thesis</td>
+    </tr>
+    <tr>
+      <td>B. Riley / Hal Goetsch</td>
+      <td>Strong Buy</td>
+      <td class="num">$35</td>
+      <td>Dec 2025</td>
+      <td>Initiates; MyPay key driver</td>
+    </tr>
+    <tr>
+      <td>JPMorgan / Tien-Tsin Huang</td>
+      <td>Buy</td>
+      <td class="num">$34</td>
+      <td>Nov 2025</td>
+      <td>Cut from $40</td>
+    </tr>
+    <tr>
+      <td>Goldman Sachs / Will Nance</td>
+      <td>Strong Buy</td>
+      <td class="num">$30</td>
+      <td>Jan 2026</td>
+      <td>Upgraded Neutral → Strong Buy 1 Dec 2025 ($27); raised to $30 on 6 Jan 2026</td>
+    </tr>
+    <tr>
+      <td>BMO / Andrew Bauch</td>
+      <td>Buy</td>
+      <td class="num">$30</td>
+      <td>Apr 2026</td>
+      <td>Initiates; credit mix shift</td>
+    </tr>
+    <tr>
+      <td>Wells Fargo / Cassie Chan</td>
+      <td>Buy</td>
+      <td class="num">$28</td>
+      <td>May 2026</td>
+      <td>Raised from $25</td>
+    </tr>
+    <tr>
+      <td><strong>Rothschild Redburn / Harry Bartlett</strong></td>
+      <td><strong>Hold</strong></td>
+      <td class="num"><strong>$29</strong></td>
+      <td><strong>Jan 2026</strong></td>
+      <td><strong>Only public note explicitly engaging Bancorp/Durbin — see Bear Case</strong></td>
+    </tr>
+    <tr>
+      <td>UBS / Timothy Chiodo</td>
+      <td>Hold</td>
+      <td class="num">$27</td>
+      <td>Feb 2026</td>
+      <td>Valuation full; profitability overhang; does not engage regulatory tail</td>
+    </tr>
+    <tr>
+      <td>Jefferies / Trevor Williams</td>
+      <td>Hold</td>
+      <td class="num">$17</td>
+      <td>Nov 2025</td>
+      <td>Lowest target; effectively a price call</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>Consensus (StockAnalysis)</td>
+      <td>Buy</td>
+      <td class="num">$30.61</td>
+      <td>May 2026</td>
+      <td>~72% implied upside; no Sell ratings observed</td>
+    </tr>
+  </table>
+
+  <p>The bull thesis in three sentences. Chime owns brand dominance in primary accounts for mainstream America. ChimeCore delivers 60%-lower cost-to-serve, ~90% gross margin (hit in Q1 2026), and the product velocity to compound the advantage. MyPay (annualised above $400M Q4 2025 and Q1 2026; FY2025 platform revenue from MyPay $333.5M; ~76% transaction margin; 1% loss "ahead of plan") plus Chime Card (~25% of purchase volume, ~60% new-user attach, ~70% of attached users' spend on card) shift mix toward higher take rates — driving sustained 20%+ revenue growth and rapidly expanding margins. The enterprise channel (First Student >65,000 employees, UKG, Workday) reframes the CAC bear case: direct-deposit-primary day one, monetisation "right out of the gate."</p>
+
+  <p><strong>One adjustment.</strong> The 18 May 2026 transcript is softer than "when, not if" suggests: forward optionality, not commitment, and not Bancorp-dependency relief on a 12–24 month horizon. The cleaner near-term bull points are (a) the Chime Card mix-shift on 60%/70% attach economics, and (b) the enterprise channel landing direct-deposit-primary cohorts at near-zero CAC.</p>
+
+  <h3>Analyst gap analysis — what the Street is and is not asking</h3>
+
+  <p><strong>The Street is asking:</strong> revenue growth durability post-Q1; EBITDA margin trajectory to 16–18% by FY26; MyPay loss-rate; Chime Card mix. Consensus assumes Bancorp/Durbin is bounded and non-imminent. <strong>18 analysts (StockAnalysis / S&amp;P Global, May 2026)</strong> cover CHYM; consensus PT $30.61.</p>
+
+  <div class="callout callout-amber">
+    <strong>What the Street is NOT asking — the explicit gaps</strong>
+    <p style="margin-top:8px"><strong class="sub-head">1. Bancorp Q2 2026 10-Q implications.</strong> No analyst has modelled the asset-trajectory scenarios where Bancorp crosses $10B in the next two reporting periods.</p>
+    <p style="margin-top:6px"><strong class="sub-head">2. Cash App co-issuance.</strong> Bancorp now co-issues Cash App's Visa Debit Flex Card with Sutton Bank (cash.app/card) — a deposit-driver Chime doesn't control. <strong>TBBK has not disclosed it in any filed document</strong>: full-text searches of the FY2025 10-K and Q1 2026 10-Q return zero "Cash App" hits; the only reference sits in Kozlowski's Q1 2026 call. First written disclosure expected in TBBK's Q2 2026 10-Q (August 2026).</p>
+    <p style="margin-top:6px"><strong class="sub-head">3. The MSA economic split.</strong> Exhibit 10.20's economic terms are redacted; no sell-side note attempts to triangulate the interchange split with Bancorp.</p>
+    <p style="margin-top:6px"><strong class="sub-head">4. The non-circumvention clause.</strong> No analyst has discussed whether multi-bank distribution is legally viable under Durbin's non-circumvention provision [12 CFR §235.6]. The Cherukuri and Ringing the Bell substacks are the only public commentary applying §235.6 to neobank multi-bank workarounds.</p>
+    <p style="margin-top:6px"><strong class="sub-head">5. Credit-cycle stress on MyPay.</strong> All published notes model MyPay loss rates at benign-cycle 1% on origination volume. None stress to 3–4% normalised.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Why the gap exists.</strong> The arithmetic requires reading <em>Bancorp's</em> 10-Q, not Chime's. The Chime desk doesn't pull TBBK filings; the Bancorp desk (such as it is) doesn't write about Chime. The information lives in a seam between two desks.</p>
+  </div>
+
+  <h3>Investor sentiment — the market is not pricing this</h3>
+
+  <p>Workstream H's investor-sentiment synthesis reaches the same conclusion from a different angle: the regulatory tail is absent from the entire retail and activist signature.</p>
+
+  <div class="callout callout-grey">
+    <strong>Investor sentiment — six signals, all in the same direction</strong>
+    <p style="margin-top:8px"><strong class="sub-head">1. No activist short coverage.</strong> Hindenburg, Muddy Waters, Spruce Point, Citron, Wolfpack, Kerrisdale and Bonitas all return zero indexed publications on CHYM since the June 2025 IPO. Eleven months public, ~$5B float — and not one named activist has put a target on the name. No published third-party validation of the Bancorp/Durbin thesis; no public catalyst to crystallise it.</p>
+    <p style="margin-top:8px"><strong class="sub-head">2. Short interest small, trending down.</strong> 9.5M shares short, 6.4% of float, 1.9 ratio (Finviz). Benzinga's 30 January 2026 read had the position −3.6% MoM; a brief late-March spike to ~13.8M has bled back to ~9.5M, consistent with forced covering after the 6 May beat. The market is shedding shorts, not loading up.</p>
+    <p style="margin-top:8px"><strong class="sub-head">3. Pre-Q1 options flow was retail-bullish gambling.</strong> 19:6 calls-to-puts at 3× normal volume into the 6 May print (TrendSpider): 1,500-contract sweep at $25 strike (15 May), 650-contract block at $20 strike, OTM call interest to Jan 2028 at $27.50. Put activity confined to $22.50. Heavy near-money OTM call buying with no put-side hedge is positioned bullish, not protective. The Durbin tail does not appear in the options signature.</p>
+    <p style="margin-top:8px"><strong class="sub-head">4. Retail conversation is Chime Prime, GAAP profit, macro credit — not Bancorp.</strong> Across Simply Wall St (54.7% of followers value CHYM at ~$40), StockTitan, ChartMill, Insider Monkey, Yahoo Finance and Substack coverage, the threads are (i) first GAAP profit, (ii) Chime Prime as on-ramp from debit to credit, (iii) valuation pullback creates entry, (iv) sub-$100k credit risk if macro turns. Bartlett (Rothschild Redburn, Hold $29, 26 January 2026) remains the only published voice engaging Durbin. Existing bears (Fintech Markets Weekly, 25 February 2026, disclosed short) engage credit/macro, not Bancorp.</p>
+    <p style="margin-top:8px"><strong class="sub-head">5. Institutional posture is constructive.</strong> Hedge-fund 13F holder count rose 39 → 49 from Q4 2025 to Q1 2026. Capital Research Global Investors +90% (now 6.88M shares); U.S. Capital Wealth Advisors +43.1% in Q4 2025. Patient Capital Management (13 April 2026 via Insider Monkey): <em>"We continue to believe Chime is a differentiated and well-positioned business… weakness is a reflection of near-term sentiment rather than any fundamental deterioration in the business."</em> The opposite of a building-short / lightening-long pattern.</p>
+    <p style="margin-top:8px"><strong class="sub-head">6. Structural implication.</strong> If Spock is right, no retail or activist catalyst will force a re-rate. Patient capital must sit through extended consensus disagreement. TBBK Q2/Q3 2026 10-Qs are leading-indicator diagnostics; the legally decisive catalyst is the 31 December 2026 measurement (Reg II §235.5) crystallised in the 4Q 2026 10-K (~February 2027), with 1 July 2027 the earliest repricing. The price reaction will be <strong>discontinuous — concentrated at the catalyst window, not gradual</strong>. If Spock is wrong, the consensus has correctly weighted the risk and 14.4% is the wrong number. The sentiment work does not lower conviction on the Spock call; it flags a long re-rate horizon with no friendly catalyst.</p>
+  </div>
+
+  <!-- SECTION 4: THE BEAR CASE -->
+  <h2>The Bear Case — What the Street Is Not Asking</h2>
+  <h3>The Bancorp Durbin clock is ticking. We have not found a sell-side analyst who has put a number on when it strikes.</h3>
+
+  <div class="callout callout-red">
+    <strong class="sub-head">Britt's signal: "when, not if" — but softer than the headline</strong>
+    <p style="margin-top:8px">On <strong>Monday 18 May 2026 at 10:25 a.m. EDT</strong>, at the <strong>J.P. Morgan 54th Annual Global TMC Conference in Boston</strong>, Britt described pursuing a US bank charter as <strong>"a when, not if."</strong> [Sources: Chime IR press release 27 April 2026; Seeking Alpha (paywalled); Banking Dive 18–19 May 2026; Yahoo Finance / Cerbat Gem syndicated coverage.]</p>
+    <p style="margin-top:8px"><strong class="sub-head">The verb tense escalates; the content does not.</strong> May 2025 (S-1): "Chime is a technology company, not a bank." 4 December 2025 (Troughton, then-COO, Banking Dive): "won't rule out." 18 May 2026 (Britt): "when, not if." Three data points, one verb-tense direction. <strong>The transcript content is materially softer than the headline.</strong> Britt's fuller framing: <em>"It's, to some degree, an inevitability that we'll become a bank; the question is just, when?"</em> + <em>"Every year, we take a step back and evaluate, is now the time?"</em> + <em>"[Regulators have] demonstrated an openness to new charter applications, so it's something we'll be looking at again this year and figuring out what the best path is."</em></p>
+    <p style="margin-top:8px"><strong class="sub-head">What Britt did NOT say.</strong> No calendar year, no IPO-relative milestone, no capital estimate, no OCC-vs-state preference, no de novo-vs-acquisition preference. "Looking at again this year" is annual evaluation. "Figuring out what the best path is" preserves optionality across (i) de novo OCC, (ii) acquire a state bank, (iii) acquire a community/national bank, (iv) status quo via Bancorp/Stride.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Bearish, not bullish, for near-term optionality.</strong> The verb-tense escalation is real; the content is "we evaluate annually." <strong>Charter pursuit will not resolve Bancorp dependency in 12–24 months at the speed "when, not if" implies in isolation.</strong> Over a longer horizon: a charter eliminates the dependency entirely, and the direction is one-way. At JPM TMC Britt named Bancorp and Stride "incredible thought partners" without addressing the $10B threshold, the Cash App co-issuance, or contractual protections; Huang did not press. The silence is information.</p>
+  </div>
+
+  <div class="callout callout-red">
+    <strong>The Bancorp arithmetic — three separate clocks, all running</strong>
+    <p style="margin-top:8px"><strong class="sub-head">Clock 1 — Asset / Durbin threshold.</strong> <strong>Reg II §235.5</strong> determines small-issuer status by <em>asset size at end of preceding calendar year</em>. Q2/Q3 2026 TBBK 10-Qs are leading indicators; the binding date is <strong>31 December 2026</strong>. If Bancorp ends 2026 above $10B, compliance is required <strong>no later than 1 July 2027</strong>. Q1 2026 total assets <strong>$9.90B</strong> (Q1 2025 $8.599B; <strong>+15.1% YoY</strong>) — buffer <strong>~$0.1B</strong>. Q1 sequential: $546M total assets, $454M deposits, against $50.3M buyback. <strong>Buyback capacity is shrinking</strong> — 2025 actual $375M; 2026 authorisation $200M, $50.3M spent in Q1. TBBK's April 2026 investor presentation (Q1 2026 8-K, Exhibit 99.2) concedes the framing: "capital management is an integral part of The Bancorp's strategy including managing to an asset cap of $10B (per FRB Reg II, Durbin)." Repricing risk <strong>1 July 2027 at earliest</strong>; diagnostic window now-quarter, cliff ~13 months out.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Clock 2 — MSA contractual (with disclosed Durbin termination right).</strong> Exhibit 10.20 §9.1(a): 60-month initial term from 1 July 2023, expiring 30 June 2028. Mutual 365-day non-renewal notice; earliest notice 30 June 2027. Stride 180 days. TBBK's FY2025 10-K Risk Factors disclose verbatim: <em>"certain of our fee-sharing relationship agreements include the right to terminate our agreement"</em> if TBBK loses the Durbin exemption. <strong>The asset cap is contractually covenanted with at least some TBBK partners.</strong> Whether the Chime MSA contains this clause is unknown (Exhibit 10.20 §9 partially redacted), but the existence of such clauses at TBBK is load-bearing — partners can walk if TBBK loses exemption. Chime's 10-K acknowledges its growth may push partner banks past $10B.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Clock 3 — Cash App on Bancorp.</strong> Bancorp co-issues the Cash App Visa Debit Flex Card alongside Sutton — a non-Chime deposit-pressure vector. Flex Card penetration, balances, and routing economics are not separately disclosed, so total Cash App actives are not a direct proxy for Bancorp's exposure; ordinary Cash App prepaid remains Sutton-only and savings sit via Wells Fargo / Sutton. But a Flex Card growth event — expanded rollout, Bitcoin-linked features, marketing pulses — pushes Bancorp's balance sheet up regardless of Chime. <strong>This clock runs on Cash App's roadmap.</strong> TBBK has not disclosed the co-issuance in any 10-K or 10-Q; first written disclosure expected in Q2 2026 10-Q (August 2026). [Source: cash.app/card; Bancorp Q1 2026 call — Kozlowski: "successful operational launch of the Cash App program, with clear expectations for increased financial contribution beginning late in the year"]</p>
+    <p style="margin-top:8px"><strong class="sub-head">Concentration is also tightening.</strong> Top-three partner concentration by deposits stepped up from <strong>47% at FY-end 2025 to ~58% in Q1 2026</strong> ($3.83B → $4.85B against a 3% deposit base) — a previously unflagged single-quarter tightening. The Q1 10-Q relabelled "top three partner relationships" to "top three affinity groups." TBBK does not name Chime in any filing; the realistic band for Chime's share of TBBK revenue is <strong>10–25%</strong>, and the top-3-by-deposit set is not the top-3-by-income set. A Chime departure equates to ~15–25% deposit hit / 20–30% revenue hit at TBBK.</p>
+    <p style="margin-top:8px">These are not the same risk. Clock 1 is mechanical. Clock 2 is contractual and explicitly Durbin-covenanted. Clock 3 is structural and outside Chime's control. All three run independently. Sell-side coverage prices none.</p>
+  </div>
+
+  <p>Among public analyst notes Spock has reviewed, only Harry Bartlett at Rothschild Redburn (Hold, $29, January 2026) names the risk:</p>
+
+  <blockquote>
+    "As partner banks approach Durbin-restricted capacity, a greater share of loans will likely move onto Chime's balance sheet… pressuring Chime's multiple over time."
+    <cite>— Harry Bartlett, Rothschild Redburn, 26 January 2026</cite>
+  </blockquote>
+
+  <p>No other indexed sell-side commentary puts a dollar number on the trigger, models TBBK restructuring, or stress-tests the multiple compression. The Street solves for a 12-month price; Spock solves for probability-weighted IRR across scenarios including the tail.</p>
+
+  <div class="callout callout-grey">
+    <strong>Why the Street is not asking</strong>
+    <p style="margin-top:8px">Seeing the bear requires five steps in two filings on a company the analyst doesn't cover: pull TBBK Q1 2026 10-Q ($9.898B), pull Q4 2025 ($9.352B), compute $546M sequential gain against $50M buyback, recognise the math doesn't close at year-end measurement.</p>
+    <p style="margin-top:8px">1. <strong>Catalyst is ~13 months out.</strong> Legally decisive date 31 December 2026 (§235.5), with 1 July 2027 repricing — closer than career-asymmetric sell-side horizons engage, and reading TBBK rather than Chime.</p>
+    <p style="margin-top:6px">2. <strong>Britt is doing his job.</strong> The CEO won't flag that the economic model depends on a threshold his sponsor bank can't fully control; the signal is in his verb tense.</p>
+    <p style="margin-top:6px">3. <strong>Base rate.</strong> "Regulatory cliff" calls have been wrong for a decade, until they aren't.</p>
+    <p style="margin-top:6px">4. <strong>Coverage seam.</strong> The arithmetic lives in TBBK's 10-Q, which the Chime desk doesn't pull.</p>
+    <p style="margin-top:6px">5. <strong>Bancorp's disclosure is artfully bland.</strong> The 8-K's "managing to an asset cap of $10B" is technically explicit but stylistically muted; a skimmer won't realise the buffer is $0.1B.</p>
+    <p style="margin-top:8px"><strong class="sub-head">6. Britt himself did not engage Bancorp at JPM TMC.</strong> He named Bancorp and Stride "incredible thought partners" and did not address the $10B threshold, Cash App co-issuance, or contingency planning. Huang did not press. <strong>The silence is information.</strong></p>
+    <p style="margin-top:6px"><strong class="sub-head">7. No activist short report; no retail bear engagement.</strong> Zero indexed activist coverage; short interest 9.5M shares, 6.4% float, 1.9 ratio (Finviz); −3.6% MoM (Benzinga 30 January 2026). Pre-Q1 options ran 19:6 calls-to-puts at 3× normal volume with 1,500-contract $25 call sweeps — retail-bullish gambling. <strong>The market is not pricing the regulatory tail at all.</strong></p>
+    <p style="margin-top:8px"><strong class="sub-head">Position-sizing.</strong> When the catalyst materialises — TBBK 4Q 2026 10-K (~February 2027) or out-of-cycle 8-K — every sell-side note pivots the same day. Price reaction will be <em>discontinuous, not gradual</em>. Size for a starter that survives a gap-down.</p>
+  </div>
+
+  <div class="aside-box">
+    <span class="aside-label">Substantive non-Street coverage</span>
+    Three non-Street sources do the arithmetic the sell-side has not — flagging Durbin's non-circumvention clause (12 CFR §235.6) and quantifying the exempt-vs-capped gap: <strong>Cherukuri</strong> "IPO Deep Dive" (finsignals.substack); <strong>"Ringing the Bell"</strong> (ringingthebell.substack); <strong>Sacra</strong> equity research (February 2026). §235.6 is the load-bearing citation; the substacks corroborate. Sacra is also the source for Cross River Bank approaching its own $10B threshold.
+  </div>
+
+  <h3>What are Chime's alternatives if the partner banks reach the threshold?</h3>
+
+  <p>The clock is real but Chime has options.</p>
+
+  <table>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+      <th>Timeline</th>
+      <th>Spock read</th>
+    </tr>
+    <tr>
+      <td><strong>1. New partner bank</strong></td>
+      <td>Cross River (Fair Lawn, NJ), Sutton (Attica, OH), Evolve (Memphis, TN) — historically below $10B with BaaS experience. Switching requires re-architecting the banking relationship and re-registering FDIC pass-through. Concentration risk transfers.</td>
+      <td>12–18 months</td>
+      <td><strong>Capacity-constrained:</strong> Cross River may itself be approaching its own Durbin trigger (Sacra, February 2026); Evolve is in post-Synapse difficulty. Viable shortlist small.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Multi-bank distribution</strong></td>
+      <td>Spread deposits across several smaller banks, each managed below threshold. Cuts single-partner concentration. Precedent: Betterment, SoFi.</td>
+      <td>18–24 months</td>
+      <td>Structurally narrower than it appears. <strong>Durbin's non-circumvention clause [12 CFR §235.6]</strong> gives regulators authority to challenge multi-bank distribution as gaming. A regulatorily fragile workaround. No sell-side note has discussed.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Acquire a bank charter</strong></td>
+      <td>Buy a community bank or pursue de novo. Typically 18–24 months and ~$500M+ capital. OCC oversight; CRA obligations non-trivial.</td>
+      <td>18–24 months minimum</td>
+      <td>Strategically powerful, operationally heavy. SoFi's took ~18 months. <strong>Britt's "when, not if" raises long-run probability but the transcript content is softer than the headline</strong> — annual evaluation, no calendar year, no path preference. See Britt's signal callout. Pursuit will not resolve Bancorp dependency in 12–24 months.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Credit-card pivot</strong></td>
+      <td>Shift mix toward Chime Card (secured credit) — credit interchange not subject to Durbin caps. Underway: 16% → 25% of purchase volume in Q1 2026. At 40–50%, debit-Durbin stops being thesis-defining.</td>
+      <td>2–3 years to scale</td>
+      <td>Most actionable near-term response; already in motion. Trade-off: imports credit-cycle risk into a currently low-credit-risk model.</td>
+    </tr>
+    <tr>
+      <td><strong>5. Accept Durbin-rate economics</strong></td>
+      <td>Take the cut from ~$0.55–0.61 to ~$0.24 and offset with higher platform revenue (MyPay, Instant Loans, Chime Prime). How JPMorgan operates. ChimeCore savings help.</td>
+      <td>2–3 years of platform growth</td>
+      <td>Viable only if MyPay and credit revenue compound at current rates and the credit cycle cooperates.</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-blue">
+    <strong>Spock view on the alternatives</strong>
+    <p style="margin-top:8px">Option 4 (credit pivot) is the most actionable near-term response, already underway — but imports credit-cycle risk. Option 1 (new partner bank) is the logical backup but capacity-constrained: Cross River may itself be approaching $10B; Evolve is in post-Synapse difficulty. The July 2028 MSA expiry is the forcing function. Chime should be negotiating contingencies now; the absence of IR disclosure is itself a watch item. Partners should ask IR on the next call what the renewal plan is.</p>
+    <p style="margin-top:8px"><strong class="sub-head">No Durbin protection in the MSA.</strong> Exhibit 10.20 contains no MAC clause tied to Bancorp's asset base, no economic adjustment on $10B breach, no Chime termination right triggered by Bancorp's Durbin status. The $750M Asset-Based Program threshold in §2.10 caps credit-product capacity, not interchange. <strong>If Bancorp breaches, Chime absorbs full compression with no contractual cushion.</strong></p>
+    <p style="margin-top:8px"><strong class="sub-head">The option set is narrower than the table suggests.</strong> Option 2 is regulatorily fragile once §235.6 is taken seriously. Option 1 is capacity-constrained. Option 3 is Britt's stated direction but 18–36 months out. Option 4 imports credit-cycle risk. Option 5 compresses the IRR materially. <em>One of the load-bearing reasons the bear case is structurally harder than the Street treats it.</em></p>
+  </div>
+
+  <h3>The active-member ambiguity</h3>
+
+  <p>Chime's 10.2M "Active Members" is the headline — but "active" means at least one money-movement transaction in the prior month. The S-1's "67% primary bank" claim uses an even looser cut: 15+ card transactions per month <em>or</em> a single $200+ direct deposit. A gig worker routing one $200 DoorDash payout monthly qualifies as "primary." The S-1 showed 8.6M active / 5.7M "primary" — ~2.9M actives don't qualify as primary on Chime's own loose definition. Cornerstone Advisors (Q3 2025): 52% of new Chime checking accounts are <em>additional</em> accounts alongside an existing bank. The "this-is-my-only-bank" sticky base is closer to 3–4M than the 5.7M headline. The 37M total-registrations figure is marketing, not audited SEC disclosure.</p>
+
+  <h3>The AI story is operational, not product-defining</h3>
+
+  <p>AI is real and produces genuine cost savings — but the story is operational. The 10-K and Q1 2026 release describe efficiency: cost-to-serve down ~60% over three years, AI-assisted code rising from 29% to 84% in Q1 2026. Outcomes — but they describe how Chime builds faster and cheaper, not a novel AI revenue line incumbents cannot replicate.</p>
+
+  <div class="callout callout-grey">
+    <strong>Spock AI Maturity Assessment — Level 2: Operational AI</strong>
+    <p style="margin-top:8px">Spock applies a five-level framework to assess how materially AI shapes a company's competitive position:</p>
+
+    <table class="ai-level-table" style="margin-top:12px">
+      <tr>
+        <th style="width:200px">Level</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Level 1 — Rule-based automation</td>
+        <td>Scripted logic, no machine learning (ML); AI tools not present in any material way</td>
+      </tr>
+      <tr class="ai-active">
+        <td><strong>Level 2 — Operational AI ← Chime</strong></td>
+        <td><strong>ML deployed for internal efficiency (fraud, risk, cost reduction); the same tools are available from the same vendors to any well-capitalised competitor; not a customer-facing moat</strong></td>
+      </tr>
+      <tr>
+        <td>Level 3 — AI-augmented product</td>
+        <td>AI visibly improves core product user experience (UX) — personalisation, recommendations, natural-language interfaces; some data moat beginning to form</td>
+      </tr>
+      <tr>
+        <td>Level 4 — AI-native product</td>
+        <td>The product IS the AI; proprietary model trained on data competitors cannot replicate; data flywheel creates competitive separation</td>
+      </tr>
+      <tr>
+        <td>Level 5 — AI-transformed business model</td>
+        <td>AI reshapes the economics and value chain of the entire industry vertical; creates category-defining advantage</td>
+      </tr>
+    </table>
+
+    <p style="margin-top:14px"><strong>Spock view.</strong> Chime sits at Level 2. Outcomes are real — cost-to-serve down ~60%, fraud losses down 29%, AI-assisted code from 29% to 84% in Q1 2026. But SoFi, Cash App, Nubank can achieve the same on the same vendor stack (Amazon Bedrock + Anthropic Claude + Freeplay AI — Freeplay is LLM evaluation/observability, not a foundation-model capability). No proprietary models; no disclosed fine-tuned outperformance. Level 3/4 would require (a) fine-tuned outperformance on a defined task, (b) a customer-facing AI product, or (c) AI-attributed revenue (not cost).</p>
+    <p style="margin-top:8px"><strong class="sub-head">ChimeCore is banking infrastructure, not proprietary AI.</strong> Ledger, dispute and fraud workflows, the data substrate any internal AI workflow consumes without legacy-system impediment. A real moat — Fiserv DNA Core / Jack Henry / FIS-equivalent built in-house — but <em>banking infrastructure, not AI</em>. ChimeCore enables AI velocity; the AI itself is not the moat. Calling ChimeCore "an AI moat" is a category error this pack avoids.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Plausible AI moat.</strong> One mechanism: the data flywheel from ~37M registrations / 10.2M actives across direct-deposit penetration, SpotMe signatures, Credit Builder / MyPay activity. A real substrate, sufficient to deliver 60–80%-of-peer-cost economics for several years. Not architectural separation from competitors with comparable scale.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Verdict.</strong> Gate 6 PASS rests on operational AI execution and ChimeCore, not architectural AI. Anyone walking into IC saying "Chime is an AI investment" should be redirected to "distribution-and-data investment with an AI-enabled cost structure." <strong>The load-bearing variable is the Bancorp/Durbin dependency, not the AI capability.</strong></p>
+  </div>
+
+  <!-- SECTION 5: COMMUNITY INTELLIGENCE -->
+  <h2>Community Intelligence — What Customers Actually Experience</h2>
+  <h3>Acquisition machine; retention vulnerability</h3>
+
+  <p>Chime captured 13% of all new US checking accounts in Q3 2025 — more than Chase (9%), Wells Fargo (7%), or Bank of America (7%). SoFi and Cash App both lose more checking customers to Chime than to any other institution. The acquisition engine works. The retention signal tells a different story.</p>
+
+
+  <div class="risk-grid">
+    <div class="risk-item risk-high">
+      <h4>Account closures — documented, systemic</h4>
+      <p>2,645 BBB complaints in TTM (25 May 2026); 7,738 over three years; only 7.5% marked resolved. The May 2024 CFPB order found "thousands of instances" where Chime failed to refund within 14 days, and thousands more beyond 90 days. Total enforcement: <strong>at least $4.55M ($3.25M CMP to the CFPB victims relief fund plus ≥$1.3M consumer redress)</strong>. A regulator-confirmed pattern. Closures trigger on government deposits, fraud disputes, and activity flags, often without explanation. Complaints continue as of May 2026.</p>
+    </div>
+    <div class="risk-item risk-high">
+      <h4>SpotMe is pro-cyclical</h4>
+      <p>Limits rise and fall with direct deposits; drop to $0 after 34 days without a qualifying $200+ deposit. For an LMI member who loses a gig, changes jobs, or has disrupted payroll, SpotMe disappears exactly when it would matter most. The "always-there overdraft protection" positioning is inconsistent with this mechanic. Community platforms flag it repeatedly.</p>
+    </div>
+    <div class="risk-item risk-medium">
+      <h4>Support quality gap on high-stakes cases</h4>
+      <p>Chime claim: AI handles 70% of support; CSAT doubled. Reality: AI deflection works on routine queries and fails on fraud disputes, account closures, and locked funds — the cases where LMI members face real harm. PissedConsumer: 1,138 reviews (25 May 2026), 2.1-star average, 28% would recommend. CSAT improvement is real but selection-biased toward resolvable surface cases.</p>
+    </div>
+    <div class="risk-item risk-medium">
+      <h4>April 2026 outage / Iran-breach allegations</h4>
+      <p>Multi-hour app outage ~1 April 2026 (20,000 user reports at peak). Iran-linked "Team 313" claimed a breach. Three class actions filed in N.D. Cal. (Castaneda, Walsh, one further). Chime denies; Team 313 has a history of fabricated claims. Litigation exists regardless. Unresolved as of May 2026.</p>
+    </div>
+    <div class="risk-item risk-low">
+      <h4>Credit Builder — genuine positive</h4>
+      <p>The one straightforwardly positive community signal. No locked deposit, no fees, no interest — structurally superior to most secured card alternatives. Reviews cite real credit-score gains.</p>
+    </div>
+    <div class="risk-item risk-low">
+      <h4>Competitive position — acquisition winning</h4>
+      <p>Conversion rate for considered checking: 77% (highest of measured competitors); savings 86%. Switching data shows Chime net-gaining at scale. The risk is retention of members after a trust-rupture event — for LMI customers a single wrongful closure is catastrophic in ways it isn't at a traditional bank.</p>
+    </div>
+  </div>
+
+  <h3>Voice-of-customer — product-level texture</h3>
+
+  <p>The same closure, dispute, and refund-timing patterns recur on Trustpilot (1.3/5 across 4,847 reviews; 78% one-star). Beneath the complaints database, four product-level threads matter:</p>
+
+  <ul style="margin-left:20px; margin-bottom:16px">
+    <li style="margin-bottom:8px"><strong>MyPay APR framing.</strong> Reddit threads consistently translate MyPay fees into APR and arrive at 100%+ on small advances ("$5 fee on a $100 advance for two weeks ≈ 130% APR"). The framing characterises MyPay as a "fee" rather than interest to avoid disclosure requirements — exactly where a CFPB EWA action would land.</li>
+    <li style="margin-bottom:8px"><strong>Onboarding friction (KYC).</strong> Would-be members rejected at identity verification with no explanation and no alternative path. Invisible in active-member metrics by definition, but brand-shaping at the front door.</li>
+    <li style="margin-bottom:8px"><strong>Direct member quotes (Reddit).</strong> <em>"The AI chat just gives you the same canned responses over and over. It can't actually resolve anything. When you ask for a human it says 'I can help with that' and then gives you another canned response."</em> <em>"My SpotMe limit went from $200 to $0 overnight with no explanation. Customer service just says 'our system made this decision.'"</em></li>
+    <li style="margin-bottom:8px"><strong>Positive cluster — early direct deposit.</strong> <em>"Getting paid 2 days early has genuinely changed my financial life. I can pay bills on time now."</em> Consistent with Chime's acquisition advantage.</li>
+  </ul>
+
+  <p>The product-level texture confirms the closure, dispute, and SpotMe-volatility patterns are not complaint-database artefacts — they appear in unprompted member discussion, including from members who otherwise praise the product.</p>
+
+  <!-- SECTION 6: FINANCIALS IN DETAIL -->
+  <h2>Financial Picture</h2>
+  <h3>Strong execution — but the unit economics depend on one regulatory exemption</h3>
+
+  <table>
+    <tr>
+      <th>Metric</th>
+      <th class="num">Full year 2023</th>
+      <th class="num">Full year 2024</th>
+      <th class="num">Full year 2025</th>
+      <th class="num">Q1 2026</th>
+    </tr>
+    <tr>
+      <td>Revenue</td>
+      <td class="num dim">—</td>
+      <td class="num dim">~$1.7B</td>
+      <td class="num">$2.187B</td>
+      <td class="num">$647M</td>
+    </tr>
+    <tr>
+      <td>Gross profit</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num">$1.9B</td>
+      <td class="num">$580M</td>
+    </tr>
+    <tr>
+      <td>Gross margin</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num">88%</td>
+      <td class="num"><strong>~90%</strong></td>
+    </tr>
+    <tr>
+      <td>Adjusted EBITDA</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num">$127M (~6%)</td>
+      <td class="num">$119M (~18%)</td>
+    </tr>
+    <tr>
+      <td>Net income / (loss)</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num">~($1.0B)*</td>
+      <td class="num"><strong>$53M</strong></td>
+    </tr>
+    <tr>
+      <td>Active members</td>
+      <td class="num dim">—</td>
+      <td class="num dim">~8.0M</td>
+      <td class="num">9.5M (Q4)</td>
+      <td class="num">10.2M</td>
+    </tr>
+    <tr>
+      <td>Average revenue per active member (ARPAM)</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num">$257 (Q4)</td>
+      <td class="num">$263</td>
+    </tr>
+    <tr>
+      <td>Purchase volume</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num">$134B</td>
+      <td class="num">$38.7B (Q1)</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>2026 guidance (raised at Q1)</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num">Revenue $2.66–2.69B · adjusted EBITDA $416–431M (~16%)</td>
+    </tr>
+  </table>
+
+  <p class="dim" style="font-size:13px">* FY25 net loss ~($1.0B) includes <strong>$1.09B IPO-vesting SBC and related payroll taxes ($928M SBC charge plus balance in payroll tax)</strong> tied to the June 2025 IPO — a one-time charge. Underlying adj EBITDA $127M.</p>
+
+  <h3>Product obligation — the hidden credit exposure (decomposed)</h3>
+
+  <p>The 10-K discloses a <strong>product obligation</strong> of $147.4M at 31 December 2025, up from $114.4M at end-2024 (+29% YoY). Maximum gross exposure: <strong>$722.3M</strong>, +59% YoY from $454.3M. Decomposition from the 10-K notes:</p>
+
+  <table>
+    <tr>
+      <th>Component</th>
+      <th class="num">FY2025 T&amp;R losses</th>
+      <th>Context</th>
+    </tr>
+    <tr>
+      <td>MyPay (T&amp;R losses)</td>
+      <td class="num">$127.1M</td>
+      <td>FY2025 platform-related revenue from MyPay receivables $333.5M (10-K); MyPay annualised above $400M in Q4 2025 and Q1 2026. The "1% loss rate" is on origination volume, not revenue.</td>
+    </tr>
+    <tr>
+      <td>Instant Loans (T&amp;R losses)</td>
+      <td class="num">$24.7M</td>
+      <td>Launch-year T&amp;R; small relative to MyPay, improving as cohorts mature.</td>
+    </tr>
+    <tr>
+      <td>SpotMe and other negative balances</td>
+      <td class="num">$114.4M</td>
+      <td>Core overdraft exposure.</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>Total T&amp;R losses</td>
+      <td class="num">$266.2M</td>
+      <td>Net product obligation charge to FY2025 P&amp;L: $41.8M (change in fair value).</td>
+    </tr>
+  </table>
+
+  <p>Net product obligation charge to FY2025 P&amp;L: $41.8M (change in fair value). The "1% loss rate" for MyPay refers to annualised loan-level default on origination volume — different from T&amp;R losses against platform revenue. IC should clarify which denominator is being used in forward modelling.</p>
+
+  <h3>Dilution overhang</h3>
+  <p><strong>Share count: 384,099,820</strong> (Class A 351,967,531 + Class B 32,132,289) per the FY2025 10-K cover, 26 February 2026. Fully diluted: <strong>437,647,618</strong> per Note 13 — the anchor for the IRR build. At $17.80 × 384.1M, market cap is $6,837M (~$6.8B); the fully-diluted figure is the load-bearing input for the IRR scenarios.</p>
+
+  <!-- SECTION 7: MOAT -->
+  <h2>Moat Assessment</h2>
+  <h3>moat_index 102 — above median, but eroding at the edges</h3>
+
+  <p>Spock's Gate 7 moat assessment scores CHYM at <strong>102</strong> on the moat_index scale (100 = median, range 50–150). Verdict <strong>ERODING-AT-THE-EDGES</strong>. Real moat today — brand loyalty with LMI demographics, switching costs via direct deposit, ChimeCore's technical lead — but compressing, not widening. Network effects weak; switching costs moderate; data advantage partial; brand 72/100.</p>
+
+  <div class="risk-grid">
+    <div class="risk-item risk-low">
+      <h4>Structural strengths</h4>
+      <p>Direct deposit stickiness — paycheck routing is a high switching cost. Brand dominance in the $0–100k segment: #1 J.D. Power checking openings. ChimeCore delivers 60% cost-to-serve reduction, proprietary ML for risk decisioning, rapid product velocity. Credit Builder is a genuine product moat — no comparable fee-free alternative.</p>
+    </div>
+    <div class="risk-item risk-high">
+      <h4>Structural weaknesses</h4>
+      <p>No banking licence — every product intermediated through Bancorp and Stride. Interchange economics depend on both staying below $10B. Cash App (Square/Block) has a different partner-bank scale profile. The moat narrows if Chime must shift revenue toward on-balance-sheet lending.</p>
+    </div>
+  </div>
+
+  <h3>Competitive position: Bancorp buffer is the watch variable</h3>
+
+  <table>
+    <tr>
+      <th>Competitor</th>
+      <th>Primary threat vector</th>
+      <th>Spock read</th>
+    </tr>
+    <tr>
+      <td><strong>Cash App (Block/SQ)</strong></td>
+      <td>Structural Durbin advantage — different partner-bank architecture. No comparable regulatory cliff.</td>
+      <td>Largest structural moat threat. Winning Gen Z / gig.</td>
+    </tr>
+    <tr>
+      <td><strong>SoFi (SOFI)</strong></td>
+      <td>Has a bank charter — full FDIC backing, no intermediary dependency. Cross-sells wealth, student, home loans.</td>
+      <td>Higher-income demographic, but the charter is structurally superior for long-run moat.</td>
+    </tr>
+    <tr>
+      <td><strong>Traditional banks (Chase, WF, BofA)</strong></td>
+      <td>Investing in digital; still losing ground in $0–100k checking acquisition.</td>
+      <td>Losing to Chime in acquisition; retain trust advantage for high-stakes needs (branches, complex products).</td>
+    </tr>
+    <tr>
+      <td><strong>Dave, Current, Varo, MoneyLion, One (Walmart), Apple Card</strong></td>
+      <td>Direct neobank competitors targeting the same demographic; Apple Card competes for the upper-income cohort.</td>
+      <td>Chime is decisively winning the LMI neobank tier. None material individually.</td>
+    </tr>
+  </table>
+
+  <p><em>Global context.</em> Chime is the largest US neobank and among the five largest globally. Nubank (~100M, Brazil/Mexico/Colombia) leads; Revolut (~50M, UK/Europe); Monzo (~10M); N26 (~8M); Chime ~10.2M. The US has the highest ARPU — which is why $17.80 still implies ~$6.8B on 10.2M actives.</p>
+
+  <h3>Competitive war-game — the next three years</h3>
+
+  <p><strong>Competitive Map.</strong> Chime's marginal next million members costs $50–80 today, rising to $200+ as adjacent pools saturate. Apple Card went from launch to ~12M users in roughly three years (inferred from Goldman disclosures). MoneyLion sold to Gen Digital in April 2025 at ~1.8× EV/Revenue on ~$550M TTM [Source: Gen Digital newsroom 17 April 2025; MoneyLion BusinessWire 10 April 2025] — confirming "no winners below LMI" beneath Chime's segment. The next pool is materially harder than the first.</p>
+
+  <div class="callout callout-amber">
+    <strong>The Cash App threat — go deep</strong>
+    <p style="margin-top:8px">Cash App and Chime are not symmetric competitors. Chime's revenue is ~70%+ interchange-driven; Cash App's is dominated by Bitcoin and Cash App for Business, with debit interchange a smaller share. Chime's ~10.2M actives sit materially below Cash App's ~59M monthly transacting — but Cash App actives are not a direct proxy for Bancorp's exposure: Bancorp co-issues only the Cash App Visa Debit Flex Card with Sutton (ordinary prepaid is Sutton-only; savings via Wells Fargo / Sutton). Flex Card penetration, balances, and routing economics are not separately disclosed.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Asymmetric Durbin exposure.</strong> If interchange compresses industry-wide, Cash App's blended revenue-per-active falls single-digits; Chime's falls 25–35%. <strong>The most strategically important competitive distinction for the IC.</strong></p>
+    <p style="margin-top:8px"><strong class="sub-head">Asymmetric network effect.</strong> Cash App has a real peer-to-peer network effect; account value rises as more friends use it. Chime has no comparable network effect. Over a 5–10 year horizon, this is why Cash App is the most likely cap on Chime's terminal share.</p>
+  </div>
+
+  <p><strong>Bancorp / Durbin disadvantage.</strong> For covered debit transactions not otherwise exempt, Reg II caps interchange at ~$0.24 for banks above $10B; smaller banks earn realised rates of $0.55–$0.61. Bancorp is actively repurchasing to manage below $10B (Q1 2026 8-K: "managing to an asset cap of $10B"); legally decisive measurement is year-end (§235.5), with 1 July 2027 compliance if Bancorp ends 2026 above $10B. If it crosses, ~70% of Chime interchange re-prices to the cap — a <strong>~22% consolidated revenue compression</strong> before second-order effects. Sutton (Cash App's primary sponsor) has a different scale profile.</p>
+
+  <p><strong>Moat decomposition.</strong> Three components: (a) <strong>direct-deposit member share ~67%</strong> per S-1 (high switching cost); (b) <strong>ChimeCore</strong> (proprietary banking-infrastructure moat); (c) <strong>LMI brand penetration</strong>. Pricing power negligible (Chime set fee-free banking at zero; introducing fees is brand-suicidal). Decomposition: +15 scale, +5 switching, <strong>−20 network</strong> (no peer-to-peer effect), +10 cornered resource (ChimeCore), −10 pricing, +2 LMI brand premium. <em>Sum +2; headline moat_index 102.</em></p>
+
+  <p><strong>War-game.</strong> <em>Running Cash App's LMI strategy</em>: push "primary bank" in the $25–50k segment, using Block's Bitcoin and Cash App for Business margin pools to cross-subsidise direct-deposit acquisition — economics Chime cannot replicate. <em>Running JPMorgan's downmarket strategy</em>: don't — JPM's economics fail below $25k (branch overhead). JPM's real attack vector is upmarket: tenured Chime members aging into prime mortgage/brokerage/wealth products. <em>Apple Card</em> competes for the affluent edge, not the core. <strong>Single break-the-thesis scenario:</strong> Bancorp $10B breach plus (a) Cash App major direct-deposit push, (b) sell-side downgrades on Durbin, (c) MyPay losses normalise. Plausible inside 24 months.</p>
+
+  <p><strong>Competitive verdict.</strong> Operational excellence in cost-to-serve and fraud. Unless non-interchange mix exceeds 30%, upside is capped by the Bancorp dependency. <strong>Cash App and SoFi are structural competitors; Apple Card is niche overlap.</strong> 5–10 year horizon: Cash App is the most likely cap on terminal share.</p>
+
+  <!-- SECTION 7b: PEOPLE, CULTURE, GOVERNANCE -->
+  <h2>People, Culture, Governance</h2>
+  <h3>Founder-led, equity-aligned, network-strong — board AI literacy and committee concentration are the watch items</h3>
+
+  <p><strong>Chris Britt — Co-founder, CEO, Chairperson.</strong> Fourteen years in seat. Direct ownership ~4.5%; total comp ~$15.8M (~3% salary, balance equity per Simply Wall St). Pre-Chime: ComScore, Visa, Green Dot (CPO 2007–2010; SVP Corp Dev 2010–2012). Consumer-finance product pedigree, not technical. Equity alignment strong. AI orientation is <strong>STRATEGIC, not ARCHITECTURAL</strong>: he frames Chime as "a technology company, not a bank" but does not narrate an AI-product moat. Applied-AI workflows sit with COO Janelle Sallenave.</p>
+
+  <div class="callout callout-amber">
+    <strong>Britt's bank-charter trajectory — verb-tense escalated, content still annual-evaluation</strong>
+    <p style="margin-top:8px"><strong>May 2025</strong> (S-1): "Chime is a technology company, not a bank." <strong>4 December 2025</strong> (Troughton, then-COO; promoted to President 10 December 2025; Banking Dive by Caitlin Mullen): "Our longer-term aspiration is to be the leading provider of primary financial relationships in the U.S. We think we can really get there in the next few years." Sallenave became COO on 10 December — six days later. <strong>18 May 2026</strong> (Britt at JPMorgan TMC, Boston, 10:25 a.m. EDT): <strong>"a when, not if"</strong>.</p>
+    <p style="margin-top:8px"><strong class="sub-head">But the content is annual evaluation, not commitment.</strong> No calendar year, no IPO-relative milestone, no capital estimate, no OCC-vs-state preference, no de novo-vs-acquisition preference. Britt did not tie the pursuit to Durbin or partner-bank dependency. The verb-tense direction is one-way; the content is annual evaluation. Charter pursuit will not resolve the Bancorp dependency in 12–24 months at the speed the headline implies.</p>
+  </div>
+
+  <p><strong>Ryan King — Co-founder, CTO, Director.</strong> Built ChimeCore — the proprietary core banking platform Gate 6 cites as a strategic moat ("not Fiserv / FIS / Jack Henry"). A May 2026 SEC Form 4 shows him converting Class B to Class A as administrative reclassification (code "C"), not open-market sale — consistent with founder-locked equity.</p>
+
+  <div class="callout callout-amber">
+    <strong>Ambiguity flag — two CTOs</strong>
+    <p style="margin-top:8px">Chime IR lists both Ryan King and Jeff Currier as CTO. Likely a founder-CTO / day-to-day-CTO split, but must be reconciled against the DEF 14A officer list before IC.</p>
+  </div>
+
+  <h3>C-suite roster</h3>
+
+  <table>
+    <tr>
+      <th>Role</th>
+      <th>Name</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>President</td>
+      <td>Mark Troughton</td>
+      <td>Promoted from COO 10 December 2025. On the record to Banking Dive (Caitlin Mullen, 4 December 2025): "Our longer-term aspiration is to be the leading provider of primary financial relationships in the U.S." Pre-Chime career undisclosed — bio gap. Grouped with CFO Newcomb as a major internal shareholder per EquityZen S-1 analysis.</td>
+    </tr>
+    <tr>
+      <td>CFO</td>
+      <td>Matt Newcomb</td>
+      <td>~6–7 year tenure. Led the IPO and post-IPO investor narrative. Held 478,172 Class A directly plus 2,281,070 indirectly via family trust per May 2026 Form 4.</td>
+    </tr>
+    <tr>
+      <td>COO</td>
+      <td>Janelle Sallenave</td>
+      <td>Promoted from Chief Experience Officer. Owns AI integration across member support — &gt;70% of interactions automated, CSAT doubled 2022–2025. Prior Uber / Uber Eats marketplace operations.</td>
+    </tr>
+    <tr>
+      <td>CTO</td>
+      <td>Jeff Currier</td>
+      <td>No detailed public bio; not a high-profile AI-lab hire. Material bio gap for a $6.8B listed.</td>
+    </tr>
+    <tr>
+      <td>CMO / Chief Growth Officer</td>
+      <td>Vineet Mehra</td>
+      <td>Role only; bio gap.</td>
+    </tr>
+    <tr>
+      <td>CHRO</td>
+      <td>Sarah Wagener</td>
+      <td>Role only; bio gap.</td>
+    </tr>
+    <tr>
+      <td>General Counsel</td>
+      <td>Adam Frankel</td>
+      <td>Role only; bio gap.</td>
+    </tr>
+    <tr>
+      <td>Chief Corporate Affairs Officer</td>
+      <td>Jennifer Kuperman</td>
+      <td>Role only; bio gap.</td>
+    </tr>
+    <tr>
+      <td><strong>CRO</strong></td>
+      <td><strong>Xiongwen Rui</strong></td>
+      <td><strong>Role only; bio gap on a regulatorily-exposed role given CFPB scrutiny and partner-bank cascade — watch flag.</strong></td>
+    </tr>
+  </table>
+
+  <h3>Board composition</h3>
+
+  <p><strong>Executive directors:</strong> Chris Britt (Chairperson), Ryan King.</p>
+
+  <p><strong>Independent NEDs:</strong> James Feuille (Lead Director; Crosslink Capital partner); Sue Decker (Audit/Risk Chair; ex-Yahoo President/CFO; current Berkshire Hathaway and Costco director); Shawn Carolan (Menlo Ventures); Jimmy Dunne (Sandler O'Neill co-founder, ex-Piper Sandler); Cynthia "Cynt" Marshall (CEO Dallas Mavericks, ex-AT&amp;T). VC-affiliated: Carolan (Menlo) and Feuille (Crosslink).</p>
+
+  <div class="callout callout-amber">
+    <strong>Three governance flags for IC discussion</strong>
+    <p style="margin-top:8px"><strong class="sub-head">1. Dual-class structure.</strong> Class B carries 10 votes per share, founder/early-investor held. Standard SV neobank pattern, but a documented entrenchment lever.</p>
+    <p style="margin-top:8px"><strong class="sub-head">2. Committee concentration.</strong> Lead Director James Feuille chairs Nominating-Governance and People / Culture / Compensation, and sits on Audit and Risk. Three of four major committees concentrate in a single VC-affiliated NED.</p>
+    <p style="margin-top:8px"><strong class="sub-head">3. No AI / data-science independent director.</strong> The board markets the company on AI-driven cost moats. Capability gap is material given the Gate 3 thesis rests on operational AI execution.</p>
+  </div>
+
+  <h3>Culture and talent retention</h3>
+
+  <p>Glassdoor n=297 — 4.0/5 overall, recommend-to-friend 82–83%, work-life balance 4.1, comp 4.1. Medium-confidence levels read; no TTM delta.</p>
+
+  <p><strong>Positive:</strong> mission-driven, good culture, good comp.</p>
+
+  <p><strong>Critical:</strong> (a) <em>"priorities and ownership change every quarter, so folks are never incentivized to build for a long term vision"</em> — strategic-churn flag, directly relevant to ChimeCore which depends on long-horizon engineering ownership; (b) <em>"entitled culture, misalignment at company leadership level"</em> — minority but recurring; (c) benefits trending down post-IPO.</p>
+
+  <h3>Verdicts</h3>
+
+  <table>
+    <tr>
+      <th>Dimension</th>
+      <th>Verdict</th>
+      <th>Read</th>
+    </tr>
+    <tr>
+      <td>Bench depth</td>
+      <td><strong>ADEQUATE</strong> (index 95)</td>
+      <td>Eleven named C-suite roles cover all functions; six of eleven have bio gaps. Glassdoor's quarterly-churn theme is consistent with a thinner-than-advertised Layer-2 bench. Not THIN, not DEEP.</td>
+    </tr>
+    <tr>
+      <td>Key-person risk</td>
+      <td><strong>MEDIUM, leaning HIGH on CEO succession</strong></td>
+      <td>Britt: 14-year founder-CEO tenure, no declared successor. King plausible interim, not declared. CFO Newcomb departure in the first 12–24 public quarters would be material.</td>
+    </tr>
+    <tr>
+      <td>Execution capability</td>
+      <td><strong>HIGH</strong> (track-record indices 115–125 across CEO, COO, Audit Chair)</td>
+      <td>Open question: does execution capability translate to a strategic AI roadmap, or remain TACTICAL?</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-blue">
+    <strong>People verdict</strong>
+    <p style="margin-top:8px">A founder-led, equity-aligned, network-strong team that has executed exceptionally well from 2012 through the June 2025 IPO and the first three quarters of public-company reporting. Strongest: track record, founder-CTO continuity (ChimeCore), and capital-raising network (Menlo, Crosslink, DST Global, General Atlantic, IPO underwriting). Weakest: board AI literacy (no AI/ML independent director), bench depth beneath the C-suite, and committee concentration in a single VC-affiliated Lead Director — none severe, all partner-attention-worthy. The principal People-and-Culture risk: whether the AI orientation upgrades from STRATEGIC to ARCHITECTURAL fast enough to defend the Gate 3 CPI of 114.7 as competitors close the cost gap.</p>
+  </div>
+
+  <!-- SECTION 8: VALUATION -->
+  <h2>Valuation</h2>
+  <h3>FAIR at $17.80 — 14.4% probability-weighted IRR, sub-hurdle</h3>
+
+  <p>Spock's probability-weighted IRR of 14.4% across three scenarios: 0.25 × 36.6% + 0.50 × 13.9% + 0.25 × (−6.9%) = 14.4%. Reference: Chime IPO'd at $27 on 12 June 2025 at a ~$12.3B market cap; first-day reached ~$18.4B before retracing. IPO implied ~4.6× forward revenue on 2026 guidance.</p>
+
+  <table>
+    <tr>
+      <th>Scenario</th>
+      <th>Weight</th>
+      <th>IRR</th>
+      <th>Key assumptions</th>
+    </tr>
+    <tr>
+      <td>Bull — execution + Durbin deferred</td>
+      <td class="num">25%</td>
+      <td class="num">+36.6%</td>
+      <td>Revenue compound annual growth rate (CAGR) 25% sustained; EBITDA margin expands to 25%; Bancorp manages below threshold; multiple re-rates toward Nubank trajectory</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>Base — growth, Durbin exemption holds 5y</td>
+      <td class="num">50%</td>
+      <td class="num">+13.9%</td>
+      <td>Revenue CAGR 17% (sell-side consensus); EBITDA margin to 20%; multiple flat at 3.0× EV/Revenue</td>
+    </tr>
+    <tr>
+      <td>Bear — Durbin event + credit cycle</td>
+      <td class="num">25%</td>
+      <td class="num">−6.9%</td>
+      <td>Bancorp crosses $10B Durbin threshold; revenue CAGR slows to 8%; margin compresses to 10%; multiple de-rates to 1.5× EV/Revenue (PayPal / LendingClub territory)</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Probability-weighted IRR</strong></td>
+      <td class="num"><strong>100%</strong></td>
+      <td class="num"><strong>14.4%</strong></td>
+      <td>Sub-hurdle for Chronos equity quality — FAIR verdict at $17.80</td>
+    </tr>
+  </table>
+
+  <h3>Scenario derivation</h3>
+
+  <p>Probabilities anchored to named precedents. Bear at 25% reflects joint likelihood of Bancorp crossing $10B within five years or a BigTech competitive shock. Base at 50% anchors to consensus 5-year ~17% revenue CAGR with continued Durbin exemption. Bull at 25% anchors to Nubank's re-rating from ~4× to ~8× EV/Revenue over 2023–25 as profitability emerged at scale.</p>
+
+  <table>
+    <tr>
+      <th>Scenario</th>
+      <th>Probability</th>
+      <th>Revenue CAGR (5y)</th>
+      <th>Exit EBITDA margin</th>
+      <th>Exit EV/Revenue</th>
+      <th>Implied price</th>
+      <th>5y IRR</th>
+    </tr>
+    <tr>
+      <td>Bull</td>
+      <td class="num">25%</td>
+      <td class="num">25%</td>
+      <td class="num">25%</td>
+      <td class="num">5.5×</td>
+      <td class="num">$84.09</td>
+      <td class="num">+36.6%</td>
+    </tr>
+    <tr class="highlight-row">
+      <td>Base</td>
+      <td class="num">50%</td>
+      <td class="num">17%</td>
+      <td class="num">20%</td>
+      <td class="num">3.0×</td>
+      <td class="num">$33.82</td>
+      <td class="num">+13.9%</td>
+    </tr>
+    <tr>
+      <td>Bear</td>
+      <td class="num">25%</td>
+      <td class="num">8%</td>
+      <td class="num">10%</td>
+      <td class="num">1.5×</td>
+      <td class="num">$12.31</td>
+      <td class="num">−6.9%</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Probability-weighted</strong></td>
+      <td class="num"><strong>100%</strong></td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num dim">—</td>
+      <td class="num"><strong>$41.01</strong></td>
+      <td class="num"><strong>+14.4%</strong></td>
+    </tr>
+  </table>
+
+  <p>Entry $17.80 / 437.6M fully-diluted / $7.79B entry equity. Probability-weighted implied price: 0.25 × $84.09 + 0.50 × $33.82 + 0.25 × $12.31 = <strong>$41.01</strong>. Bear models Bancorp crossing $10B at year-end 2026 with Reg II compliance from 1 July 2027 (§235.5), cap kicking in for ~70% of CHYM volume, re-rate to 1.5× EV/Revenue ("mature decelerating fintech"). Bull sustains 25% growth, lifts margins 18% → 25% over five years, re-rates to 5.5× EV/Revenue (between Affirm 7.5× and SoFi 4.7×). <em>Underlying Workstream D anchored on 21 May close $17.67; tables here rebased to 22 May $17.80. Per-share marginal differences immaterial to IRR at the second decimal.</em></p>
+
+  <div class="callout callout-amber">
+    <strong>Scenario weights — bear case may be under-weighted</strong>
+    <p style="margin-top:8px">Reconciled against TBBK Q1 2026 10-Q primary sources, Spock would reweight the Bancorp-breach scenario to <strong>45–60%</strong> — materially above the 25% bear weight. The 14.4% IRR above reflects the current model, which looks <strong>conservative on bear weighting</strong> given the verified Q1 2026 trajectory. Treat 14.4% as the upper bound of Spock's read, not the central estimate. At 50% bear weighting (with proportional reductions to bull and base) implied IRR falls to 5–8% — sub-hurdle by a wider margin.</p>
+  </div>
+
+  <p>Sell-side consensus $30–32 implies ~70% one-year return. <strong>The two views are not necessarily inconsistent.</strong> A 70% 12-month gain coexists with 14.4% long-run probability-weighted IRR if enough weight sits on downside in years 2–5. The sell-side solves for a 12-month price; Spock solves for scenario-weighted long-run return.</p>
+
+  <p>The deciding question: is the sell-side right that Bancorp/Durbin is bounded and non-imminent? If yes, 70% one-year is credible. If the TBBK buffer closes faster than modelled, the regime shift happens sooner — and the multiple compresses in advance of the event.</p>
+
+  <h3>Peer comparables snapshot (§7.1)</h3>
+
+  <p>No listed pure-play US interchange neobank exists. Nubank is the cleanest business-model peer but EM-domiciled. SoFi is the closest US listed peer but bank-charter-led and lending-led. The peer set brackets the range.</p>
+
+  <table>
+    <tr>
+      <th>Peer</th>
+      <th>Ticker</th>
+      <th>EV/Revenue</th>
+      <th>EV/EBITDA</th>
+      <th>P/E forward</th>
+      <th>Gross margin</th>
+      <th>Why comparable</th>
+    </tr>
+    <tr>
+      <td><strong>Nu Holdings</strong></td>
+      <td>NU</td>
+      <td class="num">6.90x</td>
+      <td class="num">13.95x</td>
+      <td class="num">13.95x</td>
+      <td class="num">35.3%</td>
+      <td>Cleanest business-model peer; mobile-first at scale; interchange + interest</td>
+    </tr>
+    <tr>
+      <td><strong>SoFi</strong></td>
+      <td>SOFI</td>
+      <td class="num">4.68x</td>
+      <td class="num">24.02x</td>
+      <td class="num">24.02x</td>
+      <td class="num">41.0%</td>
+      <td>Closest US peer; lending-led; bank charter (the main difference)</td>
+    </tr>
+    <tr>
+      <td><strong>Kaspi.kz</strong></td>
+      <td>KSPI</td>
+      <td class="num">1.82x</td>
+      <td class="num">6.81x</td>
+      <td class="num">6.81x</td>
+      <td class="num">53.3%</td>
+      <td>Credit-deposit hybrid; high engagement; profitable</td>
+    </tr>
+    <tr>
+      <td><strong>Affirm</strong></td>
+      <td>AFRM</td>
+      <td class="num">~7.5x</td>
+      <td class="num">17.56x</td>
+      <td class="num">17.56x</td>
+      <td class="num dim">—</td>
+      <td>BNPL pure-play; wallet competitor adjacency</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Peer median</strong></td>
+      <td class="dim">—</td>
+      <td class="num"><strong>4.16x</strong></td>
+      <td class="num">—</td>
+      <td class="num">—</td>
+      <td class="num">—</td>
+      <td>10-peer median across the full Chronos peer set</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Chime (CHYM)</strong></td>
+      <td>CHYM</td>
+      <td class="num"><strong>2.49x</strong></td>
+      <td class="num">~12.1x</td>
+      <td class="num">41.99x</td>
+      <td class="num">~90%</td>
+      <td><strong>Approximately 40% below peer median EV/Revenue</strong></td>
+    </tr>
+  </table>
+
+  <h3>Reverse multiple sanity check (§7.2)</h3>
+
+  <p>Solving backwards from today's EV of ~$5.76B (basic):</p>
+
+  <ul style="margin-left:20px; margin-bottom:16px">
+    <li style="margin-bottom:6px"><strong>At peer-median exit multiple (4.16× EV/Revenue, held flat 5y):</strong> 15% IRR requires exit EV $11.58B and year-5 revenue $2.78B — 5y CAGR <strong>3.8%</strong> from the TTM $2.32B base.</li>
+    <li style="margin-bottom:6px"><strong>At current multiple held flat (2.49× EV/Revenue):</strong> 15% IRR requires year-5 revenue $4.66B — 5y CAGR <strong>15.0%</strong>.</li>
+  </ul>
+
+  <p>At peer-median re-rating, modest growth clears the hurdle; at current multiple, you need substantially higher growth. The market is implicitly pricing 4–15% forward CAGR — below sell-side consensus 17% and well below last-3y actual ~30%. Valuation is undemanding on growth, supportive on margin; asymmetry comes from the multiple, not the operating numbers. <em>The case for stretched valuation is weak; the case for stretched thesis is the Durbin tail.</em></p>
+
+  <h3>Bull-case IRR table (§7.4)</h3>
+
+  <p>Entry at $17.80 / 437,647,618 diluted shares / $7.79B entry equity:</p>
+
+  <table>
+    <tr>
+      <th>Year</th>
+      <th class="num">Revenue ($M)</th>
+      <th class="num">Adj EBITDA margin</th>
+      <th class="num">Adj EBITDA ($M)</th>
+      <th class="num">Diluted shares (M)</th>
+      <th class="num">Per share</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Y0</td>
+      <td class="num">2,315</td>
+      <td class="num">18.0%</td>
+      <td class="num">417</td>
+      <td class="num">437.6</td>
+      <td class="num">$17.80</td>
+      <td>Entry — Q1 2026 annualised</td>
+    </tr>
+    <tr>
+      <td>Y1</td>
+      <td class="num">2,894</td>
+      <td class="num">20.0%</td>
+      <td class="num">579</td>
+      <td class="num">446.4</td>
+      <td class="num dim">—</td>
+      <td>25% growth sustained</td>
+    </tr>
+    <tr>
+      <td>Y2</td>
+      <td class="num">3,618</td>
+      <td class="num">22.0%</td>
+      <td class="num">796</td>
+      <td class="num">455.3</td>
+      <td class="num dim">—</td>
+      <td>Margin lift on operating leverage</td>
+    </tr>
+    <tr>
+      <td>Y3</td>
+      <td class="num">4,522</td>
+      <td class="num">23.5%</td>
+      <td class="num">1,063</td>
+      <td class="num">464.4</td>
+      <td class="num dim">—</td>
+      <td>MyPay + outbound transfers + Credit Builder cross-sell</td>
+    </tr>
+    <tr>
+      <td>Y4</td>
+      <td class="num">5,653</td>
+      <td class="num">24.5%</td>
+      <td class="num">1,385</td>
+      <td class="num">472.3</td>
+      <td class="num dim">—</td>
+      <td>ARPAM expansion</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Y5</strong></td>
+      <td class="num"><strong>7,066</strong></td>
+      <td class="num"><strong>25.0%</strong></td>
+      <td class="num"><strong>1,767</strong></td>
+      <td class="num"><strong>480.0</strong></td>
+      <td class="num"><strong>$84.09</strong></td>
+      <td>Exit 5.5× EV/Revenue (Nubank-like); EV $38.86B + net cash $1.5B = $40.36B equity</td>
+    </tr>
+  </table>
+
+  <p><strong>Bull 5y IRR: +36.6%. MOIC: 4.76x.</strong></p>
+
+  <h3>Bear-case IRR table (§7.4b)</h3>
+
+  <table>
+    <tr>
+      <th>Year</th>
+      <th class="num">Revenue ($M)</th>
+      <th class="num">Adj EBITDA margin</th>
+      <th class="num">Adj EBITDA ($M)</th>
+      <th class="num">Diluted shares (M)</th>
+      <th class="num">Per share</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Y0</td>
+      <td class="num">2,315</td>
+      <td class="num">18.0%</td>
+      <td class="num">417</td>
+      <td class="num">437.6</td>
+      <td class="num">$17.80</td>
+      <td>Entry</td>
+    </tr>
+    <tr>
+      <td>Y1</td>
+      <td class="num">2,501</td>
+      <td class="num">15.0%</td>
+      <td class="num">375</td>
+      <td class="num">443.0</td>
+      <td class="num dim">—</td>
+      <td>Growth slows; competitive pressure</td>
+    </tr>
+    <tr>
+      <td>Y2</td>
+      <td class="num">2,701</td>
+      <td class="num">13.0%</td>
+      <td class="num">351</td>
+      <td class="num">448.5</td>
+      <td class="num dim">—</td>
+      <td>Margin compresses</td>
+    </tr>
+    <tr>
+      <td>Y3</td>
+      <td class="num">2,917</td>
+      <td class="num">12.0%</td>
+      <td class="num">350</td>
+      <td class="num">454.0</td>
+      <td class="num dim">—</td>
+      <td><strong>Bancorp crosses $10B; cap kicks in for ~70% of CHYM volume</strong></td>
+    </tr>
+    <tr>
+      <td>Y4</td>
+      <td class="num">3,149</td>
+      <td class="num">10.5%</td>
+      <td class="num">331</td>
+      <td class="num">459.5</td>
+      <td class="num dim">—</td>
+      <td>Re-pricing complete; cost base hasn't followed</td>
+    </tr>
+    <tr class="highlight-row">
+      <td><strong>Y5</strong></td>
+      <td class="num"><strong>3,402</strong></td>
+      <td class="num"><strong>10.0%</strong></td>
+      <td class="num"><strong>340</strong></td>
+      <td class="num"><strong>465.0</strong></td>
+      <td class="num"><strong>$12.31</strong></td>
+      <td>Exit 1.5× EV/Revenue (PayPal 1.2× / LendingClub 0.75× territory); EV $5.10B + cash $0.63B = $5.73B equity</td>
+    </tr>
+  </table>
+
+  <p><strong>Bear 5y IRR: −6.9%. MOIC: 0.70x.</strong> Not a tail — a 25%-probability scenario anchored to a partner bank's deliberately managed threshold (Reg II §235.5 year-end measurement at 31 December 2026; 1 July 2027 repricing if Bancorp ends 2026 above $10B).</p>
+
+  <h3>Exit route and precedent (§7.5)</h3>
+
+  <p><strong>Primary exit — open-market sale on re-rating.</strong> CHYM is a listed equity with adequate float (~352M Class A) and ~$6.7B market cap. Liquidity is sufficient for a $50–100m position to enter or exit over 5–15 trading days. Re-rating catalysts: sustained GAAP profitability (Q1 2026 first), AI-attributed unit economics disclosure from FY26, ARPAM continuing the $245 → $257 → $263 climb.</p>
+
+  <p><strong>M&amp;A precedent — Gen Digital / MoneyLion, April 2025.</strong> ~$1B all-cash; <strong>~1.8× EV/Revenue</strong> on ~$550M TTM. Buyer was a non-fintech strategic seeking adjacency, not a major bank. <em>This caps Chime's bear-case M&amp;A floor.</em> No strategic buyer pays 4×+ EV/Revenue for an interchange business with a disclosed asset-threshold risk on its primary partner bank.</p>
+
+  <h3>Entry-price recommendation (§7.6)</h3>
+
+  <table>
+    <tr>
+      <th>Band</th>
+      <th>Range</th>
+      <th>Sizing</th>
+      <th>Rationale</th>
+    </tr>
+    <tr>
+      <td><strong>Starter</strong></td>
+      <td>$16.00–$19.00</td>
+      <td>1.0–1.5% NAV</td>
+      <td>Current $17.80 sits inside. IPO-vesting SBC overhang mostly behind (Q1 2026 SBC $60.7M run-rate vs $1.09B FY25 distortion — $928M SBC charge plus payroll tax). 5y prob-weighted IRR ~14%, asymmetric to upside.</td>
+    </tr>
+    <tr>
+      <td><strong>Full position</strong></td>
+      <td>$14.00–$16.00</td>
+      <td>2.5–3.5% NAV</td>
+      <td>Only on a 10–20% pullback. At $14–16, EV/Revenue compresses to 1.9–2.2× — Kaspi territory for a faster-growing business with a clean balance sheet. IRR pushes above 18%.</td>
+    </tr>
+    <tr>
+      <td><strong>Avoid above</strong></td>
+      <td>$28.00</td>
+      <td>—</td>
+      <td>EV/Revenue rises to ~4× — gap to peer median closes to under 15%. Spock discount earning the Durbin tail-risk premium disappears; asymmetry inverts.</td>
+    </tr>
+  </table>
+
+  <!-- SECTION 9: SIX QUESTIONS FOR THE IC -->
+  <h2>Six Questions for the Investment Committee</h2>
+
+  <p>Each question is one the IC should put to itself. Spock's view is the starting position; the IC pushes back, not inherits. (Spock = analytical pipeline. Virtual Chronos = simulated IC panel whose vote sits in the Spock Assessment table. Chronos = the firm, whose real verdict follows.)</p>
+
+  <div class="callout callout-red">
+    <strong>Q1 — The July 2028 MSA and the three-clock problem</strong>
+    <p style="margin-top:8px"><strong class="sub-head">Question.</strong> Does the assessment change if we treat July 2028 as the hard contractual date, the 31 December 2026 Reg II §235.5 measurement as the legally decisive event, and Q2/Q3 2026 TBBK 10-Qs as leading-indicator diagnostics? Has Chime IR been asked directly what the renewal intention is?</p>
+    <p style="margin-top:8px"><strong class="sub-head">Spock's view.</strong> Three clocks: asset/Durbin (buyback capacity 2025 $375M → 2026 $200M; top-3 concentration 47% → 58% Q1 2026); MSA contractual (TBBK FY2025 10-K Risk Factors disclose a Durbin termination right in at least some fee-sharing agreements); Cash App co-issuance. The asset clock is the fastest diagnostic — ~$0.1B buffer against $546M Q1 sequential growth. <strong>Legally decisive measurement 31 December 2026 per §235.5; compliance no later than 1 July 2027 if Bancorp ends 2026 above $10B.</strong> MSA non-renewal notice opens 30 June 2027 (Exhibit 10.20 §9.1(a), 365-day mutual). Cash App pressure runs on Cash App's roadmap, not Chime's. July 2028 contractual backstop; 1 July 2027 earliest repricing; Q2/Q3 2026 diagnostics.</p>
+    <p style="margin-top:8px"><strong class="sub-head">What would change our mind.</strong> End-Q3 2026 Bancorp consolidated assets below $9.95B with capital-return acceleration or off-balance-sheet sweep growth such that year-end 2026 is plausibly below $10B; or a Chime IR announcement of a third sponsor bank in test; or MSA renewal disclosure prior to 30 June 2027.</p>
+  </div>
+
+  <div class="callout callout-blue">
+    <strong>Q2 — Credit cycle stress test</strong>
+    <p style="margin-top:8px"><strong class="sub-head">Question.</strong> What does the model look like if MyPay loss rates normalise to 3–4% in a 2020-style stress? Is 14.4% IRR still the right base?</p>
+    <p style="margin-top:8px"><strong class="sub-head">Spock's view.</strong> The 1% loss rate (on origination volume) is quoted in a benign cycle. Stress to 3% and base IRR drops to ~9–11%; at 4%, ~7–9% — sub-hurdle for Chronos's 20% equity-quality hurdle. The bear already captures credit-cycle deterioration into −6.9%. Product obligation +29% YoY to $147M; maximum gross exposure $722M (+59% YoY) per FY2025 10-K.</p>
+    <p style="margin-top:8px"><strong class="sub-head">What would change our mind.</strong> A regulator-mandated or industry-wide credit reset that re-prices the cohort; or sustained 1.5%+ loss rates without margin compression.</p>
+  </div>
+
+  <div class="callout callout-blue">
+    <strong>Q3 — The "primary bank" definition</strong>
+    <p style="margin-top:8px"><strong class="sub-head">Question.</strong> Does the IC accept that 10.2M active is the right denominator for revenue but 3–4M sticky is the right denominator for churn?</p>
+    <p style="margin-top:8px"><strong class="sub-head">Spock's view.</strong> The S-1 "primary bank" definition (15+ card transactions per month <em>or</em> a single $200+ direct deposit) is loose enough that Gate 7 places the sticky base at 3–4M of 10.2M actives. Both denominators are legitimate but answer different questions: 10.2M for ARPAM/revenue; 3–4M for churn. The headline narrative conflates them. Supporting: S-1 8.6M active / 5.7M "primary"; Cornerstone Advisors Q3 2025 — 52% of new Chime checking accounts are <em>additional</em> alongside an existing bank.</p>
+    <p style="margin-top:8px"><strong class="sub-head">What would change our mind.</strong> A disclosure breaking out "Chime is my primary bank" via a higher activity bar (e.g., $1,000+/month direct deposit); or churn data on the loose-primary cohort matching strict-primary stickiness.</p>
+  </div>
+
+  <div class="callout callout-blue">
+    <strong>Q4 — CFPB / regulatory posture</strong>
+    <p style="margin-top:8px"><strong class="sub-head">Question.</strong> Is the regulatory exposure structural (closure algorithm not fixed) or improving (remediation working)?</p>
+    <p style="margin-top:8px"><strong class="sub-head">Spock's view.</strong> Structural. The May 2024 CFPB order (≥$4.55M total) was meant to remediate delayed closure refunds. Two years later, the same categories — closures, dispute denials, refund timing — continue at scale. BBB 2,645 TTM (25 May 2026). The closure algorithm has not been fixed. CFPB enforcement intensity has materially retreated post-May 2025 administration shift. But Senator Durbin is filing amicus briefs (Corner Post, Linney's Pizza) pushing a stricter cap. <strong>Counter-intuitively bad for Chime if Bancorp ever breaches:</strong> revised Reg II will likely widen the exempt-vs-capped differential, deepening the cliff.</p>
+    <p style="margin-top:8px"><strong class="sub-head">What would change our mind.</strong> 50%+ drop in closure-category BBB volume over two quarters; or Chime publishing structural remediation with auditable metrics; or a Corner Post outcome that narrows the cap differential.</p>
+  </div>
+
+  <div class="callout callout-blue">
+    <strong>Q5 — The multiple-regime question</strong>
+    <p style="margin-top:8px"><strong class="sub-head">Question.</strong> At what point does the market apply bank-like multiples (1–2× book) versus current 3× sales, and how does the year-end 2026 Reg II §235.5 measurement compress that timeline?</p>
+    <p style="margin-top:8px"><strong class="sub-head">Spock's view.</strong> Chime trades at ~3× sales — a fintech-growth multiple. As credit revenue (MyPay, Instant Loans, Chime Card) grows — currently ~33% of platform revenue (Spock estimate, not disclosed) — the market eventually applies bank-like multiples. Credit revenue is projected to cross 50% of total in late 2027 (Spock from Q1 2026 mix). An interim Bancorp 8-K or the 4Q 2026 10-K confirming year-end above $10B could trigger re-rating well before the credit-mix crossover. Multiple-compression is potentially a late-2026 / early-2027 story. Bartlett (Rothschild Redburn) is the only sell-side analyst engaging this.</p>
+    <p style="margin-top:8px"><strong class="sub-head">What would change our mind.</strong> Sustained credit-cycle outperformance proving structurally smaller exposure than peers; or Durbin reform eliminating the cliff; or a Bancorp Q2/Q3 2026 disclosure materially relieving the asset buffer ahead of year-end measurement.</p>
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Q6 — The diagnostic disclosure</strong>
+    <p style="margin-top:8px"><strong class="sub-head">Question.</strong> Are Bancorp's Q2/Q3 2026 10-Qs the right leading-indicator diagnostics, with the legally decisive measurement at year-end 2026 (Reg II §235.5) and a 1 July 2027 repricing event if Bancorp ends 2026 above $10B?</p>
+    <p style="margin-top:8px"><strong class="sub-head">Spock's view.</strong> Yes. TBBK conceded the framing in its April 2026 investor presentation (Q1 2026 8-K Exhibit 99.2): <em>"managing to an asset cap of $10B (per FRB Reg II, Durbin)"</em>. Above $10.0B at year-end 2026 fixes the determination; the bear becomes materially live by 1 July 2027. Below $9.95B with explicit capital-return acceleration, the bull strengthens. Three reasons year-end 2026 is uniquely diagnostic: <strong>(a)</strong> Q1 2026 buffer ~$0.1B; <strong>(b)</strong> buyback shrinking ($375M actual 2025 → $200M authorised 2026, $50.3M spent in Q1); <strong>(c)</strong> the contractual Durbin termination right in TBBK FY2025 10-K Risk Factors makes the threshold a partner-economics covenant. Diagnostic cluster: TBBK Q2 2026 10-Q (~August 2026), Q3 2026 10-Q (~November 2026), 4Q 2026 10-K (~February 2027). [12 CFR §235.5 — small-issuer status by asset size at end of preceding calendar year; compliance no later than 1 July of the succeeding year.]</p>
+    <p style="margin-top:8px"><strong class="sub-head">What would change our mind.</strong> A Bancorp 8-K (out-of-cycle) signalling crossover or major capital-return acceleration; or first written disclosure of the Cash App / Sutton / Visa Debit Flex co-issuance in the Q2 2026 10-Q clarifying the Bancorp-side share.</p>
+  </div>
+
+  <!-- SECTION 9b: CROSS-CUTTING RED FLAGS -->
+  <h2>Cross-Cutting Red Flags</h2>
+
+  <p>Eighteen of 104 catalogue flags fired: one high, ten medium, seven low. The cluster that matters is Operating + Capital + Regulatory — single-partner-bank concentration plus Durbin threshold tail. Closest doctrinal analogue is the 2024 Synapse failure, though Bancorp is materially better-capitalised. Phase 2 forensic ratios (Beneish M-Score, Dechow F-Score, Piotroski F-Score, Sloan accruals) warranted; Phase 3 (Wirecard cluster) not — RF-AUD-007 and RF-DISC-003 do not co-fire.</p>
+
+  <table>
+    <tr>
+      <th>Flag</th>
+      <th>Severity</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Workstream</th>
+    </tr>
+    <tr>
+      <td>RF-OPS-002</td>
+      <td><strong style="color:#c0392b">HIGH</strong></td>
+      <td>Operating / Capital</td>
+      <td>Supplier concentration — Bancorp holds ~70% of CHYM debit interchange. Q1 2026 assets $9.90B vs Q1 2025 $8.60B (<strong>+15.1% YoY</strong>); managing to $10B cap. Reg II §235.5: year-end measurement; compliance by 1 July of succeeding year.</td>
+      <td>Cross / WS-D / WS-E</td>
+    </tr>
+    <tr>
+      <td>RF-ACCT-006</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Accounting</td>
+      <td>Repeated "one-time" charges — FY25 $1.09B IPO-vesting SBC. Holds as one-time if FY26 normalises to Q1 2026 run-rate ($60.7M / $243M annualised).</td>
+      <td>WS-E</td>
+    </tr>
+    <tr>
+      <td>RF-ACCT-013</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Accounting</td>
+      <td>Off-balance-sheet partner-bank infrastructure — substance flag, not GAAP VIE violation. Same root as RF-OPS-002.</td>
+      <td>WS-E</td>
+    </tr>
+    <tr>
+      <td>RF-GOV-002</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Governance</td>
+      <td>CEO-Chair combined — Britt. Feuille is Lead Independent Director (partial mitigant).</td>
+      <td>WS-C</td>
+    </tr>
+    <tr>
+      <td>RF-GOV-003</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Governance</td>
+      <td>Dual-class no sunset — Class B 10 votes/share, founder/early-investor held. Standard SV neobank pattern.</td>
+      <td>WS-C</td>
+    </tr>
+    <tr>
+      <td>RF-CEO-012</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Governance</td>
+      <td>Role concentration — Britt CEO + Chair + Class B supervoting. Bounded by 5-of-7 independent NEDs.</td>
+      <td>WS-C</td>
+    </tr>
+    <tr>
+      <td>RF-OPS-003</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Operating</td>
+      <td>Single-geography 100% USA. Amplifies Durbin tail.</td>
+      <td>WS-E</td>
+    </tr>
+    <tr>
+      <td>RF-OPS-004</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Operating</td>
+      <td>Single-product (interchange dominant). MyPay, SpotMe, Credit Builder diversify but interchange remains the bulk.</td>
+      <td>WS-E</td>
+    </tr>
+    <tr>
+      <td>RF-CUST-003</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Customer</td>
+      <td>Customer complaints — CFPB 2024 (closed); Trustpilot 1.3/5 across 4,847 reviews; Reddit closure cluster. Industry-wide post-Synapse pattern.</td>
+      <td>WS-F</td>
+    </tr>
+    <tr>
+      <td>RF-REG-001</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Regulatory</td>
+      <td>CFPB 2024 closed; ongoing Durbin policy exposure (not enforcement). 10-K discloses threshold risk explicitly.</td>
+      <td>WS-E / WS-F</td>
+    </tr>
+    <tr>
+      <td>RF-DISC-006</td>
+      <td style="color:#e67e22">MEDIUM</td>
+      <td>Disclosure</td>
+      <td>Heavy use of "adjusted" metrics — adj EBITDA is load-bearing; GAAP reconciliation in 10-K / 10-Q.</td>
+      <td>WS-E</td>
+    </tr>
+    <tr>
+      <td colspan="5" style="background:#f7f5f0; font-style:italic; font-size:12px; color:#666">
+        Low-severity (completeness): RF-ACCT-008 goodwill (not material); RF-ACCT-010 Q1 seasonality (genuine tax-refund pattern); RF-ACCT-017 cash claims (verified at FDIC-insured US partners); RF-GOV-008 committee concentration in Feuille (but 71% NED majority); RF-OPS-005 cash-up-front model; RF-CAP-007 one-time IPO raise (not chronic); RF-CUST-007 AI-chatbot looping complaints.
+      </td>
+    </tr>
+  </table>
+
+  <div class="callout callout-grey">
+    <strong>IC discussion items — red-flag synthesis</strong>
+    <p style="margin-top:8px"><strong class="sub-head">Primary risk.</strong> Bancorp Durbin proximity. Q1 2026 $9.90B vs Q1 2025 $8.60B (<strong>+15.1% YoY</strong>). The 8-K is explicit: "managing to an asset cap of $10B (per FRB Regulation II, Durbin)." Bancorp is actively repurchasing shares, not permitting passive breach. Risk is real and structural, but timing is managed, not forced. The risk to CHYM is that management fails (year-end 2026 above $10B → 1 July 2027 repricing per Reg II §235.5) or the threshold is lowered.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Secondary risk.</strong> Partner-bank concentration violates RF-OPS-002 in substance even with two named partners. ~70% of debit interchange flows through Bancorp per Workstream D bear modelling; the 10-K discloses partner-bank concentration as material.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Tertiary risk.</strong> Governance pattern (RF-GOV-002 + RF-GOV-003 + RF-CEO-012) is the standard Silicon Valley neobank IPO shape. Doctrine §5.3 "survivorship in reverse" applies — Alphabet, Affirm, SoFi all fired similar patterns without fraud. Real but not kill-decision in isolation.</p>
+    <p style="margin-top:8px"><strong class="sub-head">Disclosure watch.</strong> FY25 GAAP net loss $(1.01B) is almost entirely $1.09B IPO-vesting SBC. Q1 2026 SBC normalised to $60.7M. Watch FY26 trajectory; if elevated for three or more years, RF-ACCT-006 escalates to medium-severity firing.</p>
+  </div>
+
+  <!-- SECTION 10: SPOCK VERDICT -->
+  <h2>Spock Assessment</h2>
+
+  <table>
+    <tr>
+      <th>Dimension</th>
+      <th>Signal</th>
+      <th>Spock Read</th>
+    </tr>
+    <tr>
+      <td>Revenue growth quality</td>
+      <td>+25% YoY, beat guidance, ~90% gross margin</td>
+      <td class="risk-low" style="color:#27ae60"><strong>POSITIVE</strong> — execution is real</td>
+    </tr>
+    <tr>
+      <td>Moat durability</td>
+      <td>moat_index 102 — ERODING-AT-THE-EDGES</td>
+      <td style="color:#e67e22"><strong>CAUTION</strong> — moat exists, but compressing</td>
+    </tr>
+    <tr>
+      <td>Bancorp/Durbin risk</td>
+      <td>TBBK Q1 2026 assets ~$9.90B vs $10B (<strong>+15.1% YoY</strong> from Q1 2025 $8.599B; $546M Q1 sequential vs $50M buyback); <strong>buyback capacity falling 2025 $375M actual → 2026 $200M authorised</strong>; <strong>top-3 deposit concentration 47% → 58% in Q1 2026</strong>; <strong>contractual Durbin termination right disclosed in TBBK FY2025 10-K Risk Factors</strong>; Cash App co-issuance adds non-Chime-controlled deposit driver, undisclosed in TBBK filings; legally decisive measurement 31 December 2026 (Reg II §235.5); repricing 1 July 2027 at earliest if Bancorp ends 2026 above $10B</td>
+      <td class="risk-high" style="color:#c0392b"><strong>HIGH RISK</strong> — TBBK Q2/Q3 2026 10-Qs leading-indicator; 4Q 2026 10-K (~February 2027) legally decisive; no Street coverage; no activist short coverage</td>
+    </tr>
+    <tr>
+      <td>Community / regulatory posture</td>
+      <td>2,645 BBB complaints in 12 months; CFPB ≥$4.55M enforcement (May 2024) active legacy; class actions pending</td>
+      <td style="color:#e67e22"><strong>CAUTION</strong> — operational risk is structural, not historical</td>
+    </tr>
+    <tr>
+      <td>AI maturity</td>
+      <td>Level 2 — Operational AI; ChimeCore improves cost structure but uses vendor stack available to all competitors</td>
+      <td style="color:#888"><strong>NEUTRAL</strong> — adds velocity, not a revenue moat</td>
+    </tr>
+    <tr>
+      <td>Credit quality (MyPay)</td>
+      <td>1% loss rate on origination volume, $722M maximum product obligation exposure</td>
+      <td style="color:#e67e22"><strong>CAUTION</strong> — benign cycle, untested in stress</td>
+    </tr>
+    <tr>
+      <td>Valuation</td>
+      <td>14.4% probability-weighted IRR; Street at 70% 12-month upside</td>
+      <td style="color:#888"><strong>FAIR</strong> — priced for the risk, not cheap</td>
+    </tr>
+    <tr>
+      <td>Virtual Chronos Vote</td>
+      <td>3Y / 4N / 0A</td>
+      <td style="color:#c0392b"><strong>WATCH — NOT BUY</strong> · diagnostic-anchored; no starter at $17.80</td>
+    </tr>
+  </table>
+
+  <div class="callout callout-amber">
+    <strong>WATCH — NOT BUY · revisit triggers</strong>
+    Virtual Chronos Vote 3Y / 4N / 0A on 26 May 2026. Diagnostic-anchored: first read at TBBK Q2 2026 10-Q (late July 2026). Any of the following triggers formal reassessment: (1) <strong>TBBK Q2 or Q3 2026 10-Q period-end assets above $10B; or TBBK 4Q 2026 10-K confirms year-end 2026 assets above $10B → Regulation II compliance required no later than 1 July 2027</strong> [12 CFR §235.5]; (2) any out-of-cycle Bancorp 8-K announcing changes to capital-return or asset-management posture; (3) substantive Chime IR statement on bank charter timeline or Durbin contingency; (4) any sell-side analyst publishing Bancorp Durbin arithmetic materially different from the Spock base; (5) any CFPB enforcement action subsequent to May 2024; (6) Q2 2026 MyPay loss rate above 1.5%; (7) price to $14–16 on H2 2026 post-lock-up pressure (would shift to starter band). If Spock's bear case is right, expect a discontinuous price reaction at the 31 December 2026 measurement disclosure or the 1 July 2027 implementation — not a gradual re-rate. The room agreed the next IC sitting should be timed to the late-July 2026 TBBK Q2 10-Q.
+  </div>
+
+  <!-- SECTION 11: WORKSTREAMS -->
+  <h2>Research Completeness — Gate 7 Workstreams</h2>
+
+  <p>All seven workstreams complete as of 25 May 2026.</p>
+
+  <div style="margin-top:12px">
+    <span class="workstream-badge" style="background:#e8f4e8;border-color:#5cb85c;color:#2d6a2d">&#10003; A — Company History &amp; AI Unit Economics</span>
+    <span class="workstream-badge" style="background:#e8f4e8;border-color:#5cb85c;color:#2d6a2d">&#10003; B — Moat &amp; Competitor Analysis</span>
+    <span class="workstream-badge" style="background:#e8f4e8;border-color:#5cb85c;color:#2d6a2d">&#10003; C — People &amp; Culture</span>
+    <span class="workstream-badge" style="background:#e8f4e8;border-color:#5cb85c;color:#2d6a2d">&#10003; D — Valuation (Bespoke)</span>
+    <span class="workstream-badge" style="background:#e8f4e8;border-color:#5cb85c;color:#2d6a2d">&#10003; E — Primary Documents (10-K, Earnings)</span>
+    <span class="workstream-badge" style="background:#e8f4e8;border-color:#5cb85c;color:#2d6a2d">&#10003; F — Community Intelligence</span>
+    <span class="workstream-badge" style="background:#e8f4e8;border-color:#5cb85c;color:#2d6a2d">&#10003; G — Analyst Coverage</span>
+    <span class="workstream-badge" style="background:#e8f4e8;border-color:#5cb85c;color:#2d6a2d">&#10003; Cross-cutting Red Flags</span>
+  </div>
+
+  <p style="margin-top:16px; font-size:14px">Primary evidence incorporates the FY2025 10-K (read in full via SEC EDGAR), Q4 2025 earnings release (8-K) and Q1 2026 earnings release (8-K).</p>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Chronos Capital Advisory · Gate 7 IC Reading Pack · CHYM.US · 25 May 2026</p>
+    <p style="margin-top:6px">PARTNER ONLY — NOT FOR DISTRIBUTION. This document is not investment advice. Chronos Capital Advisory is not a licensed financial services provider. All figures cited trace to public SEC filings, Chime investor relations press releases, or named third-party sources (StockAnalysis, MarketBeat, BBB, CFPB, ProPublica, Cornerstone Advisors). Inferences are labelled as such.</p>
+  </div>
+
+</div>
+</body>
+</html>

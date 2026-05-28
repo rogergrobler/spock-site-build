@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Memory You Haven't Built Yet — Insure.ag AI Workshop, 12–13 May 2026</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #FAFAF8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #1A1A1A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  /* ===== Masthead ===== */
+  .masthead {
+    border-bottom: 2px solid #1A1A1A;
+    padding-bottom: 20px;
+    margin-bottom: 48px;
+  }
+  .masthead .pub {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #1A1A1A;
+    margin-bottom: 4px;
+  }
+  .masthead .issue {
+    font-size: 11px;
+    color: #6A6A6A;
+    letter-spacing: 0.06em;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    margin-bottom: 56px;
+  }
+  .hero .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #B5651D;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 52px;
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 22px;
+    color: #1A1A1A;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #5C4220;
+  }
+  .hero .deck {
+    font-size: 20px;
+    line-height: 1.45;
+    color: #3A3A3A;
+    max-width: 720px;
+    margin: 0 0 28px;
+    font-weight: 400;
+  }
+  .hero .byline {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #6A6A6A;
+    letter-spacing: 0.04em;
+    border-top: 1px solid #E5E5E0;
+    padding-top: 16px;
+  }
+  .hero .byline strong {
+    color: #1A1A1A;
+    font-weight: 600;
+  }
+
+  /* ===== Body ===== */
+  h2.section-head {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 64px 0 10px;
+    color: #1A1A1A;
+  }
+  h2.section-head .num {
+    color: #B5651D;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  h2.section-head em {
+    font-style: italic;
+    color: #5C4220;
+  }
+  .section-deck {
+    font-size: 17px;
+    line-height: 1.55;
+    color: #4A4A4A;
+    margin: 0 0 28px;
+    font-weight: 400;
+    max-width: 680px;
+  }
+  h3.sub-head {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 40px 0 12px;
+    color: #1A1A1A;
+  }
+  h4.minor-head {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #B5651D;
+    margin: 24px 0 8px;
+  }
+  p {
+    font-size: 16.5px;
+    line-height: 1.7;
+    margin: 0 0 18px;
+    color: #2A2A2A;
+  }
+  p.lede::first-letter {
+    font-size: 48px;
+    float: left;
+    line-height: 0.85;
+    padding: 4px 8px 0 0;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+  em.ink { color: #1A1A1A; font-style: normal; font-weight: 600; }
+  em.warm { color: #5C4220; font-style: italic; }
+
+  /* ===== Pull quotes ===== */
+  .pullquote {
+    margin: 32px 0;
+    padding: 20px 0;
+    border-top: 1px solid #1A1A1A;
+    border-bottom: 1px solid #1A1A1A;
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 500;
+    color: #1A1A1A;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  .pullquote .attr {
+    display: block;
+    margin-top: 14px;
+    font-size: 11px;
+    font-style: normal;
+    color: #6A6A6A;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ===== Sidebar ===== */
+  .sidebar {
+    background: #F4F2EC;
+    border-left: 3px solid #B5651D;
+    padding: 24px 26px;
+    margin: 36px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .sidebar .tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #B5651D;
+    margin-bottom: 10px;
+  }
+  .sidebar h4 {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: #1A1A1A;
+    letter-spacing: -0.01em;
+  }
+  .sidebar p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #2A2A2A;
+  }
+  .sidebar p:last-child { margin-bottom: 0; }
+
+  /* ===== Presenter blocks ===== */
+  .presenter {
+    border-top: 1px solid #E5E5E0;
+    padding: 28px 0 8px;
+    margin-bottom: 8px;
+  }
+  .presenter .who {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .presenter .name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: -0.01em;
+  }
+  .presenter .role {
+    font-size: 12px;
+    color: #6A6A6A;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .presenter .topic {
+    font-size: 14px;
+    font-weight: 600;
+    color: #B5651D;
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+    text-transform: none;
+  }
+  .presenter p { font-size: 16px; line-height: 1.65; }
+
+  /* ===== Stats / numbers ===== */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin: 32px 0;
+    padding: 24px 0;
+    border-top: 1px solid #E5E5E0;
+    border-bottom: 1px solid #E5E5E0;
+  }
+  .stat .num-big {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1A1A1A;
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  .stat .num-label {
+    font-size: 11px;
+    color: #6A6A6A;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* ===== Commitments table ===== */
+  .commitments {
+    border: 1px solid #E5E5E0;
+    border-radius: 8px;
+    padding: 0;
+    margin: 24px 0;
+    background: #FFFFFF;
+    overflow: hidden;
+  }
+  .commit-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 24px;
+    padding: 18px 22px;
+    border-bottom: 1px solid #ECECE8;
+    align-items: start;
+  }
+  .commit-row:last-child { border-bottom: none; }
+  .commit-who {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+  .commit-who .commit-role {
+    display: block;
+    font-size: 11px;
+    color: #6A6A6A;
+    font-weight: 500;
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+  }
+  .commit-list {
+    font-size: 14px;
+    color: #2A2A2A;
+    line-height: 1.55;
+  }
+  .commit-list .item {
+    margin-bottom: 7px;
+    padding-left: 14px;
+    position: relative;
+  }
+  .commit-list .item::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #B5651D;
+    font-weight: 600;
+  }
+  .commit-list .item:last-child { margin-bottom: 0; }
+  .commit-list b {
+    color: #1A1A1A;
+    font-weight: 700;
+  }
+
+  /* ===== GOOS framework (preserved from source) ===== */
+  .goos-section {
+    background: #FFFFFF;
+    border: 1px solid #D8D5CB;
+    border-radius: 12px;
+    padding: 40px 32px;
+    margin: 48px -16px;
+  }
+  .goos-intro {
+    margin-bottom: 28px;
+  }
+  .goos-intro h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 10px;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .goos-intro h2 em {
+    font-style: italic;
+    color: #5C4220;
+  }
+  .goos-intro .num {
+    color: #B5651D;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .goos-intro p {
+    font-size: 15px;
+    color: #4A4A4A;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 740px;
+  }
+
+  .level {
+    border: 1px solid #E5E5E0;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+  .lvl-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ECECE8;
+    flex-wrap: wrap;
+  }
+  .lvl-num {
+    font-size: 30px;
+    font-weight: 600;
+    color: #1A1A1A;
+    letter-spacing: -0.02em;
+    min-width: 54px;
+    line-height: 1;
+  }
+  .lvl-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1A1A1A;
+  }
+  .lvl-tag {
+    font-size: 13px;
+    color: #6A6A6A;
+    font-style: italic;
+    margin-left: auto;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .col-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #8A8A82;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ECECE8;
+  }
+  .col-text {
+    font-size: 13px;
+    color: #2A2A2A;
+    line-height: 1.6;
+  }
+  .tests {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px dashed #DCDCD6;
+  }
+  .test {
+    padding: 12px 14px;
+    border-radius: 8px;
+  }
+  .test-hard { background: rgba(24, 95, 165, 0.06); }
+  .test-fp   { background: rgba(176, 56, 56, 0.05); }
+  .test-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 5px;
+  }
+  .test-hard .test-label { color: #185FA5; }
+  .test-fp   .test-label { color: #A63333; }
+  .test-body {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #2A2A2A;
+  }
+  .l5 {
+    background: #F4F2EC;
+    border: 1px solid #D8D5CB;
+  }
+  .l5-narrative {
+    font-size: 13px;
+    color: #3A3A3A;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 1100px;
+  }
+  .l5-bullets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 28px;
+    margin-bottom: 16px;
+  }
+  .l5-bullet {
+    font-size: 14px;
+    color: #2A2A2A;
+    line-height: 1.55;
+    display: flex;
+    gap: 10px;
+  }
+  .l5-bullet::before {
+    content: "•";
+    color: #8A8A82;
+    flex-shrink: 0;
+  }
+  .l5-bullet b {
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  .placement-callout {
+    background: #1A1A1A;
+    color: #F4F2EC;
+    padding: 24px 28px;
+    border-radius: 8px;
+    margin: 32px 0 16px;
+  }
+  .placement-callout .label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #C9A961;
+    margin-bottom: 10px;
+  }
+  .placement-callout h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+  }
+  .placement-callout p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #D5D2C8;
+    margin: 0 0 10px;
+  }
+  .placement-callout p:last-child { margin-bottom: 0; }
+  .placement-callout strong { color: #FFFFFF; }
+
+  /* ===== Takeaway tiles ===== */
+  .takeaways {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin: 28px 0;
+  }
+  .takeaway {
+    border: 1px solid #E5E5E0;
+    border-left: 3px solid #B5651D;
+    border-radius: 4px;
+    padding: 20px 24px;
+    background: #FFFFFF;
+  }
+  .takeaway .num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #B5651D;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .takeaway h4 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .takeaway p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 10px;
+  }
+  .takeaway p:last-child { margin-bottom: 0; }
+
+  /* ===== Roadmap ===== */
+  .roadmap {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+    border-top: 1px solid #E5E5E0;
+    padding: 20px 0;
+    margin-bottom: 0;
+  }
+  .roadmap:last-of-type { border-bottom: 1px solid #E5E5E0; }
+  .roadmap-when {
+    font-size: 13px;
+    font-weight: 700;
+    color: #B5651D;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .roadmap-when .when-sub {
+    display: block;
+    font-size: 10px;
+    color: #6A6A6A;
+    font-weight: 500;
+    margin-top: 3px;
+    letter-spacing: 0.06em;
+  }
+  .roadmap-what h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: #1A1A1A;
+  }
+  .roadmap-what p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #2A2A2A;
+    margin: 0;
+  }
+
+  /* ===== Footer ===== */
+  .colophon {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 2px solid #1A1A1A;
+    font-size: 12px;
+    color: #6A6A6A;
+    line-height: 1.7;
+  }
+  .colophon strong { color: #1A1A1A; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .page { padding: 32px 18px 50px; }
+    .hero h1 { font-size: 36px; }
+    .hero .deck { font-size: 17px; }
+    h2.section-head { font-size: 24px; }
+    .grid { grid-template-columns: 1fr; }
+    .tests { grid-template-columns: 1fr; }
+    .l5-bullets { grid-template-columns: 1fr; }
+    .lvl-tag { margin-left: 0; }
+    .commit-row { grid-template-columns: 1fr; gap: 8px; }
+    .roadmap { grid-template-columns: 1fr; gap: 8px; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+    .goos-section { padding: 28px 18px; margin: 32px -10px; }
+  }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="insure-ag-workshop-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="insure-ag-workshop-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+
+<div class="page">
+
+  <!-- ===== MASTHEAD ===== -->
+  <div class="masthead">
+    <div class="pub">CHRONOS CAPITAL · WORKSHOP MEMO</div>
+    <div class="issue">No. 03 · 14 May 2026 · Insure.ag · 18&nbsp;min read</div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <div class="eyebrow">The Insure.ag AI Workshops · 12 &amp; 13 May 2026</div>
+    <h1>The memory you<br>haven't <em>built yet</em>.</h1>
+    <p class="deck">
+      Eleven people, two afternoons, a dozen show-and-tells, and a single architectural realisation: the agency that wins the next decade is the one that captures, structures and reuses what it already knows. The tools are off-the-shelf. The discipline is not.
+    </p>
+    <div class="byline">
+      <span><strong>Author</strong> · Roger Grobler, Chronos Capital</span>
+      <span><strong>Host</strong> · Andrew Burdock, Insure.ag</span>
+      <span><strong>Format</strong> · two-day show-and-tell, eleven presenters</span>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 1: THE SETUP ===== -->
+  <h2 class="section-head"><span class="num">01 · The setup</span>Why this workshop, <em>and why now</em>.</h2>
+  <p class="section-deck">
+    Insure.ag is a young agency in a regulated, paper-heavy specialty: crop and ag insurance across the United States. The team is small — five agents, two operations leads, a dev pair, a marketing lead, a head office. The work is information-dense and relationship-led. Every advantage compounds. So does every leak.
+  </p>
+
+  <p class="lede">
+    Chronos Capital ran a workshop with the team on the afternoons of 12 and 13 May. The format was not a teach-in. It was a show-and-tell. Everyone presents. Not the CEO; not a few stars; <em class="ink">the whole team</em>, because the best AI use cases inside any business almost never originate at the top. The bet was that if everyone spent ninety minutes preparing a live use case and a six-month plan, the room would surface something the leadership hadn't framed yet.
+  </p>
+
+  <p>
+    Roger Grobler opened both days with the same two principles. They are unglamorous, and they did almost all the architectural work the rest of the workshop ended up resting on.
+  </p>
+
+  <p>
+    <em class="ink">Context is the product.</em> What you feed the model matters more than the prompt you give it. The clever prompt is the cheap part. Anyone can write one. What's hard — and what compounds — is the <em class="warm">information harness</em> around it: the structured records, the meeting transcripts, the email history, the proprietary data that turns a generic model into one that knows your business. Two firms with the same Claude subscription get wildly different results, and the difference is almost never the prompt.
+  </p>
+
+  <p>
+    <em class="ink">Tool user, not tool seller.</em> Companies that capture the value over the next decade won't be the ones building AI products to sell. They'll be the ones that use AI deep inside their operations — to underwrite better, to handle claims faster, to price risk more precisely, to serve growers with depth a competitor can't match. The Chronos investment thesis is built on exactly this distinction. For Insure.ag the implication is direct: don't build an AI product. Build an AI-enabled agency.
+  </p>
+
+  <div class="pullquote">
+    Two firms with the same Claude subscription get wildly different results. The difference is almost never the prompt. It's what they've bothered to capture, structure, and feed in.
+    <span class="attr">Roger Grobler · Day 1 opening</span>
+  </div>
+
+  <!-- ===== SECTION 2: DAY 1 ===== -->
+  <h2 class="section-head"><span class="num">02 · Day 1</span>Five demos, one <em>convergence</em>.</h2>
+  <p class="section-deck">
+    The first day delivered five show-and-tells: Roger's own Spock second brain as the opening exemplar, then Andrew on a LinkedIn agent he has running unattended, Cindy on her policy-reconciliation work, Jimmy on a skill he had built for a single olive grower, and Joshua on a private-hail quoting project that had previously taken six months. Each was a window onto where the agency actually is. By the time the last person finished, the room had named the next eighteen months of work.
+  </p>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Roger Grobler</span>
+      <span class="role">Chronos Capital · partner</span>
+    </div>
+    <div class="topic">Spock — the second brain of a four-person firm</div>
+    <p>
+      Roger opened by showing the system Chronos itself runs on: six linked databases in Notion (People, Companies, Projects, Meetings, plus private Notes and Actions), all written to by Claude, never by humans. Years of WhatsApp threads, emails and board packs sit captured and queryable. Before any meeting he says <em class="warm">"brief me on X"</em> and a structured picture arrives in under a minute. Every claim has a source. Every search is disclosed. The system is built to make fabrication structurally impossible, not just discouraged.
+    </p>
+    <p>
+      The team kept asking questions about it for the next twenty-five minutes — about Notion versus Obsidian, about how the dashboards regenerate, about how to keep up when the apps change every week, about model substitutability if Claude is one day overtaken by something else. The length of that conversation was the point. Andrew said in the middle of it: <em class="warm">"we've been thinking for a long time about how do we share memory across the business … this is a great way to solve it."</em> Joshua, a few minutes later: <em class="warm">"isn't it kind of possible that we're just building our own custom software that we can all use?"</em> The strategic convergence of the entire two days happened inside those twenty-five minutes. Everything that followed was variations on that theme.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Andrew Burdock</span>
+      <span class="role">Insure.ag · CEO</span>
+    </div>
+    <div class="topic">A LinkedIn agent that runs while you sleep</div>
+    <p>
+      Andrew showed a small, working artefact that has been quietly running for about ninety days. Three scheduled Claude tasks fire at 9 a.m. daily: one drafts ten relevant connection requests; one cross-references the last fortnight of crop-insurance, ag-tech, specialty-crop and farm-bill posts and drafts five tailored comments for him to approve; one once every four days drafts a substantive post on a current industry topic. The whole system takes Andrew five minutes a day to review and approve.
+    </p>
+    <p>
+      The numbers carried the story. Roughly <em class="ink">27,000 impressions</em> in the trailing ninety days. <em class="ink">12,000 in the last twenty-eight</em>. Three thousand followers, up 17% in a month, against a 162% impressions growth. Critically, the followers aren't random South Africans — they are crop-insurance agents, specialty-crop growers, ag-tech operators, USDA staff. <em class="warm">"Our name is getting out there at industry events,"</em> Andrew said, <em class="warm">"and I think this has something to do with it."</em>
+    </p>
+    <p>
+      Andrew then walked through his AI-multiplier diagnostic — a back-of-six-months analysis Claude did of his email, Slack and Granola history. The unsurprising finding: he is the bottleneck on roughly thirty decisions a day, most of which he shouldn't be making. The surprising part was how legible the picture was. He could see his own work in shape and size and where the leverage points were. He didn't need a consultant or an offsite; he needed a Claude session.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Cindy Marcum</span>
+      <span class="role">Insure.ag · account manager (Washington)</span>
+    </div>
+    <div class="topic">Reconciling handwritten policy approvals — and the 32&nbsp;MB problem</div>
+    <p>
+      Cindy's work involves matching handwritten policy applications scanned to PDF against the policy issuance documents returned by the AIPs. It is exactly the kind of repetitive, evidence-heavy, multi-document reconciliation that AI should eat for breakfast. She had done good work feeding documents to Claude one at a time, getting clean matches and discrepancy reports, until she hit a wall: some of her larger PDFs exceeded the 32 MB limit and Claude refused to ingest them.
+    </p>
+    <p>
+      The team broke for the bathroom. During the break Roger went into Claude Code, wrote one short voice prompt — <em class="warm">"Cindy deals with handwritten PDFs over thirty-two megabyte that Claude won't take. Suggest a way to build a web app using Claude Code to view the PDF and see the transcripts. Put it into HTML for me to show."</em> — and produced a working artefact in five minutes. He showed it after the break. It became the most-discussed moment of the workshop.
+    </p>
+  </div>
+
+  <div class="sidebar">
+    <div class="tag">Set piece · the 32&nbsp;MB moment</div>
+    <h4>Why the limit wasn't the problem.</h4>
+    <p>
+      The 32 MB ceiling was a symptom, not the disease. A 32 MB PDF is almost always a stack of high-resolution scanned pages. Claude doesn't need the PDF — it needs one page at a time, rendered at controlled resolution, with a fixed field schema and a confidence flag per extracted value. Split the document, send pages individually, route low-confidence fields to a human, write the validated output to a system of record. The pipeline runs in well under fifty lines of Python plus a thin web UI.
+    </p>
+    <p>
+      The clever bit isn't the prompt. It is the page-splitter, the field schema, the confidence flags, and the review UI around the Claude call. <em class="ink">Context is the product</em> — made literal. The error message wasn't telling Cindy that Claude was too small. It was telling her that the system around Claude was missing. That distinction landed in the room and stayed there for the rest of the two days.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Jimmy Smith</span>
+      <span class="role">Insure.ag · agent (California)</span>
+    </div>
+    <div class="topic">An olive grower, a 140-page PDF, and a first skill</div>
+    <p>
+      Jimmy's grower had handed him a 140-page paper print-out of olive production. No email, no CSV. Jimmy fed it to Claude, set up an OCR pipeline, taught it the tonnage formulas it needed to apply, and got a clean Excel back. He framed it as <em class="warm">"junior-varsity-freshman-football level"</em> work — which is good calibration. His ask was about how to generalise the pattern across other crops and other packing houses for next season.
+    </p>
+    <p>
+      Roger's coaching to him in the moment was useful for the whole room. <em class="warm">"You're going from A to Z in one shot. Break it up. Build it in steps. Validate each output. Ask Claude to write you a plan first — including where it thinks it's likely to make mistakes — before it does the work."</em> The deeper point Jimmy named himself a minute later: he hasn't been treating Claude as a thought partner. He's been treating it transactionally — input, output, next. The team will likely re-encounter this as a class-wide growth edge.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Joshua Benson</span>
+      <span class="role">Insure.ag · senior agent</span>
+    </div>
+    <div class="topic">Six 200-page rate manuals, 140 crops, one afternoon</div>
+    <p>
+      Joshua's project was the most technically substantive of Day 1, and it ought to be filed as a marker for what's possible. Private hail coverage in his book of business spans six different carriers, each with a two-hundred-page rate manual full of nuance and exceptions. For a 140-line request — varying counties, crops and exposures — he previously had to read, cross-reference and price by hand. At his prior agency, a similar problem had taken <em class="ink">six months and roughly twelve people, including an outside software developer.</em>
+    </p>
+    <p>
+      Joshua did the entire thing in Claude, conversationally, in roughly <em class="ink">twenty hours of human time across four people.</em> The output was a clean, stacked, multi-carrier quote with grand totals across eleven entities and a breakdown that defaulted from cheapest to next-cheapest carrier line by line. The grower's response was: <em class="warm">"OMG, this is a masterpiece. We've been doing business with these guys for years."</em>
+    </p>
+    <p>
+      Joshua also surfaced his own pattern from the AI-multiplier diagnostic. The system flagged that ~4% of his time appears in correspondence about AI tooling — and that this should probably be three to four times higher. He's working too much inside his own AI bubble. The instinct to externalise the wins is the right one, and the workshop itself was already an unwind of it.
+    </p>
+  </div>
+
+  <div class="pullquote">
+    At my previous agency, a project like this took six months and twelve people. We did it in twenty hours with four.
+    <span class="attr">Joshua Benson · private hail · Day 1</span>
+  </div>
+
+  <!-- ===== SECTION 3: DAY 2 ===== -->
+  <h2 class="section-head"><span class="num">03 · Day 2</span>Seven demos, the <em>commitments</em>.</h2>
+  <p class="section-deck">
+    Day 2 ran seven show-and-tells — Marina on claims-intake auditing and a daily bulletin digest; Kari on Notion and the trifecta workflow she now runs every day; Lupe on email-triage and the year-long playbook; Matthew on the financial pipeline stitching five systems together; Olya on Coverage Engine 2.0 and the Meeting-to-Jira skill; Tammy on the bi-weekly PR/media pipeline; Tristan on the everything-claude-code repo and the code-slop discipline. The work was more technical, more grounded in agency-specific workflows, and the shape of where the team is going landed with much more precision than it had on Day 1.
+  </p>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Marina Marin</span>
+      <span class="role">Insure.ag · operations &amp; client lead</span>
+    </div>
+    <div class="topic">A claims-intake skill that already runs in production</div>
+    <p>
+      Marina's was the most operationally advanced live use case of Day 2. The skill is in production. She dictates the event into Claude — "frost damage on this date in these counties" — and the skill cross-references the tracking spreadsheet to identify which policies need claims, asks all clarifying questions in a single pass rather than serially, flags policies fresh enough to need pre-harvest inspection notes, generates a one- or two-page PDF per grower, and drafts an email to Cindy. The only manual step left is attaching the PDFs and entering each AIP system.
+    </p>
+    <div class="pullquote" style="font-size: 19px; margin: 18px 0;">
+      It was creating this PDF from scratch every single time and every time it would do it slightly different — so the templates for me were a big win.
+      <span class="attr">Marina Marin · Day 2</span>
+    </div>
+    <p>
+      Her forward plan is to remove even that last manual step. The email-with-PDF hand-off to Cindy becomes an auto-generated task on Cindy's Notion dashboard. The email vanishes. Marina also commits to building the daily RMA/AIP bulletin digest the whole team will use, and a separate auditor agent — a second pair of eyes — to check the data quality of what the intake skill produces before it reaches a grower.
+    </p>
+    <p>
+      The auditor concept is where the day's deepest architectural debate started. Joshua pushed back, hard and well: <em class="warm">"my biggest fear on using it to check itself is that it already put it together this way and felt good about it the first time."</em> Roger's response: the checking agent is specialised, narrow, and ideally a different model. <em class="warm">"On my specific thing I now have 29 of them and every one of them goes in and they check a very specific thing."</em> The exchange is recorded in the strategic-tensions section below — it is one of the architectural debates that will recur every quarter for the next three years.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Kari Madden</span>
+      <span class="role">Insure.ag · operations lead</span>
+    </div>
+    <div class="topic">The Granola–Whisper–Claude trifecta, and Notion as next</div>
+    <p>
+      Kari opened by showing the personal workflow she has converged on — a trifecta of <em class="ink">Granola for meeting capture, Whisper Flow for voice dictation, and Claude for drafting.</em> She'd pulled the last two months of meeting notes from Tammy, Marina and Andrew and used them to draft internal procedures and job descriptions, then edited the drafts by talking to her screen. The whole thing lives in chat conversations today — not yet in artefacts, not yet in Notion — which she named openly as a problem to fix.
+    </p>
+    <div class="pullquote" style="font-size: 19px; margin: 18px 0;">
+      The initial feedback from Claude was like, "Remove yourself from every meeting. Redistribute all of your work to other people." And I was like, "That isn't really gonna apply."
+      <span class="attr">Kari Madden · on her AI multiplier diagnostic</span>
+    </div>
+    <p>
+      That line is funny and also telling. The diagnostic was honest enough to surface the structural answer — fewer meetings, more delegation — and Kari was honest enough to say it didn't map onto the day-to-day reality of running operations at a young agency. Roger reframed it: <em class="warm">"not only having efficiency objectives with AI but saying how can I be happier at work — a little bit of a different way of phrasing it."</em>
+    </p>
+    <p>
+      Kari's forward plan is a Vendor Relationship Dashboard built as a Claude artefact (probably living in Notion), plus a monthly operations reporting table that auto-updates from her email and Slack. The context-switching cost is real; the dashboard is meant to absorb it. Her two larger commitments — making Notion the top priority for the next three weeks, and refusing to discount the quick wins — were the most consequential operational decisions of the two days.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Lupe Villaseñor</span>
+      <span class="role">Insure.ag · agent (Washington)</span>
+    </div>
+    <div class="topic">Underwriter-triage from email, year-long playbook to come</div>
+    <p>
+      Lupe has connected Claude directly to her email and uses it to triage the daily stream of underwriter requests — taxes, pricing, ownership structures, production records, AP. Claude drafts the responses, organises threads by grower, and surfaces what is missing from a packet before she replies. The work sits in repeated one-off chats today, not in a persistent artefact. OneNote is the fallback knowledge store, which she flagged as the wrong place for it to live.
+    </p>
+    <div class="pullquote" style="font-size: 19px; margin: 18px 0;">
+      If you double-check every single thing you just ruin the efficiency.
+      <span class="attr">Lupe Villaseñor · Day 2</span>
+    </div>
+    <p>
+      That sentence is the workshop's most useful tension in nine words. It is also why Marina's auditor concept and Tristan's production-grade discipline matter so much: without an architecture that does the double-checking <em>by design</em>, every individual is forced into a choice between speed and reliability — and reliability lost. Roger's response landed the corollary: <em class="warm">"you've got to check what's going in — otherwise you're going to build on the foundation of sand."</em>
+    </p>
+    <p>
+      Her forward plan is a year-long playbook template that rebuilds itself each year — sales-close, underwriter cycles, harvest — plus self-serve responses to standard adjuster and underwriter document requests so she stops being the middleman. The L1-to-L2 transition is right there in her commitment to generalise her personal dashboard to the rest of the team. Most agency users stop after building their own. Lupe named the second half explicitly.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Matthew Myers</span>
+      <span class="role">Insure.ag · finance &amp; data</span>
+    </div>
+    <div class="topic">A financial pipeline stitching five systems together</div>
+    <p>
+      Matthew has been quietly building the agency's most ambitious cross-system integration. His financial pipeline stitches Agency Root (production and policy), six different AIP portals (remittances), Xero (source of truth), Ramp and Gusto. Skills now handle invoicing, AIP-to-Xero reconciliation, cash allocation against bank deposits, and agent commissions. The bottleneck he can't yet remove is two to three hours of copy-paste every cycle to allocate cash against individual policies — because Xero blocks AI from acting inside it.
+    </p>
+    <div class="pullquote" style="font-size: 19px; margin: 18px 0;">
+      I shouldn't be building a system that is dependent in any which way on me — much as that might prolong my income.
+      <span class="attr">Matthew Myers · Day 2</span>
+    </div>
+    <p>
+      That sentence does most of the heavy lifting on what L3 actually means inside a finance function. The temptation when you're the operator who understands the plumbing is to make yourself indispensable. Matthew named the opposite as the goal: build the pipeline so cleanly that Marina can hand him a single output file and the books update themselves. Roger's response on the multiplier maths was direct: <em class="warm">"if you multiply talent with something, it's a lot more than if you multiply a lack of talent with something."</em>
+    </p>
+    <p>
+      The quietly important commitment Matthew named — consult Joshua to deepen finance's understanding of Agency Root — is exactly the cross-functional knowledge transfer the L2-to-L3 transition needs. Sales-side fluency in finance, and vice versa, is what stops the shared brain from becoming a stack of silo-shaped pages.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Olya Dashuk</span>
+      <span class="role">Insure.ag · developer &amp; product</span>
+    </div>
+    <div class="topic">Coverage Engine 2.0 scoped in three days, Meeting-to-Jira-Story skill</div>
+    <p>
+      Olya's was the most concrete demonstration of leverage on Day 2. For Q1 she had to scope four themes of <em class="ink">Coverage Engine 2.0.</em> She fed Claude: a v1 scope document, codebase context saved to Claude memory files from earlier dev work, plus Granola transcripts of meetings with Joshua. The output: three full scope documents (in-scope, out-of-scope, acceptance criteria, open questions), three implementation plans, and the Jira epics and story tickets — generated via a custom Meeting-to-Jira-Story skill she'd built.
+    </p>
+    <div class="pullquote" style="font-size: 19px; margin: 18px 0;">
+      Without Claude it would have taken probably two weeks of meetings going back and forth — instead I spent about three days of focused work.
+      <span class="attr">Olya Dashuk · Day 2</span>
+    </div>
+    <p>
+      Two weeks compressed into three days is not a productivity story. It is an organisational story. The two weeks of meetings were the agency's coordination cost — calendar tetris, context re-establishment, decisions deferred while someone "thinks about it." The three days were focused engineering. The ratio matters because it points at where the leverage actually sits. Roger's response: <em class="warm">"I like that language — the engine versus planning versus unique leverage."</em>
+    </p>
+    <p>
+      Her forward plan is twofold and load-bearing. A personal MCP server to capture the working knowledge currently in her head. And a status-collection bot that pulls PR, Jira and Slack updates daily so stand-ups can discuss outstanding questions rather than repeat status. The implicit goal is to flip her own time mix back from sprint operations toward hands-on engineering. The same shape will help every senior person on the team.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Tammy Sutherns</span>
+      <span class="role">Insure.ag · marketing</span>
+    </div>
+    <div class="topic">A bi-weekly PR/media pipeline, the brand toolkit, the Monday Monster</div>
+    <p>
+      Tammy presented for ten minutes immediately before Tristan and what she'd built is closer to a multi-function team than a marketing workflow. Two scheduled agents now run on a bi-weekly cadence: one updates the marketing hub automatically from emails, Slack and Granola; the second researches outreach opportunities and emails her a to-do list with press-pitch angles ready to use. She also showed an agent built around grower-pulse — <em class="warm">"it started calling the Monday monster which I thought was hilarious"</em> — plus a brand and communications toolkit that enforces tone and style across everything the agency publishes.
+    </p>
+    <div class="pullquote" style="font-size: 19px; margin: 18px 0;">
+      In a traditional team you'd have one person who's just on PR and media, one person who's on events. So I think it's really pulling like a team of at least five into one.
+      <span class="attr">Tammy Sutherns · on the scale of what she's replaced</span>
+    </div>
+    <p>
+      Tammy was explicit that this isn't pure automation. She drew the line carefully: <em class="warm">"the people piece — don't automate that. That's the piece where human beingness is so important."</em> The agents handle hub maintenance, opportunity research, and outbound preparation. She handles the conversations. The principle generalises — for any client-facing function, AI underwrites the prep, the human does the human work.
+    </p>
+    <p>
+      Her commitment for the next phase is structural: integrate the second brain into content creation so she stops creating in isolation. <em class="warm">"With that second brain there's a way to really level up the brains of everyone here so that we're utilising that expertise when we're creating content."</em> That sentence is the marketing-function articulation of exactly the same architectural realisation Andrew named at the end of the workshop about the agency as a whole.
+    </p>
+  </div>
+
+  <div class="presenter">
+    <div class="who">
+      <span class="name">Tristan Schmitt</span>
+      <span class="role">Insure.ag · lead developer</span>
+    </div>
+    <div class="topic">Three hats, an HTML magazine retrospective, the 181k-star repo</div>
+    <p>
+      Tristan presented as the agency's most fluent Cloud Code power user wearing three hats — mapping product manager, DevOps support, and engineering. He had Cloud Code analyse 19 sessions across the last 90 days plus the corresponding Jira, Slack and Granola history, and surface the whole thing as an HTML "online magazine" retrospective with a road map, the open challenges and a month-six checkpoint. 22 tickets done. 14 in backlog. Architecture decisions captured nowhere except Slack — which he flagged explicitly as a problem.
+    </p>
+    <div class="pullquote" style="font-size: 19px; margin: 18px 0;">
+      I talk to it more than I talk to most people.
+      <span class="attr">Tristan Schmitt · Day 2</span>
+    </div>
+    <p>
+      The retrospective itself became the artefact of the session. Andrew said in the chat backchannel — visible to the room — <em class="warm">"myself, Josh and Jimmy was talking in the background here about how cool it would be to go present to a customer with his essentially customised website pitch."</em> Tristan's craft is the agency's most underused commercial asset. What he produced for his own retrospective is exactly what Insure.ag should be putting in front of growers and carriers.
+    </p>
+    <p>
+      Tristan's forward plan is two specific moves before paternity leave in three weeks. Adopt the open-source <em class="warm">everything-claude-code repository</em> — 181,000 stars and counting — as the source of tested skills and agents. And stand up Obsidian as his local second brain alongside the shared Notion he'll be running with Olya. The dual-substrate (Obsidian for code-adjacent local work, Notion for the agency-wide shared brain) is exactly the right architectural choice for a dev pair.
+    </p>
+    <p>
+      Tristan's contribution to the workshop reached well beyond his own slot. On Day 1, when Roger demonstrated the live Claude Code reply to Cindy's 32 MB problem, Tristan immediately said: <em class="warm">"please do code reviews if you're going to do that."</em> It is a small line that does most of the architectural work for the agency over the next year. The line between the quick-win zone (any non-technical person, any internal one-shot tool) and the production zone (anything customer-facing, anything financial, anything compliance-bound) gets drawn by the dev pair. Without that line, agent sprawl becomes a problem. With it, the factory keeps making.
+    </p>
+  </div>
+
+  <!-- ===== SECTION 4: THE STRATEGIC DECISIONS ===== -->
+  <h2 class="section-head"><span class="num">04 · What was actually decided</span>Three aligned moves, one <em>operating commitment</em>.</h2>
+  <p class="section-deck">
+    Most workshops produce themes. This one produced decisions. Four of them, and each is the kind of thing that, twelve months later, the team will be able to point to and say <em>we changed direction that week</em>.
+  </p>
+
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="num">Aligned decision · 01</div>
+      <h4>HTML over PDF as the default output format — with one caveat.</h4>
+      <p>System-generated documents — dashboards, briefing notes, customer-facing artefacts, internal reports — default to HTML rather than PDF. HTML is editable, queryable, AI-readable, regenerable. PDF is none of those. It is a 1995 paradigm being kept alive by inertia. Joshua's framing on this was direct: <em class="warm">"HTML are the four letters I would use to describe my takeaway here."</em> The team is not banning PDF; it is removing PDF's default status.</p>
+      <p><em class="ink">The caveat surfaced at the end of Day 2.</em> Tristan: <em class="warm">"HTML is not that easy to share. So be careful in making everything in HTML because it won't work out that well."</em> Andrew added that several of the HTML artefacts shown during presentations had been buggy. The decision stands, but the implication is real: a customer-facing HTML artefact has to ship with a sharing path that works for the recipient — embedded view, hosted link, or a PDF render available on request. The team that gets this right wins; the team that ships beautiful HTML no one can open loses.</p>
+    </div>
+    <div class="takeaway">
+      <div class="num">Aligned decision · 02</div>
+      <h4>A daily bulletin digest for RMA and AIP changes.</h4>
+      <p>Marina will build, and the agency will commit to running, a daily bulletin digest that ingests RMA and AIP correspondence, identifies material policy changes, and surfaces the team-by-team consequence. This replaces the current pattern of every person reading every bulletin and either missing the relevant one or duplicating the analysis. The digest is also the team's first test case for what a shared agent looks like across roles — Marina's build, but the operating system's win.</p>
+    </div>
+    <div class="takeaway">
+      <div class="num">Aligned decision · 03</div>
+      <h4>Apply Claude to the team's own meetings.</h4>
+      <p>Meeting transcripts get a structural pass from Claude — to identify inefficiencies, repetitive patterns, where time gets lost, where decisions are deferred. The agency is doing to its own meetings what Roger demonstrated doing to his own performance on Day 1. It is uncomfortable, which is why it works.</p>
+    </div>
+    <div class="takeaway">
+      <div class="num">Operating commitment</div>
+      <h4>Half a day a week, dedicated to AI infrastructure.</h4>
+      <p>The single most important commitment from the two days. Each member of the team carves out half a day a week — protected, calendared, treated as customer time — to build, refactor and harden the shared AI infrastructure of the agency. Roger's framing in the wrap: <em class="warm">"do it regularly because that will compound."</em> Without this, AI work is the thing that always gets postponed for the urgent. With it, the agency compounds.</p>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 4B: STRATEGIC TENSIONS ===== -->
+  <h2 class="section-head"><span class="num">04B · The honest disagreements</span>Three tensions the room <em>actually argued</em>.</h2>
+  <p class="section-deck">
+    Most workshop summaries airbrush the disagreements out. The disagreements are where the architecture gets built. Three surfaced sharply enough to record verbatim. Each one will recur every quarter for the next two years, so the team may as well know the shape of it now.
+  </p>
+
+  <div class="sidebar" style="margin-top: 24px;">
+    <div class="tag">Tension · 01</div>
+    <h4>AI slop versus authentic voice.</h4>
+    <p>
+      Lupe surfaced the question first: <em class="warm">"if Claude is the one drafting all my emails and it's reading those to create the tone, how does it really decipher what my version of it versus it's Claude doing it — so it's reading its own emails."</em> A real loop problem. If the model trains on its own outputs disguised as your voice, your voice slowly disappears.
+    </p>
+    <p>
+      Matthew named the consumption side bluntly: <em class="warm">"suddenly I was working with a bunch of people who couldn't read and write English very well and all of a sudden these extremely complex messages and emails and reports would come to me and it just looked ridiculous."</em>
+    </p>
+    <p>
+      Roger drew the line: <em class="warm">"AI slop is sloppy AI work that people create and they send to other people to consume — which I think is hugely disrespectful. I just give it to my AI anyway and ask it to go and summarise."</em> Three positions, one principle: AI should compress effort before sending, never expand it. If the recipient has to ask their AI to summarise yours, you've sent slop.
+    </p>
+  </div>
+
+  <div class="sidebar" style="margin-top: 24px;">
+    <div class="tag">Tension · 02</div>
+    <h4>Auditing agents — fresh eyes or recursive bias?</h4>
+    <p>
+      Joshua's challenge to Roger's "judges" approach to Marina's intake skill was the sharpest architectural exchange of the two days. Joshua: <em class="warm">"are you implicitly telling it upfront, don't rely on any of the skills you've already developed? I want you to look at this as a fresh issue and come about this from a different way. Because my biggest fear on using it to check itself is that it already put it together this way and felt good about it the first time."</em>
+    </p>
+    <p>
+      Roger's answer was about narrowness, not novelty. <em class="warm">"That checking agent is very specialised. It's not a long list of things that that thing checks. So on my specific thing I now have 29 of them and every one of them goes in and they check a very specific thing."</em>
+    </p>
+    <p>
+      The synthesis the agency lands on for production work: the auditor is narrow, single-purpose, ideally a different model, and lives in its own context. It is not the drafter wearing a critic's hat. Marina's auditor design will inherit this — and Tristan and Olya's production-discipline boundary is what stops the drift back to recursive self-checking.
+    </p>
+  </div>
+
+  <div class="sidebar" style="margin-top: 24px;">
+    <div class="tag">Tension · 03</div>
+    <h4>HTML euphoria — and the late-day correction.</h4>
+    <p>
+      Almost every Day 2 presenter was producing artefacts in HTML. Joshua named the takeaway in four letters. Marina: <em class="warm">"the HTML has been a game changer — I want to do everything in that view."</em> Tristan's whole retrospective was an HTML magazine. The energy was real.
+    </p>
+    <p>
+      Then, in the close, Tristan corrected the room: <em class="warm">"HTML is not that easy to share. So be careful in making everything in HTML because it won't work out that well."</em> Andrew agreed — several of the HTML artefacts that day had been buggy. The right read: HTML is the right default for internal artefacts, dashboards and team workflows; it needs a sharing path before it leaves the building. The team that gets that right wins the format question. The team that doesn't ships beautiful HTML nobody opens.
+    </p>
+  </div>
+
+  <!-- ===== SECTION 5: GOOS for INSURE.AG ===== -->
+  <div class="goos-section">
+    <div class="goos-intro">
+      <span class="num">05 · The autonomy framework</span>
+      <h2>How an agency moves <em>toward AI autonomy</em>.</h2>
+      <p>
+        Below is a reference framework adapted for Insure.ag. Each level is described through four questions: what AI can see, what AI can do, who can extend the system, and how the organisation has changed. Each level carries a hard test — the thing that proves you're there — and a false positive — the thing that fools you into thinking you are. The placement of Insure.ag today follows the framework. It is honest.
+      </p>
+    </div>
+
+    <!-- L0 -->
+    <div class="level">
+      <div class="lvl-head">
+        <div class="lvl-num">L0</div>
+        <div class="lvl-name">AI as theatre</div>
+        <div class="lvl-tag">announcements ≠ adoption</div>
+      </div>
+      <div class="grid">
+        <div>
+          <div class="col-label">What AI can see</div>
+          <div class="col-text">Nothing structured. Carrier reports arrive as scanned PDFs. Grower information is in scattered emails. Production records arrive on paper. The agency-management system is a silo.</div>
+        </div>
+        <div>
+          <div class="col-label">What AI can do</div>
+          <div class="col-text">Nothing of consequence. Maybe summarise a meeting if someone pastes the transcript. Maybe draft an email. No connection to underwriting, claims, production-record collection, or compliance work.</div>
+        </div>
+        <div>
+          <div class="col-label">Who can extend</div>
+          <div class="col-text">No one. AI is a personal tool, ungoverned and unintegrated. The agency has procured an AI subscription and that is the totality of the strategy.</div>
+        </div>
+        <div>
+          <div class="col-label">How the org has changed</div>
+          <div class="col-text">It hasn't. Same agents, same processes, same hand-offs, same dependence on principals to be the routers of information. Same shape of hiring plan.</div>
+        </div>
+      </div>
+      <div class="tests">
+        <div class="test test-hard">
+          <div class="test-label">Hard test</div>
+          <div class="test-body">Can AI complete any recurring agency process end-to-end without a human first typing the context into a chat box?</div>
+        </div>
+        <div class="test test-fp">
+          <div class="test-label">False positive</div>
+          <div class="test-body">An agency owner who tells the room "we are an AI-first agency" while still emailing the carrier rep for the production record and manually re-keying combo forms into the AIP portal.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L1 -->
+    <div class="level">
+      <div class="lvl-head">
+        <div class="lvl-num">L1</div>
+        <div class="lvl-name">Personal productivity</div>
+        <div class="lvl-tag">AI as thought partner</div>
+      </div>
+      <div class="grid">
+        <div>
+          <div class="col-label">What AI can see</div>
+          <div class="col-text">Only what each person feeds it. Cindy's AI sees the policy applications Cindy uploads. Jimmy's sees the olive grower's print-out. Joshua's sees the rate manuals he attaches. No agency-level visibility, no shared context.</div>
+        </div>
+        <div>
+          <div class="col-label">What AI can do</div>
+          <div class="col-text">Help individuals draft brokerage letters, analyse production records, reconcile policy issuance, summarise calls, build one-off skills for unique grower needs. No action on systems of record.</div>
+        </div>
+        <div>
+          <div class="col-label">Who can extend</div>
+          <div class="col-text">Each user reinvents independently. Power users are heroes; their workflows leave with them when they leave. Joshua's private hail solution is Joshua's. Cindy's reconciliation routine is Cindy's.</div>
+        </div>
+        <div>
+          <div class="col-label">How the org has changed</div>
+          <div class="col-text">It hasn't, yet. Same org chart. Individuals are individually three to five times more productive. The agency, as an agency, looks identical to what it looked like a year ago.</div>
+        </div>
+      </div>
+      <div class="tests">
+        <div class="test test-hard">
+          <div class="test-label">Hard test</div>
+          <div class="test-body">If Joshua left tomorrow, would his private hail workflow remain inside the agency, or would it walk out with him?</div>
+        </div>
+        <div class="test test-fp">
+          <div class="test-label">False positive</div>
+          <div class="test-body">"Everyone on the team uses Claude weekly." Probably true at Insure.ag, and meaningless without the shared layer underneath.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L2 -->
+    <div class="level">
+      <div class="lvl-head">
+        <div class="lvl-num">L2</div>
+        <div class="lvl-name">Team workflow</div>
+        <div class="lvl-tag">AI as assistant</div>
+      </div>
+      <div class="grid">
+        <div>
+          <div class="col-label">What AI can see</div>
+          <div class="col-text">Function-specific knowledge. Marketing has its LinkedIn agent. Claims has Marina's intake auditor. Operations has Cindy's reconciliation pipeline. Sales has Jimmy's commodity skills. Each AI sees within its function's boundary.</div>
+        </div>
+        <div>
+          <div class="col-label">What AI can do</div>
+          <div class="col-text">Function-bound work that runs without supervision. The LinkedIn agent posts and comments daily. The reconciliation tool processes scanned PDFs in batches. A financial data pipeline writes to the books. A bulletin digest summarises overnight.</div>
+        </div>
+        <div>
+          <div class="col-label">Who can extend</div>
+          <div class="col-text">Within a function, others can use the patterns. Across functions, not yet. Each role rebuilds its own version. The agency is a collection of AI-enhanced silos rather than an AI-enhanced agency.</div>
+        </div>
+        <div>
+          <div class="col-label">How the org has changed</div>
+          <div class="col-text">Functions are materially more productive. Hiring slows in specific areas — fewer junior reconciliation hires, fewer marketing freelancers. The org chart is intact; role boundaries are intact; but the cost shape is starting to shift.</div>
+        </div>
+      </div>
+      <div class="tests">
+        <div class="test test-hard">
+          <div class="test-label">Hard test</div>
+          <div class="test-body">Does any workflow cross team boundaries? Does a new grower onboarded by sales automatically appear in the operations production-record queue, with claims and finance aware of the expected coverage and revenue?</div>
+        </div>
+        <div class="test test-fp">
+          <div class="test-label">False positive</div>
+          <div class="test-body">"We have AI workflows in every function." But the LinkedIn agent doesn't know about Marina's auditor doesn't know about the reconciliation pipeline. Each function is fast; the agency isn't.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L3 -->
+    <div class="level">
+      <div class="lvl-head">
+        <div class="lvl-num">L3</div>
+        <div class="lvl-name">Organisational infrastructure</div>
+        <div class="lvl-tag">AI as teammates</div>
+      </div>
+      <div class="grid">
+        <div>
+          <div class="col-label">What AI can see</div>
+          <div class="col-text">The whole agency is queryable. Every grower, every account, every claim, every project, every meeting. The Notion brain is the substrate; Claude writes to it; humans don't write directly. Agency-wide context is on tap for any agent.</div>
+        </div>
+        <div>
+          <div class="col-label">What AI can do</div>
+          <div class="col-text">Agents act across systems. The claim-intake auditor cross-references production records. The bulletin digest routes policy changes to the right grower book. The voice-of-the-customer detector synthesises across email, Slack and Granola. The policy-delivery agent drafts grower-specific emails with the right attachments. Cross-functional but still scoped.</div>
+        </div>
+        <div>
+          <div class="col-label">Who can extend</div>
+          <div class="col-text">Non-technical staff don't just use shared skills — they author them. Lupe packages her personal dashboard into a team-wide skill. Marina packages the auditor pattern for other line-of-business processes. Tristan and Olya harden them for production. Skills move horizontally.</div>
+        </div>
+        <div>
+          <div class="col-label">How the org has changed</div>
+          <div class="col-text">The agency looks materially different from its 2025 self. Andrew's thirty-decisions-a-day is five — agents handle the rest with policy. New hires are framed around what they orchestrate, not what they do manually. The cost shape shifts from headcount toward AI consumption and the bills feel uncomfortable before the leverage shows up.</div>
+        </div>
+      </div>
+      <div class="tests">
+        <div class="test test-hard">
+          <div class="test-label">Hard test</div>
+          <div class="test-body">Can an agent answer, across systems and roles: what changed for Grower X last quarter — what production records arrived, what claims were filed, what the carrier said, what the next move is — without convening a cross-functional meeting?</div>
+        </div>
+        <div class="test test-fp">
+          <div class="test-label">False positive</div>
+          <div class="test-body">A landfill of Granola transcripts, Slack history and policy PDFs dumped into Notion. Capture is not legibility. An inert archive is not an operating system. If a quick query returns confident-sounding nonsense, the brain is not yet a brain.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L4 -->
+    <div class="level">
+      <div class="lvl-head">
+        <div class="lvl-num">L4</div>
+        <div class="lvl-name">Compounding operating system</div>
+        <div class="lvl-tag">AI as the system</div>
+      </div>
+      <div class="grid">
+        <div>
+          <div class="col-label">What AI can see</div>
+          <div class="col-text">Not just what happens, but the relationships between what happens. The system maintains its own context. Marina's auditor learns from corrections. The LinkedIn agent learns from which comments earn engagement. The policy-issuance system learns from rejected applications. Agents update agents.</div>
+        </div>
+        <div>
+          <div class="col-label">What AI can do</div>
+          <div class="col-text">Policy-driven decision authority within scoped domains. The reconciliation pipeline auto-files clean policies and escalates only the 5% that fail audit. The financial pipeline reconciles AIP statements end-to-end. Custom internal tools built around exactly the work Insure.ag does. Active retirement of legacy processes that prevent agents being useful.</div>
+        </div>
+        <div>
+          <div class="col-label">Who can extend</div>
+          <div class="col-text">Non-technical staff ship governed production tools. Cindy ships a contract reviewer. Marina ships a typology detector for unusual claims. Jimmy ships a top-30-grower dashboard. None of them are engineers. The dev pair (Tristan, Olya) hardens for production but doesn't build the prototypes.</div>
+        </div>
+        <div>
+          <div class="col-label">How the org has changed</div>
+          <div class="col-text">Hierarchy collapses toward orchestrators. New roles emerge around the agent workflows. Compensation and promotion tie to the leverage a person creates, not the headcount they manage. The time from a customer signal to a meaningful agency response is measured in hours, not days.</div>
+        </div>
+      </div>
+      <div class="tests">
+        <div class="test test-hard">
+          <div class="test-label">Hard test</div>
+          <div class="test-body">Show a workflow that got better because the system learned from prior runs, not because one heroic person manually improved it. Plus: show three production tools shipped by non-technical staff in the last quarter.</div>
+        </div>
+        <div class="test test-fp">
+          <div class="test-label">False positive</div>
+          <div class="test-body">Agent sprawl. Forty-five brittle internal automations don't equal a compounding operating system. L4 requires managed compounding — lifecycle, observability, evaluation — not chaotic proliferation. Without discipline, the factory clogs.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L5 -->
+    <div class="level l5">
+      <div class="lvl-head">
+        <div class="lvl-num">L5</div>
+        <div class="lvl-name">Virtually self-driving agency</div>
+        <div class="lvl-tag">a horizon — does not exist yet</div>
+      </div>
+      <div class="l5-narrative">
+        An L5 agency is one where the core operating loops can sense reality, diagnose issues, initiate work, execute within delegated authority, update shared memory, and improve future behaviour — with humans governing strategy, taste, risk, values, and exceptions rather than running the loops themselves.
+      </div>
+      <div class="l5-bullets">
+        <div class="l5-bullet"><span>The system <b>notices</b> something important without being asked — a regulatory change, a grower portfolio shift, a competitor move.</span></div>
+        <div class="l5-bullet"><span>The system <b>synthesises</b> across multiple sources of context — RMA bulletins, AIP correspondence, prior grower history, competitor pricing.</span></div>
+        <div class="l5-bullet"><span>The system <b>decides</b> whether action is warranted given policy, risk and value.</span></div>
+        <div class="l5-bullet"><span>The system <b>acts</b> within delegated authority — drafts outreach, queues policy amendments, prepares the agents for the consequence.</span></div>
+        <div class="l5-bullet"><span>The system <b>escalates</b> when uncertainty or consequence exceeds its delegated authority.</span></div>
+        <div class="l5-bullet"><span>The system <b>updates</b> shared memory so future behaviour improves automatically.</span></div>
+      </div>
+      <div class="tests">
+        <div class="test test-hard">
+          <div class="test-label">Hard test</div>
+          <div class="test-body">What important thing did the agency notice, decide, act on, and learn from recently without a human initiating the process? Not a threshold alert. Not a configured automation. Something the system synthesised that humans hadn't framed as a question yet.</div>
+        </div>
+        <div class="test test-fp">
+          <div class="test-label">False positive</div>
+          <div class="test-body">The "fake autonomy" pattern — claiming self-driving behaviour, but the system is only executing preconfigured rules or surfacing threshold-based alerts. Humans are still doing all the noticing. Distinguishing real generative behaviour from glorified observability is the open challenge at this level.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Placement -->
+    <div class="placement-callout">
+      <div class="label">Honest placement · Insure.ag · May 2026</div>
+      <h4>Insure.ag is at L1, with credible L2 momentum and an explicit L3 commitment.</h4>
+      <p>
+        <strong>Strong L1 evidence</strong> across multiple individuals running their own AI workflows: Joshua on private hail, Cindy on reconciliation, Andrew on LinkedIn, Jimmy on commodity skills, Olya on internal observability. The personal-productivity layer is real and broadly distributed. Crucially, this is far ahead of most peer agencies, who remain at L0.
+      </p>
+      <p>
+        <strong>Emerging L2 in three places</strong>: Andrew's LinkedIn agent runs unattended on a daily cadence; Cindy's reconciliation tool is a function-bound pipeline; Marina's claim-intake auditor will be a third by mid-year. These are not yet connected across team boundaries — the LinkedIn agent doesn't know about the grower system, the reconciliation pipeline doesn't know about the books.
+      </p>
+      <p>
+        <strong>L3 is the explicit commitment from this week.</strong> The Notion brain build, owned by Kari and Marina, is the move that takes Insure.ag from a collection of AI-enhanced silos to an AI-enhanced agency. The half-day-a-week operating commitment is what makes the L3 build survive the daily firefight. If the Notion build lands and the team actually carves out the time, Insure.ag is at L3 by year end. If either fails, the agency will spend 2027 at L2 watching other firms compound past it.
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 6: TAKEAWAYS ===== -->
+  <h2 class="section-head"><span class="num">06 · Five takeaways</span>What every team member should <em>remember</em>.</h2>
+  <p class="section-deck">
+    Each of these surfaced more than once across the two days. Each is portable; each is testable; each will look obvious in hindsight and is doing real architectural work today.
+  </p>
+
+  <div class="takeaways">
+    <div class="takeaway">
+      <div class="num">Takeaway · 01</div>
+      <h4>The harness is the moat.</h4>
+      <p>The Claude subscription is commodity. The Notion brain underneath it is not. The grower history, the carrier-by-carrier nuance, the prior conversations, the rate-manual reading, the company-specific vocabulary — all the things that turn a generic model into one that knows Insure.ag — that is the asset that takes time to build and cannot be bought. Treat the harness as the strategic asset and the brain as a swappable component. The corollary is that anything that improves the harness compounds; anything that improves only one user's prompt does not.</p>
+    </div>
+    <div class="takeaway">
+      <div class="num">Takeaway · 02</div>
+      <h4>Agents auditing agents is not optional.</h4>
+      <p>The single most important architectural pattern in the workshop. Claude is reliably better at checking another model's work than at checking its own. Marina's auditor is the first formal instance for Insure.ag. The principle generalises: anything customer-facing, anything financial, anything compliance-bound runs through a second, ideally different, agent before it reaches a human. The dev pair draws the line between the quick-win zone (any non-technical person can build) and the production zone (auditor required). Without the line, the agency ships confident nonsense at scale.</p>
+    </div>
+    <div class="takeaway">
+      <div class="num">Takeaway · 03</div>
+      <h4>Run the time-allocation diagnostic every quarter.</h4>
+      <p>Andrew, Cindy, Joshua and Jimmy all independently ran a version of the same exercise on Day 1 — feed Claude your last sixty to ninety days of email, Slack and Granola and ask it to categorise what your time is actually being spent on. All four got useful answers. Andrew discovered he's the bottleneck on thirty decisions a day, most of which he shouldn't be making. Joshua discovered he is over-indexed on his own AI bubble. The diagnostic should be a standing practice — once a quarter, every senior member of the team, captured to the brain.</p>
+    </div>
+    <div class="takeaway">
+      <div class="num">Takeaway · 04</div>
+      <h4>Brains are swappable; harnesses are not.</h4>
+      <p>Matthew's question on Day 1 was the right one. Anthropic is leading right now. They might not be in eighteen months. The architectural answer is to make sure that the value is in your harness — your Notion structure, your skills, your data flows, your audit trail — and not in any specific model. When the next model comes along, you swap the brain and the harness keeps running. Build accordingly. Do not bet the agency on any specific LLM remaining best.</p>
+    </div>
+    <div class="takeaway">
+      <div class="num">Takeaway · 05</div>
+      <h4>Show-and-tell as an operating cadence.</h4>
+      <p>The workshop format itself is the most exportable artefact. Two afternoons a quarter, the whole team. Every person presents two things: a live use case they're running today, and what they're going to build next. The combination of accountability and exposure surfaces ideas that vertical hierarchies suppress. Joshua's private hail discovery is the kind of insight that lives at the bottom of an agency and never gets surfaced unless the format demands it. Make it a standing rhythm. Quarterly. No exceptions.</p>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 7: COMMITMENTS ===== -->
+  <h2 class="section-head"><span class="num">07 · The June 1 commitments</span>What each person <em>signed up for, in their own words</em>.</h2>
+  <p class="section-deck">
+    Roger's closing question to the room was the same one we'd planned in the morning: <em class="warm">"what will you have built — or attempted — by 1 June?"</em> The answers were captured to Notion in real time. The verbatim version is below — it is sharper than any summary I could write, and it is the agency's contract with itself for the next three weeks.
+  </p>
+
+  <div class="commitments">
+    <div class="commit-row">
+      <div class="commit-who">Kari Madden<span class="commit-role">operations lead</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"Get Notion to be the top of my priority for the last like three weeks. I'm just going to switch those priorities around."</em></div>
+        <div class="item"><em class="warm">"Stop discounting the little quick wins."</em></div>
+        <div class="item">Refine the AI-generated meeting-summary feature for length and usefulness.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Marina Marin<span class="commit-role">operations &amp; client lead</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"Notion — if we get that base set up for everybody, I think it's going to get the ball really rolling."</em></div>
+        <div class="item">Move the claims-intake outputs into HTML; replace the email-with-PDF hand-off to Cindy with a Notion task.</div>
+        <div class="item">Build the <b>daily RMA / AIP bulletin digest</b> and the <b>auditor agent</b>.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Lupe Villaseñor<span class="commit-role">agent (Washington)</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"Creating a dashboard for myself and staying organised — figuring out how to spread that across the team for the people that touch these accounts."</em></div>
+        <div class="item">Self-serve responses to standard adjuster / underwriter document requests so she stops being the middleman.</div>
+        <div class="item">Maintain data-quality discipline on every input to the second brain.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Matthew Myers<span class="commit-role">finance &amp; data</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"I've identified a couple of very manual processes that I need to stamp out."</em></div>
+        <div class="item">Automate the financial data pipelines across Agency Root, six AIP portals, Xero, Ramp and Gusto.</div>
+        <div class="item">Package the skill so Marina can hand him a single output file rather than discrete remittance files.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Olya Dashuk<span class="commit-role">developer &amp; product</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"Live artifact dashboard, automate processes, eventually build bots and my own personal MCP."</em></div>
+        <div class="item">Status-collection bot pulling PR, Jira and Slack updates daily so stand-ups discuss outstanding questions rather than repeat status.</div>
+        <div class="item">Flip the time mix from sprint operations back to hands-on engineering.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Tammy Sutherns<span class="commit-role">marketing</span></div>
+      <div class="commit-list">
+        <div class="item">Integrate the second brain into content creation. <em class="warm">"Stop creating in isolation."</em></div>
+        <div class="item">Continue the bi-weekly scheduled agents — marketing hub auto-update and outreach-opportunity research.</div>
+        <div class="item">Keep the human-being layer out of the automation. Conversations stay hers.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Tristan Schmitt<span class="commit-role">lead developer</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"Stop putting off implementing those professional skills … code slop is the bane of my existence and I don't trust what's coming out of Claude every time."</em></div>
+        <div class="item">Adopt the <b>everything-claude-code</b> repo (~181k stars) for tested skills and agents.</div>
+        <div class="item">Stand up Obsidian (local second brain) and Notion (shared with Olya) before paternity leave in three weeks.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Joshua Benson<span class="commit-role">senior agent</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"HTML are the four letters… I'm going to free myself from the third-party tool aspect."</em></div>
+        <div class="item">Externalise the private-hail pattern as a reusable agency skill.</div>
+        <div class="item">Build a knowledge-extraction skill that asks him structured questions to capture what is currently only in his head.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Cindy Marcum<span class="commit-role">account manager (Washington)</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"Verifying policies and getting Claude to automate the policy issue emails — those will be my first two big things."</em></div>
+        <div class="item">Pilot the page-splitter + field-schema + confidence-flag PDF reconciliation pipeline.</div>
+        <div class="item">Pair with Tristan to harden the prototype for production.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Jimmy Smith<span class="commit-role">agent (California)</span></div>
+      <div class="commit-list">
+        <div class="item">Generalise the olive-grower skill across other commodities and packing houses for next season.</div>
+        <div class="item">Start asking Claude to ask the questions — break work into plans before execution.</div>
+        <div class="item">Aspiration the room named for him: <em class="warm">"that customised website pitch — that'd be pretty awesome"</em> — bring Tristan's magazine retrospective format to a grower or carrier conversation.</div>
+      </div>
+    </div>
+    <div class="commit-row">
+      <div class="commit-who">Andrew Burdock<span class="commit-role">CEO</span></div>
+      <div class="commit-list">
+        <div class="item"><em class="warm">"Okay, now I know my commitment today"</em> — adopt voice mode in the Claude app after Roger's mid-session demo of it.</div>
+        <div class="item">Sponsor the Notion brain build. Hold the half-day-a-week slot firm against the firefight.</div>
+        <div class="item">Reduce the thirty decision pings a day by routing through the agency brain as the L2 → L3 transition allows.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 8: ROADMAP ===== -->
+  <h2 class="section-head"><span class="num">08 · Where this goes next</span>The thirty-, sixty-, ninety-day <em>picture</em>.</h2>
+  <p class="section-deck">
+    The agency does not need a transformation programme. It needs three weeks of disciplined Notion build, six weeks of skill consolidation, and twelve weeks to make the auditor pattern the default. Each of these is small. Together they are the L1 → L2 → L3 transition.
+  </p>
+
+  <div class="roadmap">
+    <div class="roadmap-when">30 days<span class="when-sub">to 11 Jun 2026</span></div>
+    <div class="roadmap-what">
+      <h4>The Notion brain V1 stands up.</h4>
+      <p>Kari and Marina ship the People / Companies / Projects / Meetings databases with enough structure that Claude can write to them as the only writer. Lupe ports her personal dashboard. Andrew protects the half-day-a-week slot for every team member. The half-day must not get rescheduled, ever, in the first month.</p>
+    </div>
+  </div>
+  <div class="roadmap">
+    <div class="roadmap-when">60 days<span class="when-sub">to 11 Jul 2026</span></div>
+    <div class="roadmap-what">
+      <h4>The first three shared agents go live.</h4>
+      <p>Marina's claim-intake auditor; the daily RMA/AIP bulletin digest; Cindy's hardened PDF-reconciliation pipeline with confidence flags and human review. Each is governed; each writes back to the Notion brain; each is owned by a named person but available to the whole team. The dev pair has shipped the ECC repo and articulated where the quick-win zone ends and the production zone begins.</p>
+    </div>
+  </div>
+  <div class="roadmap">
+    <div class="roadmap-when">90 days<span class="when-sub">to 11 Aug 2026</span></div>
+    <div class="roadmap-what">
+      <h4>L2 → L3 transition begins in earnest.</h4>
+      <p>The financial pipeline starts writing to the books from AIP portals, Zero, Ramp, Gusto and Agency Root. The first cross-functional agent — likely a grower-onboarding flow that touches sales, operations, claims and finance — goes into pilot. The next quarterly show-and-tell runs, with the same format, and the team evaluates progress against the GOOS levels in this memo as the formal scorecard.</p>
+    </div>
+  </div>
+
+  <!-- ===== CLOSE ===== -->
+  <h2 class="section-head"><span class="num">09 · A closing observation</span>What an outside investor saw — and what the CEO named.</h2>
+  <p>
+    Most agencies the size and shape of Insure.ag are at L0. They have an AI subscription and an aspiration and not much else. A smaller cohort is at L1 — one or two power users running their own workflows, ungoverned, unintegrated. A still smaller cohort is at L2 — function-bound automations that don't talk to each other. Almost no agency in the United States crop-insurance market is at L3.
+  </p>
+  <p>
+    Insure.ag has a credible path to L3 by year end. The team has the right reflexes — Lupe instinctively named the dashboard generalisation step that most L1 organisations miss; Tristan instinctively named the production-grade discipline that most L2 organisations miss; Andrew instinctively named the institutional-memory problem that most L3 organisations miss until it is too late. The discipline of the workshop format — everyone presents, no exceptions — surfaced the architectural realisation in a single afternoon that most companies take a year to reach.
+  </p>
+
+  <h3 class="sub-head" style="margin-top: 36px;">Andrew's frame for the room.</h3>
+  <div class="pullquote">
+    There's a lot of overlapping stuff and this kind of second brain/CRM is where my head is now a little bit stuck — what is it, where do they come together. It needs to be this source of truth with the business … If we can get this second brain CRM in place, I think it unlocks a lot of the things everybody's been talking about.
+    <span class="attr">Andrew Burdock · before Roger's wrap</span>
+  </div>
+  <p>
+    That single paragraph is the CEO naming the central architectural realisation of the two days. Every presenter's work — Marina's auditor, Kari's trifecta, Lupe's dashboard, Matthew's pipeline, Olya's MCP, Tammy's hub, Tristan's repo, Joshua's hail project, Cindy's reconciliation, Jimmy's olive grower — converges on the same substrate. Without the substrate, every piece works in isolation. With it, every piece compounds. Andrew named it. The team's job over the next ninety days is to build it.
+  </p>
+
+  <h3 class="sub-head" style="margin-top: 36px;">Roger's wrap, verbatim.</h3>
+  <p>
+    <em class="warm">"You guys have got an exceptionally strong team, very talented. I think got a great culture to adopt this. It's not a given and it's not common."</em>
+  </p>
+  <p>
+    <em class="warm">"Focus on the energy and the fun. How can you make your job more fun by doing this?"</em>
+  </p>
+  <p>
+    <em class="warm">"Do the human things — interaction and talking to each other — and let the machines do the stuff that the machine should be doing."</em>
+  </p>
+  <p>
+    <em class="warm">"Put some time aside to build your AI infrastructure — maybe it's half a day a week. I think it needs to be at least half a day a week. Do it regularly because that will compound."</em>
+  </p>
+
+  <h3 class="sub-head" style="margin-top: 36px;">The hard part is now.</h3>
+  <p>
+    Protecting the half-day-a-week against the urgent. Holding the Notion build discipline so the brain doesn't become a landfill. Shipping the first three shared agents on schedule. Drawing the line between the quick-win zone and the production zone and making sure the dev pair underwrites everything that crosses it. None of these are glamorous. None of them are the things the team will brag about at industry events. They are the things that, three years from now, will turn out to have been the decisive moves.
+  </p>
+
+  <div class="pullquote">
+    The agency that wins the next decade is the one that captures, structures and reuses what it already knows. The tools are off-the-shelf. The discipline is not.
+    <span class="attr">Memo close</span>
+  </div>
+
+  <!-- ===== COLOPHON ===== -->
+  <div class="colophon">
+    <p><strong>Chronos Capital · Workshop Memo No. 03 · 14 May 2026</strong></p>
+    <p>
+      Compiled from the live Day 1 transcript, the full Day 2 transcript and Gemini auto-summary, and follow-on observations. Verbatim quotes attributed to the speaker who said them. Authored by Roger Grobler for Andrew Burdock and the Insure.ag team. The GOOS framework section is adapted from the broader Chronos autonomy taxonomy, restated here for the specific operating reality of a crop-insurance agency. The five takeaways and the placement of Insure.ag at L1-with-credible-L2-momentum-and-L3-commitment are honest reads, not aspirations. The reader is invited to disagree, in person, at the next quarterly show-and-tell.
+    </p>
+    <p style="margin-top: 14px;">
+      <strong>Sources:</strong> <a href="https://docs.google.com/document/d/1__cnV9GWLYj2xButyOvVoeNkZI5UohppUaQilX--U98" style="color: #B5651D; text-decoration: none; border-bottom: 1px solid #B5651D;">Workshop transcript — Insure AG AI Workshop, 13 May 2026</a> · Day 1 transcript on file with Chronos Capital · live presenter notes captured to Notion during the workshop.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>

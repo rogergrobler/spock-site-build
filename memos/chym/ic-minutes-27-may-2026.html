@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chronos Memos · IC Minutes — Chime — 27 May 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #f7f5f0;
+    color: #1a1a1a;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 48px 32px 80px; }
+
+  .masthead {
+    border-bottom: 2px solid #1A1A1A;
+    padding-bottom: 18px;
+    margin-bottom: 36px;
+  }
+  .masthead .pub {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #1A1A1A;
+    margin-bottom: 4px;
+  }
+  .masthead .issue {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    color: #6A6A6A;
+    letter-spacing: 0.06em;
+  }
+
+  .hero { margin-bottom: 40px; }
+  .hero .eyebrow {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #B5651D;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-size: 42px;
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+    color: #1A1A1A;
+  }
+  .hero .deck {
+    font-size: 19px;
+    line-height: 1.45;
+    color: #3A3A3A;
+    max-width: 720px;
+    margin: 0 0 24px;
+    font-weight: 400;
+  }
+  .hero .byline {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: #6A6A6A;
+    letter-spacing: 0.04em;
+    border-top: 1px solid #E5E5E0;
+    padding-top: 14px;
+  }
+  .hero .byline strong { color: #1A1A1A; font-weight: 600; }
+
+  h2 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #888;
+    border-top: 1px solid #d8d5ce;
+    padding-top: 20px;
+    margin-top: 44px;
+    margin-bottom: 18px;
+  }
+  h3 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    margin-top: 8px;
+    line-height: 1.3;
+  }
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  em { font-style: italic; color: #5C4220; }
+  strong { font-weight: 700; }
+
+  ul { margin: 0 0 16px 22px; }
+  li { margin-bottom: 8px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13.5px;
+    margin: 18px 0 22px;
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  th {
+    background: #f0ede6;
+    text-align: left;
+    padding: 10px 13px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #555;
+    border-bottom: 1px solid #d8d5ce;
+  }
+  td { padding: 11px 13px; border-bottom: 1px solid #eceae4; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { width: 36px; color: #888; font-weight: 700; }
+
+  .callout {
+    border-left: 3px solid #c49a4d;
+    background: #fdf8ee;
+    padding: 14px 18px;
+    margin: 18px 0 22px;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout strong {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+    color: #6B5535;
+  }
+
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #d8d5ce;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="ic-minutes-27-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="ic-minutes-27-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+<div class="container">
+
+  <div class="masthead">
+    <div class="pub">Chronos Memos · Investment Committee Minutes — Chime — 27 May 2026</div>
+    <div class="issue">Volume I · IC + Partner Weekly · 27 May 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Investment Committee · Real IC</div>
+    <h1>One investment decision. Seven framework decisions. One adjusted process cadence.</h1>
+    <p class="deck">CHYM (Chime Financial) approved as a $100,000 starter position, contingent on regulatory views from TymeBank and a NewBank/N26 contact. The portfolio framework — sizing buckets, six-month thesis review, listed-vs-private divergence, weekly shorts alongside longs — is now in place.</p>
+    <div class="byline">
+      <span><strong>Authors</strong> Spock and Roger Grobler, Chronos Capital</span>
+      <span><strong>Date</strong> 27 May 2026</span>
+      <span><strong>Duration</strong> 58 minutes</span>
+      <span><strong>Chair</strong> Roger Grobler</span>
+      <span><strong>Attending</strong> Roger Grobler · Nic Kohler · Michael Jordaan · Willem Roos</span>
+    </div>
+  </div>
+
+  <h2>Top-line outcomes</h2>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Decision</th><th style="width:120px">Owner</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><strong>CHYM (Chime Financial) — STARTER POSITION APPROVED at $100,000.</strong> Contingent on Roger securing regulatory views from TymeBank and the relevant NewBank/N26 contact.</td><td>Roger</td></tr>
+      <tr><td>2</td><td>Investment cadence: <strong>one company per week</strong> to start, scaling to two once the process is refined.</td><td>Roger</td></tr>
+      <tr><td>3</td><td>Portfolio sizing framework: <strong>5 high-conviction at ~$1M each + 8 normal at ~$250k each + 20 punts at ~$50k each (punt bucket = 20% of portfolio).</strong></td><td>Roger</td></tr>
+      <tr><td>4</td><td><strong>Thesis review every six months</strong> on every position (not annual).</td><td>Roger</td></tr>
+      <tr><td>5</td><td>Listed portfolio must <strong>actively diverge from the private portfolio</strong> — sector diversity is mandated, not optional.</td><td>Roger / Nic</td></tr>
+      <tr><td>6</td><td><strong>Weekly short ideas alongside longs.</strong> Shorts de-linked from specific longs — not paired hedges, separate sector-level views. Put options preferred in liquid markets.</td><td>Michael</td></tr>
+      <tr><td>7</td><td><strong>Spock is a living document.</strong> Editable Google Doc to be shared with partners for markup.</td><td>Roger</td></tr>
+      <tr><td>8</td><td>Recommendation to Brendan: <strong>$100,000 starter execution on CHYM.</strong></td><td>Roger (via Michael)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Actions</h2>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Action</th><th style="width:120px">Owner</th><th style="width:140px">Window</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Recommend $100k CHYM starter to Brendan; confirm he is ready to execute</td><td>Roger</td><td>Immediately</td></tr>
+      <tr><td>2</td><td>Tee Brendan up that Roger's call is coming</td><td>Michael</td><td>Today (already meeting him)</td></tr>
+      <tr><td>3</td><td>Get regulatory read on Chime's Bancorp/Durbin position from TymeBank and from a NewBank/N26 contact entering the US market</td><td>Roger</td><td>Pre-execution</td></tr>
+      <tr><td>4</td><td>Try to speak with Chime management directly; engage a sell-side analyst with substance</td><td>Roger</td><td>Pre-scaling</td></tr>
+      <tr><td>5</td><td>Share Spock as an editable Google Doc for partner markup</td><td>Roger</td><td>This week</td></tr>
+      <tr><td>6</td><td>Rewrite J4 section to clarify the listed-vs-private diversity intent (emerging-market embedded finance and consumer lending)</td><td>Roger</td><td>This week</td></tr>
+      <tr><td>7</td><td>Update the portfolio framework document to reflect the agreed sizing structure (5/8/20 buckets) and the six-month thesis review cadence</td><td>Roger</td><td>This week</td></tr>
+      <tr><td>8</td><td>Add the fee structure to the working document</td><td>Roger</td><td>This week</td></tr>
+      <tr><td>9</td><td>Verify the "dance card" list</td><td>Roger</td><td>This week</td></tr>
+      <tr><td>10</td><td>Nic to keep building momentum on the dance cards; catch up with the group</td><td>Nic</td><td>Ongoing</td></tr>
+    </tbody>
+  </table>
+
+  <h2>The Chime debate — how the room got there</h2>
+
+  <p>The Virtual IC ran by Spock had landed on <strong>3 YES / 4 NO / 0 ABSTAIN — WATCH, NOT BUY</strong>, anchored on the Bancorp/Durbin structural risk. The real IC reached a different conclusion and the reasoning is worth recording.</p>
+
+  <h3>Michael's pivot — the regulatory issue is solvable</h3>
+  <p>Michael walked the room through the mechanic: the Durbin Amendment's small-issuer exemption is based on the sponsor bank's $10B asset cap, not Chime's own balance sheet. If Bancorp crosses the threshold, Chime can (a) switch to a different sponsor bank, (b) buy a smaller bank with a license, or (c) apply for its own. "This is the type of thing any sane executive has a plan for." His view on why no sell-side analyst is modelling the Durbin scenario: because to a banker, it is a non-issue with multiple remedies.</p>
+  <p>His broader point landed: <em>"AI is a complete expert when you know nothing of the topic. The more you know of a topic, then sometimes you go: hey, that's not right."</em> Spock's bear case on Bancorp/Durbin was, in his read, a confident-sounding AI conclusion that fell apart against operator experience.</p>
+
+  <h3>Willem's concern — the loophole, not just the entity</h3>
+  <p>Willem accepted Michael's remedy framing but pressed on the second-order question: <em>if</em> the regulator closes the small-issuer interchange differential entirely (not via Bancorp's balance sheet but by changing the rule itself), what happens to Chime's margin? Interchange is 70–80% of revenue and the rate the small banks earn is roughly seven times what the big banks earn. The unit economics that make Chime exciting depend on that gap continuing to exist.</p>
+
+  <h3>Michael on the unit economics</h3>
+  <p><em>Customer lifetime value to customer acquisition cost ratio of ~9×. That is the thing that makes this exciting.</em> In rain (his own business) the ratios are even better. <em>"Starting a new bank is f***ing difficult. The risky bit is getting to the point where you understand your CLTV:CAC and it has this kind of multiple. Chime is past that."</em></p>
+
+  <h3>Roger's qualification — Chime must become the license holder</h3>
+  <p><em>"You cannot be a proper business and not have your own banking license."</em> The team's read is that Chime will get a license; the question is whether they get it before or after a regulatory event. Michael agreed: Chime will trade better when it becomes the licensed bank itself rather than the payment processor on top of a sponsor.</p>
+
+  <h3>Nic on the active-vs-primary distinction</h3>
+  <p>Chime's published "primary account" definition allows a customer to qualify with just a $200/month deposit — <em>"a customer could divert a portion of their Uber earnings into a Chime account purely to qualify for the fee-free overdraft."</em> The real customer of Chime today is at minimum active, but the share that is genuinely primary is undisclosed and is likely materially lower than the headline number suggests. The team agreed this is comparable to TymeBank's experience — many people open a second account and switch over time only if the benefits prove real.</p>
+
+  <h3>Where the room landed</h3>
+  <p>Starter position of $100,000 is the right size. The remedy logic on Durbin is plausible enough to make the position rational; the regulatory cliff is real enough to make the position modest. Scale after Roger has spoken to operator-level contacts at TymeBank and at the N26/NewBank US team (a near-competitor entering the market, which Michael flagged as the most useful conversation to have because <em>"a competitor won't come up with a bullish view"</em>).</p>
+
+  <div class="callout">
+    <strong>Note for the next review</strong>
+    Spock's Virtual IC verdict (WATCH NOT BUY) is on file and disagreed with the human IC. The disagreement axis was Spock's confidence in the Durbin tail risk vs Michael's operator read on remedies. The next thesis review should test which read survives — if Bancorp's Q2 2026 10-Q (late July) shows period-end assets above $10B, the regulatory clock starts and Michael's argument that the remedy is "easy" needs to be re-tested against actual execution.
+  </div>
+
+  <h2>Portfolio construction — the framework now in place</h2>
+
+  <h3>Geography</h3>
+  <p>History shows Chronos's outsized successes are international, not South African. Nic: <em>"If you are pursuing the power law, you're going to struggle in a small economy like South Africa."</em> The portfolio keeps selective South African exposure but the bias is global.</p>
+
+  <h3>Listed vs private — actively divergent</h3>
+  <p>The listed portfolio is not a continuation of the private portfolio at smaller cheque sizes. Listed pursues sector diversity that the private book does not have. Roger flagged that this needs to read clearly to potential external investors — the listed strategy is additive, not a constrained mirror of private. Michael's caution on framing: <em>"we must be mindful of how this is presented externally — we are not perceived as restricting access to good opportunities."</em></p>
+
+  <h3>Sizing buckets</h3>
+  <p>Three:</p>
+  <ul>
+    <li><strong>High conviction</strong> — 5 positions at ~$1M each (5% per position; 25% of portfolio combined)</li>
+    <li><strong>Normal conviction</strong> — 8 positions at ~$250k each (~2% per position; 20% of portfolio combined)</li>
+    <li><strong>Punts</strong> — ~20 positions at ~$50k each (~0.5% per position; 20% of portfolio combined)</li>
+  </ul>
+  <p>Remainder is cash / liquidity buffer. Punts work because the power law lets a small number of names carry the bucket; concentrating in three to five punts would defeat the purpose.</p>
+
+  <h3>Trim discipline</h3>
+  <p>The room converged on <em>not trimming winners.</em> Willem: <em>"One of the largest indicators of great investment success is funds that do not trim back their winners."</em> Buffett held Apple; many great compounders are run by managers who don't take profits early. The framework document will reflect this — review thresholds remain, but mandatory trim-backs come out.</p>
+
+  <h3>Capital deployment</h3>
+  <p>Nic suggested seeding the portfolio with roughly $4M (split across partners) to allow smaller initial bets while liquidity is tight. Roger noted that liquidity is expected to improve over the next 9–18 months from planned divestments, which is when positions can scale meaningfully.</p>
+
+  <h3>Thesis cadence</h3>
+  <p>Six-month full thesis reviews on every position, not annual. The pace of change in the names the team is looking at — Chime, the AI-adjacent fintech set, the listed neobanks — is faster than an annual cadence can track. Spock will run the thesis test continuously between the formal reviews; the six-month review is the partner-attention point.</p>
+
+  <h2>Shorts — Michael's structural addition to the strategy</h2>
+
+  <p>Michael argued for a regular short-side flow alongside the longs. Two principles:</p>
+  <ol style="margin: 0 0 16px 22px;">
+    <li style="margin-bottom: 10px;"><strong>Shorts are de-linked from longs.</strong> Not pair trades, not hedges on specific positions. Pair trades concentrate the same risk twice. A pure short stands on its own thesis.</li>
+    <li style="margin-bottom: 10px;"><strong>The pure-short setup is sector-level overvaluation.</strong> <em>"AI tells you an entire industry or sector is overvalued — that is what we short."</em> Mechanism preference is put options where liquidity supports it, rather than borrowed stock.</li>
+  </ol>
+  <p>The team agreed shorts get the same weekly cadence as longs.</p>
+
+  <h2>Market backdrop — why the framework matters now</h2>
+
+  <p>Michael flagged that valuations are stretched: Shiller CAPE above 40; market cap to GDP at 200–220%. Warren Buffett's record cash position is the data point that anchored the conversation. <em>"A correction may be imminent."</em></p>
+  <p>The implication for the portfolio: the punt bucket and the short flow both protect against the scenario where the broad market re-rates. The high-conviction and normal-conviction buckets are then sized to be added into on weakness, not deployed at peak.</p>
+
+  <h2>Crossfin observation — context, not action</h2>
+
+  <p>Michael attended the recent Crossing conference. <em>"You meet entrepreneurs, you do deals, but it is tough out there."</em> Nic put it more bluntly: <em>"It is interesting to me that they can still attract attention — their results are not impressive."</em> Willem's read: <em>"They have not been unlucky. They have not been lucky either. They need one big one, and they have not had it."</em></p>
+  <p>The point of the discussion was the power-law observation: a portfolio without a big one is structurally underperforming. Roger: <em>"Our history says our success has been outside South Africa, not inside."</em> The Crossing experience reinforces the geographic bias built into the framework.</p>
+
+  <h2>Process / Spock</h2>
+
+  <ul>
+    <li><strong>Spock is now treated as a living document</strong>, not a fixed deliverable. The frameworks inside it (gates, judges, agents, indices) will be refined per ticker.</li>
+    <li><strong>Nic asked for an editable Google Doc version</strong> so partners can mark it up directly. Roger to share.</li>
+    <li><strong>"Seasoning rule"</strong> clarified by Michael — refers to calendar-based predictable events (sell in May, Santa Claus rally, January effect, turn-of-month). Not load-bearing for the framework but worth understanding.</li>
+    <li><strong>"Canonical flags"</strong> = the structured red-flag catalogue. Currently sized at 86 flags in Spock; Nic had read it as 100 elsewhere. Roger to reconcile.</li>
+    <li><strong>The CHYM IC paper itself</strong> — Roger flagged it is too long. Spock v5 will hone in on key issues rather than presenting every issue. The pack itself ran roughly 14K words for CHYM, which the room agreed is too dense for partner reading. The next paper aims for half that.</li>
+    <li><strong>Speed.</strong> Roger noted the CHYM work took roughly a hundredth of the hours it would have taken without Spock, and the next ticker is expected to run three times faster again now that the infrastructure is built.</li>
+  </ul>
+
+  <h2>Disagreements that matter for the record</h2>
+
+  <ol style="margin: 0 0 16px 22px;">
+    <li style="margin-bottom: 10px;"><strong>Spock's WATCH NOT BUY vs the real IC's STARTER APPROVED.</strong> Spock weighted Bancorp/Durbin as a load-bearing tail. The room weighted Chime's remediability and unit economics higher. Recorded explicitly so the next thesis review can audit which view aged better.</li>
+    <li style="margin-bottom: 10px;"><strong>Spock's "starter position" framing vs Michael's "execute and figure it out" framing.</strong> Spock argues for diagnostic-anchored entry — wait for Q2 2026 10-Q. Michael argued that in listed markets, once a good idea is clear, execute and refine. The compromise: starter size, parallel due diligence, scale on confirmation.</li>
+  </ol>
+
+  <h2>Next IC</h2>
+
+  <ul>
+    <li><strong>Cadence:</strong> weekly.</li>
+    <li><strong>Standing agenda:</strong> one new long, one new short, status update on existing positions, Spock gate/agent walkthrough.</li>
+    <li><strong>Next call:</strong> Roger to schedule. Spock training will be on the agenda.</li>
+  </ul>
+
+  <div class="footer">
+    Minutes prepared by Spock and Roger Grobler, Chronos Capital — 27 May 2026.
+  </div>
+
+</div>
+</body>
+</html>

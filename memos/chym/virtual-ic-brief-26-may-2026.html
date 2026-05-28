@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chime Financial — Virtual IC Brief · Chronos Capital</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: #f7f5f0;
+    color: #1a1a1a;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .container { max-width: 840px; margin: 0 auto; padding: 48px 32px 80px; }
+
+  .header {
+    border-top: 4px solid #1a1a1a;
+    padding-top: 24px;
+    margin-bottom: 40px;
+  }
+  .kicker {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 30px; font-weight: normal; line-height: 1.3; margin-bottom: 6px; }
+  .header p { font-family: 'Helvetica Neue', sans-serif; font-size: 13px; color: #555; font-style: italic; margin-top: 10px; }
+
+  h2 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #888;
+    border-top: 1px solid #d8d5ce;
+    padding-top: 20px;
+    margin-top: 44px;
+    margin-bottom: 18px;
+  }
+  h3 { font-size: 18px; font-weight: normal; margin-bottom: 12px; line-height: 1.35; }
+  h4 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #444;
+    margin-bottom: 4px;
+  }
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  .vote-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    margin: 20px 0;
+  }
+  .vote-table th {
+    background: #f0ede6;
+    text-align: left;
+    padding: 9px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #555;
+    border-bottom: 1px solid #d8d5ce;
+  }
+  .vote-table td { padding: 10px 12px; border-bottom: 1px solid #eceae4; vertical-align: top; }
+  .vote-table tr:last-child td { border-bottom: none; }
+  .yes { color: #27ae60; font-weight: 700; }
+  .no { color: #c0392b; font-weight: 700; }
+  .abstain { color: #e67e22; font-weight: 700; }
+
+  .tally {
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+  .tally-item { text-align: center; }
+  .tally-num { font-size: 32px; font-weight: 700; display: block; line-height: 1; }
+  .tally-label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-top: 3px; display: block; }
+  .tally-verdict { flex: 1; font-size: 16px; font-weight: 700; color: #c0392b; text-align: right; }
+
+  .person-block {
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 4px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+  }
+  .person-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .person-name { font-size: 17px; font-weight: normal; }
+  .person-role { font-family: 'Helvetica Neue', sans-serif; font-size: 12px; color: #888; margin-top: 2px; }
+  .person-verdict { font-family: 'Helvetica Neue', sans-serif; font-size: 13px; text-align: right; }
+  .person-verdict .vote { font-size: 18px; font-weight: 700; display: block; }
+  .person-condition {
+    background: #f7f5f0;
+    border-left: 3px solid #d8d5ce;
+    padding: 10px 14px;
+    margin-top: 14px;
+    font-size: 14px;
+  }
+  .person-question {
+    background: #eef6fc;
+    border-left: 3px solid #2980b9;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .callout {
+    border-left: 3px solid;
+    padding: 14px 18px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout-amber { border-color: #e8994d; background: #fef7ee; }
+  .callout-red { border-color: #c0392b; background: #fdf0ee; }
+  .callout-green { border-color: #27ae60; background: #f0faf4; }
+  .callout strong { font-family: 'Helvetica Neue', sans-serif; font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+
+  .debate-moment {
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+  }
+  .debate-moment h4 {
+    color: #444;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .debate-moment p { font-size: 15px; }
+
+  .question-block {
+    border: 1px solid #e0ddd6;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    background: #fff;
+  }
+  .q-num { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .q-text { font-size: 15px; margin-bottom: 8px; }
+  .q-why { font-size: 13px; color: #555; font-style: italic; margin-bottom: 8px; }
+  .q-live { font-size: 12px; color: #666; font-family: 'Helvetica Neue', sans-serif; border-top: 1px dashed #e0ddd6; padding-top: 8px; margin-top: 8px; }
+  .q-live strong { font-family: 'Helvetica Neue', sans-serif; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; color: #888; }
+
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #d8d5ce;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="virtual-ic-brief-26-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="virtual-ic-brief-26-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+<div class="container">
+
+  <div class="header">
+    <div class="kicker">Chronos Capital Advisory — Gate 9 Virtual IC Brief · CHYM.US · Partner Only</div>
+    <h1>Chime Financial, Inc. (CHYM.US)<br>Virtual Investment Committee — Minutes</h1>
+    <p>26 May 2026. Reference price $17.80 · market cap ~$6.8B · 384.1M shares basic / 437.6M diluted. Four Chronos partners and three independent domain experts read the final IC pack overnight and reconvened to settle the same question we put down at the last sitting — but on the corrected, verified, copywritten pack. The pack has moved on us in both directions, and the room had to find its way through that.</p>
+  </div>
+
+  <h2>Setting the Room</h2>
+
+  <p>Roger called the meeting to order at 06:30. He framed it tightly. <em>"Four things have moved since the last sitting and none of them are cosmetic. The asset clock we thought was now-quarter is actually a year-end-2026 measurement, with the repricing event at 1 July 2027 at earliest — Marcus, you flagged that and you were right. The Bancorp growth pace is fifteen-point-one percent year-on-year, not five-point-four. TBBK's ten-K Risk Factors now disclose a contractual right of Durbin-tied termination in at least some partner agreements. And Britt's JPMorgan transcript, read in full, is materially softer than the 'when, not if' headline. I want each of you to engage all four together."</em></p>
+
+  <p>The room had moved off the v4 framing of a nine-week catalyst. The corrected reading — Q2/Q3 2026 TBBK 10-Q diagnostic windows, legally decisive at 31 December 2026, repricing 1 July 2027 at earliest — gives roughly thirteen months. That argues, at first reading, for entry. The corrected growth pace, the contractual termination right, the falling buyback authorisation, and Britt's actual transcript pull the other way. Workstream H: market not pricing the regulatory tail — bullish (no friendly catalyst, long horizon) or bearish (the discount won't close until disclosure forces it).</p>
+
+  <h2>The Vote</h2>
+
+  <table class="vote-table">
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Verdict in one line</th>
+      <th>Vote</th>
+    </tr>
+    <tr>
+      <td>Roger Grobler</td>
+      <td>Partner (chair)</td>
+      <td>Thirteen months of runway with diagnostic windows — a starter band, conditions retuned to the corrected calendar</td>
+      <td class="yes">YES — conditional</td>
+    </tr>
+    <tr>
+      <td>Michael Jordaan</td>
+      <td>Partner</td>
+      <td>De-rating does most of the work, but softer charter framing and contractual termination right move me to YES at the lightest sizing band</td>
+      <td class="yes">YES — light</td>
+    </tr>
+    <tr>
+      <td>Willem Roos</td>
+      <td>Partner</td>
+      <td>IRR has not improved; bear weight hardened; the termination right makes this no longer fee-share risk — it's an option Bancorp's partners hold</td>
+      <td class="no">NO</td>
+    </tr>
+    <tr>
+      <td>Nic</td>
+      <td>Partner</td>
+      <td>Britt didn't engage Bancorp at JPMorgan; the termination right sits with the partner banks — what we're underwriting is more exogenous, not less</td>
+      <td class="no">NO — soft</td>
+    </tr>
+    <tr>
+      <td>Marcus Webb</td>
+      <td>US Banking Analyst / Former OCC Examiner</td>
+      <td>Reg II §235.5 moves the cliff to 1 July 2027, but the contractual covenant means bears don't need a breach to materialise</td>
+      <td class="no">NO</td>
+    </tr>
+    <tr>
+      <td>Rachel Torres</td>
+      <td>US Fintech Growth Investor</td>
+      <td>Member-base moat intact, price fair, corrected timing creates a tradable window — softer Britt framing means YES at diminished conviction</td>
+      <td class="yes">YES — diminished</td>
+    </tr>
+    <tr>
+      <td>David Kim</td>
+      <td>Credit Risk Specialist / Former Moody's</td>
+      <td>Credit disclosure gap unchanged; the corrected pack does not engage the question I keep asking</td>
+      <td class="no">NO</td>
+    </tr>
+  </table>
+
+  <div class="tally">
+    <div class="tally-item"><span class="tally-num yes">3</span><span class="tally-label">Yes</span></div>
+    <div class="tally-item"><span class="tally-num no">4</span><span class="tally-label">No</span></div>
+    <div class="tally-item"><span class="tally-num abstain">0</span><span class="tally-label">Abstain</span></div>
+    <div class="tally-verdict">WATCH — NOT BUY<br>diagnostic-anchored; first read at TBBK Q2 2026 10-Q</div>
+  </div>
+
+  <p style="font-size:14px; color:#555; font-style:italic">Virtual Chronos Vote: 3 YES / 4 NO / 0 ABSTAIN — verdict descriptor unchanged from the previous sitting at WATCH NOT BUY. The narrative beneath has shifted: bear vectors sharper, bull window longer. The room converged on TBBK Q2 2026 10-Q (~August 2026) as the first diagnostic read, with the 31 December 2026 year-end measurement (Reg II §235.5) as the binding event and 1 July 2027 the earliest repricing.</p>
+
+  <h2>Partner Views</h2>
+
+  <div class="person-block">
+    <div class="person-header">
+      <div><div class="person-name">Roger Grobler</div><div class="person-role">Partner — chairs the session</div></div>
+      <div class="person-verdict"><span class="vote yes">YES — conditional</span><span style="color:#888;font-size:12px">A starter band with diagnostic windows, not a pass band</span></div>
+    </div>
+    <p>The Reg II correction matters. Marcus is right that §235.5 measures at year-end and gives until 1 July of the succeeding year. The legally decisive measurement is 31 December 2026; earliest repricing 1 July 2027. Thirteen months of runway, two TBBK 10-Q diagnostic windows — Q2 in August, Q3 in November — and the 4Q 2026 10-K in February 2027 as the crystallising read. That is a starter band, not a pass band.</p>
+    <p>The offsetting move is that the trajectory is more urgent than we thought. Bancorp YoY growth fifteen-point-one percent. Q1 sequential gain $546M against $50M buyback. 2025 buyback $375M actual; 2026 authorisation $200M, $50M already spent. The mechanic gives thirteen months; the pace says the buffer closes fast inside that window. The diagnostic is everything. If Q2 reads benign — below $9.95B with capital-return acceleration or off-balance-sheet sweep — the runway is real. If Q2 is at or above $10B, year-end is effectively set and the cliff lands seven months later.</p>
+    <p>The contractual termination right is new since v4. TBBK FY2025 10-K Risk Factors, verbatim: <em>"certain of our fee-sharing relationship agreements include the right to terminate our agreement"</em> if TBBK loses Durbin exemption. Whether Chime's MSA contains that clause is publicly unknown — §9 is partially redacted — but the existence of such clauses at TBBK is load-bearing. The bears no longer need a breach; a partner with that clause can walk on disclosed expectation of breach.</p>
+    <p>Britt's softer transcript I take seriously. <em>"Looking at again this year and figuring out what the best path is"</em> is annual evaluation, not commitment. No calendar year, no capital estimate, no path preference. Britt did not engage Bancorp at JPMorgan TMC; named them "incredible thought partners" and moved on. The silence is information.</p>
+    <p>The corrected timing argues for a starter at $17.80 with diagnostic-anchored upsize gates. The termination right and softer charter framing argue for tighter sizing. I hold YES, conditional, at the bottom of the starter band. If the room votes WATCH on substance, I will not fight the semantics — the difference between a 1.0% starter today and a 1.5% starter after Q2 reads benign is sizing, not direction.</p>
+    <div class="person-condition">
+      <h4>Roger's condition for sized entry</h4>
+      Starter 1.0% NAV at $17.80 or below, with upsize gates: (i) TBBK Q2 2026 10-Q assets below $9.95B with capital-return acceleration or sweep growth absorbing deposit pressure — upsize to 1.5%; (ii) TBBK Q3 2026 10-Q confirming the trajectory — upsize to 2.0%; (iii) Chime IR disclosure of a credible third sponsor bank in test or MSA renewal disclosure ahead of 30 June 2027 — upsize regardless. Trim if Q2 is above $9.95B; exit if Q3 confirms year-end above $10.0B. Price below $14–16 on post-lock-up pressure resets the full-position band regardless of the regulatory read.
+    </div>
+  </div>
+
+  <div class="person-block">
+    <div class="person-header">
+      <div><div class="person-name">Michael Jordaan</div><div class="person-role">Partner</div></div>
+      <div class="person-verdict"><span class="vote yes">YES — light</span><span style="color:#888;font-size:12px">The de-rating still does most of the work, but I sized down</span></div>
+    </div>
+    <p>What has moved me is Britt's actual transcript. The v4 panel read "when, not if" as CEO pre-commitment. The full transcript is annual evaluation with a verb-tense escalation. <em>"Looking at again this year and figuring out what the best path is"</em> is optionality, not commitment. The trajectory is one-direction — and I credit that — but the content does not support the timeline compression I argued for last sitting.</p>
+    <p>What has not moved me is the de-rating. CHYM is sixty percent below post-IPO peak, 34.1% below the $27 IPO price. EV/Revenue 2.49x against peer median 4.16x. The reverse-multiple check: at peer-median re-rating, 15% IRR requires 3.8% revenue CAGR; at current multiple held flat, 15% CAGR. The market is pricing 4 to 15 percent against a 25 percent Q1 print and Street consensus of 17. The case for stretched valuation is weak; the case for stretched thesis is the Durbin tail. That is the asymmetry I want to underwrite.</p>
+    <p>The contractual termination right is where I want to be careful. Willem and Nic are right it's load-bearing. But: TBBK has not named Chime in any filing; Chime's share of TBBK revenue is 10 to 25 percent, not 35 to 55. Bancorp-side asymmetry is smaller than v4 thought.</p>
+    <p>I hold YES, sized down. I am not arguing the timeline compresses; I am arguing the price already prices the tail and the corrected Reg II calendar gives us time to play it. If Q2 reads badly, the starter takes a 15 to 20 percent mark — manageable. If benign, we have entered at $17.80 instead of $22 to $24.</p>
+    <div class="person-condition">
+      <h4>Michael's condition for holding the YES</h4>
+      Starter 0.5–0.75% NAV (down from v4's 0.75–1.0%) at $17.80 or below; upsize only on three reads together: (a) TBBK Q2 2026 10-Q neutral-or-better; (b) Chime IR explicit on charter timeline — calendar year, capital estimate, path preference, not rhetoric; (c) Chime Card share of purchase volume climbing above 30%. If TBBK Q2 confirms year-end above $10.0B trajectory, take the mark and exit.
+    </div>
+  </div>
+
+  <div class="person-block">
+    <div class="person-header">
+      <div><div class="person-name">Willem Roos</div><div class="person-role">Partner</div></div>
+      <div class="person-verdict"><span class="vote no">NO</span><span style="color:#888;font-size:12px">The IRR didn't move; the bear vectors hardened</span></div>
+    </div>
+    <p>I am still NO because the arithmetic has not improved and the structural read has hardened. The probability-weighted IRR is 14.4 percent on Workstream D's stated weights. The pack flags that as conservative — at the Deep Research 45 to 60 percent bear, IRR falls to 5 to 8 percent. The Chronos hurdle is 20. The Reg II correction moves the catalyst out thirteen months; it does not improve the IRR.</p>
+    <p>Two facts are materially worse than v4 thought. First, Bancorp's growth pace is fifteen-point-one percent YoY, not five — a fifteen-percent compounding asset base running into a hard $10B ceiling, with buyback authorisation falling $375M actual 2025 to $200M authorised 2026, a quarter already spent. The buffer does not survive without aggressive intervention.</p>
+    <p>Second, the contractual Durbin termination right. TBBK FY2025 10-K Risk Factors, verbatim: <em>"certain of our fee-sharing relationship agreements include the right to terminate our agreement"</em> if TBBK loses Durbin exemption. We are not underwriting a fee-share that compresses on breach — we are underwriting a counterparty option held by TBBK's partner banks. Bears do not need a breach, they need a disclosed expectation of breach. That can happen on the Q2 10-Q.</p>
+    <p>Michael's point on corrected concentration — Chime 10 to 25 percent of TBBK revenue rather than 35 to 55 — cuts against Chime. Bancorp's marginal revenue mix is more diversified than thought, so the Chime relationship is more disposable.</p>
+    <p>I will revisit at $14 to $16 on H2 2026 post-lock-up pressure. At $14, EV/Revenue 1.9 to 2.2x; even at a 50 percent bear weight IRR clears 18 percent. We are not paid to chase the inflection at a fair price.</p>
+    <div class="person-condition">
+      <h4>Willem's condition for YES</h4>
+      Price below $16.00 on post-lock-up pressure (likely H2 2026), OR TBBK Q2 2026 10-Q shows the buffer materially restored with credible mechanism (large buyback authorisation, asset sale, off-balance-sheet sweep growth, or step-down in deposit growth), OR explicit Chime IR disclosure of an MSA contingency plan with a named alternative sponsor bank in test before 30 June 2027. Britt's verb tense alone is not a price-changing event.
+    </div>
+  </div>
+
+  <div class="person-block">
+    <div class="person-header">
+      <div><div class="person-name">Nic</div><div class="person-role">Partner</div></div>
+      <div class="person-verdict"><span class="vote no">NO — soft</span><span style="color:#888;font-size:12px">The exogenous load got heavier, not lighter</span></div>
+    </div>
+    <p>I held a soft NO at v4 because what we are underwriting had shifted from Chime's competence to an exogenous bundle — Bancorp's buffer management, Cash App's product roadmap, the regulatory frame on multi-bank distribution. The corrected pack deepens that read.</p>
+    <p>The Britt transcript matters. The v4 panel had him pre-committing in public; the actual transcript is annual evaluation. He did not engage Bancorp at JPMorgan, did not address the $10B threshold, did not address Cash App co-issuance. Huang did not press. The signal: Britt is aware, preserving the charter as one option among several, unwilling to discuss the partner-bank exposure on the record. A CEO managing a sensitive supplier relationship while keeping options open.</p>
+    <p>The contractual termination right is the right load-bearing fact. We are not underwriting "Bancorp could non-renew." We are underwriting "Bancorp's partners may have walk-away rights tied to Bancorp's Durbin status." The variable that triggers the option is at the Federal Reserve. Three levels removed from Chime's competence.</p>
+    <p>The Chime Prime sweep paradox is still the cleanest articulation. Prime targets the highest-quality direct-deposit cohort — exactly the deposits that compound Bancorp's buffer fastest. Chime's growth strategy and Bancorp's Durbin-management strategy are in direct conflict. Workstream H tells us the market reads Prime as a positive on-ramp from debit to credit. The structural read is that Prime is the mechanism by which Chime is, by design, accelerating Bancorp's breach to grow the franchise. Both readings correct on the same product. I will revisit at the Q2 10-Q if Chime IR substantively addresses the contingency.</p>
+    <div class="person-condition">
+      <h4>Nic's condition for changing the vote</h4>
+      Chime IR statement on Q2 2026 earnings call addressing: (a) contingency if Bancorp issues non-renewal notice in July 2027 or a partner exercises Durbin-tied termination; (b) multi-bank distribution evaluation against §235.6 non-circumvention; (c) named timeline on the charter pursuit — calendar year, capital, path preference. Without those three answers, no sized position. Additionally: DEF 14A confirms at least one independent director with financial-services or AI expertise added.
+    </div>
+  </div>
+
+  <h2>Expert Panel</h2>
+
+  <div class="person-block">
+    <div class="person-header">
+      <div><div class="person-name">Marcus Webb</div><div class="person-role">US Banking Analyst / Former OCC Examiner</div></div>
+      <div class="person-verdict"><span class="vote no">NO</span><span style="color:#888;font-size:12px">The corrected timing moves the cliff to 1 July 2027 — but the contractual covenant means the bears don't need a breach</span></div>
+    </div>
+    <p>The Reg II correction was my finding. §235.5 determines small-issuer status by total assets at end of the preceding calendar year, with compliance no later than 1 July of the succeeding year. Q2 (August) and Q3 (November) 2026 10-Qs are leading diagnostics. The legally decisive read is 31 December 2026, disclosed in the 4Q 2026 10-K (~February 2027). If Bancorp ends 2026 above $10B, repricing no later than 1 July 2027.</p>
+    <p>The corrected timing does not help the bull case as much as it appears. v4 had the cliff at Q2 2026; corrected has it at 1 July 2027 — thirteen months of additional runway, but the bear vectors compound. Corrected YoY asset growth fifteen-point-one percent. Q1 sequential $546M assets, $454M deposits against $50.3M buyback. 2025 buyback $375M; 2026 authorisation $200M, $50.3M gone. The buffer does not close passively.</p>
+    <p>The new finding that matters most is the contractual termination right. TBBK FY2025 10-K Risk Factors, verbatim: <em>"certain of our fee-sharing relationship agreements include the right to terminate our agreement"</em> if TBBK loses the Durbin exemption. Bears do not need a breach — a partner with that clause and credible expectation of breach can give notice. The catalyst can fire inside the thirteen-month window on a Q2 10-Q, Q3 10-Q, or out-of-cycle 8-K.</p>
+    <p>Concentration also matters. TBBK does not name Chime in any filing. Chime's share of TBBK revenue is 10 to 25 percent, not 35 to 55. Top-3 concentration tightened 47 percent → 58 percent in Q1 2026.</p>
+    <p>On Britt: verb-tense escalation is real, content is annual evaluation. Charter pursuit on an 18-to-36 month operational timeline — SoFi took ~18 months with a named target — does not address the 1 July 2027 cliff. Britt has not named a target. Bullish on a 24-to-36 month horizon; nothing for the disclosure window between Q2 2026 and February 2027.</p>
+    <div class="person-question">
+      <h4>Marcus's critical question</h4>
+      What is TBBK's outstanding share-repurchase authorisation after Q1 2026 consumption, what off-balance-sheet sweep capacity is in operational test, and what is the stated mechanism for managing year-end 2026 assets below $10B against +15.1% YoY growth? And critically: does Chime's MSA contain the Durbin-tied termination right that TBBK's FY2025 10-K Risk Factors disclose exists in at least some partner agreements? §9 is partially redacted; this can only be answered by Chime IR.
+    </div>
+  </div>
+
+  <div class="person-block">
+    <div class="person-header">
+      <div><div class="person-name">Rachel Torres</div><div class="person-role">US Fintech Growth Investor</div></div>
+      <div class="person-verdict"><span class="vote yes">YES — diminished</span><span style="color:#888;font-size:12px">The member base is intact; the price is fair; the corrected timing creates a window — but Britt's softer framing has cost me conviction</span></div>
+    </div>
+    <p>I hold YES because the things I have always cared about have not moved. Chime opened thirteen percent of new US checking accounts in Q3 2025 — more than Chase, Wells Fargo, or Bank of America. Conversion 77 percent. Q1 2026 first GAAP-profitable quarter on $647.4M revenue at +25 percent YoY, 90 percent gross margin, 18 percent adj EBITDA. Enterprise channel — First Student >65,000 employees, UKG marketplace, Workday payroll integration — landing direct-deposit-primary at near-zero CAC. Chime Card mix at ~25 percent of purchase volume in March 2026, 60 percent of new users signing up for it, 70 percent of attached users' spend on credit. None of that moves on the corrected pack.</p>
+    <p>What has cost me conviction is Britt's transcript. I said at v4 he was telling the market something material with "when, not if." The full transcript is softer — annual evaluation, no calendar year, no path preference. The room is right to read the transcript.</p>
+    <p>The corrected Reg II timing helps the YES read in a way v4 didn't recognise. The catalyst is 1 July 2027 at earliest, not Q2 2026. Thirteen months for Britt to deliver something concrete before disclosure forces it. The enterprise channel scales; Chime Card compounds. Workstream H: market not pricing the regulatory tail — no friendly catalyst either way. If Spock is right, the re-rate is discontinuous. If Spock is wrong, the position works on operational compounding inside the window.</p>
+    <p>I hold YES because the asymmetric work is being done by the price, the member base, and operational compounding inside the corrected thirteen-month window. Diminished conviction because the charter optionality argument I made last time was overstated. If Q2 reads adversely I take the mark; if benignly and Chime IR addresses the contingency, I upsize.</p>
+    <div class="person-question">
+      <h4>Rachel's critical question</h4>
+      Will Chime IR confirm on Q2 2026 earnings call (a) charter timeline with named milestones, not the annual-evaluation framing Britt gave at JPMorgan; (b) whether an acquisition target is identified or de novo is the route; (c) capital plan to fund the ~$500M cost; (d) contingency if a TBBK partner exercises Durbin-tied termination? Britt's verb tense is directional; the room needs these four data points to confirm conviction or rhetoric.
+    </div>
+  </div>
+
+  <div class="person-block">
+    <div class="person-header">
+      <div><div class="person-name">David Kim</div><div class="person-role">Credit Risk Specialist / Former Moody's</div></div>
+      <div class="person-verdict"><span class="vote no">NO</span><span style="color:#888;font-size:12px">Corrected pack does not engage the question I keep asking</span></div>
+    </div>
+    <p>My vote is unchanged for the same reason across two IC cycles. The credit disclosure gap is what it was. MyPay's "1% loss rate" is on origination volume, not revenue. FY2025 T&amp;R losses $127.1M against $333.5M of FY2025 platform-related revenue from MyPay receivables, with MyPay annualised above $400M in Q4 2025 and Q1 2026. The pack confirms that at a normalised 3 to 4 percent loss rate on origination volume, base IRR drops to 7 to 11 percent — sub-hurdle by a wide margin. No scenario pairs credit stress with Durbin stress, which is what would happen in a real downturn.</p>
+    <p>Product obligation $147.4M at end-2025, +29 percent YoY. Maximum gross exposure $722.3M, +59 percent. The "improving as cohorts mature" framing remains direction without verifiable cohort data — three requests across two IC meetings.</p>
+    <p>Chime Prime targets the highest-quality direct-deposit cohort but raises SpotMe and MyPay limits for that cohort. On-balance-sheet exposure grows on a sub-segment whose stress-default behaviour is untested. The credit-card pivot makes my underwriting harder — moving Chime Card from 25 to 40-50 percent shifts the revenue mix toward credit interchange, which carries on-balance-sheet credit risk. The corrected pack has not addressed the question I keep asking.</p>
+    <div class="person-question">
+      <h4>David's critical question</h4>
+      Will Chime disclose, in Q2 2026 10-Q or earlier from IR: SpotMe loss rates by deposit-frequency cohort; Credit Builder delinquency by member tenure; MyPay loss rates by repeat-borrower segmentation; and Chime Prime cohort exposure for products carrying on-balance-sheet credit risk? Until those four data points exist publicly, my vote does not change.
+    </div>
+  </div>
+
+  <h2>The Room's Debate</h2>
+
+  <p>Five distinct exchanges defined the meeting. The minutes record them in the sequence they occurred.</p>
+
+  <div class="debate-moment">
+    <h4>1. Marcus walks the room through Reg II §235.5</h4>
+    <p>Marcus opened with the timing correction. <em>"§235.5 determines small-issuer status by total assets at end of preceding calendar year, with compliance no later than 1 July of the succeeding year. The v4 panel had this as a now-quarter problem. It is not. Q2 and Q3 2026 ten-Qs are leading diagnostics. The legally decisive read is the 4Q 2026 ten-K. If Bancorp ends 2026 above $10B, repricing is required no later than 1 July 2027. Thirteen months of runway."</em> Roger pressed. <em>"Two ten-Q windows along the way and the cliff at 1 July 2027 at earliest — that sounds like a starter band, not a pass band."</em> Marcus did not concede. <em>"It sounds like that until you read the contractual termination right. The bears don't need a breach — they need a credible expectation of breach. That can happen on the Q2 ten-Q."</em></p>
+  </div>
+
+  <div class="debate-moment">
+    <h4>2. Michael presses Rachel on whether the softer charter framing breaks her thesis</h4>
+    <p>Michael had moved off the v4 read that Britt's "when, not if" pre-committed the bear case. He pressed Rachel. <em>"You and I were both reading the headline. The transcript is annual evaluation — 'looking at again this year.' No calendar year. No capital estimate. No path preference. Does your thesis survive that re-read?"</em> Rachel: <em>"My thesis survives because the load-bearing work has always been the member base and the price, not the charter optionality. The charter argument I made at v4 was overstated — I will own that. But thirteen percent of new US checking opens, 77 percent conversion, net inflows, the enterprise channel — none of that moves on Britt's transcript. The corrected Reg II timing gives me thirteen months for operational compounding."</em> Michael: <em>"Then the charter is no longer the unlock. The unlock is the price."</em> Rachel: <em>"Yes. And Workstream H confirms the price is not under pressure from informed bears."</em></p>
+  </div>
+
+  <div class="debate-moment">
+    <h4>3. Willem and Nic converge on the contractual termination right</h4>
+    <p>Probably the most consequential exchange of the meeting. Willem read the TBBK language back. <em>"This is no longer a fee-share that compresses on breach. It is a counterparty option held by TBBK's partner banks. The existence of such clauses at TBBK is the load-bearing fact."</em> Nic engaged. <em>"The trigger sits with the partner, not the regulator. We are underwriting a regulatory determination that activates a partner option that may or may not be in our specific contract."</em> Michael tried to soften: <em>"We do not know that the Chime MSA contains this clause. §9 is partially redacted."</em> Willem held: <em>"We also do not know that it does not. The default reading of a redacted clause in this position should be that it contains terms a public filing would protect."</em> Marcus agreed. Roger conceded: <em>"This is the strongest single argument for the conditions Willem and Nic want on the entry."</em></p>
+  </div>
+
+  <div class="debate-moment">
+    <h4>4. Roger pushes back on Marcus on the entry band</h4>
+    <p>Roger pressed Marcus on whether thirteen months of runway with three diagnostic windows argued for a pass. <em>"Q2 in August, Q3 in November, 4Q ten-K February 2027. Three windows in which a starter can be trimmed. With the price already pricing the tail per Workstream H, that is a starter band, not a pass band."</em> Marcus did not back down. <em>"The contractual termination right means the catalyst can fire outside those windows — out-of-cycle 8-K, IR statement, sell-side note. Price reaction will be discontinuous. A starter at the discontinuity takes the full mark."</em> Roger: <em>"At the lightest sizing, manageable."</em> Marcus: <em>"Then the question is sizing, not direction. The starter band is defensible at the bottom of the range."</em></p>
+  </div>
+
+  <div class="debate-moment">
+    <h4>5. The room debates the Workstream H "discontinuous price reaction"</h4>
+    <p>Late in the meeting, Rachel brought Workstream H to the centre. <em>"No activist short. Short interest declining at 6.4 percent of float, 1.9 ratio. Pre-Q1 options 19:6 calls-to-puts at 3x normal volume. Retail conversation is Chime Prime, GAAP profit, macro credit — not Bancorp. 13F count rose 39 to 49 Q4 2025 to Q1 2026. The bears are not in the price. No friendly catalyst to force the re-rate."</em> Nic read the same data the other way. <em>"It also means no friendly catalyst to close the discount. If we are right, we sit through extended consensus disagreement waiting for disclosure to crystallise."</em> Roger summarised: <em>"Both readings are correct. The price reaction is discontinuous. If you are in before it fires, you take the full move. If you are not in, you wait for a friendly catalyst that does not exist. That is what makes this a starter at the bottom of the band, not a full position."</em></p>
+  </div>
+
+  <h2>What the Room Agrees On</h2>
+
+  <ul style="margin: 10px 0 16px 20px; line-height: 1.9;">
+    <li>Q1 2026 operational inflection is real — first GAAP profit ($53M on $647.4M revenue), 18 percent adj EBITDA, ~90 percent gross margin, +25 percent revenue, 10.2M actives, ARPAM $263.</li>
+    <li>Bancorp dependency is the load-bearing variable. Reg II §235.5 measures at year-end; 1 July 2027 earliest repricing if Bancorp ends 2026 above $10B. Q2 2026 (August) and Q3 2026 (November) 10-Qs are leading-indicator diagnostic windows.</li>
+    <li>Bancorp's corrected YoY asset growth is +15.1 percent ($8.599B Q1 2025 → $9.90B Q1 2026), not +5.4 percent. Trajectory more urgent than v4 thought.</li>
+    <li>The contractual Durbin termination right in TBBK's FY2025 10-K Risk Factors is the most consequential new fact since v4. Whether Chime's MSA contains it is publicly unknown.</li>
+    <li>TBBK buyback capacity shrinking — 2025 actual $375M; 2026 authorisation $200M. Top-3 partner concentration tightened 47 percent → 58 percent in Q1 — previously unflagged.</li>
+    <li>TBBK does not name Chime in any filing. Chime's share of TBBK revenue is 10–25 percent, not 35–55.</li>
+    <li>Britt's JPMorgan TMC framing is materially softer than the headline — annual evaluation, no calendar year, no engagement of Bancorp.</li>
+    <li>Workstream H: market is not pricing the regulatory tail. Price reaction will be discontinuous when the catalyst fires.</li>
+    <li>Phase 2 diligence warranted — IR engagement on renewal contingency, Durbin-tied termination right, and charter timeline are highest-priority.</li>
+  </ul>
+
+  <h2>What Divides the Room</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0">
+    <div class="callout callout-green" style="margin:0">
+      <strong>The bull case (Roger conditionally, Michael light, Rachel diminished)</strong>
+      Corrected Reg II timing gives thirteen months of runway with two TBBK 10-Q diagnostic windows. EV/Revenue 2.49x against peer median 4.16x; reverse-multiple check has the market pricing 4 to 15 percent forward CAGR against a 25 percent Q1 print. Member base intact, enterprise channel landing direct-deposit-primary at near-zero CAC. Workstream H: market not pricing the regulatory tail — long horizon to compound operationally. A starter sized to survive a gap-down, with diagnostic-anchored upsize gates, has more asymmetry than waiting for a friendly catalyst that does not exist.
+    </div>
+    <div class="callout callout-red" style="margin:0">
+      <strong>The bear case (Willem, Marcus, Nic, David)</strong>
+      14.4 percent IRR already sub-hurdle on the 25 percent bear weight; at Deep Research 45–60 percent bear, IRR falls to 5–8 percent. Corrected +15.1 percent YoY growth against falling buyback ($375M actual 2025 → $200M authorised 2026) means the buffer does not close passively. The contractual Durbin termination right means the bears do not need a breach — a partner with that clause and credible expectation can give notice on the Q2 10-Q. Britt's softer framing does not compress the timeline. Credit disclosure gap remains. The same starter is available at $14–16 on H2 2026 post-lock-up pressure.
+    </div>
+  </div>
+
+  <h2>Six Questions for the Human IC</h2>
+
+  <p><em>These are the six questions the IC reading pack tabled. The Virtual IC engaged them but did not resolve them — they should be addressed by the human IC before any sized position is approved. Q1 and Q6 are the load-bearing two for this verdict.</em></p>
+
+  <div class="question-block">
+    <div class="q-num">Question 1</div>
+    <div class="q-text"><strong>The July 2028 MSA and the three-clock problem.</strong> Does the assessment change if we treat July 2028 as the hard contractual date, 31 December 2026 Reg II §235.5 as the legally decisive event, and Q2/Q3 2026 TBBK 10-Qs as leading-indicator diagnostics? Has Chime IR been asked whether the MSA contains the Durbin-tied termination right that TBBK's FY2025 10-K Risk Factors disclose exists in at least some partner agreements?</div>
+    <div class="q-why">Why it matters: The corrected Reg II calendar gives Chime thirteen months. But the contractual termination right means the catalyst can fire on a partner's expectation, not the regulator's determination.</div>
+    <div class="q-live"><strong>Most live for:</strong> Marcus Webb, Roger Grobler, Willem Roos, Nic.</div>
+  </div>
+
+  <div class="question-block">
+    <div class="q-num">Question 2</div>
+    <div class="q-text"><strong>Credit-cycle stress on a non-benign MyPay base.</strong> MyPay's "1% loss rate" is on origination volume; FY2025 platform-related revenue from MyPay receivables $333.5M against $127.1M T&amp;R losses. The pack models base IRR dropping to 7–11 percent at a normalised 3–4 percent loss rate. Max gross exposure $722.3M (+59 percent YoY). Chime Prime raises SpotMe and MyPay limits on a cohort whose stress-default behaviour is untested. Is the IC willing to underwrite credit-cycle stress on an LMI cohort with no cohort-level disclosure, in combination with the Durbin scenario?</div>
+    <div class="q-why">Why it matters: The combined Durbin-plus-credit scenario is not modelled.</div>
+    <div class="q-live"><strong>Most live for:</strong> David Kim, Nic.</div>
+  </div>
+
+  <div class="question-block">
+    <div class="q-num">Question 3</div>
+    <div class="q-text"><strong>The "primary bank" definition.</strong> 10.2M "active" (one money-movement transaction) and 5.7M "primary" (15+ card transactions or one $200+ deposit) bracket a wide range. Cornerstone Q3 2025 found 52 percent of new Chime checking accounts are additional alongside an existing bank. Gate 7 places the sticky base at 3–4M. Does the IC accept 10.2M active for revenue but 3–4M sticky for churn?</div>
+    <div class="q-why">Why it matters: The headline narrative conflates the denominators.</div>
+    <div class="q-live"><strong>Most live for:</strong> Rachel Torres, Nic.</div>
+  </div>
+
+  <div class="question-block">
+    <div class="q-num">Question 4</div>
+    <div class="q-text"><strong>CFPB / regulatory posture.</strong> The May 2024 CFPB order ($4.55M total) was meant to remediate delayed closure refunds. Two years later, the same categories continue at scale; BBB shows 2,645 TTM complaints (25 May 2026). Is the regulatory exposure structural or improving?</div>
+    <div class="q-why">Why it matters: Counter-intuitively, the load-bearing risk is Senator Durbin's amicus activity (Corner Post, Linney's Pizza) potentially widening the exempt-vs-capped differential — deepening the cliff if Bancorp breaches.</div>
+    <div class="q-live"><strong>Most live for:</strong> Nic, David Kim.</div>
+  </div>
+
+  <div class="question-block">
+    <div class="q-num">Question 5</div>
+    <div class="q-text"><strong>The multiple-regime question, compressed.</strong> CHYM trades at ~2.49x EV/Revenue — a fintech-growth multiple, ~40 percent below peer median. As credit revenue grows (currently ~33 percent of platform revenue), the market eventually applies bank-like multiples (1–2x book). The 4Q 2026 10-K or an out-of-cycle 8-K could trigger re-rating before the credit-mix crossover. At what point does the regime shift become visible, and how does it change the entry-price recommendation?</div>
+    <div class="q-why">Why it matters: The credit-card pivot the bulls celebrate is also the mechanism that could trigger multiple re-rate.</div>
+    <div class="q-live"><strong>Most live for:</strong> Willem Roos, Michael Jordaan.</div>
+  </div>
+
+  <div class="question-block">
+    <div class="q-num">Question 6</div>
+    <div class="q-text"><strong>The diagnostic disclosure cluster.</strong> Are TBBK's Q2/Q3 2026 10-Qs the right leading-indicator diagnostics, with the legally decisive measurement at year-end 2026 (Reg II §235.5) and 1 July 2027 repricing if Bancorp ends 2026 above $10B? Does the IC accept that the contractual Durbin termination right means a partner can fire the catalyst on a credible expectation of breach, not on the breach itself?</div>
+    <div class="q-why">Why it matters: The diagnostic cluster — Q2 2026 10-Q (August), Q3 2026 10-Q (November), 4Q 2026 10-K (February 2027) — is the rhythm of the position. The contractual termination right is why the rhythm can be punctuated by an out-of-cycle catalyst.</div>
+    <div class="q-live"><strong>Most live for:</strong> Marcus Webb, Roger Grobler, Willem Roos, Nic.</div>
+  </div>
+
+  <h2>Revisit Triggers — WATCH, Not Buy</h2>
+
+  <div class="callout callout-amber">
+    <strong>WATCH — re-entry triggers</strong>
+    <p style="margin-top:8px">Virtual Chronos Vote 3Y / 4N / 0A — verdict WATCH NOT BUY. Watch list with explicit re-entry mechanics:</p>
+    <ol style="margin: 10px 0 0 22px; line-height: 1.9;">
+      <li><strong>TBBK Q2 2026 10-Q (~August 2026), benign read.</strong> Period-end assets below $9.95B with capital-return acceleration or off-balance-sheet sweep growth absorbing deposit pressure. Sizing decision returns to IC.</li>
+      <li><strong>TBBK Q2 2026 10-Q, breach-trajectory read.</strong> Assets at or above $10.0B or trajectory insufficient for year-end below threshold. Watch list at lower entry; revisit bear weighting.</li>
+      <li><strong>TBBK Q3 2026 10-Q (~November 2026).</strong> Second diagnostic window — confirmation or invalidation of trajectory.</li>
+      <li><strong>TBBK 4Q 2026 10-K (~February 2027).</strong> Legally decisive year-end disclosure per Reg II §235.5. If above $10.0B, compliance no later than 1 July 2027.</li>
+      <li><strong>Price to $14.00–$16.00 on H2 2026 post-lock-up pressure.</strong> EV/Revenue 1.9–2.2x; IRR clears 20 percent even at 50 percent bear. Sized entry approved.</li>
+      <li><strong>Chime IR substantive Q2 2026 earnings call statement.</strong> Named charter timeline (calendar year, capital, path); contingency for non-renewal or Durbin-tied termination; named alternative sponsor in test. Two or more trigger fresh assessment.</li>
+      <li><strong>Any out-of-cycle TBBK 8-K on capital-return or asset-management posture.</strong> The contractual termination right means the catalyst can fire outside the 10-Q calendar.</li>
+      <li><strong>Any CFPB enforcement action subsequent to May 2024.</strong></li>
+      <li><strong>Q2 2026 MyPay loss rate above 1.5 percent (origination-volume).</strong> Signals LMI credit-cycle deterioration.</li>
+      <li><strong>Any second sell-side analyst publishing Bancorp Durbin arithmetic differing from Chronos base.</strong> Would change the market frame. Bartlett (Rothschild Redburn) remains the only public voice.</li>
+    </ol>
+    <p style="margin-top:10px"><strong style="display:inline; text-transform:none; letter-spacing:normal; font-size:14px">Workstream H structural read.</strong> If Spock is right, expect discontinuous price reaction at the 31 December 2026 measurement (disclosed February 2027) or the 1 July 2027 implementation — not gradual. No friendly catalyst will force a re-rate before disclosure crystallises. Size for a starter that survives a gap-down.</p>
+    <p style="margin-top:10px">Next IC sitting timed to TBBK Q2 2026 10-Q in August 2026; contingent earlier sitting if any out-of-cycle 8-K, IR statement, or sell-side note materially moves the picture.</p>
+  </div>
+
+  <div class="footer">
+    <p>Gate 9 Virtual IC · Produced 26 May 2026 · Chronos Capital Advisory · Partner Only · Not for Distribution</p>
+    <p style="margin-top:6px">Based on the final IC reading pack dated 26 May 2026. All partner and expert views are simulated constructs for internal deliberation. Financial figures trace to the reading pack and primary SEC filings (Chime FY2025 10-K incl. Exhibit 10.20, Q4 2025 8-K, Q1 2026 8-K; TBBK FY2025 10-K incl. Risk Factors, Q1 2026 10-Q and 8-K) and named third-party sources (J.P. Morgan TMC transcript 18 May 2026; cash.app/card; Rothschild Redburn 26 January 2026; StockAnalysis; Cornerstone Advisors; 12 CFR §235.5 and §235.6).</p>
+  </div>
+
+</div>
+</body>
+</html>
