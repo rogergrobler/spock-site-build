@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Virtual IC Brief — MercadoLibre (MELI.US) · Chronos Memos</title>
+<style>
+:root {
+  --cream: #F5EFE3; --cream-light: #FAF6EC; --ink: #1c1a17; --ink-soft: #3a3733;
+  --muted: #6e6863; --line: #c9c2b5; --line-soft: #e2dccf;
+  --bronze: #8a6438; --bronze-dark: #634a2b; --burgundy: #8b2a1a;
+}
+* { box-sizing: border-box; }
+html { background: var(--cream); }
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  color: var(--ink); background: var(--cream);
+  max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem;
+  line-height: 1.55; font-size: 17px;
+}
+h1, h2, h3, h4 { color: var(--ink); font-weight: 600; line-height: 1.15; }
+h1 { font-size: 2.4rem; margin: 0 0 0.4rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; margin: 2.8rem 0 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--line-soft); }
+h3 { font-size: 1.2rem; margin: 2rem 0 0.4rem; color: var(--bronze-dark); }
+h4 { font-size: 1.05rem; margin: 1.4rem 0 0.3rem; color: var(--ink); }
+.eyebrow { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0.75rem; }
+.subtitle { color: var(--muted); font-style: italic; margin-bottom: 2rem; }
+p { margin: 0.7rem 0; }
+strong { color: var(--ink); }
+a { color: var(--bronze-dark); text-decoration: underline; }
+blockquote { border-left: 3px solid var(--bronze); padding: 0.6rem 1.2rem; margin: 1.4rem 0; background: var(--cream-light); color: var(--ink-soft); font-style: italic; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92rem; background: var(--cream-light); padding: 0.1rem 0.35rem; border-radius: 3px; }
+table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.95rem; }
+th, td { padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--line-soft); text-align: left; }
+th { font-family: -apple-system, sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--bronze-dark); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--muted); font-style: italic; }
+</style>
+</head>
+<body>
+<!-- spock-memos:toolbar-injected -->
+<style>
+  .spock-export-toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    gap: 6px;
+    background: #ffffffee;
+    border: 1px solid #d8d5ce;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    backdrop-filter: blur(6px);
+  }
+  .spock-export-toolbar a, .spock-export-toolbar button {
+    color: #1a1a1a;
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .spock-export-toolbar a:hover, .spock-export-toolbar button:hover {
+    background: #f0ede6;
+    color: #6B5535;
+  }
+  .spock-export-toolbar .divider {
+    width: 1px;
+    background: #e5e5e0;
+    margin: 4px 0;
+  }
+  .spock-gdocs-tip {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    z-index: 9999;
+    max-width: 280px;
+    background: #fdf8ee;
+    border: 1px solid #c49a4d;
+    border-radius: 6px;
+    padding: 12px 14px;
+    box-shadow: 0 4px 14px rgba(31,41,55,0.12);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #3a3a3a;
+    display: none;
+  }
+  .spock-gdocs-tip.is-open { display: block; }
+  .spock-gdocs-tip strong { color: #6B5535; }
+  .spock-gdocs-tip .close {
+    float: right;
+    cursor: pointer;
+    color: #888;
+    font-weight: 700;
+    margin-left: 8px;
+  }
+  @media print {
+    .spock-export-toolbar, .spock-gdocs-tip { display: none !important; }
+  }
+</style>
+<div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="virtual-ic-brief-28-may-2026.pdf" download title="Download as PDF">PDF</a>
+  <div class="divider"></div>
+  <a href="virtual-ic-brief-28-may-2026.docx" download title="Download as Word document">Word</a>
+  <div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')" title="How to open in Google Docs">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">
+  <span class="close" onclick="document.getElementById('spock-gdocs-tip').classList.remove('is-open')">&times;</span>
+  <strong>Open in Google Docs</strong><br>
+  Download the Word file, drag-drop it into Google Drive, then right-click &rarr; <em>Open with &rarr; Google Docs</em>.
+</div>
+
+<div class="eyebrow">Chronos Memos · MELI.US</div>
+<h1>Virtual IC Brief — MercadoLibre (MELI.US)</h1>
+<p class="subtitle">The Virtual Chronos panel deliberation on MercadoLibre. 3 YES / 3 NO / 1 ABSTAIN — STARTER (CONDITIONAL) consensus with serious dissent on entry-price discipline.</p>
+<h1 id="mercadolibre-inc.-meli.us-virtual-ic-brief">MercadoLibre
+Inc. (MELI.US) — Virtual IC Brief</h1>
+<p><strong>Ticker:</strong> MELI.US · <strong>Spot:</strong> ~$1,648 ·
+<strong>Mcap:</strong> ~$83.55bn · <strong>As of:</strong> 2026-05-28
+<strong>Pack under deliberation:</strong> IC Screening Paper draft v2
+(Gate 8 assembled)</p>
+<hr />
+<h2 id="headline">Headline</h2>
+<p><strong>Vote tally: 3 YES · 3 NO · 1 ABSTAIN.</strong></p>
+<p><strong>Consensus verdict: STARTER POSITION (CONDITIONAL)</strong> —
+but the panel splits sharply on whether the conditional triggers are
+tight enough to defend a starter today, or whether the absence of margin
+of safety + the high-severity AI-disclosure flag argues for WATCH at
+spot.</p>
+<p><strong>Disagreement axis:</strong> the panel divides on a single
+question — whether 0.5–1.0% NAV at −1.0% margin of safety is “paying for
+optionality” (the YES vote, accepting starter sizing as the price of
+being in the name when the Q2/Q3 2026 prints land) or “paying for
+confirmation we don’t have” (the NO vote, refusing to commit capital
+while the load-bearing AI metrics are sourced from klover.ai and
+investing.com rather than primary management disclosure).</p>
+<hr />
+<h2 id="per-persona-positions">§1 — Per-persona positions</h2>
+<h3 id="persona-1-the-compounder">Persona 1 — The Compounder</h3>
+<p><strong>Vote: NO. Position-size view: WATCH at spot; build a
+watch-list entry at ≤ $1,430.</strong></p>
+<p>The pack confirms a high-quality compounding business: 42.2%
+four-year revenue CAGR (§6), a 131 moat-durability index (§1), and the
+integrated five-asset stack (§8 Anchor 1) is real. None of that is in
+dispute. The Q1 2026 +49% YoY reacceleration (§6) is genuinely
+impressive. The problem is what one pays for it.</p>
+<p>The pack itself states the position bluntly in §7:
+“FAIR-leaning-EXPENSIVE … no margin of safety at spot.”
+Probability-weighted intrinsic of $1,632 against $1,648 = −1.0% margin
+of safety. The Compounder’s discipline is unambiguous: a high-quality
+business at fair value is a hold, not a buy. The 20% MoS floor for a
+full position is set at ≤ $1,270 (§7) — and even the “starter band” is
+$1,270–$1,430. At $1,648 the pack’s own framework places this in “watch
+/ no-add.”</p>
+<p>The bull case (§8) is contingent on three concurrent operating
+conditions — sustained 35%+ growth, named AI cohort metric with
+attribution, and Shopee retreat. Two of three are management-action
+triggers that haven’t happened. The Compounder does not pay for option
+value on management behaviour.</p>
+<p>The float-FCF caveat (§6) is the second concern: headline $10.71bn
+TTM FCF normalises to $3–4bn — a one-third haircut to the
+cash-generative anchor. The thesis is robust to this; sizing should not
+be.</p>
+<p><strong>Bull case (from the pack):</strong> structural moat at 131
+index, four-year compounding intact, balance sheet net cash of $12.1bn.
+<strong>Bear case (from the pack):</strong> −1.0% margin of safety,
+three-year operating margin compression (12.66% → 11.08% → 6.91% TTM
+Q1’26), float-flattered FCF. <strong>Question for management:</strong>
+“What specific operating margin trajectory does Q2 and Q3 2026 need to
+deliver for the company to declare the reinvestment cycle complete?”</p>
+<hr />
+<h3 id="persona-2-the-power-law-hunter">Persona 2 — The Power-Law
+Hunter</h3>
+<p><strong>Vote: YES. Position-size view: take starter at spot; explicit
+upside path to full on Q2’26.</strong></p>
+<p>This is exactly the asymmetric setup that justifies a starter
+position. The pack quantifies the bull-bear spread (§7): bull case
+$2,726 versus bear $623 — a 4.4x range across scenarios. The current
+$1,648 entry sits 65% below the bull intrinsic. Even
+probability-weighted, the upside path is concrete: if Q2 and Q3 2026
+print 35%+ growth and Szarfsztejn names an AI cohort metric with
+attribution, the bull-case probability re-rates from 25% to ~40% and the
+prob-weighted intrinsic moves to ~$1,925 (§1, §8). That is a 17%
+intrinsic-value rerate in one earnings cycle.</p>
+<p>The Power-Law Hunter is comfortable with the −1.0% spot margin of
+safety because the call option is properly identified and the gating
+event is named: Q2 2026 earnings call. Either Szarfsztejn anchors AI to
+primary disclosure or he doesn’t. The pack is not asking the IC to take
+5% NAV on a hope; it is asking for 0.5–1.0% to be in the name when the
+disclosure event lands. That sizing already prices in the AI-disclosure
+flag.</p>
+<p>The Q1 2026 +49% YoY print is the strongest revenue print since Q2
+2022 (§6). LatAm e-commerce penetration is &lt;15% versus
+developed-market &gt;20% (§3). The reference class (Sea Limited at 38.4%
+TTM) supports the trajectory. The 26-year build-out is moat depth no
+Series-C competitor will replicate.</p>
+<p><strong>Bull case (from the pack):</strong> Q1’26 +49% YoY
+reacceleration; 4.4x bull-bear spread; integrated five-asset moat
+compounding. <strong>Bear case (from the pack):</strong> Shopee LatAm
+seller-subsidy programme compresses take-rate to 17–18% (§4 war-game; §9
+Risk 1); the cluster of bear conditions can compound. <strong>Question
+for management:</strong> “If Q2 2026 sustains 35%+ YoY growth, what
+specific Mercado Crédito cohort metric — pre-AI versus post-AI default
+rate at the 12-month vintage — will you name on the call?”</p>
+<hr />
+<h3 id="persona-3-the-macro-hawk">Persona 3 — The Macro Hawk</h3>
+<p><strong>Vote: NO. Position-size view: hold flat; revisit only after
+Argentina FX stabilises or MELI moves to constant-currency primary
+reporting.</strong></p>
+<p>The pack documents three concurrent macro overhangs that the −1.0%
+margin of safety does not compensate for. First, Brazil is ~55% of
+revenue (§3, §9 Risk 4) — the BCB has a 12–24-month tightening half-life
+on fintech credit-origination rules (§4 regulatory table) and Mercado
+Crédito growth is the operative bear-case driver. Second, Argentina is
+~20% of revenue with IAS 29 hyperinflationary accounting adding noise to
+headline GAAP (§9 Risk 4). The pack itself names “MELI moving to
+constant-currency primary reporting” as a conditional trigger to upsize
+(§0) — i.e., the company is not currently reporting in a way the IC can
+fully trust. Third, the FY25 revenue mix WACC build (§7) uses a 5.15%
+revenue-weighted country risk premium; a fully melded EM CRP would push
+WACC to ~17% and intrinsic to ~$1,165 — 29% below spot.</p>
+<p>The pack openly states that the 13.5% house WACC is a bracketed
+average between McKinsey-lite (~10.5%) and Damodaran melded (~17%). The
+Macro Hawk reads this as: the intrinsic value depends on a country-risk
+assumption that is contested by the pack’s own framework. At a fully
+macro-adjusted WACC of 15% — which the pack adopts as the bear-case WACC
+— bear intrinsic is $623. The macro tail isn’t a low-probability
+outlier; the pack assigns it 25%.</p>
+<p>The 38% drawdown from the 12-month high (§7) is the market voting on
+these overhangs. Buying into a corrected price is not safety when the
+correction is incomplete.</p>
+<p><strong>Bull case (from the pack):</strong> balance sheet has $12.1bn
+net cash to absorb single-jurisdiction shocks; USD reporting absorbs FX
+volatility into the income statement. <strong>Bear case (from the
+pack):</strong> 25% probability weight on bear scenario ($623); ARS
+devaluation &gt;40% in a quarter is a named walk-away trigger (§12); BCB
+rule cap on platform-originated credit is the second. <strong>Question
+for management:</strong> “Under what regulatory or macro condition would
+you commit to constant-currency primary reporting that is comparable
+across periods?”</p>
+<hr />
+<h3 id="persona-4-the-insurance-veteran">Persona 4 — The Insurance
+Veteran</h3>
+<p><strong>Vote: YES. Position-size view: starter is correct sizing;
+favours discipline of the conditional triggers.</strong></p>
+<p>Mercado Crédito is the unit-economics question and the pack handles
+it with the right structure. The claimed 23.3% NIMAL is properly flagged
+as T4-secondary (§2 platform shape, §11 expert review) — the IC is not
+being asked to underwrite this as a load-bearing T1 fact. The pack puts
+the disclosure flag at high severity (§1, §9 Risk 6) and explicitly
+conditions the upsize on Szarfsztejn naming an AI-driven cohort metric
+with attribution.</p>
+<p>What the Insurance Veteran reads in the pack is unusually honest
+unit-economics framing. The walk-away triggers (§12) include “Mercado
+Crédito 90+ day NPLs expand by more than 200 basis points in any single
+quarter without a quantitative management explanation” — a specific,
+observable, falsifiable trigger that mirrors how a regulated insurance
+lender would set its own loss-ratio walk-aways. The pack is not selling
+the credit book as a permanent annuity; it is sizing the position to the
+disclosure cycle.</p>
+<p>The cross-read from prior emerging-market consumer-credit work is
+that thin-file behavioural-data underwriting genuinely compounds when
+the platform owns the merchant flow (Mercado Pago settles the
+transaction, Mercado Envíos delivers, Mercado Crédito extends). The
+26-year accumulated behavioural data is the cornered resource that
+competing single-vertical lenders cannot replicate at any cost in 18
+months. The structural switching cost (§4) — sellers running Pago +
+Envíos + Crédito simultaneously — is the genuine moat for the credit
+book.</p>
+<p><strong>Bull case (from the pack):</strong> the integrated five-asset
+stack is the genuine credit moat; conditional triggers are sharp;
+walk-away triggers are observable. <strong>Bear case (from the
+pack):</strong> the 90% YoY credit-book growth claim is T4-secondary;
+Nubank’s regulated-bank cost-of-funds advantage (§4) is the real
+structural risk to NIMAL, not Shopee. <strong>Question for
+management:</strong> “What is the current 90+ day NPL ratio on the
+Mercado Crédito book, disaggregated between seller credit and consumer
+credit, for the most recent quarter?”</p>
+<hr />
+<h3 id="persona-5-the-ai-skeptic">Persona 5 — The AI Skeptic</h3>
+<p><strong>Vote: NO. Position-size view: WATCH; do not size into the
+name until the disclosure event lands.</strong></p>
+<p>This vote is fully driven by RF-DISC-006 — the single high-severity
+fire in the 9-flag sweep (§1, §9 Risk 6). The pack states it directly:
+zero of MercadoLibre’s six AI deployments grade at evidence grade B or
+better. The three load-bearing AI claims — 87% Mercado Pago AI
+customer-service resolution, 23.3% Mercado Crédito NIMAL, 40% YoY
+fraud-cost decline — are all sourced from secondary aggregator synthesis
+(klover.ai, investing.com, Gate 6 reference), not primary management
+disclosure. The DCF base case requires operating margin to expand from
+FY25’s 11.08% to 18% over 10 years (§7), and the AI claim is what the
+bull case relies on to justify that expansion path.</p>
+<p>The AI Skeptic reads the pack as making the right framing call —
+disclosure-quality is the binding constraint and sizing should reflect
+that. But starter sizing at spot is still paying real money for
+unaudited optionality. The pack openly invokes the Schilit “reliance on
+adjusted financial metrics” pattern (§1) — inverted into modern
+AI-narrative form. That is exactly the pattern the AI Unit Economics
+doctrine v1.1 is built to flag. The disciplined response is WATCH at
+this price, not STARTER.</p>
+<p>The three “bullshit flags” from doctrine fire concurrently:
+selective_success_stories, metric_movement_without_mechanism,
+no_counterfactual (§9 Risk 6 cluster). Management consistently invokes
+ML in credit, ads, search, and logistics, but the pack states that “no
+verbatim quote isolates AI’s contribution to margin or take-rate” (§6
+adversarial flag 1). That is the disclosure gap. Paying for it before it
+closes is paying for narrative.</p>
+<p><strong>Bull case (from the pack):</strong> the operating outcomes
+are real — Q4 2025 unit-shipping cost decline is primary-sourced (§4);
+outcomes don’t require AI causation to be real. <strong>Bear case (from
+the pack):</strong> if outcomes don’t require AI causation, then the 18%
+terminal operating margin doesn’t require AI causation either — and the
+bull case loses its load-bearing mechanism. The base case probability
+weight should compress. <strong>Question for management:</strong> “Will
+you commit to publishing one Mercado Crédito cohort default-rate metric
+— pre-AI baseline versus post-AI cohort at matched origination month —
+in the Q2 2026 earnings deck?”</p>
+<hr />
+<h3 id="persona-6-the-activist">Persona 6 — The Activist</h3>
+<p><strong>Vote: ABSTAIN. Position-size view: cannot vote until auditor
+identity and Galperín beneficial-ownership table are in the
+corpus.</strong></p>
+<p>The Activist reads the pack and finds two substrate gaps that the IC
+cannot vote around. First, RF-AUD-001 — the auditor is not named in the
+current corpus (§10, §2 headline corporate facts). The pack lists this
+as a Gate 8 confirmation item but it has not closed; the Activist treats
+this as a hard stop on any capital commitment, including starter sizing.
+Big-4 presumption is not the same as confirmed Big-4 attestation, and
+audit-fee trend over three years plus PCAOB inspection findings are not
+in the corpus either. Second, RF-CAP-004 — Galperín’s
+beneficial-ownership table from the DEF 14A is not parsed (§10).
+Share-pledge status of an Executive Chair who retains “AI-innovation
+sponsorship” custody is a material disclosure for an activist read.</p>
+<p>Beyond the gaps, the governance structure is the
+founder-Executive-Chair-plus-founder-relative pattern (§10) at low
+severity but real. Calemzuk as Lead Independent Director partially
+mitigates. Average board tenure of ~9.3 years (§10) sits at the UK
+Corporate Governance Code 9-year independence threshold —
+Steinhoff-pattern adjacent, though independence ratio is 78% (healthy).
+The capital-allocation custody retention by Galperín post-transition (§5
+CEO transition; cross-red-flags Cluster 2) is the structural feature an
+activist would press on.</p>
+<p>The Activist’s discipline is procedural: an IC cannot underwrite a
+position when a hard-gate Layer 1 item — source attribution for the
+audit chain — remains open. The verdict is ABSTAIN, not NO, because the
+substrate gaps are closeable and the Activist would re-vote on a clean
+corpus.</p>
+<p><strong>Bull case (from the pack):</strong> Galperín executed the
+Wasserman founder-role-sacrifice transition before pressure required it
+(§5) — founder-courage marker scores ~110. <strong>Bear case (from the
+pack):</strong> auditor identity is a hard-gate Layer 1 (source
+attribution) miss; beneficial ownership and pledge status unverified;
+long board tenure with two non-independent directors (Galperín +
+family). <strong>Question for management:</strong> “Who is the audit
+engagement partner, what is the three-year audit-fee trend, and what is
+the founder’s voting position and share-pledge status as of the most
+recent DEF 14A beneficial-ownership table?”</p>
+<hr />
+<h3 id="persona-7-the-operator">Persona 7 — The Operator</h3>
+<p><strong>Vote: YES. Position-size view: starter is correct; bench
+depth is the underwrite.</strong></p>
+<p>The Operator reads the pack and finds an unusually deep operating
+bench. Daniel Rabinovich — 26 continuous years at the platform, COO
+since 2020 — is the single most load-bearing operational figure after
+the founder (§5). Osvaldo Giménez has run Mercado Pago continuously
+since 2004 (22 years). Martín de los Santos ran Mercado Crédito
+2017–2023 before taking CFO. Median shared tenure across the named EVPs
+is unusually high; at least four of seven have been at MELI for more
+than 10 years (§5). Functional complementarity indexed at ~125 / ~118
+shrunk-peer.</p>
+<p>Szarfsztejn’s track record is concrete. He built Mercado Envíos from
+approximately 2018 — and the pack confirms unit shipping costs fell YoY
+in Brazil, Mexico, Chile, and Colombia in 2025 per the Q4 release (§2,
+§4) with management explicitly attributing the decline to scale, not AI.
+That is operational delivery against a multi-billion-dollar capex
+commitment, primary-sourced. The Operator reads that as the right kind
+of executive credential — built the moat asset before getting the
+seat.</p>
+<p>The Operator is comfortable with starter sizing because the execution
+risk is properly named (§9 Risk 3): Szarfsztejn has zero quarterly
+delivery in the CEO seat and the next four quarters are the live test.
+The walk-away triggers (§12) include “Szarfsztejn defaults to
+scale-and-reinvestment narrative through both Q2 and Q3 2026 calls
+without naming an AI cohort metric” — that is the right falsifiability.
+The conditional structure of the pack matches how an operator-investor
+would underwrite a CEO transition: small bite now, scale on observed
+execution.</p>
+<p><strong>Bull case (from the pack):</strong> bench depth at ~115 /
+~108 shrunk-peer; Szarfsztejn’s logistics build-out is independently
+corroborated as a moat driver (§2); walk-away triggers are observable.
+<strong>Bear case (from the pack):</strong> no publicly-named successor
+to Szarfsztejn or Rabinovich (§5 key-person risk medium); CFO is two
+years into seat; no director with primary AI-research identity on the
+board (§10). <strong>Question for management:</strong> “Who is the named
+successor to Daniel Rabinovich as COO Product and Technology in the
+event of incapacity, and at what point in the next 24 months will that
+succession be made public?”</p>
+<hr />
+<h2 id="vote-tally-box">§2 — Vote tally box</h2>
+<pre><code>  YES  ▌▌▌                       3   (Power-Law Hunter · Insurance Veteran · Operator)
+  NO   ▌▌▌                       3   (Compounder · Macro Hawk · AI Skeptic)
+  ABST ▌                         1   (Activist — substrate-gap procedural abstain)
+  ──────────────────────────────
+  Total                          7</code></pre>
+<hr />
+<h2 id="consensus-verdict-box">§3 — Consensus verdict box</h2>
+<blockquote>
+<p><strong>VERDICT: STARTER POSITION (CONDITIONAL).</strong></p>
+<p>The panel splits 3–3 on votes but converges on the pack’s own sizing
+recommendation when the Activist’s procedural abstain is set aside.
+Three YES votes (Power-Law Hunter, Insurance Veteran, Operator) endorse
+starter sizing at 0.5–1.0% NAV at spot, treating −1.0% margin of safety
+as the price of being in the name before the Q2 2026 disclosure event.
+Three NO votes (Compounder, Macro Hawk, AI Skeptic) argue the
+disciplined response at no-MoS-with-high-severity-AI-flag is WATCH, not
+STARTER. The Activist abstains pending auditor identity and Galperín
+beneficial-ownership-table closure.</p>
+<p><strong>Reasoning for STARTER over WATCH:</strong> The disagreement
+is fundamentally about position sizing, not thesis. No persona disputes
+that the moat is real (131 moat index), that the Q1’26 +49% YoY print is
+genuine, or that the bench is unusually deep. The Compounder and AI
+Skeptic both concede the bull case in their fact-checked bear case. The
+Macro Hawk’s objection compresses to a country-risk-premium debate that
+the pack openly brackets. The structural call is whether 0.5–1.0% NAV is
+“paying for confirmation” (NO read) or “buying optionality on a
+properly-conditioned disclosure event” (YES read). Either is defensible.
+The pack’s own §12 verdict — STARTER conditional on Q2/Q3 2026 trigger
+discharge — is the operative position the partners walk into the human
+IC with.</p>
+</blockquote>
+<hr />
+<h2 id="minority-view-box">§4 — Minority view box</h2>
+<blockquote>
+<p><strong>MINORITY VIEW (3 of 7): WATCH at spot; do not commit capital
+until either price retraces to ≤ $1,430 or the high-severity
+AI-disclosure flag retires.</strong></p>
+<p>The Compounder, Macro Hawk, and AI Skeptic dissent on the same axis:
+the pack’s own framework places $1,648 in the “watch / no-add” band of
+the §7 entry table (the starter band is $1,270–$1,430). Committing
+0.5–1.0% NAV at the wrong side of the pack’s own entry discipline is
+paying for narrative ahead of confirmation. The minority view is that
+the Q2 2026 earnings call is the right gating event but the wrong time
+to pre-position — the disclosure is binary and the asymmetric move is on
+the disclosure, not before it. The minority would re-vote YES if (i)
+price retraces into the starter band, or (ii) Q2 2026 anchors one AI
+cohort metric to primary disclosure with attribution, whichever comes
+first.</p>
+<p>This is a serious dissent. Three of seven personas refuse to accept
+the −1.0% margin of safety as the price of optionality. The human IC
+must address whether the starter sizing materially changes Chronos’s
+risk posture on MELI versus simply not yet being in the name — and
+whether the option value of a 0.5–1.0% allocation is large enough to
+override a hard-gate AI-disclosure flag for one to two quarters.</p>
+</blockquote>
+<hr />
+<h2 id="disagreement-axis">§5 — Disagreement axis</h2>
+<p>The vote divides on a single question: <strong>is starter sizing
+(0.5–1.0% NAV) the right way to buy optionality on a binary disclosure
+event when the pack’s own intrinsic value framework places spot in the
+“watch / no-add” band?</strong></p>
+<p>The YES votes (Power-Law Hunter, Insurance Veteran, Operator) treat
+starter sizing as the discipline — small enough to absorb the
+AI-disclosure tail, large enough to participate if Q2’26 lands. The NO
+votes (Compounder, Macro Hawk, AI Skeptic) treat starter sizing as the
+trap — small enough to feel disciplined, large enough to bleed real
+basis points if the bear case prints. The Activist’s abstain reframes
+the question as procedural: the IC cannot adjudicate the sizing debate
+while the auditor identity and beneficial-ownership data are outside the
+corpus.</p>
+<hr />
+<h2 id="five-questions-the-human-ic-must-ask-management">§6 — Five
+questions the Human IC must ask management</h2>
+<ol type="1">
+<li><p><strong>Will MercadoLibre publish one Mercado Crédito cohort
+default-rate metric — pre-AI baseline versus post-AI cohort at matched
+origination month — in the Q2 2026 earnings deck, or in the FY2026 10-K
+MD&amp;A?</strong> This is the single highest-leverage disclosure event
+in the next twelve months. The AI Skeptic’s NO vote and the Power-Law
+Hunter’s YES vote turn on the same answer.</p></li>
+<li><p><strong>What is the current 90+ day NPL ratio on the Mercado
+Crédito book, disaggregated between seller credit and consumer credit,
+for the most recent quarter?</strong> The walk-away trigger is set at
++200 basis points in any single quarter without quantitative
+explanation. The IC cannot monitor a trigger it has never seen the
+baseline of. This is the Insurance Veteran’s question and it is
+binary.</p></li>
+<li><p><strong>Who is the audit engagement partner, what is the
+three-year audit-fee trend, and what is Marcos Galperín’s voting
+position and share-pledge status as of the most recent DEF 14A
+beneficial-ownership table?</strong> Two substrate gaps in one question.
+The Activist abstains until these close. Both are routine disclosure
+items and the pack lists them as Gate 8 confirmation items that have not
+yet closed.</p></li>
+<li><p><strong>Under what regulatory or macro condition would
+MercadoLibre commit to constant-currency primary reporting that is
+comparable across periods, and what is management’s view on whether the
+IAS 29 hyperinflationary accounting treatment for Argentina is
+comparable across the FY24, FY25, and Q1’26 prints?</strong> The Macro
+Hawk’s vote turns on this. The pack itself names constant-currency
+reporting as a conditional trigger to upsize (§0).</p></li>
+<li><p><strong>Who is the named successor to Daniel Rabinovich as COO
+Product and Technology in the event of incapacity, and what is the
+timing of any public announcement of that succession?</strong> The
+Operator’s question. Twenty-six-year COO tenure across the entire
+product and technology stack is the single most load-bearing operational
+concentration in the bench. The pack identifies it as medium key-person
+risk (§5) but does not name a successor. This is a bench-depth question,
+not a hypothetical.</p></li>
+</ol>
+<hr />
+<h2 id="pack-quality-assessment">§7 — Pack quality assessment</h2>
+<p>The panel finds the pack adequate to vote on. Layer 1 hard gates
+substantially pass: sourcing discipline is consistent through the
+document, no analyst paraphrase appears in quoted form, comparative
+scoring respects the 100-equals-peer-median convention throughout (§4
+moat scoring, §5 bench scoring, §9 Risk 4 country-risk index). The
+pre-mortem (§12) names three failure paths with observable kill metrics;
+walk-away triggers are specific and binary; outside-view reference
+classes are named for the revenue-CAGR forecast (Sea, Amazon, MELI
+Q1’26).</p>
+<p>The pack is honest about its own substrate gaps: auditor identity,
+beneficial-ownership table, and AC-chair-specific tenure are all flagged
+as Gate 8 confirmation items (§10). Sponsor framing is identified and
+engaged on both sell-side consensus and management’s “deliberate
+reinvestment” framing (§8).</p>
+<p>Three open items the panel notes but does not treat as blocking: -
+The high-severity RF-DISC-006 AI-disclosure flag is appropriately
+load-bearing on the sizing call rather than buried in the risk register.
+- The float-FCF caveat (§6) is disclosed at the right level of
+prominence. - The −1.0% margin of safety is stated directly in §0, §1,
+and §7 rather than buried — the Compounder and AI Skeptic’s dissents are
+based on the pack’s own framework, not on a misread.</p>
+<hr />
+<p><em>Virtual IC — MercadoLibre Inc. (MELI.US) — Gate 9 deliberation,
+2026-05-28.</em></p>
+
+<footer>Spock v4 listed-eq pipeline · MELI.US · generated 28 May 2026.</footer>
+</body>
+</html>
