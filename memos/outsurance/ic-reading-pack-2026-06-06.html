@@ -445,7 +445,21 @@
     border-top: 1px dashed #ddd5c4;
   }
   .pre-mortem-item .kill-metric strong { color: #8b2a1a; }
-</style></head><body><div class="container">
+
+
+.spock-export-toolbar{position:fixed;top:16px;right:16px;z-index:9999;display:flex;gap:6px;background:#ffffffee;border:1px solid #d8d5ce;border-radius:6px;padding:6px;box-shadow:0 2px 8px rgba(31,41,55,.08);font-family:-apple-system,Helvetica,Arial,sans-serif;font-size:12px;backdrop-filter:blur(6px);}
+.spock-export-toolbar a,.spock-export-toolbar button{color:#1a1a1a;background:transparent;border:0;text-decoration:none;padding:6px 10px;border-radius:4px;cursor:pointer;font:inherit;}
+.spock-export-toolbar a:hover,.spock-export-toolbar button:hover{background:#f0ede6;color:#6B5535;}
+.spock-export-toolbar .divider{width:1px;background:#e5e5e0;margin:4px 0;}
+.spock-gdocs-tip{position:fixed;top:54px;right:16px;z-index:9999;max-width:280px;background:#fff;border:1px solid #d8d5ce;border-radius:6px;padding:12px 14px;font-family:-apple-system,Helvetica,sans-serif;font-size:12px;color:#333;box-shadow:0 2px 8px rgba(31,41,55,.12);display:none;}
+.spock-gdocs-tip.is-open{display:block;}
+@media print{.spock-export-toolbar,.spock-gdocs-tip{display:none !important;}}
+</style></head><body><div class="spock-export-toolbar" role="toolbar" aria-label="Export">
+  <a href="ic-reading-pack-2026-06-06.pdf" download title="Download as PDF">PDF</a><div class="divider"></div>
+  <a href="ic-reading-pack-2026-06-06.docx" download title="Download as Word">Word</a><div class="divider"></div>
+  <button type="button" onclick="document.getElementById('spock-gdocs-tip').classList.toggle('is-open')">Google Docs</button>
+</div>
+<div class="spock-gdocs-tip" id="spock-gdocs-tip">Download the Word file, then in Google Docs: <b>File → Open → Upload</b>. (Or drag the .docx into Google Drive and open with Docs.)</div><div class="container">
 
   <!-- ===== HEADER ===== -->
   <div class="header">
