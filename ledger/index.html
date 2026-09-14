@@ -405,7 +405,7 @@
   .row[data-id] .row-controls { display: flex; gap: 3px; flex-shrink: 0; }
 </style>
 </head>
-<body data-compiled-at="2026-09-14T14:45:39+02:00">
+<body data-compiled-at="2026-09-14T14:54:36+02:00">
 <script>
 /* Server-truth prune (14 Sep 2026, Isa's 6-vs-3 report). Local action stores exist only to bridge the
    gap between a tap and the server republishing. Once the page on screen was compiled AFTER an action
@@ -526,10 +526,10 @@
 <div aria-label="Ledger sections" class="tab-bar" id="tab-bar" role="tablist">
 <button class="tab-btn" id="tab-front-page" onclick="showTab('front-page')" role="tab">🔥 Front Page</button>
 <button class="tab-btn" id="tab-deep-work" onclick="showTab('deep-work')" role="tab">🎯 Deep Work <span class="tab-count" id="count-deep-work">5</span></button>
-<button class="tab-btn" id="tab-isa" onclick="showTab('isa')" role="tab">👤 Isa <span class="tab-count" id="count-isa">6</span></button>
+<button class="tab-btn" id="tab-isa" onclick="showTab('isa')" role="tab">👤 Isa <span class="tab-count" id="count-isa">8</span></button>
 <button class="tab-btn" id="tab-people" onclick="showTab('people')" role="tab">⏳ Waiting On <span class="tab-count" id="count-people">10</span></button>
 <button class="tab-btn" id="tab-north-stars" onclick="showTab('north-stars')" role="tab">⭐ North Stars</button>
-<button class="tab-btn" id="tab-done" onclick="showTab('done')" role="tab">&#9989; Done <span class="tab-count" id="count-done">260</span></button>
+<button class="tab-btn" id="tab-done" onclick="showTab('done')" role="tab">&#9989; Done <span class="tab-count" id="count-done">266</span></button>
 </div>
 <!-- Chief of Staff bands (v0.4 — produced by the CoS phase; bands stay empty until first CoS-enabled fire) -->
 <style>
@@ -643,6 +643,22 @@
 <div class="section-hed">👤 Isa <span class="count">the shared delegation desk &middot; &rarr; Isa on any card sends it here with your note &middot; Isa&rsquo;s &rarr; Roger sends it back</span></div>
 <div id="isa-delegated-strip"><div class="section-hed" style="margin-top:18px">📬 Delegated to Isa <span class="count" id="isa-delegated-count">nothing pending &mdash; cards you send with &rarr; Isa land here at the next refresh, with your note attached</span></div></div>
 <div class="priority-grid" id="isa-grid">
+<div class="card" data-id="act-wed-winelands-accommodation" data-first-seen="2026-09-14" data-north-star="flywheel" data-title="Winelands accommodation split proposed: Willem hosts Brandon and Conrad Leigh, Roger hosts Casper and Hendri, Michael hosts Nic and offers to host Charles Savage; Roger has not answered">
+<div class="card-head"><div class="card-title">Winelands accommodation split proposed: Willem hosts Brandon and Conrad Leigh, Roger hosts Casper and Hendri, Michael hosts Nic and offers t</div><span class="ns-tag">Flywheel</span></div>
+<div class="card-meta">&rarr; from Roger &middot; 2026-09-14</div>
+<div class="card-body"><strong>Roger asks:</strong> &ldquo;Good with me!&rdquo;</div>
+<details class="card-source"><summary>source</summary><div class="card-source-body">Delegated 2026-09-14 12:52 by Roger. Original item: Winelands accommodation split proposed: Willem hosts Brandon and Conrad Leigh, Roger hosts Casper and Hendri, Michael hosts Nic and offers to host Charles Savage; Roger has not answered</div></details>
+<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer the person who sent this">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Roger</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
+<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
+</div>
+<div class="card" data-id="fp-thu-frances-cronje-asset-call" data-first-seen="2026-09-14" data-north-star="chronos" data-title="Frances Cronje asked for time over the next few days on an asset she thinks Roger knows, and wants his insights">
+<div class="card-head"><div class="card-title">Frances Cronje asked for time over the next few days on an asset she thinks Roger knows, and wants his insights</div><span class="ns-tag">Chronos</span></div>
+<div class="card-meta">&rarr; from Roger &middot; 2026-09-14</div>
+<div class="card-body"><strong>Roger asks:</strong> &ldquo;Will you arrange please Isa?&rdquo;</div>
+<details class="card-source"><summary>source</summary><div class="card-source-body">Delegated 2026-09-14 12:47 by Roger. Original item: Frances Cronje asked for time over the next few days on an asset she thinks Roger knows, and wants his insights</div></details>
+<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer the person who sent this">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Roger</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
+<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
+</div>
 <div class="card" data-id="fp-mon-isa-drive-audit-link" data-first-seen="2026-09-14" data-north-star="spock" data-title="Isa replied that the Drive audit link shared with her is unavailable and has marked what she needs in red">
 <div class="card-head"><div class="card-title">Isa replied that the Drive audit link shared with her is unavailable and has marked what she needs in red</div><span class="ns-tag">Spock</span></div>
 <div class="card-meta">&rarr; from Roger &middot; 2026-09-14</div>
@@ -678,11 +694,6 @@
 
 <!-- CARDS v3.24 -->
 
-
-
-
-
-
 <div class="card" data-id="isa-q-dji-drone-remote" data-first-seen="2026-08-17" data-deadline="2026-08-29" data-north-star="family" data-title="DJI drone remote unrepairable; Isa sourcing replacement R21,000, iStore Somerset West first">
 <div class="card-head"><div class="card-title">DJI drone remote &mdash; source a replacement (R21,000)</div><span class="ns-tag" title="Serves: Family">Family</span></div>
 <div class="card-meta">ISA&rsquo;S QUEUE &middot; from Roger &middot; since 17 Aug</div>
@@ -714,35 +725,11 @@
 </div>
 
 >
-<div class="card fire" data-id="fp-thu-rhino-kaptio-cutover" data-first-seen="2026-09-10" data-north-star="portfolio" data-deadline="2026-09-17" data-title="David Ryan has set the Rhino Africa cutover dates off Kaptio and asked the board for a meeting">
-<div class="card-head"><div class="card-title">Rhino Africa has set its cutover dates &mdash; and David is asking the board for a meeting</div><span class="ns-tag" title="Serves: Portfolio">Portfolio</span></div>
-<div class="card-meta">waiting on: you, a board date &middot; since 12:27 on 10 Sept &middot; due 17 Sept</div>
-<div class="card-body"><strong>Action:</strong> give David a date. He has fixed the Kaptio exit: a company-wide demo on 17 September, training from the 21st, everyone in the new sandbox by 16 October, go-live 1 December.</div>
-<details class="card-source"><summary>source</summary><div class="card-source-body">WHATSAPP, <em>New Rhino Board 18.0</em>, David Ryan <strong>12:27 on 10 Sept</strong>: &ldquo;Gents - <strong>Perhaps we should actually have a Board meeting at some point&hellip;</strong> But in the meantime, we&rsquo;ve set the dates this morning&hellip; The headline is pretty simple: <strong>Rhino Africa is moving off Kaptio.</strong> <strong>17 September</strong> - Full Magic Safari Travel Planner demo to the company, followed by Q&amp;A. <strong>Week of 21 September</strong> - We move into training and onboarding. <strong>16 October</strong> - Everyone is live in the new CRM / Magic Safari sandbox&hellip; <strong>1 December</strong> &mdash; Rhino Africa goes LIVE in the new operating environment&hellip; <strong>January 2027</strong> - Magic Safari officially launches as a DMC.&rdquo;<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.42. first-seen is his 12:27 message. Every date above is quoted from that message, not derived. The deadline is set to the first of them, 17 September. No Rhino board meeting appears on the calendar in the swept window, which is the gap he is pointing at.</div><div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">UPDATED v4.44: re-verified at this fire &mdash; still no Rhino board meeting on the calendar across 11&ndash;12 September, and no reply from you in the group since. The 12:27 stamp above was written on 10 September and has been restated as an absolute date.</div></div></details>
-<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
-<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
-</div>
-<div class="card fire" data-id="fp-thu-mychoices-funding-request" data-first-seen="2026-09-10" data-north-star="portfolio" data-title="My Choices Foundation has sent its revised 2026-27 budget and a related request to Bag End Trust">
-<div class="card-head"><div class="card-title">My Choices Foundation has sent its 2026&ndash;27 budget and a request to Bag End Trust</div><span class="ns-tag" title="Serves: Portfolio">Portfolio</span></div>
-<div class="card-meta">waiting on: you, a funding decision &middot; since 15:01 today</div>
-<div class="card-body"><strong>Action:</strong> read it and decide. The revised budget for the 2026&ndash;27 financial year arrived this afternoon with a related request to Bag End Trust alongside it.</div>
-<details class="card-source"><summary>source</summary><div class="card-source-body">GMAIL, elca.grobler@gmail.com &rarr; Roger@ccap.ai, cc isa@mychoicesfoundation.org, <strong>15:01 SAST today</strong>, subject <em>My Choices Foundation Funding 2026 - 2027</em>: &ldquo;Dear Roger, I hope you are well. I am sharing a <strong>budget update for My Choices Foundation for the 2026&ndash;2027 financial year, and a related request to Bag End Trust.</strong> Revised Budget Following a careful&hellip;&rdquo;<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.42. first-seen is the send time. The quote runs only as far as the thread listing returned it &mdash; the message was not opened and no figure is stated here, because none was in the snippet. This is foundation business, not a family matter.</div></div></details>
-<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
-<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
-</div>
 <div class="card fire" data-id="fp-thu-crossfin-docusign-step2a" data-first-seen="2026-09-10" data-north-star="portfolio" data-title="Shelley O Connell of Crossfin has sent the Step 2A CT subscription document for signature via DocuSign">
 <div class="card-head"><div class="card-title">Crossfin has moved on to Step 3 &mdash; and Step 2A is still unsigned</div><span class="ns-tag" title="Serves: Portfolio">Portfolio</span></div>
 <div class="card-meta">waiting on: you, two signatures &middot; since 12:38 on 10 Sept</div>
 <div class="card-body"><strong>Action:</strong> clear both envelopes. Shelley sent Step 2A yesterday afternoon and the Step 3 loan release waiver arrived this morning. A second step arriving means the chain is moving on without your signature on the first.</div>
 <details class="card-source"><summary>source</summary><div class="card-source-body">GMAIL, dse@eumail.docusign.net &rarr; roger@ccap.ai, <strong>12:38 SAST on 10 Sept</strong>, subject <em>Complete with Docusign: Step 2A CT Subscription AKE 20260901.pdf</em>: &ldquo;<strong>Shelley O&rsquo;Connell sent you a document to review and sign.</strong> Review document &mdash; Shelley O&rsquo;Connell Shelley@crossfin.co.za. Good day all ** STEP 2 ** Please see the attached document for your attention&hellip;&rdquo;<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.42. first-seen is the DocuSign send time. Distinct from fp-thu-crossfin-tsm-round-robin, which is the TSM round robin &mdash; this is the subscription step. The quote runs only as far as the thread listing returned it; the envelope was not opened.</div><div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">UPDATED v4.44: GMAIL, dse@eumail.docusign.net &rarr; roger@ccap.ai, <strong>11:28 SAST today</strong>, subject <em>Complete with Docusign: Step 3 CT AKE Loan Release Waiver 20260901.pdf</em>: &ldquo;Shelley O&rsquo;Connell sent you a document to review and sign&hellip; Good day all <strong>** STEP 3 **</strong> Please see the attached document for your attention&rdquo;. Neither envelope was opened &mdash; that both remain outstanding is read from the inbox, not from DocuSign itself. The 12:38 stamp above was written on 10 September and has been restated as an absolute date at this fire.</div><div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">v4.47 UPDATE, same id and first-seen. <strong>Step 3 has now landed on top of it.</strong> GMAIL, Docusign on behalf of Shelley O&rsquo;Connell (Shelley@crossfin.co.za), <strong>11:28 on 11 Sept</strong>: &ldquo;Complete with Docusign: <strong>Step 3 CT AKE Loan Release Waiver 20260901.pdf</strong>&rdquo;, addressed &ldquo;Good day all ** STEP 3 **&rdquo;. Whether Step 2A was ever signed is not asserted here; the Step 3 request is simply now also open.</div></div></details>
-<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
-<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
-</div>
-<div class="card fire" data-id="fp-thu-frances-cronje-asset-call" data-first-seen="2026-09-10" data-north-star="chronos" data-title="Frances Cronje asked for time over the next few days on an asset she thinks Roger knows, and wants his insights">
-<div class="card-head"><div class="card-title">Frances Cronje wants time in the next few days on an asset she thinks you know</div><span class="ns-tag" title="Serves: Chronos">Chronos</span></div>
-<div class="card-meta">waiting on: you, a yes and a window &middot; since 08:51 today</div>
-<div class="card-body"><strong>Action:</strong> give her a window or hand the scheduling to Isa. She wants your read on an asset her side is looking at, and has had nothing back in over three hours.</div>
-<details class="card-source"><summary>source</summary><div class="card-source-body">WHATSAPP, Frances Cronje 1:1, <strong>08:51 today</strong>, in Afrikaans: &ldquo;Dit sal great wees om op te vang as jy tyd het oor die volgende paar dae? Ons kyk na n asset wat ek dink jy sal ken, en sal jou insights baie waardeer&rdquo;. Unanswered at this fire.<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.41. first-seen is her message. She is not an Endeavor intro &mdash; all three warm-intro passes ran and returned no intro awaiting a reply; this came in on WhatsApp.</div></div></details>
 <div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
 <div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
 </div>
@@ -752,30 +739,6 @@
 <div class="card-body"><strong>Action:</strong> answer the group. Michael posted his bull case at 11:20, Willem asked at 11:51 whether the listed name has been screened, and Michael has since said he would be very interested in the outcome. Two partners now.</div>
 <details class="card-source"><summary>source</summary><div class="card-source-body">WHATSAPP, <em>Chronos Capital Partners</em> group. Michael Jordaan <strong>11:20 today</strong>, with an image: &ldquo;Why I am bullish on Lesaka&rdquo;. Willem Roos <strong>11:51</strong>: &ldquo;Given that Lesaka is listed - have we run it through Spock?&rdquo; No reply in the group at this fire.<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.41. first-seen is his 11:51 message. His wording is quoted verbatim here; the card states the ask as a screening question.</div><div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">v4.42 UPDATE, same id and first-seen. <strong>Michael is now waiting on it too.</strong> WHATSAPP, same group, Michael Jordaan <strong>12:21 today</strong>: &ldquo;Would be very interested in the outcome&rdquo;. Still no answer in the group at this fire.</div></div></details>
 <div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
-<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
-</div>
-<div class="card fire" data-id="fp-thu-heinrich-zoe-ai-lessons" data-first-seen="2026-09-09" data-north-star="family" data-title="Heinrich Richter has asked whether Zoe would give his two children paid AI introduction lessons">
-<div class="card-head"><div class="card-title">Heinrich has asked whether Zoe would teach his two children AI &mdash; paid</div><span class="ns-tag" title="Serves: Family">Family</span></div>
-<div class="card-meta">waiting on: you, ask Zoe and answer him &middot; since 20:40 on 9 Sept</div>
-<div class="card-body"><strong>Action:</strong> put it to Zoe and come back to him. He has offered to pay her, and says he will sit with her regardless to give a basic introduction to the investment world.</div>
-<details class="card-source"><summary>source</summary><div class="card-source-body">WHATSAPP, Heinrich Richter 1:1, <strong>20:40 on 9 Sept</strong>: &ldquo;Hoor by Zoe of sy regtig kans sien om Lyle en Milah n AI intro lesse kan gee? <strong>Obviously betaal ek haar.</strong> Het sy tyd en lus?&rdquo;, and <strong>20:41</strong>: &ldquo;Ek sal regardless met haar sit en basic investment world intro gee.&rdquo; Unanswered at this fire.<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.40. first-seen is his message, not this build.</div></div></details>
-<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
-<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
-</div>
-<div class="card fire" data-id="act-wed-winelands-accommodation" data-first-seen="2026-09-09" data-north-star="flywheel" data-title="Winelands accommodation split proposed: Willem hosts Brandon and Conrad Leigh, Roger hosts Casper and Hendri, Michael hosts Nic and offers to host Charles Savage; Roger has not answered">
-<div class="card-head"><div class="card-title">The Winelands hosting split is set &mdash; everyone has answered except you</div><span class="ns-tag" title="Serves: Flywheel">Flywheel</span></div>
-<div class="card-meta">waiting on: you, a yes and a word on Charles Savage &middot; since 12:36 on 9 Sept</div>
-<div class="card-body"><strong>Action:</strong> confirm your pair &mdash; Casper and Hendri under your roof &mdash; and answer Michael&rsquo;s offer to also host Charles Savage. The attendee list is otherwise cleared to go out.</div>
-<details class="card-source"><summary>source</summary><div class="card-source-body">WhatsApp, Winelands Masterclass group, Isa 12:36: &ldquo;Willem hosts: Brandon &amp; Conrad Leigh. Roger hosts: Casper &amp; Hendri. Michael hosts: Nic&rdquo;. Michael 12:54: &ldquo;can also host Charles Savage if he wants&rdquo;. You have not answered.</div></details>
-<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
-<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
-</div>
-<div class="card fire" data-id="fp-wed-bii-wave-debt-intro" data-first-seen="2026-09-09" data-north-star="chronos" data-title="Max Biswanger at BII has introduced Alex, who leads their fintech debt investments including Wave, and Josh; Isa has offered next week but no call is booked">
-<div class="card-head"><div class="card-title">BII has put its Wave debt lead in front of you &mdash; and no call is in the diary yet</div><span class="ns-tag" title="Serves: Chronos">Chronos</span></div>
-<div class="card-meta">waiting on: Isa and Gaz, a time next week &middot; since 12:46 on 9 Sept</div>
-<div class="card-body"><strong>Action:</strong> hold the slot. Max copied Alex, who leads BII&rsquo;s fintech debt investments including Wave, and Josh; Isa said next week works and is coordinating with Gaz. It only closes when the meeting is in the diary.</div>
-<details class="card-source"><summary>source</summary><div class="card-source-body">GMAIL, thread <em>Check in</em> &rarr; <em>FW: Check in</em>. mbiswanger@bii.co.uk &rarr; roger@ccap.ai, cc amanolopoulos@bii.co.uk, jobell@bii.co.uk, CMussi@bii.co.uk, isa@ccap.ai, <strong>12:46 SAST today</strong>: &ldquo;Thanks for our recent catch up, as ever highly fruitful for me to exchange views. As discussed, <strong>now also copying Alex (who leads our fintech debt investments, incl. in Wave) and Josh</strong> who you&hellip;&rdquo; isa@ccap.ai &rarr; mbiswanger@bii.co.uk, <strong>13:17 SAST today</strong>: &ldquo;I spoke with Roger, and <strong>next week works well for a call regarding Wave.</strong> I will coordinate with Gaz to set up a time.&rdquo; DRIVE: <em>Wave Mobile Money &mdash; IC Paper (4 Sep 2026) v2.docx</em>, owner roger@ccap.ai, last viewed by you <strong>07:39 SAST today</strong>.<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.39. first-seen is Max&rsquo;s message, not this build, so the days-carrying pill runs from his clock. The thread opened on 27 August; this is the first message that names people to meet. Surnames beyond Biswanger are not asserted &mdash; the thread gives first names and addresses only. Isa handling the scheduling does not close this. UPDATED v4.43: you opened the IC paper at 07:39 this morning, so the reading has started; a two-day sweep of the calendar still shows no booked call, which is why it stays live.</div></div></details>
-<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn" onclick="cardReply(this)" title="Answer the person who sent this">&#8617; Reply</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn recur" onclick="cardRecur(this)" title="Recur">&#8635; Recur</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
 <div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
 </div>
 <div class="card fire" data-id="fp-sat-cipc-annual-return" data-first-seen="2026-09-04" data-north-star="spock" data-deadline="2026-09-12" data-title="CIPC says the Chronos Capital Holdco annual return is due from 12 September 2026 and needs a Financial Accountability Supplement and a Beneficial Ownership Declaration">
@@ -794,14 +757,6 @@
 <div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn recur" onclick="cardRecur(this)" title="Recur">&#8635; Recur</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
 <div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
 </div>
-<div class="card fire" data-id="fp-thu-joshua-build-quote" data-first-seen="2026-09-03" data-north-star="family" data-title="Joshua Grobler sent a corrected construction quote 3 September morning and awaits Roger&apos;s approval">
-<div class="card-head"><div class="card-title">Joshua&rsquo;s corrected build quote is in &mdash; he is waiting on your go-ahead</div><span class="ns-tag" title="Serves: Family">Family</span></div>
-<div class="card-meta">waiting on: you, a yes, a no, or questions &middot; since 08:27 on 3 Sept</div>
-<div class="card-body"><strong>Action:</strong> reply to Joshua. Labour corrected (R300/h &times; 2 people &times; 3 days &times; 10h), materials down ~R1,000 with the premium explained: birch ply, a 10% contingency buffer, and his margin. A considered quote deserves a same-day answer.</div>
-<details class="card-source"><summary>source</summary><div class="card-source-body">WHATSAPP 08:27 on 3 Sept: labour recalculated, material cost justified in three numbered reasons. He has revised once already. Re-read 18:45 on 13 Sept, <em>Gogga The Greater Offspring</em>, Joshua: &ldquo;Pieter said he&rsquo;s spent 130 hours so far on our board&rdquo; &mdash; quoted as said; it is not asserted here that this refers to the quoted job.</div></details>
-<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
-<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
-</div>
 <div class="card fire" data-id="fp-thu-payments-first-notion-read" data-first-seen="2026-09-03" data-north-star="chronos" data-title="First direct read of Isa&apos;s Notion payments list: verify Finleys #48 against the 24 August payment, verify Return of Earnings R27,662.40, pay Joana 60 euro">
 <div class="card-head"><div class="card-title">First Notion payments read &mdash; two to verify, one to pay</div><span class="ns-tag" title="Serves: Chronos">Chronos</span></div>
 <div class="card-meta">waiting on: you, three checks &middot; pipe opened 2 Sep</div>
@@ -810,52 +765,20 @@
 <div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn" onclick="cardReply(this)" title="Answer">&#8617; Reply</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
 <div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
 </div>
-<div class="card fire" data-id="fp-fri-tyme-board-pack" data-first-seen="2026-09-04" data-north-star="portfolio" data-title="Coen uploaded the Tyme Group board pack, sub-committee packs and minutes to the Data Room at 05:17 on 4 September">
-<div class="card-head"><div class="card-title">The Tyme board pack, sub-committee packs and minutes are in the Data Room</div><span class="ns-tag" title="Serves: Portfolio">Portfolio</span></div>
-<div class="card-meta">waiting on: you, a read &middot; since 05:17 on 9 Sept</div>
-<div class="card-body"><strong>Action:</strong> open the Data Room and read the pack. Coen also loaded the last four sets of minutes, so the gap in the record closes here rather than in a separate chase.</div>
-<details class="card-source"><summary>source</summary><div class="card-source-body">GMAIL, <strong>coen@tyme.com, 05:17 SAST today</strong>, to the Tyme Group board including roger@ccap.ai: &ldquo;Dear Board Members, <strong>The latest board pack, Board sub-committee pack, and meeting minutes have been uploaded to the Data Room for your review.</strong> Data Room link. In addition, we have uploaded the last four&hellip;&rdquo;<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.26 &middot; first-seen is the date of <strong>his</strong> mail, not the build. <strong>No board meeting date is stated in the mail</strong>, so this card carries no data-deadline and none is inferred.</div></div></details>
-<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn" onclick="cardReply(this)" title="Answer the person who sent this">&#8617; Reply</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">&rarr; Isa</button><button class="card-btn recur" onclick="cardRecur(this)" title="Recur">&#8635; Recur</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
-<div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
-</div>
 <div class="fp-budget" id="fp-budget">
 <span class="fp-budget-stat"><strong id="fp-budget-cards">17</strong> cards &middot; 14 carried</span>
 <span class="fp-budget-sep">&middot;</span>
 <span class="fp-budget-text" id="fp-budget-text">Friday afternoon &middot; <strong>two added, one retired, one demoted</strong> &middot; a QED introduction is the live one &middot; 15:05 SAST</span>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="card fire" data-id="fp-wed-kpmg-stella-invitation" data-first-seen="2026-09-01" data-deadline="2026-09-16" data-north-star="chronos" data-title="Stella Mungavin of Standard Bank has asked whether Roger wants to attend a portion of the KPMG Family Business Conference on 16 and 17 September and whether the invitation might interest Willem">
 <div class="card-head"><div class="card-title">Stella is holding the KPMG family-business invitation open for you</div><span class="ns-tag" title="Serves: Chronos">Chronos</span></div>
 <div class="card-meta">waiting on: you, a yes or no &middot; since 1 Sept &middot; due 16 Sept</div>
 <div class="card-body"><strong>Action:</strong> tell Isa whether you want a portion of 16&ndash;17 September, and whether it should go to Willem instead. Isa has already declined the 16th for you; Stella is waiting on the rest.</div>
 <details class="card-source"><summary>source</summary><div class="card-source-body">GMAIL, <strong>Stella.Mungavin@standardsbg.com</strong> to isa@ccap.ai, cc roger@ccap.ai, <strong>17:02 SAST 1 Sept</strong>, thread &ldquo;KPMG Family Business Conference - 16 and 17 September 2026&rdquo;: &ldquo;<strong>I will wait to hear back from you as to whether Roger is interested in attending a portion of the event. Might this be of interest to Willem?</strong>&rdquo; Earlier in the same thread, Isa on <strong>13:59 SAST 28 Aug</strong>: &ldquo;Roger has an in-person workshop he is presenting on September 16th, so he will unfortunately be&hellip;&rdquo;, and Stella on 11 Aug: &ldquo;the invitation is extended to Roger and Elca, and the children if deemed appropriate.&rdquo;<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">NEW v4.22 &middot; Chronos &middot; <strong>first-seen 1 Sept</strong> is the date of <strong>her</strong> latest message, not today. The 16 Sept deadline is the conference date from the subject line, not an invented reply-by date.</div></div></details>
+<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate to Isa">&rarr; Isa</button><button class="card-btn recur" onclick="cardRecur(this)" title="Recur">&#8635; Recur</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
 <div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
 </div>
-
-
-
-
-
-
-
-
 
 <div class="card fire" data-id="fp-thu-crossfin-tsm-round-robin" data-first-seen="2026-08-27" data-deadline="2026-09-04" data-north-star="portfolio" data-title="David Kirkwood circulated the final Bowmans Transaction Structure Memorandum for the two-phase Crossfin group simplification to the board and shareholder representatives on 27 August and asked for written confirmation to proceed by Friday 4 September">
 <div class="card-head"><div class="card-title">Crossfin&rsquo;s final TSM needs your written approval by 4 September</div><span class="ns-tag" title="Serves: Portfolio">Portfolio</span></div>
@@ -870,212 +793,9 @@
 <div class="card-meta">waiting on: you, guidance to Romy and Willem &middot; since 1 Sept</div>
 <div class="card-body"><strong>Action:</strong> settle the apportionment while she is out, so it is waiting for her rather than the other way round. You deferred this to today.</div>
 <details class="card-source"><summary>source</summary><div class="card-source-body">Carried from the card you <strong>deferred on 1 Sept to 2 Sept</strong> &mdash; &ldquo;ELN apportionment post AICB wind-down &mdash; guidance to Romy and Willem&rdquo;. The defer expired today, so it returns under a <strong>new id</strong>. WHATSAPP, Romy Berman, <strong>19:11 SAST 1 Sept</strong>: &ldquo;Hi Roger. Thanks very much for the update. <strong>I am out of the office right now but I&rsquo;m back at work next week.</strong>&rdquo;<div style="margin-top:6px;font-size:10.5px;font-style:normal;color:var(--ink-faint)">RE-SURFACED v4.22 &middot; <strong>first-seen 1 Sept</strong> is the date of her message, which is the only date verified this fire.</div></div></details>
+<div class="card-controls"><button class="card-btn done" onclick="cardDone(this)" title="Mark done">&#10003; Done</button><button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button><button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate to Isa">&rarr; Isa</button><button class="card-btn recur" onclick="cardRecur(this)" title="Recur">&#8635; Recur</button><button class="card-btn delete" onclick="cardDelete(this)" title="Delete">&#10005; Delete</button><button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">&#128295;</button><button class="comment-toggle" onclick="toggleComment(this)">Add note</button></div>
 <div class="comment-box"><textarea class="comment-input" oninput="saveComment(this)" placeholder="Note for Claude&hellip;"></textarea></div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 <div class="section-hed" style="margin-top:26px">📥 Carry-forward actions <span class="count">long-running items &mdash; not today&rsquo;s fight, still yours</span></div>
@@ -1592,6 +1312,12 @@
 <div class="section-hed">✅ Done <span class="count">last 14 days in full &middot; 190 cleared in 30 days &middot; 204 older archived</span></div>
 <style>.done-day-hed{font:700 10.5px Inter,system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin:22px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--rule)}.done-row{display:flex;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px dotted color-mix(in srgb,var(--rule) 50%,transparent);font-size:13px;line-height:1.45;color:var(--ink)}.done-row .dk{color:#2c8c5a;font-weight:700;flex:none}.done-row .dt{color:var(--ink-faint);font:600 10.5px Inter,system-ui,sans-serif;flex:none;width:44px}.done-row .dwho{flex:none;font:700 9.5px Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);background:var(--ink-soft);border-radius:8px;padding:1px 7px}</style>
 <div class="done-day-hed">Today <span style="font-weight:400;color:var(--ink-faint);letter-spacing:.05em">· new</span></div>
+<div class="done-row"><span class="dk">✓</span><span class="dt">12:53</span><span style="flex:1">Max Biswanger at BII has introduced Alex, who leads their fintech debt investments including Wave, and Josh; Isa has offered next week but no call is booked</span><span class="dwho">roger</span></div>
+<div class="done-row"><span class="dk">✓</span><span class="dt">12:52</span><span style="flex:1">Heinrich Richter has asked whether Zoe would give his two children paid AI introduction lessons</span><span class="dwho">roger</span></div>
+<div class="done-row"><span class="dk">✓</span><span class="dt">12:48</span><span style="flex:1">Joshua Grobler sent a corrected construction quote 3 September morning and awaits Roger&#x27;s approval</span><span class="dwho">roger</span></div>
+<div class="done-row"><span class="dk">✓</span><span class="dt">12:47</span><span style="flex:1">David Ryan has set the Rhino Africa cutover dates off Kaptio and asked the board for a meeting</span><span class="dwho">roger</span></div>
+<div class="done-row"><span class="dk">✓</span><span class="dt">12:47</span><span style="flex:1">My Choices Foundation has sent its revised 2026-27 budget and a related request to Bag End Trust</span><span class="dwho">roger</span></div>
+<div class="done-row"><span class="dk">✓</span><span class="dt">12:47</span><span style="flex:1">Coen uploaded the Tyme Group board pack, sub-committee packs and minutes to the Data Room at 05:17 on 4 September</span><span class="dwho">roger</span></div>
 <div class="done-row"><span class="dk">✓</span><span class="dt">12:44</span><span style="flex:1">Roger answered the QED introduction on 8 September and Isa has asked Nigel for his October Cape Town dates; the thread now waits on Nigel</span><span class="dwho">roger</span></div>
 <div class="done-row"><span class="dk">✓</span><span class="dt">12:42</span><span style="flex:1">Nic Smalle has spoken to Coen and offered Saturday or Wednesday for the three of them</span><span class="dwho">roger</span></div>
 <div class="done-row"><span class="dk">✓</span><span class="dt">12:42</span><span style="flex:1">Isa needs the partners’ sign-off on the Winelands speakers and the running order</span><span class="dwho">roger</span></div>
@@ -4357,6 +4083,25 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', relabel); else relabel();
   addEventListener('load', function(){ setTimeout(relabel, 800); });
+})();
+</script>
+<script>
+(function(){
+  /* 14 Sep: two cards shipped with no buttons for 12 days. Never again leave a card unactionable. */
+  var STRIP='<button class="card-btn done" onclick="cardDone(this)" title="Mark done">\u2713 Done</button>'+
+    '<button class="card-btn defer" onclick="cardDefer(this)" title="Defer">Defer</button>'+
+    '<button class="card-btn delegate" onclick="cardDelegate(this)" title="Delegate">\u2192 Isa</button>'+
+    '<button class="card-btn delete" onclick="cardDelete(this)" title="Delete">\u2715 Delete</button>'+
+    '<button class="card-btn fixspock" onclick="cardFixSpock(this)" title="Report a broken or wrong card">\ud83d\udd27</button>'+
+    '<button class="comment-toggle" onclick="toggleComment(this)">Add note</button>';
+  function ensure(){
+    document.querySelectorAll('.card[data-id]').forEach(function(c){
+      if (c.querySelector('.card-controls')) return;
+      var d=document.createElement('div'); d.className='card-controls'; d.innerHTML=STRIP;
+      var cb=c.querySelector('.comment-box'); cb ? c.insertBefore(d, cb) : c.appendChild(d);
+    });
+  }
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', ensure); else ensure();
 })();
 </script>
 <!-- Edition-change reset (clear-on-new-edition): when a newer edition loads, flush the
